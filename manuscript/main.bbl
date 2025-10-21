@@ -1,0 +1,10 @@
+
+
+% Bibstyle aea.bst version 2009.05.20
+
+\begin{thebibliography}{xx}
+
+\harvarditem[Evans \harvardand\ Honapohja]{George~W. Evans \harvardand\ Seppo Honapohja}{2001}{Evans_2001}
+{\bf Evans, George~W., and Seppo Honapohja.} 2001. {\em Learning and Expectations in Macroeconomics.} Princeton University Press.
+
+\end{thebibliography}

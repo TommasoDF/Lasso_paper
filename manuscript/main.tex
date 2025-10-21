@@ -1,0 +1,470 @@
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template for working papers
+%% Tommaso Di Francesco
+%% University of Amsterdam
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Version 1.0 // February 2024
+%% 
+\documentclass[11pt]{article}
+\usepackage{style}
+
+
+%% ===============================================
+%% Setting the line spacing (3 options: only pick one)
+% \doublespacing
+% \singlespacing
+\onehalfspacing
+%% ===============================================
+
+\setlength{\droptitle}{-5em} %% Don't touch
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SET THE TITLE
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE:
+\title{Lasso Trading
+}
+\author{}
+% DATE:
+\date{\today}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\setstretch{.8}
+\maketitle
+\centering
+% %%%%%%%%%%%%%%%%%%
+
+
+}
+
+
+% --------------------
+\section{Draft}
+% --------------------
+
+Consider a simple asset pricing model in which the equilibrium price of a stochastic asset evolves accrodingly to the following law of Motion
+\begin{equation}
+    p_t = p^{e}_{t+1} + u_t,
+\end{equation}
+
+where $p_t$ is the equilibrium price at time $t$, $p^{e}_{t+1}$ is the expected price at time $t+1$ formed at time $t$ \textit{before} the realization of the equilibrium price and $u_t \sim N(0, \sigma^2_u)$.
+We assume that agents are boundedly rational and are not aware of the true data generating process.
+Instead they rely on econometric techniques to form their expectations.
+Specifically we assume that agents have a linear and stationary perceived law of motion (PLM) for the asset return 
+\begin{equation}
+r_{t+1} = \beta \theta_t + \varepsilon_t,
+\end{equation}
+where $\theta_t$ is a stochastic signal that agents observe and $\varepsilon_t \sim N(0, \sigma^2_\varepsilon)$.
+
+In order to estimate the parameter agent use Recursive Ordinary Least square of the form 
+
+\begin{equation}
+\hat{\beta_t} = \frac{\sum^{t-1}_{s=0} r_{s} \theta_{s-1}}{\sum^{t-1}_{s=0}(\theta_{s-1})^2},
+\end{equation}
+
+in which the time indexes are consistent with the timeline of events which implies that at time $t$ the last observable return that can be used for estimation is $r_{t-1}$.
+The Actual Law of Motion (ALM) for the asset price obtains by substituting the PLM into the equilibrium condition
+
+\begin{equation}
+p_t = p^{e}_{t+1} + u_t = (1 + \hat{\beta_t} \theta_t) p^e_{t},
+\end{equation}
+
+where again $p^e_{t}$ stresses that the current price is not available to agents when making their forecats.
+Consisten with their model
+
+\begin{equation}
+p^e_t = (1 +\hat{\beta_t} \theta_{t+1}) p_{t-1},
+\end{equation}
+where the use of $\hat{\beta_t}$ is justified by the belief that there is a constant homogenous $\beta$ and so it make sense for agents to use the 'smoothed' estimate obtained by considering also the return at time $t-1$ in place of $\hat{\beta_{t-1}}$.
+This implies an ALM for the current price
+
+\begin{equation}
+p_t = (1 + \hat{\beta_t} \theta_t)(1 + \hat{\beta_t} \theta_{t-1}) p_{t-1} + u_t,
+\end{equation}
+
+and it follows that future returns evolve according to 
+
+\begin{equation}
+r_{t+1} = \hat{\beta_{t+1}} \theta_{t+1} + \hat{\beta_{t+1}} \theta_t + (\hat{\beta_{t+1}})^2 \theta_{t+1} \theta_t + \frac{u_t}{p_{t-1}}.
+\end{equation}
+
+\subsection{Existence of self-fulfilling equilibria}
+
+A self-fulfilling equilibrium requires consistency between the regression coefficient that agents would estimate from the ALM and the actual $\beta$ implied by their forecast. 
+Formally, let the regression coefficient that would be estimated from the ALM if agents used a constant $\beta$ be denoted by $\hat{\beta}$, we require
+
+\begin{equation}
+\hat{\beta_t} =  \beta(\hat{\beta_t}) = \frac{\operatorname{Cov}(r_{t+1},\theta_t)}{\operatorname{Var}(\theta_t)}
+\end{equation}
+
+where the notation stresses that the population parameter $\beta$ is a function of the estimated parameter $\hat{\beta_t}$.
+A self-fulfilling equilibrium is a fixed point of this function, i.e. a solution to the equation $\hat{\beta} = \beta(\hat{\beta})$.
+
+Now
+\begin{equation}
+\operatorname{Cov}\big(r_{t+1},\theta_t\big)
+= \hat{\beta}\,\operatorname{Cov}(\theta_{t+1},\theta_t)
++ \hat{\beta}\,\operatorname{Var}(\theta_t)
++ \hat{\beta}^2\,\operatorname{Cov}(\theta_{t+1}\theta_t,\theta_t)
++ \operatorname{Cov}\!\Big(\frac{u_t}{p_{t-1}},\theta_t\Big).
+\end{equation}
+
+Given $u_t$ is mean zero and independent of $\theta$, the last term is zero, moreover if we assume that $\theta_t$ is iid
+then every term except the variance is zero and we obtain
+\begin{equation}
+\hat{\beta}=\hat{\beta},
+\end{equation}
+
+which implies that every $\hat{\beta}$ leads to a self-fulfilling equilibrium.
+
+\subsection{Multiple regressors}
+We now move to the case in wich instead of a single regressor $\theta_t$ agents observe a vector of $K$ different signals $\theta_{t} = (\theta_{1,t}, \theta_{2,t}, \ldots, \theta_{K,t})$.
+To be consistent with dimensions we write the PLM as
+\begin{equation}
+r_{t+1} =  \theta_t \beta + \varepsilon_t,
+\end{equation}
+where $\beta = (\beta_1, \beta_2, \ldots, \beta_K)^\top$ is a $K$-dimensional column vector of parameters.
+The ALM follows accrodingly as
+\begin{equation}
+    r_{t+1} = \theta_{t+1} \hat{\beta}+ \theta_t \hat{\beta}+ (\theta_{t+1} \beta)(\theta_t \beta) + \frac{u_t}{p_{t-1}}.
+\end{equation}
+
+Defining 
+\begin{equation}
+    \Theta_t = \begin{pmatrix}
+    \theta_{1} \\
+     \theta_{2}\\
+        \vdots \\
+    \theta_{t} 
+\end{pmatrix}
+\quad 
+R_t = \begin{pmatrix}
+    r_{2} \\
+     r_{3}\\
+        \vdots \\
+    r_{t+1}
+\end{pmatrix},
+\end{equation}
+as the $t \times K$ matrix of regressors and the $t$-dimensional vector of returns up to time $t+1$,  the consistency condition requires
+
+\begin{equation}
+    \hat{\beta} = (\Theta_t^\top \Theta_t)^{-1} \Theta_t^\top R_{t} = \beta,
+\end{equation}
+
+and the ALM in matrix form is
+\begin{equation}
+    R_t = \Theta_{t+1} \hat{\beta}+ \Theta_t \hat{\beta}+ (\Theta_{t+1} \hat{\beta})(\Theta_t \hat{\beta}) + \frac{U_t}{P_{t-1}},
+\end{equation}
+
+where again we use the notation $U_t$ and $P_{t-1}$ to denote the vectors of shocks and prices up to the corresponding time periods.
+
+Now asymptotically we can show that 
+
+\begin{equation}
+    \mathbb{E}[\Theta_t^\top R_t] = \mathbb{E}[\Theta_t^\top \Theta_{t+1}] \hat{\beta}+ \mathbb{E}[\Theta_t^\top \Theta_t] \hat{\beta} + \mathbb{E}[\Theta_t^\top (\Theta_{t+1} \hat{\beta})(\Theta_t \hat{\beta})] + \mathbb{E}\Big[\Theta_t^\top \frac{U_t}{P_{t-1}}\Big] = \mathbb{E}[\Theta_t^\top \Theta_t] \hat{\beta},
+\end{equation}
+
+
+which again implies that every $\hat{\beta}$ is a self-fullfilling equilibriums since
+\begin{equation}
+    \mathbb{E}[\hat{\beta}] = \mathbb{E}[(\Theta_t^\top \Theta_t)^{-1}] \mathbb{E}[\Theta_t^\top R_{t}] = \hat{\beta}.
+\end{equation}
+
+\section{A simple example}
+
+Consider a reduced form model 
+\begin{equation}
+    r_t = \alpha r^e_t + \delta z_{t-1} + \varepsilon_t,
+\end{equation}
+
+in which all quantitites are scalars, $r_t$ is the asset return at time $t$, $r^e_t$ is the expected return formed at time $t-1$, $z_{t-1}$ is an observable signal at time $t-1$ and $\varepsilon_t \sim N(0, \sigma^2_\varepsilon)$.
+The REE requires that $r^e_t = \mathbb{E}_{t-1}[r_t] = \frac{\delta}{1-\alpha}$.
+We now consider the situation in which agents do not know the exact value of the parameters $\alpha$ and $\delta$ and instead form their expectations using a perceived law of motion (PLM) of the form
+\begin{equation}
+    r^e_t = \beta_{t-1} z_{t-1},
+\end{equation}
+where $\beta_{t-1}$ is the estimate of the regression coefficient obtained using data up to time $t-1$.
+Substituting the PLM into the reduced form model we obtain the actual law of motion (ALM)
+\begin{equation}
+    r_t = \alpha \beta_{t-1} z_{t-1} + \delta z_{t-1} + \varepsilon_t.
+\end{equation}
+This relationships imply a map between the PLM and ALM capured by the function
+\begin{equation}
+    T(\beta) = \alpha \beta + \delta,
+\end{equation}
+
+and its fixed point coincides with the REE value of the regression coefficient $\beta^* = \frac{\delta}{1-\alpha}$.
+We now analyze the stability of this fixed point, which depends on the mechanism used by agents to update their estimates.
+
+\subsection{Recursive Least Squares}
+The first updating mechanism we consider is Recursive Least Squares (RLS), which obtains as a recursive implementation of the standard Ordinary Least Squares (OLS).
+In OLS, the agent estimates the coefficients of a linear regression model by minimizing the sum of squared residuals.
+Assuming the general linear model 
+
+\begin{equation}\label{eq:linear_model}
+    y_i = \beta' x_i + \varepsilon_i,
+\end{equation}
+
+where $x_i$ is the $k \times 1$ vector of regressors, the OLS estimator can be derived from the minimization problem 
+
+\begin{equation}
+    \min_{\beta} \sum^t_{i=1} (y_i - \beta' x_i) ^2,
+\end{equation}
+
+with solution
+\begin{equation}
+    \hat{\beta} \equiv b = \left(\sum^t_{i=1}  x_i x_i' \right)^{-1} \sum^t_{i=1}  x_i y_i.
+\end{equation}
+
+Estimating OLS on the whole avaialble data set, is sometimes referred to as off-line estimation. 
+Another approach is to estimate the model on-line, that is as soon as a nes data point arrive. 
+It turns out that the estimator formula allows for a recursive formulation.
+Define 
+\begin{equation}
+R_t = \frac{1}{t}  \left(\sum^t_{i=1}  x_i x_i' \right), \quad b_t = \frac{1}{t} R^{-1}_t \sum^t_{i=1}  x_i y_i.
+\end{equation}
+
+First we establish a recursion for $R_t$. Start from 
+
+\begin{equation}
+R_{t-1} = \frac{1}{t-1}  \left(\sum^{t-1}_{i=1}  x_i x_i' \right),
+\end{equation}
+
+then 
+
+\begin{equation}
+\frac{t-1}{t} R_{t-1} = \frac{1}{t}  \left(\sum^{t-1}_{i=1}  x_i x_i' \right)^{-1} \rightarrow \frac{t-1}{t} R_{t-1} + \frac{1}{t} x_t x_t' = R_t.
+\end{equation}
+
+That is 
+\begin{equation}
+    R_t = R_{t-1} + \frac{1}{t} \left(x_t x_t' - R_{t-1} \right).
+\end{equation}
+
+Similarly for $b_t$ we start from
+\begin{equation}
+    b_{t-1} = \frac{1}{t-1} R^{-1}_{t-1} \sum^{t-1}_{i=1}  x_i y_i,
+\end{equation}
+
+then notice that 
+\begin{equation}
+    (t-1) R_{t-1} = (t R_t - x_t x_t'),
+\end{equation}
+which implies that 
+\begin{equation}
+    b_{t-1}(t R_t - x_t x_t') =  \sum^{t-1}_{i=1}  x_i y_i \rightarrow b_{t-1}(1 - t^{-1} R^{-1}_t x_t x_t') = t^{-1} R^{-1}_t \sum^{t-1}_{i=1}  x_i y_i,
+\end{equation}
+and
+\begin{equation}
+    b_{t-1}(1 - t^{-1} R^{-1}_t x_t x_t') + t^{-1} R^{-1}_t x_t y_t = b_t,
+\end{equation}
+
+which can be rearranged as
+\begin{equation}
+    b_t = b_{t-1} + t^{-1} R^{-1}_t x_t (y_t - x_t' b_{t-1}).
+\end{equation}
+
+The appealing feature of this recursive formulation for our purpose is that it complies with the general formulation of a stochastic recursive algorithm (SRA) of the form
+\begin{equation}
+    \theta_t = \theta_{t-1} + \gamma_t Q(t, \theta_{t-1}, X_t),
+\end{equation}
+where $\theta_t$ is the parameter vector to be estimated, $\gamma_t$ is a sequence of gains, $Q(\cdot)$ is a function that depends on the time index, the current parameter estimate and the new data point $X_t$.
+Under suitable assumptions about the gain sequence $\gamma_t$, and the functional form of $Q(\cdot)$, asymptotic properties are well established.
+First we show how to recast the RLS updating for our simple model into the SRA form.
+A small change is required to accomodate for the fact that only lagged values of the parameter estimates are used in $Q(\cdot)$.
+Define $S_{t-1} = R_t$, then we obtain the updating rules
+\begin{equation}
+    \begin{aligned}
+        \beta_t = \beta_{t-1} + t^{-1} S^{-1}_{t-1} z_{t-1} \left[(z_{t-1}(T(\beta_{t-1}) - \beta_{t-1}) + \varepsilon_t )\right], \\
+        S_{t} = S_{t-1} + t^{-1}\frac{t}{t-1} (z^2_{t} - S_{t-1}),
+    \end{aligned}
+\end{equation}
+
+where we used $T(\beta) = \alpha \beta + \delta$.
+
+
+Now we appropriately define 
+\begin{equation}
+    \begin{aligned}
+        \theta_t = \begin{pmatrix}
+        \beta_t \\
+        S_t
+    \end{pmatrix} , \quad
+    \gamma_t = t^{-1}, \quad
+    X_t = \begin{pmatrix}
+        z_t \\
+        z_{t-1} \\
+        \varepsilon_t
+        
+    \end{pmatrix}
+    \end{aligned}
+\end{equation}
+
+\cite{Evans_2001} show that the stability of the SRA can be analyzed by studying the smalle associated ordinary differential equation (ODE)
+\begin{equation}
+    \frac{d \beta}{d \tau} = T(\beta) - \beta,
+\end{equation}
+where $\tau$ is notational time.
+This notion, often referred to as E-stability principle, notes that the REE, which is also the fixed point of the ODE, is stable if the ODE is asymptotically stable.
+In this case the stability condition is simply given by $\alpha < 1.$
+In this case RLS learning converges to the REE.
+
+\subsection{Weighted Least Squares and Constant Gain Learning}
+
+In Weighted Least Squares (WLS), the agent estimates the coefficients of a linear regression model by minimizing a weighted sum of squared residuals.
+The weights are typically chosen to reflect the relative importance or reliability of different observations. Assuming the linear model (\ref{eq:linear_model})
+ the WLS estimator can be derived from the minimization problem
+\begin{equation}
+    \min_{\beta} \sum^t_{i=1} {w_{t,i}} (y_i - \beta' x_i) ^2,
+\end{equation}
+
+with solution
+\begin{equation}
+    \hat{\beta} = \left(\sum^t_{i=1} {w_{t,i}} x_i x_i' \right)^{-1} \sum^t_{i=1} {w_{t,i}} x_i y_i.
+\end{equation}
+
+In paritcular, we are interested in the case where the weights decline geometrically over time, that is
+\begin{equation}
+    w_{t,i} = \gamma (1 - \gamma)^{t-i}, \quad \gamma \in (0,1).
+\end{equation}
+Similar to the OLS case a recursive relationship can be derived.
+
+Define 
+\begin{equation}
+    R_t = \gamma \sum^t_{i=1} {(1 - \gamma)^{t-i}} x_i x_i', \quad b_t = \gamma R^{-1}_t \sum^t_{i=1} {(1 - \gamma)^{t-i}} x_i y_i
+\end{equation}
+
+First we establish a recursion for $R_t$. Start from
+\begin{equation}
+R_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_i x_i',
+\end{equation}
+then
+\begin{equation}
+(1 - \gamma) R_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i x_i' \rightarrow (1 - \gamma) R_{t-1} + \gamma x_t x_t' = R_t.
+\end{equation}
+
+That is
+\begin{equation}
+    R_t = R_{t-1} + \gamma \left(x_t x_t' - R_{t-1} \right).
+\end{equation}
+
+Similarly for $b_t$ we start from
+\begin{equation}
+    b_{t-1} = \gamma R^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_i y_i,
+\end{equation}
+then
+\begin{equation}
+    (1- \gamma) b_{t-1} = \gamma R^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i y_i ,
+\end{equation}
+
+and
+\begin{equation}
+ b_{t-1} ( R_t - \gamma x_t x_t') =  \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i y_i \rightarrow b_{t-1} (I - \gamma R^{-1}_t x_t x_t') = \gamma R^{-1}_t \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i y_i,
+\end{equation}
+
+since \[R_{t-1} = \frac{1}{1 - \gamma} (R_t - \gamma x_t x_t').\]
+Adding $\gamma R^{-1}_t x_t y_t$ to both sides we obtain
+\begin{equation}
+    b_{t-1} (I - \gamma R^{-1}_t x_t x_t') + \gamma R^{-1}_t x_t y_t = b_t,
+\end{equation}
+which can be rearranged as
+\begin{equation}
+    b_t = b_{t-1} + \gamma R^{-1}_t x_t (y_t - x_t' b_{t-1}).
+\end{equation}
+
+In relation to our simple model we get then the same updating rules, with the only difference that the gain is now constant and equal to $\gamma$.
+Given that the gain is not decreasing and that the updating depends on the stochastic term $\varepsilon_t$, the learning rule can not converge to a fixed point.
+However, under suitable conditions and for small values of $\gamma$, and under the same stability condition $\alpha < 1$ it can be shown that the learning dynamics will fluctuate around the REE and in particular that
+\begin{equation}
+    \beta_t \sim \mathcal{N} (\beta^*, \gamma \sigma_{\varepsilon}^2 (2 m_z (1 - \alpha))^{-1}),
+\end{equation}
+where $m_z = \mathbb{E}[z_t^2]$, and which makes clear that only in the limit case $\gamma \rightarrow 0$ the variance of the fluctuations vanishes and we recover convergence to the REE.
+
+\subsection{Lasso Regression}
+We now consider the case in which agents use Lasso regression to estimate the parameters of their PLM.
+The LASSO (Least Absolute Shrinkage and Selection Operator) estimator is defined as the solution to a similar optimization problem
+
+\[\hat{\beta}_{LASSO} = \arg\min_{\beta} \left\{\frac{1}{2}\left[(Y - X\beta)'(Y - X\beta)\right] + \lambda \sum_{j=1}^{k} |\beta_j|\right\},\]
+where $\lambda \geq 0$ is a tuning parameter that controls the amount of regularization. The LASSO estimator can be interpreted as a trade-off between fitting the data well (minimizing the sum of squared residuals) and keeping the model simple (minimizing the absolute values of the coefficients).
+In general there is no closed form solution for the LASSO estimator, since the absolute value function is not differentiable at zero. However, in the special case where $X$ is an orthonormal matrix, the LASSO estimator can be expressed in closed form.
+To do so we can rewrite the optimization problem as
+\[
+\hat{\beta}_{LASSO} 
+= \arg\min_{\beta} 
+\Big\{ \frac{1}{2}\left[Y'Y - 2\beta'\underbrace{X'Y}_{\beta'_{OLS}} 
++ \beta'\underbrace{X'X}_{I}\beta\right]
++ \lambda \sum_{j=1}^{k} |\beta_j| \Big\},
+\]
+where the underbrackets follow from orthonormality and also notice that the term $Y'Y$ does not depend on $\beta$, so it does not change the minimizer.
+Noticing that $A'A = \sum_{j=1}^{k} a_j^2$, we can rewrite the problem as
+\[
+\hat{\beta}_{LASSO} = \arg\min_{\beta} \Big\{ \sum_{j=1}^{k} \left( -\beta_j \beta_{OLS,j} + \frac{1}{2}\beta_j^2 + \lambda |\beta_j| \right) \Big\}.
+\]
+
+This problem is separable in the coefficients $\beta_j$, so we can solve for each coefficient independently. The optimization problem for each $j$ coefficient is
+\[\min_{\beta_j} \left\{\frac{1}{2} \beta_j^2 - \beta_j \beta_{OLS,j} + \lambda |\beta_j| \right\}.\]
+To solve this problem, we can consider two cases:
+\begin{enumerate}
+    \item $\beta_{OLS,j} > 0$, then $\beta_j$ has to be positive, otherwise we could decrease the objective by setting $\beta_j = 0$. 
+    In this case, the problem becomes 
+    \[\min_{\beta_j \geq 0} \left\{ \frac{1}{2} \beta_j^2 - \beta_j \beta_{OLS,j} + \lambda \beta_j \right\},\]
+    and we can now differentiate and set to zero to find the minimum:
+    \[\frac{\partial}{\partial \beta_j} \left( \frac{1}{2} \beta_j^2 - \beta_j \beta_{OLS,j} + \lambda \beta_j \right) = \beta_j - \beta_{OLS,j} + \lambda = 0 \Rightarrow \beta_j = \beta_{OLS,j} - \lambda.\]
+    However, we also need to check that this solution is non-negative, so we have
+    \[\hat{\beta}_{LASSO,j} = \max\left(0, \beta_{OLS,j} - \lambda\right).\]
+    \item $\beta_{OLS,j} < 0$, then $\beta_j$ has to be negative, otherwise we could decrease the objective by setting $\beta_j = 0$. In this case, the problem becomes
+    \[\min_{\beta_j < 0} \left\{ \frac{1}{2} \beta_j^2 - \beta_j \beta_{OLS,j} + \lambda (-\beta_j) \right\}.\]    
+    Differentiating and setting to zero, we get
+    \[\frac{\partial}{\partial \beta_j} \left( \frac{1}{2}\beta_j^2 - \beta_j \beta_{OLS,j} - \lambda \beta_j \right) = \beta_j - \beta_{OLS,j} - \lambda = 0 \Rightarrow \beta_j = \beta_{OLS,j} + \lambda.\]
+
+    Again, we need to check that this solution is negative,
+    so we have
+    \[\hat{\beta}_{LASSO,j} = \min\left(0, \beta_{OLS,j} + \lambda\right).\]
+\end{enumerate}
+
+Combining both cases, we can write the LASSO estimator for each coefficient as
+\begin{equation}
+\hat{\beta}_{LASSO} = S(\beta_{OLS}, \lambda) = \textrm{sign}(\beta_{OLS}) \cdot \max\left(0, |\beta_{OLS}| - \lambda\right),
+\end{equation}
+
+where $S(\cdot)$ is the soft-thresholding operator.
+
+In our simple model, we can still use the recursion for the OLS estimator, and then apply the soft-thresholding operator to obtain the LASSO estimate.
+The mapping between the PLM and ALM now becomes
+\begin{equation}
+    \beta_{OLS} = T(\beta_{LASSO}) = \alpha \beta_{LASSO} + \delta = \alpha S(\beta_{OLS}, \lambda) + \delta,
+\end{equation}
+which can be solved case by case:
+\begin{enumerate}
+    \item If $\beta_{OLS} > \lambda > 0$, then $\beta_{LASSO} = \beta_{OLS} - \lambda \implies \beta_{OLS} = \beta^* + \frac{\alpha}{1 - \alpha} \lambda$.
+    \item If $\beta_{OLS} < -\lambda < 0$, then $\beta_{LASSO} = \beta_{OLS} + \lambda \implies \beta_{OLS} = \beta^* - \frac{\alpha}{1 - \alpha} \lambda$.
+    \item If $|\beta_{OLS}| \leq \lambda$, then $\beta_{LASSO} = 0 \implies \beta_{OLS} = \delta$.
+\end{enumerate}
+
+If we limit ourselves to the case $\delta > 0$, we can summarize the fixed points of the mapping as
+\begin{equation}
+    \beta_{OLS} = \begin{cases}
+    \beta^* + \frac{\alpha}{1 - \alpha} \lambda, & \text{if } \delta > \lambda, \\
+    \delta, & \text{if } \delta \leq \lambda.
+    \end{cases}
+\end{equation}
+
+While this holds in equilibrium, we already discussed that with constant gain learning the estimates will fluctuate around these fixed points.
+Identically to the previous case, the estimates will be distributed as a normal distribution centered around the fixed point, with variance proportional to the gain parameter $\gamma$.
+So even for $\delta \leq \lambda$, there will be fluctuations in the Lasso estimate around zero, which implies that sometimes the estimates will be exactly zero (when $|\beta_{OLS}| \leq \lambda$) and sometimes they will be non-zero (when $|\beta_{OLS}| > \lambda$).
+Given the distribution of $\beta_{OLS}$, we can compute the probability that the Lasso estimate is exactly zero as
+\begin{equation}
+    \mathbb{P}(|\beta_{OLS}| \leq \lambda) 
+    = \Phi\left(\frac{\lambda - \mu_{OLS}}{\sigma_{OLS}}\right) - \Phi\left(\frac{-\lambda - \mu_{OLS}}{\sigma_{OLS}}\right),
+\end{equation}
+where $\mu_{OLS}$ and $\sigma_{OLS}$ are the mean and standard deviation of the distribution of $\beta_{OLS}$, and $\Phi(\cdot)$ is the cumulative distribution function of the standard normal distribution.
+
+\bibliography{references}
+\end{document}

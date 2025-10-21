@@ -1,0 +1,21 @@
+-read Adam Marcet paper
+-read adam marcet beutel 
+
+
+
+-talk about facts that we want to match
+- conditional volatitly, heteroskedasticity, excess volatility, pockets of predictability
+
+
+would be nice to characterize analytically average number of predictors, average length of predictor being picked by lasso
+the model imposes non-linearity on the ALM, can we test for it? is a non-linear lasso better?
+
+
+
+
+
+
+- what moments of the asset pricing distribution are we trying to match
+- what if we do some a priori dimensionality reduction, like principal component analysis
+- add a saving functionality when running form machine
+-justify the reason users use topics aswell as past returns
