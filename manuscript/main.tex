@@ -466,5 +466,181 @@ Given the distribution of $\beta_{OLS}$, we can compute the probability that the
 \end{equation}
 where $\mu_{OLS}$ and $\sigma_{OLS}$ are the mean and standard deviation of the distribution of $\beta_{OLS}$, and $\Phi(\cdot)$ is the cumulative distribution function of the standard normal distribution.
 
+
+\section{The model}
+We study a standard \cite{Lucas1978} asset pricing model in which we follow the notation in \cite{Adam2018}.
+In the baseline we operate under the assumption of risk neutrality and we consider an economy populated by a continuum of agents of mass one who trade a single risky asset.
+The asset pays a stochastic dividend $D_t$ at each discrete time period $t = 0,1,2,\ldots$.
+The dividend and consumption processes are driven by multivariate normally distributed shocks
+\begin{equation}
+    \begin{pmatrix}
+    \log \varepsilon^d_t \\
+    \log \varepsilon^c_t
+    \end{pmatrix} \sim \mathcal{N}\left(\begin{pmatrix}
+    -s^2_d/2 \\
+    -s^2_c/2
+    \end{pmatrix}, \begin{pmatrix}
+    s^2_d & \rho s_d s_c \\
+    \rho s_d s_c & s^2_c
+    \end{pmatrix}\right),
+\end{equation}
+The dividend process then follows 
+\begin{equation}
+    \frac{D_t}{D_{t-1}} = a \varepsilon^d_t,
+\end{equation}
+
+where $a \geq 1$ is a constant growth factor, which implies that
+This implies that 
+\begin{equation}
+    \mathbb{E}_t\left[{D_{t+1}}\right] = a D_t.
+\end{equation}
+
+Similarly for the aggregate consumption process we postulate that
+\begin{equation}
+    \frac{C_t}{C_{t-1}} = a \varepsilon^c_t,
+\end{equation}
+
+The equilibrium price of the asset is determined by the standard no-arbitrage condition which requires that the price at time $t$ equals the discounted expected value of next period's price plus dividend, that is
+\begin{equation}\label{eq:equilibrium_price}
+    P_t = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} P_{t+1} + D_{t+1}}\right] = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{P_{t+1}}{P_t}}\right] P_t + \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{D_{t+1}}{D_t}}\right] D_t, 
+\end{equation}
+
+where $\delta$ is the discount factor and $\mathbb{E}_t[\cdot]$ is the expectation operator conditional on information available at time $t$.
+Under rational expectations, the equilibrium price can be solved as
+\begin{equation}
+    P_t =  \frac{\delta a^{(1 - \gamma)} \rho_e}{1 - a^{(1 - \gamma)} \rho_e} D_t,
+\end{equation}
+where 
+\begin{equation}
+    \rho_e = \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{D_{t+1}}{D_t} \right] = e ^ {\gamma(1 + \gamma) s^2_c/2} e ^ {-\gamma \rho s_c s_d} .
+\end{equation}
+This implies a constant price-dividend ratio and an ex-dividend gross return which is given by
+\begin{equation}
+    R_{t+1} = \frac{P_{t+1}}{P_t} = \frac{D_{t+1}}{D_t} = a \varepsilon^d_{t+1}.
+\end{equation}
+
+Taking logs we obtain log-returns
+\begin{equation}
+    r_{t+1} = \log(R_{t+1}) = \log(a) + \log(\varepsilon^d_{t+1}) \sim \mathcal{N}(\log(a) - s^2_d/2, s^2_d).
+\end{equation}
+
+Without loss of generality in what follows we set $log(a) = s^2_d/2$. This implies that under rational expectations log-returns have mean zero and are unpredictable.
+Instead of assuming that agents know about the true data generating process, we follow the literature in adaptive learning and assume that agents are boundedly rational and form their expectations using econometric techniques.
+\textcolor{red}{[citations here]}.
+Equation (\ref{eq:equilibrium_price}) shows that agents have to forecast two quantities, the risk adjusted gross return and gross dividend growth.
+We follow \cite{Adam2018} and assume that agents know the process for dividends and only have to learn to forecast gross returns.
+In this way we can isolate the effects of learning about returns on asset prices.
+The usual approach to learning is to endow agents with a Perceived Law of Motion (PLM) which is of the same functional form as the Actual Law of Motion (ALM) but with unknown parameters that agents estimate using available data.
+In this paper we depart from the standard approach and assume that agents use Lasso regression to try and exploit possible log-return predictability.
+Specifically we assume that agents have a linear and stationary PLM for the asset return
+\begin{equation}
+    r_{t+1} =  x'_{t} \beta + u_t,
+\end{equation}
+
+with $x_t = (x_{1t}, x_{2t}, \dots x_{k,t}) \sim \mathcal{N}(\mathbf{0}, \sigma^2_x \mathbf{I})$ being $k$ uncorrelated and iid signals available for the agent at time $t$ which they suspect might
+have predictive power on log-returns.
+The use of LASSO instead of simple OLS, have some conceptual advantages:
+\textcolor{red}{[Shrinkage, spasrsity, PLM goes back to ALM when $\lambda \to \infty$]}
+
+The PLM is however mispercified, since it implicitely imposes a an ALM which is non-linear.
+To see this start by noticing that agents PLM about log-returns implies the following PLM of gross returns
+\begin{equation}
+    R_{t+1} = e ^ {x'_t \beta + u_t}.
+\end{equation}
+This implies that gross expected returns follow a log-normal distribution and their conditional forecast if then given by
+\begin{equation}
+    \mathbb{E}_t(R_{t+1}) = \mathbb{E}_t\left(\frac{P_{t+1}}{P_t}\right) = e^{x'_t \beta + \sigma^2_u / 2} = \phi e^{x'_t \beta},
+\end{equation}
+
+by letting $\phi = e^{\sigma^2_u / 2}$.
+We then take the assumption that consumption growth is independent of the return process in the PLM of agents so that 
+\begin{equation}
+    \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{P_{t+1}}{P_t} \right] = \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \right] \mathbb{E}_t\left(\frac{P_{t+1}}{P_t}\right) = a ^ {-\gamma} \phi e^{x'_t \beta},
+\end{equation}
+Plugging this into (\ref{eq:equilibrium_price}) yields
+\begin{equation}
+    P_t = \frac{\delta a^{(1 - \gamma)} \rho_r}{1 - \delta a^{- \gamma} \phi e^{x'_t \beta}} D_t.
+\end{equation} 
+Now divide by $P_{t-1}$ to obtain actual gross returns given by
+\begin{equation}
+    R_{t} = \frac{P_{t}}{P_{t-1}} = \frac{1 - \delta a^{- \gamma} \phi e^{x'_{t-1} \beta}}{1 - \delta a^{- \gamma} \phi e^{x'_{t} \beta}} \frac{D_t}{D_{t-1}},
+\end{equation}
+and taking logs and moving one step forward we obtain the ALM 
+
+\begin{equation}\label{eq:alm}
+    r_{t+1} = log(\varepsilon_{t+1}) + log(1 - \kappa e^{x'_{t} \beta}) - log(1 - \kappa e^{x'_{t+1} \beta}).
+\end{equation}
+
+where $\kappa := \delta a^{- \gamma} \phi$.
+
+Clearly this ALM is non-linear, which implies that the linear PLM used by agents is misspecified.
+In these cases it is unlikely that the learning procedure will converge to the REE and the literature has instead focused on convergence
+to a Stochastic Consistent Expectation Equilibrium (SCEE) \textcolor{red}{[citations here]}.
+In our case we look for an equilibirum which is cross-moment consistent in the sense that despite their misspecification, 
+there is a statistical self consistency between the empricial relationship they perceive and the one which is implied by the ALM. 
+
+In such cross-moment consistent equilibrium the value of $\beta^{*}$ is a solution to the equation
+\begin{equation}
+    T(\beta) - \beta = 0,
+\end{equation}
+
+where \begin{equation}
+    T(\beta) = COV(x_t, x_t) ^{-1} COV(x_t, r_{t+1}),
+\end{equation}
+
+and $r_{t+1}$ is given by (\ref{eq:alm}).
+Given the assumption about the distribution of $x_t$ we have that $COV(x_t, x_t) = \sigma^2_x I$.
+To compute $COV(r_{t+1}, x_t)$ we exploit the fact that $x_t$ is independent of $log(\varepsilon_{t+1})$ and $x_{t+1}$, which implies that
+\begin{equation}
+    COV(r_{t+1}, x_t) = COV\left(log(1 - \kappa e^{x'_{t} \beta}), x_t\right).
+\end{equation}
+
+Two problems arise at this point. 
+The first is that the covariance might not be defined for all values of $\beta$ since the term inside the logarithm might be negative with positive probability.
+The second is that there is no closed form solution for the covariance.
+To deal with this we restrict our analysis to small values of $\sigma^2_x$ and such that the term is inside the logarithm is positive.
+Economically speaking this means that predicted log-returns are not too large.
+\textcolor{red}{[discuss the bound for reasonable values of $\kappa$ and relate to the risk-free rate]}
+Continuing we therefore use a first-order Taylor expansion of the logarithm around $x'_t = 0$ to obtain
+\begin{equation}
+log(1- \kappa e^{x'_{t} \beta}) \approx log(1 - \kappa) + \frac{-\kappa}{1 - \kappa} x'_t \beta,
+\end{equation}
+which implies that 
+\begin{equation}
+    COV(r_{t+1}, x_t) \approx \frac{-\kappa}{1 - \kappa} COV(x'_t, x_t) \beta,
+\end{equation}
+
+and
+\begin{equation}
+    T(\beta) \approx \frac{-\kappa}{1 - \kappa} \beta.
+\end{equation}
+
+The cross-moment consistent equilibrium is then $\beta^{*} = 0$.
+
+
+
+\section{Calibration under Rational Expectations}
+
+Under rational expectations the model yields stark predictions that we use to directly match four parameters of the model, namely $[a, s_d, \delta, \gamma]$.
+\begin{itemize}
+    \item First, from equation (\ref{eq:equilibrium_price}) we immediately have that $\mathbb{E}\left(\frac{P_t}{P_{t-1}}\right) = a$, so we set $a$ equal to the average gross return observed in the data.
+    \item Second, we set $s_d$ to match the variance of the gross return, which given the log-normality assumption is given by $Var\left(\frac{P_t}{P_{t-1}}\right) = a^2 (e^{s^2_d} - 1)$.
+    \item Third, we set $s_c = \frac{s_d}{7}$ and $\rho = 0.2$ following \cite{Adam2018}.
+    \item Fourth, we can back out the discount factor $\delta$ as an implicit function of the risk aversion parameter $\gamma$ using the Euler equation for the risk-free rate, which is given by
+    \begin{equation}
+        \delta = \mathbb{E}(R_f)^{-1} \left(a ^ {\gamma} e ^ {(-\gamma (1+ \gamma) s^2_c /2)}\right).
+    \end{equation}
+    \item Finally we retrieve $\gamma$ by matching the price dividend ration predicted by the model to the one observed in the data.
+    \begin{equation}
+        \mathbb{E}\left(\frac{P_t}{D_t}\right) = \frac{\delta a^{(1 - \gamma)} \rho_e}{1 - a^{(1 - \gamma)} \rho_e}.
+    \end{equation}
+
+    where $\rho_e = e ^ {\gamma(1 + \gamma) s^2_c/2} e ^ {-\gamma \rho s_c s_d} $.
+\end{itemize}
+
+From equation (\ref{eq:equilibrium_price}) we have that the price-dividend ratio is given by
+
+
+
 \bibliography{references}
 \end{document}

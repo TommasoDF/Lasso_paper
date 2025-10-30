@@ -19,3 +19,15 @@ the model imposes non-linearity on the ALM, can we test for it? is a non-linear 
 - what if we do some a priori dimensionality reduction, like principal component analysis
 - add a saving functionality when running form machine
 -justify the reason users use topics aswell as past returns
+
+
+
+As Muth made clear, this hypoth-
+esis (like utility maximization) is not "behavioral": it does not describe the way
+agents think about their environment, how they learn, process information, and
+so forth. It is rather a property likely to be (approximately) possessed by the
+outcome of this unspecified process of learning and adapting. One would feel
+more comfortable, then, with rational expectations equilibria if these equilibria
+were accompanied by some form of "stability theory" which illuminated the
+forces which move an economy toward equilibrium. The present paper also
+offers a convenient context for discussing this issue.
