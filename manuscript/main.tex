@@ -87,7 +87,10 @@ Similarly for the aggregate consumption process we postulate that
 
 The equilibrium price of the asset is determined by the standard no-arbitrage condition which requires that the price at time $t$ equals the discounted expected value of next period's price plus dividend, that is
 \begin{equation}\label{eq:equilibrium_price}
-    P_t = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} P_{t+1} + D_{t+1}}\right] = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{P_{t+1}}{P_t}}\right] P_t + \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{D_{t+1}}{D_t}}\right] D_t, 
+    \begin{aligned}
+        P_t & = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} (P_{t+1} + D_{t+1})}\right] \\
+         & = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} P_{t+1}}\right] + \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} D_{t+1}}\right],
+    \end{aligned} 
 \end{equation}
 
 where $\delta$ is the discount factor and $\mathbb{E}_t[\cdot]$ is the expectation operator conditional on information available at time $t$.
@@ -122,7 +125,7 @@ In this paper we depart from the standard approach and assume that agents use La
 To fix ideas we start by considering the univariate case in which agents try to predict log-returns using a single predictor $x_t$.
 
 Specifically we assume that agents have a linear and stationary PLM for the asset return
-\begin{equation}
+\begin{equation}\label{eq:plm_univariate}
     r_{t+1} =  x_{t} \beta + u_t,
 \end{equation}
 
@@ -181,7 +184,7 @@ where \begin{equation}
     T(\beta) = \frac{COV(r_{t+1}, x_t)}{VAR(x_t)} = \frac{COV(r_{t+1}, x_t)}{\sigma^2_x},
 \end{equation}
 
-and $r_{t+1}$ is given by (\ref{eq:alm}).
+and $r_{t+1}$ is given by (\ref{eq:alm_univariate}).
 
 To compute $COV(r_{t+1}, x_t)$ we exploit the fact that $x_t$ is independent of $log(\varepsilon_{t+1})$ and $x_{t+1}$, which implies that
 \begin{equation}
@@ -215,132 +218,93 @@ We now turn to study the stability of this equilibrium under different learning 
 \subsection{Stability Under Recursive Least Squares}
 The first updating mechanism we consider is Recursive Least Squares (RLS), which obtains as a recursive implementation of the standard Ordinary Least Squares (OLS).
 In OLS, the agent estimates the coefficients of a linear regression model by minimizing the sum of squared residuals.
-Assuming the general linear model 
-
-\begin{equation}\label{eq:linear_model}
-    y_i = \beta' z_i + \varepsilon_i,
-\end{equation}
-
-where $z_i$ is the $k \times 1$ vector of regressors, the OLS estimator can be derived from the minimization problem 
-
+Assuming agents use OLS to estimate the parameters in the PLM (\ref{eq:plm_univariate}), the OLS estimator $b$ can be derived from the minimization\footnote{
+We use the following timing:
+at time $t$ the agent forecasts $r^e_{t+1} = x_t b_{t}$ which then implies a realization for $r_t$. 
+Therefore to avoid simulteneity issues, we assume that when computing the current estimate, the last available log-return observation is $r_{t-1}$.
+} problem as
 \begin{equation}
-    \min_{\beta} \sum^t_{i=1} (y_i - \beta' z_i) ^2,
+     b = \left(\sum^t_{i=1}  x_{i-1}^2 \right)^{-1} \sum^{t-1}_{i=1}  x_{i-1} r_i.
 \end{equation}
 
-with solution
-\begin{equation}
-    \hat{\beta} \equiv b = \left(\sum^t_{i=1}  z_i z_i' \right)^{-1} \sum^t_{i=1}  z_i y_i.
-\end{equation}
-
-Estimating OLS on the whole avaialble data set, is sometimes referred to as off-line estimation. 
-Another approach is to estimate the model on-line, that is as soon as a nes data point arrive. 
+Estimating OLS on the whole available data set, is sometimes referred to as off-line estimation. 
+Another approach is to estimate the model on-line, that is as soon as a new data point arrives. 
 It turns out that the estimator formula allows for a recursive formulation.
 Define 
 \begin{equation}
-M_t = \frac{1}{t}  \left(\sum^t_{i=1}  z_i z_i' \right), \quad b_t = \frac{1}{t} M^{-1}_t \sum^t_{i=1}  z_i y_i.
+M_{t-1} = \frac{1}{t-1}  \left(\sum^{t-1}_{i=1}  x_{i-1}^2 \right), \quad b_t = \frac{1}{t-1} M^{-1}_{t-1} \sum^{t-1}_{i=1}  x_{i-1} r_i.
 \end{equation}
 
 First we establish a recursion for $M_t$. Start from 
 
 \begin{equation}
-M_{t-1} = \frac{1}{t-1}  \left(\sum^{t-1}_{i=1}  z_i z_i' \right),
-\end{equation}
-
-then 
-
-\begin{equation}
-\frac{t-1}{t} M_{t-1} = \frac{1}{t}  \left(\sum^{t-1}_{i=1}  z_i z_i' \right)^{-1} \rightarrow \frac{t-1}{t} M_{t-1} + \frac{1}{t} z_t z_t' = M_t.
+\frac{t-1}{t} M_{t-1} = \frac{1}{t}  \left(\sum^{t-1}_{i=1}  x_{i-1}^2 \right)^{-1} \implies \frac{t-1}{t} M_{t-1} + \frac{1}{t} x_{t-1}^2 = M_t.
 \end{equation}
 
 That is 
 \begin{equation}
-    M_t = M_{t-1} + \frac{1}{t} \left(z_t z_t' - M_{t-1} \right).
+    M_t = M_{t-1} + \frac{1}{t} \left(x_{t-1}^2 - M_{t-1} \right).
 \end{equation}
 
-Similarly for $b_t$ we start from
-\begin{equation}
-    b_{t-1} = \frac{1}{t-1} M^{-1}_{t-1} \sum^{t-1}_{i=1}  z_i y_i,
-\end{equation}
+For $b_t$ we have
 
-then notice that 
-\begin{equation}
-    (t-1) M_{t-1} = (t M_t - z_t z_t'),
-\end{equation}
-which implies that 
-\begin{equation}
-    b_{t-1}(t M_t - z_t z_t') =  \sum^{t-1}_{i=1}  z_i y_i \rightarrow b_{t-1}(1 - t^{-1} M^{-1}_t z_t z_t') = t^{-1} M^{-1}_t \sum^{t-1}_{i=1}  z_i y_i,
-\end{equation}
-and
-\begin{equation}
-    b_{t-1}(1 - t^{-1} M^{-1}_t z_t z_t') + t^{-1} M^{-1}_t z_t y_t = b_t,
-\end{equation}
-
-which can be rearranged as
-\begin{equation}
-    b_t = b_{t-1} + t^{-1} M^{-1}_t z_t (y_t - z_t' b_{t-1}),
-\end{equation}
-
-so that the overall RLS updating rules are given by
-\begin{equation}
+\begin{equation}\label{eq:b_t_evolution}
     \begin{aligned}
-        b_t = b_{t-1} + t^{-1} M^{-1}_t z_t (y_t - z_t' b_{t-1}), \\
-        M_t = M_{t-1} + t^{-1} (z_t z_t' - M_{t-1}).
+        b_t & = b_{t-1} + \left[(t-1) M_{t-1} \right]^{-1} \left\{ x_{t-2} r_{t-1} + \left[(t-2) M_{t-2} \right] b_{t-1} \right\} - b_{t-1} \\
+        & = b_{t-1} + \left[(t-1) M_{t-1} \right]^{-1} \left\{ x_{t-2} r_{t-1} \left[(t-2) M_{t-2} - (t-1) M_{t-1}\right] b_{t-1} \right\}\\
+        & = b_{t-1} + \left[(t-1) M_{t-1} \right]^{-1} \left\{ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-1} \right\}.
     \end{aligned}
 \end{equation}
-
 
 
 The appealing feature of this recursive formulation for our purpose is that it complies with the general formulation of a stochastic recursive algorithm (SRA) of the form
-\begin{equation}
-    \theta_t = \theta_{t-1} + \gamma_t Q(t, \theta_{t-1}, X_t),
+\begin{equation}\label{eq:general_sra}
+    \theta_t = \theta_{t-1} + \gamma_t \mathcal{H}(\theta_{t-1}, Z_t) + \gamma_t^2 \rho_t(\theta_{t-1}, Z_t),
 \end{equation}
-where $\theta_t$ is the parameter vector to be estimated, $\gamma_t$ is a sequence of gains, $Q(\cdot)$ is a function that depends on the time index, the current parameter estimate and the new data point $X_t$.
-Under suitable assumptions about the gain sequence $\gamma_t$, and the functional form of $Q(\cdot)$, asymptotic properties are well established.
+where $\theta_t$ is the parameter vector to be estimated, $\gamma_t$ is a sequence of gains and $\mathcal{H}(\cdot)$ and $\rho_t(\cdot)$ are functions capturing the updating mechanism.
+$Z_t$ is a vector of state variables that in general can be conditionally linear and evolving according to
+\begin{equation}\label{eq:state_evolution_sra}
+    Z_t = A(\theta_{t-1}) Z_{t-1} + B(\theta_t) W_{t},
+\end{equation}
+
+where $W_t$ is a random disturbance term. 
+
+Under suitable assumptions about the gain sequence $\gamma_t$, the functional forms $\mathcal{H}(\cdot)$ and $\rho_t(\cdot)$, and the evolution of the state variable $Z_t$,
+it is possible to apply results from stochastic approximation theory to study the asymptotic properties of the learning dynamics \textcolor{red}{[citations here]}.
 We therefore show how to apply this framework to our model.
-It would be tempting to set $y_i = r_i$, but this would not work since in our case the log-return is endogenous and depends on the paramter estimate. 
-We use the following timing convention then:
-at time $t$ the agent forecasts $r^e_{t+1} = x_t \beta_{t}$ which then implies a realization for $r_t$. 
-Therefore to avoid simulteneity issues, we assume that when computing the current estimate, the last available log-return observation is $r_{t-1}$ so that 
-in our notation above we set $y_i = r_{i-1}$ and $z_i = x_{i-2}$.
-Under this timing assumption, and the fact that $x_i$ is now a scalar, the updating system becomes
+
+First we can rearrange (\ref{eq:b_t_evolution}) to get
 \begin{equation}
     \begin{aligned}
-        \beta_t = \beta_{t-1} + t^{-1} M^{-1}_t x_{t-2} (r_{t-1} - x_{t-2} \beta_{t-1}), \\
-        M_t = M_{t-1} + t^{-1} (x_{t-2}^2 - M_{t-1}).
+        b_t & = b_{t-1} + t^{-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-1} \right] \\
+        & + t^{-2} \frac{t}{t-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-2} \right].
     \end{aligned}
 \end{equation}
 
-We now need some small changes to accomodate the system into canonical SRA form.
-First only lagged values of the parameter estimates are used in $Q(\cdot)$.
-To deal with this we define $S_{t-1} = M_t$, then we obtain the updating rules
+Second, notice that $r_{t-1}$ depends on $b_{t-1}$ and $b_{t-2}$ through the ALM (\ref{eq:alm_univariate}).
+We therefore define an ancillary variable $a_t = b_{t-1}$ so that
 \begin{equation}
-    \begin{aligned}
-        \beta_t = \beta_{t-1} + t^{-1} S^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta_{t-1}), \\
-        S_{t} = S_{t-1} + t^{-1}\frac{t}{t-1} (x_{t-1}^2 - S_{t-1}),
-    \end{aligned}
-\end{equation}
+    r_{t-1} = log(\varepsilon_{t-1}) + log(1 - \kappa e^{x_{t-2} a_{t-1}}) - log(1 - \kappa e^{x_{t-1} b_{t-1}}).
+\end{equation} 
 
-Second, notice that $r_{t-1}$ depends on $\beta_{t-1}$ and $\beta_{t-2}$ through the ALM (\ref{eq:alm_univariate}).
-We therefore define an ancillary variable $\alpha_t = \beta_{t-1}$ so that
-\begin{equation}
-    r_{t-1} = log(\varepsilon_{t-1}) + log(1 - \kappa e^{x_{t-2} \alpha_{t-1}}) - log(1 - \kappa e^{x_{t-1} \beta_{t-1}}).
-\end{equation} the system becomes
+The full updating system for the parameters is then 
+
 \begin{equation}
     \begin{aligned}
-        \beta_t = \beta_{t-1} + t^{-1} S^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta_{t-1}), \\
-        \alpha_t = \beta_{t-1}, \\
-        S_{t} = S_{t-1} + t^{-1}\frac{t}{t-1} (x_{t-1}^2 - S_{t-1}),
+        b_t = b_{t-1} + t^{-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-1} \right]  + t^{-2} \frac{t}{t-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-2} \right]\\
+        a_t = a_{t-1} + t^{-1} (b_{t-1} - a_{t-1}) + t^{-2} \left(t(t-1)\right)(b_{t-1} - a_{t-1}) \\
+        M_t = M_{t-1} + \frac{1}{t} \left(x_{t-1}^2 - M_{t-1} \right),
     \end{aligned}
 \end{equation}
 
 
-Now we appropriately define 
+Now and we appropriately define 
 \begin{equation}
     \begin{aligned}
         \theta_t = \begin{pmatrix}
-        \beta_t \\
-        \alpha_t \\
-        S_t
+        b_t \\
+        a_t \\
+        M_t
 
     \end{pmatrix} , \quad
     \gamma_t = t^{-1}, \quad
@@ -354,6 +318,58 @@ Now we appropriately define
 \end{equation}
 
 \textcolor{red}{Show the assumptions needed for the SRA to hold.}
+
+
+\begin{equation}
+    \begin{aligned}
+        \mathcal{H}(\theta_{t-1}, X_t) = \begin{pmatrix}
+        M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-1} \right] \\
+        b_{t-1} - a_{t-1} \\
+        x_{t-1}^2 - M_{t-1}
+    \end{pmatrix}, \\
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \rho_t(\theta_{t-1}, X_t) = \begin{pmatrix}
+        \frac{t}{t-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-2} \right] \\
+        (t(t-1))(b_{t-1} - a_{t-1}) \\
+        0
+    \end{pmatrix}. \\
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        h(\theta) = \lim_{t \to \infty} \mathbb{E} \left[\mathcal{H}(\theta, \Bar{X}_t)\right] = \begin{pmatrix}
+        M^{-1} \left[ - \frac{\kappa}{1 - \kappa}a \sigma^2_x - b \sigma^2_x \right] \\
+        b - a \\
+        \sigma^2_x - M
+    \end{pmatrix}. \\
+    \end{aligned}
+\end{equation}
+
+To evaluate the stability of the cross-moment consistent equilibrium we study the associated ordinary differential equation (ODE)
+\begin{equation}
+    \frac{d \theta}{d \tau} = h(\theta).
+\end{equation}
+Therefore we compute the Jacobian matrix of $h(\theta)$ evaluated at the equilibrium point $\theta^{*} = (0,0,\sigma^2_x)$
+
+\begin{equation}
+    J = \begin{pmatrix}
+         - 1 & -\frac{\kappa}{1 - \kappa} & 0 \\
+        1 & -1 & 0 \\
+        0 & 0 & -1
+    \end{pmatrix}.
+\end{equation}
+
+The eigenvalues of $J$ are given by
+\begin{equation}
+    \lambda_{1,2} = -1 \pm i \sqrt{\frac{\kappa}{1 - \kappa}}, \quad \lambda_3 = - 1,
+\end{equation}
+
+whose real part is negative, therefore the ODE is asymptotically stable for the whole range of $\kappa$ such that $\kappa > 0$. 
 
 \begin{proposition}[Stability of the Cross-Moment Consistent Equilibrium under RLS]
     Under Recursive Least Squares learning, the cross-moment consisten equilibrium $\beta^{*} = 0$ is stable if and only if the associated ordinary differential equation
