@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1762978810 "main.aux" "main.bbl" "main" 1762978864 0
+["bibtex main"] 1763489803 "main.aux" "main.bbl" "main" 1763489889 0
   "./aea.bst" 1758878048 26202 034ebaf6925cb914f19ae8306f420e5b ""
   "./references.bib" 1762875955 1027 52fb5ee7524170c78e35250c5c418982 ""
-  "main.aux" 1762978863 3157 7fe36de43cfd058aaaf28c6f31001737 "pdflatex"
+  "main.aux" 1763489889 3157 db9640adad3f9d6c8477bb106dff1a83 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1762978863 "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" "main.pdf" "main" 1762978864 0
-  "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" 1762978862 33159 441bcd4ffe3495771e92829bbc0716b0 ""
+["pdflatex"] 1763489888 "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" "main.pdf" "main" 1763489889 0
+  "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" 1763489888 34807 3e4d11620b506cb7a301b8d1d3fbd39c ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -174,10 +174,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709724026 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709723959 7883460 1d7a9be62ed57029668d948feb917816 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1762978863 3157 7fe36de43cfd058aaaf28c6f31001737 "pdflatex"
-  "main.bbl" 1762978811 526 44be8be2255a22360b42d1b5b8e10c5c "bibtex main"
-  "main.out" 1762978863 1265 6e0668bc535b3d91d929fe4687fbd959 "pdflatex"
-  "main.tex" 1762978862 33159 441bcd4ffe3495771e92829bbc0716b0 ""
+  "main.aux" 1763489889 3157 db9640adad3f9d6c8477bb106dff1a83 "pdflatex"
+  "main.bbl" 1763489803 526 44be8be2255a22360b42d1b5b8e10c5c "bibtex main"
+  "main.out" 1763489889 1265 6e0668bc535b3d91d929fe4687fbd959 "pdflatex"
+  "main.tex" 1763489888 34807 3e4d11620b506cb7a301b8d1d3fbd39c ""
   "style.sty" 1758878048 1174 c2416b13d04e267e46937fd2bd3fa273 ""
   (generated)
   "main.aux"

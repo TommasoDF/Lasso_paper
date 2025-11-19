@@ -194,6 +194,46 @@ To compute $COV(r_{t+1}, x_t)$ we exploit the fact that $x_t$ is independent of 
 Two problems arise at this point. 
 The first is that the covariance might not be defined for all values of $\beta$ since the term inside the logarithm might be negative with positive probability.
 The second is that there is no closed form solution for the covariance.
+To deal with the former, we slightly change the forecast of the agent to be
+
+\begin{equation}
+\mathbb{E}\left(R_{t+1}\right) = \phi e^{w \tanh(x_t \beta/w)},
+\end{equation}
+
+where $w = -log(\kappa) - \epsilon$ for some small $\epsilon > 0$ ensures that $1 - \kappa e^{w tanh(x_{t} \beta / w)} > 0$ for all $x_t$ and $\beta$.
+
+Now let 
+\begin{equation}
+    g_{\beta}(x) 
+= \log\!\Bigl(1 - k\, e^{w \tanh(x \beta/w)}\Bigr),
+\end{equation}
+
+by Stein's lemma we have that
+\begin{equation}
+    COV(r_{t+1}, x_t) = COV(g_{\beta}(x_t), x_t) = \sigma^2_x \mathbb{E}\left[g'_{\beta}(x_t)\right].
+\end{equation}
+
+This implies that $T(\beta) = \mathbb{E}\left[g'_{\beta}(x_t)\right]$.
+Altough this expression is equally intractable, we can show that  $\operatorname{sign}\left[T(\beta)\right] = - \operatorname{sign}(\beta)$ unless $\beta = 0$.
+In fact, we have that
+
+\begin{equation}
+    g_{\beta}'(x)
+= -\,\frac{k\,\beta\, e^{w\tanh(x \beta/w)}\, \operatorname{sech}^2(x \beta/w)}
+        {1 - k e^{w\tanh(x \beta/w)}}.
+\end{equation}
+
+In the numerator, every multiplicative factor except \(\beta\) is strictly positive since
+\(k>0\), \(e^{w\tanh(x \beta/w)}>0\), \(\operatorname{sech}^2(x \beta/w)>0\).
+
+The denominator is also strictly positive since $w$ is chosen accordingly.
+Hence the sign of \(g_\beta'(x)\) is determined entirely by \(-\beta\).
+In particular then 
+\begin{equation}
+    \operatorname{sign}\left[T(\beta)\right] = \operatorname{sign}\left[ - \beta \mathbb{E}\left[-\,\frac{k\, e^{w\tanh(x \beta/w)}\, \operatorname{sech}^2(x \beta/w)}
+        {1 - k e^{w\tanh(x \beta/w)}}\right]\right] = - \operatorname{sign}(\beta).
+\end{equation}
+
 To deal with this we restrict our analysis to small values of $\sigma^2_x$ and such that the term is inside the logarithm is positive.
 Economically speaking this means that predicted log-returns are not too large.
 \textcolor{red}{[discuss the bound for reasonable values of $\kappa$ and relate to the risk-free rate]}
