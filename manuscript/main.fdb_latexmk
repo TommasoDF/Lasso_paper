@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1763561977 "main.aux" "main.bbl" "main" 1763561978 0
+["bibtex main"] 1763573256 "main.aux" "main.bbl" "main" 1763573257 0
   "./aea.bst" 1758878048 26202 034ebaf6925cb914f19ae8306f420e5b ""
   "./references.bib" 1762875955 1027 52fb5ee7524170c78e35250c5c418982 ""
-  "main.aux" 1763561978 2890 be4095b9a0a5ba11e587214efe846798 "pdflatex"
+  "main.aux" 1763573257 3793 7c21e5da61ed31d1e5eabf6fe7f27b26 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1763561977 "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" "main.pdf" "main" 1763561978 0
-  "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" 1763561976 32131 6ceded701934affc4fdd4981d32a12e2 ""
+["pdflatex"] 1763573256 "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" "main.pdf" "main" 1763573257 0
+  "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" 1763573255 35959 0458deca23b611d6d64f61545ed18f8f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -174,11 +174,11 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709724026 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709723959 7883460 1d7a9be62ed57029668d948feb917816 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1763561978 2890 be4095b9a0a5ba11e587214efe846798 "pdflatex"
-  "main.bbl" 1763561977 526 44be8be2255a22360b42d1b5b8e10c5c "bibtex main"
-  "main.out" 1763561978 1265 6e0668bc535b3d91d929fe4687fbd959 "pdflatex"
-  "main.tex" 1763561976 32131 6ceded701934affc4fdd4981d32a12e2 ""
-  "style.sty" 1758878048 1174 c2416b13d04e267e46937fd2bd3fa273 ""
+  "main.aux" 1763573257 3793 7c21e5da61ed31d1e5eabf6fe7f27b26 "pdflatex"
+  "main.bbl" 1763573256 526 44be8be2255a22360b42d1b5b8e10c5c "bibtex main"
+  "main.out" 1763573257 1265 6e0668bc535b3d91d929fe4687fbd959 "pdflatex"
+  "main.tex" 1763573255 35959 0458deca23b611d6d64f61545ed18f8f ""
+  "style.sty" 1763572817 1230 8e38ca4e25a826b4e89ff4d8bba2a29e ""
   (generated)
   "main.aux"
   "main.log"
