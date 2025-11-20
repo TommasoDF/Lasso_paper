@@ -4,7 +4,7 @@
 
 import numpy as np
 import pandas as pd
-
+from joblib import Parallel, delayed
 from itertools import product
 from tqdm import tqdm
 
@@ -90,61 +90,48 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
         }
 
 
-def grid_search(X, y, param_grid, verbose=True):
-    """
-    Perform grid search over all parameter combinations.
-    
-    Parameters
-    ----------
-    X : np.ndarray
-        Feature matrix
-    y : np.ndarray or pd.Series
-        Target variable (returns)
-    param_grid : dict
-        Dictionary with keys 'window_sizes', 'n_lags', 'lambdas'
-        Each value should be a list of values to try
-    verbose : bool
-        Whether to show progress bar
-        
-    Returns
-    -------
-    pd.DataFrame
-        Results for all configurations, sorted by OOS R² Stage 2
 
-    """
 
-    
-    # Create all combinations
-    combinations = list(product(
-        param_grid['window_sizes'],
-        param_grid['n_lags'],
-        param_grid['lambdas']
-    ))
-    
+def grid_search(X, y, param_grid, verbose=True, n_jobs=-1, backend="loky", prefer=None):
+    """
+    Parallel grid search using joblib.
+    - n_jobs: number of processes (-1 = all cores)
+    - backend: 'loky' (processes, default), 'threading', or 'multiprocessing'
+    - prefer: 'processes' or 'threads' (optional hint)
+    """
+    combos = list(product(param_grid['window_sizes'],
+                          param_grid['n_lags'],
+                          param_grid['lambdas']))
     if verbose:
-        print(f"Testing {len(combinations)} configurations...")
+        print(f"Testing {len(combos)} configurations...")
         print(f"Window sizes: {param_grid['window_sizes']}")
         print(f"N lags: {param_grid['n_lags']}")
         print(f"Lambdas: {param_grid['lambdas']}")
-    
-    # Run grid search
-    results = []
-    iterator = tqdm(combinations, desc="Grid search") if verbose else combinations
-    
-    for window_size, n_lags, lambda_val in iterator:
-        result = estimate_single_config(X, y, window_size, n_lags, lambda_val)
-        results.append(result)
-    
-    # Convert to DataFrame and sort by OOS R² Stage 2
-    results_df = pd.DataFrame(results)
-    results_df = results_df.sort_values('r2_oos_stage2', ascending=False)
-    
+
+    # Wrapper to catch exceptions so one failure doesn't kill everything
+    def _safe_run(args):
+        w, L, lam = args
+        try:
+            return estimate_single_config(X, y, w, L, lam)
+        except Exception as e:
+            return {"window": w, "n_lags": L, "lambda": lam,
+                    "error": str(e), "r2_oos_stage2": float("nan"),
+                    "kappa": float("nan")}
+
+    iterator = tqdm(combos, desc="Grid search") if verbose else combos
+
+    results = Parallel(n_jobs=n_jobs, backend=backend, prefer=prefer)(
+        delayed(_safe_run)(args) for args in iterator
+    )
+
+    results_df = pd.DataFrame(results).sort_values("r2_oos_stage2", ascending=False)
+
     if verbose:
         print("\n" + "="*80)
         print("GRID SEARCH COMPLETE")
         print("="*80)
-        n_failed = results_df['kappa'].isna().sum()
+        n_failed = results_df["kappa"].isna().sum() if "kappa" in results_df else 0
         if n_failed > 0:
             print(f"⚠️  {n_failed}/{len(results_df)} configurations failed")
-    
+
     return results_df
