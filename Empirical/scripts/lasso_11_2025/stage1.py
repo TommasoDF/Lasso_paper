@@ -1,10 +1,10 @@
 """
-Simplified Lasso Rolling Window Implementation
+Simplified Lasso Rolling Window Implementation (Updated with OLS)
 """
 
 import numpy as np
 import pandas as pd
-from sklearn.linear_model import LassoCV, Lasso
+from sklearn.linear_model import LassoCV, Lasso, LinearRegression
 from sklearn.preprocessing import StandardScaler
 import warnings
 from typing import Tuple, Optional, Dict, Any, List
@@ -75,7 +75,11 @@ def lasso_rolling_window(X: np.ndarray,
 
     # Initialize storage for results
     results_data = {
+        # LASSO Storage
         'lambdas': [], 'coefficients': [], 'intercepts': [], 'insample_r_squareds': [],
+        # OLS Storage
+        'ols_coefficients': [], 'ols_intercepts': [], 'ols_insample_r2': [],
+        # Meta
         'window_starts': [], 'window_ends': [], 'predictions': []
     }
     
@@ -92,7 +96,7 @@ def lasso_rolling_window(X: np.ndarray,
         print(f"Running {n_windows} rolling windows of size {window_size}...")
         print(f"Lambda selection: {mode_str}")
     
-    for i in tqdm(range(burn_in - window_size, n_windows), desc="Rolling windows"):
+    for i in tqdm(range(burn_in - window_size, n_windows), desc="Rolling windows", disable=not verbose):
         start_idx, end_idx = max(0, i), max(0, i) + window_size
         
         X_window = X_lagged[start_idx:end_idx]
@@ -109,7 +113,7 @@ def lasso_rolling_window(X: np.ndarray,
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
                 
-                # Fit model
+                # --- 1. LASSO FIT ---
                 if lambda_mode == "cv":
                     model = LassoCV(
                         cv=min(cv_folds, max(2, window_size // 2)),
@@ -129,16 +133,30 @@ def lasso_rolling_window(X: np.ndarray,
                 
                 model.fit(X_window_scaled, y_window)
                 
-                # Store results
+                # Store Lasso results
                 chosen_alpha = float(model.alpha_) if lambda_mode == "cv" else float(fixed_lambda)
                 results_data['lambdas'].append(chosen_alpha)
                 results_data['intercepts'].append(model.intercept_)
-                results_data['insample_r_squareds'].append(model.score(X_window_scaled, y_window))          # in-sample r2 for this windows fit; not for whole sample
+                results_data['insample_r_squareds'].append(model.score(X_window_scaled, y_window))
                 
                 # Transform coefficients back to original scale
                 coef = model.coef_ / scaler.scale_ if standardize else model.coef_
                 results_data['coefficients'].append(coef)
+
+                # --- 2. OLS FIT ---
+                # We use the same X_window_scaled so metrics are comparable, 
+                # but we will unscale coefficients for storage
+                ols = LinearRegression(fit_intercept=False)
+                ols.fit(X_window_scaled, y_window)
+
+                results_data['ols_intercepts'].append(ols.intercept_)
+                results_data['ols_insample_r2'].append(ols.score(X_window_scaled, y_window))
                 
+                # Transform OLS coefficients back to original scale
+                ols_coef = ols.coef_ / scaler.scale_ if standardize else ols.coef_
+                results_data['ols_coefficients'].append(ols_coef)
+                
+                # --- Meta Data ---
                 results_data['window_starts'].append(start_idx + n_lags)
                 results_data['window_ends'].append(end_idx + n_lags)
                 
@@ -146,11 +164,11 @@ def lasso_rolling_window(X: np.ndarray,
                     results_data['window_start_dates'].append(date_index[start_idx])
                     results_data['window_end_dates'].append(date_index[end_idx - 1])
                 
-                # Out-of-sample prediction
+                # Out-of-sample prediction (Using LASSO as primary predictor)
                 if end_idx < len(y_aligned):
                     X_next = X_lagged[end_idx:end_idx + 1]
                     X_next_scaled = scaler.transform(X_next) if standardize else X_next
-                    pred = model.predict(X_next_scaled)[0]                                                  # predict window +1
+                    pred = model.predict(X_next_scaled)[0]
                     results_data['predictions'].append(pred)
                     
                     if date_index is not None:
@@ -158,13 +176,18 @@ def lasso_rolling_window(X: np.ndarray,
         
         except Exception as e:
             if verbose:
-                print(f"Warning: LASSO failed for window {i}: {e}")
+                print(f"Warning: Fitting failed for window {i}: {e}")
             
-            # Store NaNs on failure
+            # Store NaNs on failure (for both Lasso and OLS)
             results_data['lambdas'].append(np.nan)
             results_data['coefficients'].append(np.full(X_lagged.shape[1], np.nan))
             results_data['intercepts'].append(np.nan)
             results_data['insample_r_squareds'].append(np.nan)
+
+            results_data['ols_coefficients'].append(np.full(X_lagged.shape[1], np.nan))
+            results_data['ols_intercepts'].append(np.nan)
+            results_data['ols_insample_r2'].append(np.nan)
+
             results_data['window_starts'].append(start_idx + n_lags)
             results_data['window_ends'].append(end_idx + n_lags)
             
@@ -178,8 +201,7 @@ def lasso_rolling_window(X: np.ndarray,
                     results_data['prediction_dates'].append(date_index[min(end_idx, len(date_index) - 1)])
     
     if verbose:
-        print("Rolling LASSO complete!")
-        print(f"Average lambda: {np.nanmean(results_data['lambdas']):.6f}")
+        print("Rolling Estimation complete!")
     
     # Compile final results
     results = {
@@ -187,6 +209,12 @@ def lasso_rolling_window(X: np.ndarray,
         'coefficients': np.array(results_data['coefficients']),
         'intercepts': np.array(results_data['intercepts']),
         'insample_r_squareds': np.array(results_data['insample_r_squareds']),
+        
+        # OLS Output
+        'ols_coefficients': np.array(results_data['ols_coefficients']),
+        'ols_intercepts': np.array(results_data['ols_intercepts']),
+        'ols_insample_r2': np.array(results_data['ols_insample_r2']),
+        
         'window_starts': np.array(results_data['window_starts']),
         'window_ends': np.array(results_data['window_ends']),
         'feature_names': feature_names,
