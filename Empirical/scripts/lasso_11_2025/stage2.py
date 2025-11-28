@@ -20,7 +20,7 @@ def estimate_kappa_curve_fit(stage2):
     
     def alm_model(x, kappa, intercept):
         pred_t, pred_t1 = x
-        #return np.log(1 - kappa * np.exp(pred_t)) - np.log(1 - kappa * np.exp(pred_t1)) + intercept
+        # return np.log(1 - kappa * np.exp(pred_t)) - np.log(1 - kappa * np.exp(pred_t1)) + intercept
         return np.log(1 - kappa * np.exp(- 1/kappa *pred_t * (1 -kappa))) - np.log(1 - kappa * np.exp(- 1/kappa *pred_t1 * (1 -kappa))) + intercept
     
     try:
