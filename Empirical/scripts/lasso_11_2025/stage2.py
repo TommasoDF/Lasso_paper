@@ -20,14 +20,15 @@ def estimate_kappa_curve_fit(stage2):
     
     def alm_model(x, kappa, intercept):
         pred_t, pred_t1 = x
-        return np.log(1 - kappa * np.exp(pred_t)) - np.log(1 - kappa * np.exp(pred_t1)) + intercept
+        # return np.log(1 - kappa * np.exp(pred_t)) - np.log(1 - kappa * np.exp(pred_t1)) + intercept
+        return np.log(1 - kappa * np.exp(- 1/kappa *pred_t * (1 -kappa))) - np.log(1 - kappa * np.exp(- 1/kappa *pred_t1 * (1 -kappa))) + intercept
     
     try:
         return curve_fit(
             alm_model, 
             (pred_t, pred_t1), 
             r,
-            p0=[0.8, 0.0],
+            p0=[0.5, 0.0],
             bounds=([0, -1], [1, 1])
         )
     except Exception as e:
@@ -38,15 +39,21 @@ def compute_alm_returns(predictions, kappa, intercept):
     pred_t, pred_t1 = predictions[:-1], predictions[1:]
 
     # validity mask
-    valid = (1 - kappa * np.exp(pred_t) > 0) & (1 - kappa * np.exp(pred_t1) > 0)
+    #valid = (1 - kappa * np.exp(pred_t) > 0) & (1 - kappa * np.exp(pred_t1) > 0)
+    valid = (1 - kappa * np.exp(- 1 / kappa * (1 - kappa) * pred_t) > 0) & (1 - kappa * np.exp(- 1 / kappa * (1 - kappa) *  pred_t1) > 0)
 
     # initialize output array
     alm = np.full(len(pred_t), np.nan)
 
     # compute only valid entries
+    # alm[valid] = (
+    #     np.log(1 - kappa * np.exp(pred_t[valid]))
+    #     - np.log(1 - kappa * np.exp(pred_t1[valid]))
+    #     + intercept
+    # )
     alm[valid] = (
-        np.log(1 - kappa * np.exp(pred_t[valid]))
-        - np.log(1 - kappa * np.exp(pred_t1[valid]))
+        np.log(1 - kappa * np.exp(- 1 / kappa * (1 - kappa) * pred_t[valid]))
+        - np.log(1 - kappa * np.exp(- 1 / kappa * (1 - kappa) * pred_t1[valid]))
         + intercept
     )
 
@@ -153,12 +160,15 @@ def compute_stage2_r_squared(stage2_input, min_train_size=100):
             pred_t = stage2_input['predictions'].iloc[t]
             
             # Check validity
-            if (1 - kappa_train * np.exp(pred_t_minus_1) > 0) and \
-               (1 - kappa_train * np.exp(pred_t) > 0):
+            if (1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t_minus_1) > 0) and \
+               (1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t) > 0):
                 
                 # Compute OOS prediction for return at time t
-                r_hat_t = (np.log(1 - kappa_train * np.exp(pred_t_minus_1)) - 
-                          np.log(1 - kappa_train * np.exp(pred_t)) + 
+                # r_hat_t = (np.log(1 - kappa_train * np.exp(pred_t_minus_1)) - 
+                #           np.log(1 - kappa_train * np.exp(pred_t)) + 
+                #           intercept_train)
+                r_hat_t = (np.log(1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t_minus_1)) - 
+                          np.log(1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t)) + 
                           intercept_train)
                 
                 oos_predictions.append(r_hat_t)
