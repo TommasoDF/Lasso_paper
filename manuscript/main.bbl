@@ -4,10 +4,13 @@
 
 \begin{thebibliography}{xx}
 
-\harvarditem[Adam, Marcet \harvardand\ Nicolini]{Klaus Adam, Albert Marcet \harvardand\ Juan~Pablo Nicolini}{2018}{Adam2018}
-{\bf Adam, Klaus, Albert Marcet, and Juan~Pablo Nicolini.} 2018. ``Stock Market Volatility and Learning.'' {\em The Journal of Finance}, 71(1).
+\harvarditem[Adam, Marcet \harvardand\ Nicolini]{Klaus Adam, Albert Marcet \harvardand\ Juan~Pablo Nicolini}{2016}{Adam2016}
+{\bf Adam, Klaus, Albert Marcet, and Juan~Pablo Nicolini.} 2016. ``Stock Market Volatility and Learning.'' {\em Journal of Finance}, 71.
+
+\harvarditem[Evans \harvardand\ Honkapohja]{George~W. Evans \harvardand\ Seppo Honkapohja}{2001}{GeorgeWEvans2001}
+{\bf Evans, George~W., and Seppo Honkapohja.} 2001. {\em Learning and Expectations in Macroeconomics.}
 
 \harvarditem[Lucas]{Robert~E. Lucas}{1978}{Lucas1978}
-{\bf Lucas, Robert~E.} 1978. ``Asset Prices in an Exchange Economy.'' {\em Econometrica}, 46(6):~1429--1445.
+{\bf Lucas, Robert~E.} 1978. ``Asset Prices in an Exchange Economy.'' {\em Econometrica}, 46.
 
 \end{thebibliography}
