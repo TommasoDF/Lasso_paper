@@ -35,13 +35,13 @@ def lasso_rolling_window(X: np.ndarray,
                          lambda_mode: str = "cv",
                          fixed_lambda: Optional[float] = None) -> Dict[str, Any]:
     
+    
 
     # Extract date index if pandas object
     date_index = y.index if isinstance(y, (pd.Series, pd.DataFrame)) else None
     y = np.asarray(y).flatten()
     X = np.asarray(X)
     
-
     # Center returns
     mean_y = np.nanmean(y)
     y = y - mean_y
@@ -53,6 +53,8 @@ def lasso_rolling_window(X: np.ndarray,
     
     X_lagged, feature_names = create_lagged_features(X, n_lags)
     y_aligned = y[n_lags:]
+
+
     
     if date_index is not None:
         date_index = date_index[n_lags:]
@@ -76,12 +78,13 @@ def lasso_rolling_window(X: np.ndarray,
     # Initialize storage for results
     results_data = {
         # LASSO Storage
-        'lambdas': [], 'coefficients': [], 'intercepts': [], 'insample_r_squareds': [],
+        'lambdas': [], 'coefficients': [], 'intercepts': [], 'insample_r_squareds': [], 'num_nonzero_coefficients': [], 'prediction_errors': [],
         # OLS Storage
         'ols_coefficients': [], 'ols_intercepts': [], 'ols_insample_r2': [],
         # Meta
         'window_starts': [], 'window_ends': [], 'predictions': []
     }
+    
     
     if date_index is not None:
         results_data.update({
@@ -97,7 +100,7 @@ def lasso_rolling_window(X: np.ndarray,
         print(f"Lambda selection: {mode_str}")
     
     for i in tqdm(range(burn_in - window_size, n_windows), desc="Rolling windows", disable=not verbose):
-        start_idx, end_idx = max(0, i), max(0, i) + window_size
+        start_idx, end_idx = max(0, i), max(0, i) + window_size - 1
         
         X_window = X_lagged[start_idx:end_idx]
         y_window = y_aligned[start_idx:end_idx]
@@ -138,6 +141,9 @@ def lasso_rolling_window(X: np.ndarray,
                 results_data['lambdas'].append(chosen_alpha)
                 results_data['intercepts'].append(model.intercept_)
                 results_data['insample_r_squareds'].append(model.score(X_window_scaled, y_window))
+
+                #Store the number of non-zero coefficients
+                results_data['num_nonzero_coefficients'].append(np.sum(model.coef_ != 0))
                 
                 # Transform coefficients back to original scale
                 coef = model.coef_ / scaler.scale_ if standardize else model.coef_
@@ -166,10 +172,14 @@ def lasso_rolling_window(X: np.ndarray,
                 
                 # Out-of-sample prediction (Using LASSO as primary predictor)
                 if end_idx < len(y_aligned):
-                    X_next = X_lagged[end_idx:end_idx + 1]
+                    X_next = X_lagged[end_idx:end_idx + 1] # two step-ahead prediction
                     X_next_scaled = scaler.transform(X_next) if standardize else X_next
                     pred = model.predict(X_next_scaled)[0]
                     results_data['predictions'].append(pred)
+
+                    #compute the prediction error as y^2 - (y - y^e)^2
+                    pred_error = (y_aligned[end_idx+1] **2) - ((y_aligned[end_idx+1] - pred) **2)
+                    results_data['prediction_errors'].append(pred_error)
                     
                     if date_index is not None:
                         results_data['prediction_dates'].append(date_index[end_idx])
@@ -183,10 +193,12 @@ def lasso_rolling_window(X: np.ndarray,
             results_data['coefficients'].append(np.full(X_lagged.shape[1], np.nan))
             results_data['intercepts'].append(np.nan)
             results_data['insample_r_squareds'].append(np.nan)
+            results_data['num_nonzero_coefficients'].append(np.nan)
 
             results_data['ols_coefficients'].append(np.full(X_lagged.shape[1], np.nan))
             results_data['ols_intercepts'].append(np.nan)
             results_data['ols_insample_r2'].append(np.nan)
+            results_data['prediction_errors'].append(np.nan)
 
             results_data['window_starts'].append(start_idx + n_lags)
             results_data['window_ends'].append(end_idx + n_lags)
@@ -197,6 +209,7 @@ def lasso_rolling_window(X: np.ndarray,
             
             if end_idx < len(y_aligned):
                 results_data['predictions'].append(np.nan)
+                results_data['prediction_errors'].append(np.nan)
                 if date_index is not None:
                     results_data['prediction_dates'].append(date_index[min(end_idx, len(date_index) - 1)])
     
@@ -209,6 +222,8 @@ def lasso_rolling_window(X: np.ndarray,
         'coefficients': np.array(results_data['coefficients']),
         'intercepts': np.array(results_data['intercepts']),
         'insample_r_squareds': np.array(results_data['insample_r_squareds']),
+        'prediction_errors': np.array(results_data['prediction_errors']),
+        'num_nonzero_coefficients': np.array(results_data['num_nonzero_coefficients']),
         
         # OLS Output
         'ols_coefficients': np.array(results_data['ols_coefficients']),
@@ -223,6 +238,7 @@ def lasso_rolling_window(X: np.ndarray,
         'window_size': window_size,
         'lambda_mode': lambda_mode
     }
+    
     
     if date_index is not None:
         results.update({

@@ -30,6 +30,7 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
       - 'details': DataFrame of time-series coefficients (Lasso + OLS)
     """
     try:
+        
         # Stage 1: Rolling LASSO + OLS
         stage1_results = lasso_rolling_window(
             X=X, y=y, 
@@ -39,16 +40,22 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
             fixed_lambda=lambda_val, 
             verbose=False # Keep false to avoid spamming console in parallel
         )
+       
         
         # Extract predictions and align data
-        preds = np.array(stage1_results["predictions"])
+        preds = np.array(stage1_results["predictions"]) #contains predictions up to r^e_{t+1} while y contains up to r_{t} so we need to align
+        #shift preds to match y
+        preds = preds[:-1] # remove last prediction to align with y
         y_valid = y[-len(preds):] if isinstance(y, (pd.Series, pd.DataFrame)) else y[-len(preds):]
         y_vals = y_valid.values if isinstance(y_valid, (pd.Series, pd.DataFrame)) else y_valid
         
-        # Stage 1 Metrics
-        r2_oos_stage1 = calculate_r_squared(y_vals, preds)
-        r2_insample_stage1 = np.mean(stage1_results['insample_r_squareds'])
+        #defining de-meaned y for comparing with stage 1 errors
+        y_demeaned = y_vals - np.nanmean(y_vals)
         
+        # Stage 1 Metrics
+        r2_oos_stage1 = calculate_r_squared(y_demeaned, preds)
+        r2_insample_stage1 = np.nanmean(stage1_results['insample_r_squareds'])
+
         # Stage 2 Estimation
         stage2_input = pd.DataFrame({"vwretd": y_vals, "predictions": preds})
         stage2_results = compute_stage2_r_squared(stage2_input, min_train_size=100)
@@ -95,7 +102,9 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
                 'lasso_intercept': stage1_results['intercepts'][i],
                 'ols_intercept': stage1_results['ols_intercepts'][i],
                 'lasso_r2_in': stage1_results['insample_r_squareds'][i],
+                'prediction_error': stage1_results['prediction_errors'][i],
                 'ols_r2_in': stage1_results['ols_insample_r2'][i],
+                'num_nonzero_coefficients': stage1_results['num_nonzero_coefficients'][i]
             }
             
             # Add feature coefficients
