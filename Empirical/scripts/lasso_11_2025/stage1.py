@@ -80,7 +80,7 @@ def lasso_rolling_window(X: np.ndarray,
         # LASSO Storage
         'lambdas': [], 'coefficients': [], 'intercepts': [], 'insample_r_squareds': [], 'num_nonzero_coefficients': [], 'prediction_errors': [],
         # OLS Storage
-        'ols_coefficients': [], 'ols_intercepts': [], 'ols_insample_r2': [],
+        # 'ols_coefficients': [], 'ols_intercepts': [], 'ols_insample_r2': [],
         # Meta
         'window_starts': [], 'window_ends': [], 'predictions': []
     }
@@ -149,22 +149,22 @@ def lasso_rolling_window(X: np.ndarray,
                 coef = model.coef_ / scaler.scale_ if standardize else model.coef_
                 results_data['coefficients'].append(coef)
 
-                # --- 2. OLS FIT ---
-                # We use the same X_window_scaled so metrics are comparable, 
-                # but we will unscale coefficients for storage
-                ols = LinearRegression(fit_intercept=False)
-                ols.fit(X_window_scaled, y_window)
+                # # --- 2. OLS FIT ---
+                # # We use the same X_window_scaled so metrics are comparable, 
+                # # but we will unscale coefficients for storage
+                # ols = LinearRegression(fit_intercept=False)
+                # ols.fit(X_window_scaled, y_window)
 
-                results_data['ols_intercepts'].append(ols.intercept_)
-                results_data['ols_insample_r2'].append(ols.score(X_window_scaled, y_window))
+                # results_data['ols_intercepts'].append(ols.intercept_)
+                # results_data['ols_insample_r2'].append(ols.score(X_window_scaled, y_window))
                 
-                # Transform OLS coefficients back to original scale
-                ols_coef = ols.coef_ / scaler.scale_ if standardize else ols.coef_
-                results_data['ols_coefficients'].append(ols_coef)
+                # # Transform OLS coefficients back to original scale
+                # ols_coef = ols.coef_ / scaler.scale_ if standardize else ols.coef_
+                # results_data['ols_coefficients'].append(ols_coef)
                 
-                # --- Meta Data ---
-                results_data['window_starts'].append(start_idx + n_lags)
-                results_data['window_ends'].append(end_idx + n_lags)
+                # # --- Meta Data ---
+                # results_data['window_starts'].append(start_idx + n_lags)
+                # results_data['window_ends'].append(end_idx + n_lags)
                 
                 if date_index is not None:
                     results_data['window_start_dates'].append(date_index[start_idx])
@@ -195,9 +195,9 @@ def lasso_rolling_window(X: np.ndarray,
             results_data['insample_r_squareds'].append(np.nan)
             results_data['num_nonzero_coefficients'].append(np.nan)
 
-            results_data['ols_coefficients'].append(np.full(X_lagged.shape[1], np.nan))
-            results_data['ols_intercepts'].append(np.nan)
-            results_data['ols_insample_r2'].append(np.nan)
+            # results_data['ols_coefficients'].append(np.full(X_lagged.shape[1], np.nan))
+            # results_data['ols_intercepts'].append(np.nan)
+            # results_data['ols_insample_r2'].append(np.nan)
             results_data['prediction_errors'].append(np.nan)
 
             results_data['window_starts'].append(start_idx + n_lags)
@@ -226,9 +226,9 @@ def lasso_rolling_window(X: np.ndarray,
         'num_nonzero_coefficients': np.array(results_data['num_nonzero_coefficients']),
         
         # OLS Output
-        'ols_coefficients': np.array(results_data['ols_coefficients']),
-        'ols_intercepts': np.array(results_data['ols_intercepts']),
-        'ols_insample_r2': np.array(results_data['ols_insample_r2']),
+        # 'ols_coefficients': np.array(results_data['ols_coefficients']),
+        # 'ols_intercepts': np.array(results_data['ols_intercepts']),
+        # 'ols_insample_r2': np.array(results_data['ols_insample_r2']),
         
         'window_starts': np.array(results_data['window_starts']),
         'window_ends': np.array(results_data['window_ends']),

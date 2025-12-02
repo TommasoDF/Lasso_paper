@@ -87,33 +87,48 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
         # We will collect rows as dicts for speed then dataframe them
         detail_rows = []
         
-        # Retrieve coefficient arrays (Shape: n_windows x n_features)
-        lasso_coefs_arr = stage1_results['coefficients']
-        ols_coefs_arr = stage1_results['ols_coefficients']
+        # Retrieve coefficient arrays (Shape: n_windows x n_features) only if 'r2_insample_stage2' > 0
+        if summary['r2_insample_stage2'] > 0:
+            lasso_coefs_arr = stage1_results['coefficients']
+            # ols_coefs_arr = stage1_results['ols_coefficients']
         
-        for i in range(n_wins):
-            row = {
-                'date': dates[i] if i < len(dates) else None,
+            for i in range(n_wins):
+                row = {
+                    'date': dates[i] if i < len(dates) else None,
+                    'window_size': window_size,
+                    'n_lags': n_lags,
+                    'lambda': lambda_val,
+                    'window_index': i,
+                    # Intercepts / R2
+                    'lasso_intercept': stage1_results['intercepts'][i],
+                    # 'ols_intercept': stage1_results['ols_intercepts'][i],
+                    'lasso_r2_in': stage1_results['insample_r_squareds'][i],
+                    'prediction_error': stage1_results['prediction_errors'][i],
+                    # 'ols_r2_in': stage1_results['ols_insample_r2'][i],
+                    'num_nonzero_coefficients': stage1_results['num_nonzero_coefficients'][i]
+                }
+
+                # Add feature coefficients
+                # Naming convention: Lasso_FeatureName, OLS_FeatureName
+                for f_idx, f_name in enumerate(features):
+                    row[f"Lasso_{f_name}"] = lasso_coefs_arr[i, f_idx]
+                    # row[f"OLS_{f_name}"] = ols_coefs_arr[i, f_idx]
+
+                detail_rows.append(row)
+        else:
+            detail_rows.append({
+                'date': None,
                 'window_size': window_size,
                 'n_lags': n_lags,
                 'lambda': lambda_val,
-                'window_index': i,
-                # Intercepts / R2
-                'lasso_intercept': stage1_results['intercepts'][i],
-                'ols_intercept': stage1_results['ols_intercepts'][i],
-                'lasso_r2_in': stage1_results['insample_r_squareds'][i],
-                'prediction_error': stage1_results['prediction_errors'][i],
-                'ols_r2_in': stage1_results['ols_insample_r2'][i],
-                'num_nonzero_coefficients': stage1_results['num_nonzero_coefficients'][i]
-            }
-            
-            # Add feature coefficients
-            # Naming convention: Lasso_FeatureName, OLS_FeatureName
-            for f_idx, f_name in enumerate(features):
-                row[f"Lasso_{f_name}"] = lasso_coefs_arr[i, f_idx]
-                row[f"OLS_{f_name}"] = ols_coefs_arr[i, f_idx]
-                
-            detail_rows.append(row)
+                'window_index': None,
+                'lasso_intercept': np.nan,
+                # 'ols_intercept': np.nan,
+                'lasso_r2_in': np.nan,
+                'prediction_error': np.nan,
+                # 'ols_r2_in': np.nan,
+                'num_nonzero_coefficients': np.nan
+            })
             
         details_df = pd.DataFrame(detail_rows)
         
