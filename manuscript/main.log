@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  19 NOV 2025 18:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  5 DEC 2025 18:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -370,19 +370,20 @@ Package: thm-restate 2023/02/17 v0.75
 \c@proposition=\count306
 \c@assumption=\count307
 \c@definition=\count308
+\c@remark=\count309
  (/usr/local/texlive/2023/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (/usr/local/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks33
-\c@algorithm=\count309
+\c@algorithm=\count310
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count310
-\c@ALC@line=\count311
-\c@ALC@rem=\count312
-\c@ALC@depth=\count313
+\c@ALC@unique=\count311
+\c@ALC@line=\count312
+\c@ALC@rem=\count313
+\c@ALC@depth=\count314
 \ALC@tlm=\skip72
 \algorithmicindent=\skip73
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/pdflscape/pdflscape.sty
@@ -442,11 +443,11 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (/usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count314
+\c@section@level=\count315
 )
 \@linkdim=\dimen265
-\Hy@linkcounter=\count315
-\Hy@pagecounter=\count316
+\Hy@linkcounter=\count316
+\Hy@pagecounter=\count317
  (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-02-07 v7.00v Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -456,7 +457,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count317
+\Hy@SavedSpaceFactor=\count318
  (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -470,7 +471,7 @@ Package hyperref Info: Plain pages OFF on input line 4192.
 Package hyperref Info: Backreferencing OFF on input line 4197.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4425.
-\c@Hy@tempcnt=\count318
+\c@Hy@tempcnt=\count319
  (/usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip22
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -482,7 +483,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count319
+\Fld@menulength=\count320
 \Field@Width=\dimen267
 \Fld@charsize=\dimen268
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -496,9 +497,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count320
-\c@Item=\count321
-\c@Hfootnote=\count322
+\Hy@abspage=\count321
+\c@Item=\count322
+\c@Hfootnote=\count323
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -507,8 +508,8 @@ File: hpdftex.def 2023-02-07 v7.00v Hyperref driver for pdfTeX
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count323
-\c@bookmark@seq@number=\count324
+\Fld@listcount=\count324
+\c@bookmark@seq@number=\count325
  (/usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -530,9 +531,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count325
-\Gm@cntv=\count326
-\c@Gm@tempcnt=\count327
+\Gm@cnth=\count326
+\Gm@cntv=\count327
+\c@Gm@tempcnt=\count328
 \Gm@bindingoffset=\dimen269
 \Gm@wd@mp=\dimen270
 \Gm@odd@mp=\dimen271
@@ -543,17 +544,17 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen276
 \Gm@dimlist=\toks34
 )
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 39.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 40.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2023/02/13 3.86 The Babel package
-\babel@savecnt=\count328
+\babel@savecnt=\count329
 \U@D=\dimen277
 \l@unhyphenated=\language87
  (/usr/local/texlive/2023/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count329
+\bbl@dirlevel=\count330
  (/usr/local/texlive/2023/texmf-dist/tex/generic/babel-english/american.ldf
 Language: american 2017/06/06 v3.3r English support from the babel system
  (/usr/local/texlive/2023/texmf-dist/tex/generic/babel-english/english.ldf
@@ -572,40 +573,40 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip75
 \bibsep=\skip76
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count330
+\c@NAT@ctr=\count331
 )) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
  (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count331
+\scratchcounter=\count332
 \scratchdimen=\dimen278
 \scratchbox=\box65
-\nofMPsegments=\count332
-\nofMParguments=\count333
+\nofMPsegments=\count333
+\nofMParguments=\count334
 \everyMPshowfont=\toks35
-\MPscratchCnt=\count334
+\MPscratchCnt=\count335
 \MPscratchDim=\dimen279
-\MPnumerator=\count335
-\makeMPintoPDFobject=\count336
+\MPnumerator=\count336
+\makeMPintoPDFobject=\count337
 \everyMPtoPDFconversion=\toks36
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -616,7 +617,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 33.
+Package hyperref Info: Link coloring ON on input line 32.
  (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
@@ -656,71 +657,54 @@ Package hyperref Info: Link coloring ON on input line 33.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 117.
- [2]
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 180.
+Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 116.
+ [2] [3]
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 221.
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 231.
 
-Overfull \hbox (9.84483pt too wide) in paragraph at lines 181--184
+Overfull \hbox (9.84483pt too wide) in paragraph at lines 232--235
 []\OT1/ppl/m/it/10.95 Let $\OMS/cmsy/m/n/10.95 R$ \OT1/ppl/m/it/10.95 de-note a re-gres-sion op-er-a-tor map-
  []
 
-[3] [4]
-
-LaTeX Warning: Reference `eq:plm_univariate' on page 5 undefined on input line 293.
-
-[5] [6]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 446.
-
-Overfull \hbox (6.43465pt too wide) in paragraph at lines 447--448
-[]\OT1/ppl/m/it/10.95 Under
- []
-
-
-LaTeX Warning: Reference `eq:linear_model' on page 7 undefined on input line 463.
-
-[7] [8]
-Overfull \hbox (1.23293pt too wide) in paragraph at lines 533--534
+[4] [5]
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 331.
+ [6] [7]
+Overfull \hbox (1.23293pt too wide) in paragraph at lines 413--414
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares
  []
 
-[9] [10]
-Overfull \hbox (8.82047pt too wide) in paragraph at lines 611--613
+[8] [9]
+Overfull \hbox (18.55505pt too wide) in paragraph at lines 495--497
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares learn-
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 712.
-(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [11] (./main.bbl) [12] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
+[10] (./main.bbl [11]) [12] [13] [14] [15] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6E0668BC535B3D91D929FE4687FBD959;1265.
+(rerunfilecheck)             Checksum: 48EE5E58F2BF10223E03C7C9F31423D5;1835.
  ) 
 Here is how much of TeX's memory you used:
- 17133 strings out of 476025
- 282913 string characters out of 5790018
- 1866388 words of memory out of 5000000
- 37158 multiletter control sequences out of 15000+600000
- 531815 words of font info for 84 fonts, out of 8000000 for 9000
+ 17153 strings out of 476025
+ 283126 string characters out of 5790018
+ 1868388 words of memory out of 5000000
+ 37169 multiletter control sequences out of 15000+600000
+ 532326 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,15n,145p,421b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,14n,145p,681b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (12 pages, 250763 bytes).
+Output written on main.pdf (15 pages, 264052 bytes).
 PDF statistics:
- 308 PDF objects out of 1000 (max. 8388607)
- 257 compressed objects within 3 object streams
- 109 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 360 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
