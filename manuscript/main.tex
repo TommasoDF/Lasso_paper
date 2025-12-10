@@ -42,13 +42,42 @@
 
 In recent years, the landscape of financial trading has been fundamentally transformed by the exponential growth of available information. 
 Traditionally, both researchers and traders have focused on determining whether financial returns can be predicted based on the information at hand. 
-However, while the volume of data has surged dramatically, human capacity to manually analyze it has remained relatively constant. 
-As a result, investors are increasingly turning to algorithms to detect patterns within these vast data sets.
+However, while the volume of data has surged dramatically\footnote{Recent forecasts estimate that by 2025 the global datasphere (the sum of
+all data created, captured, and replicated on our planet) will grow to 163 zettabytes or $1.63 \times 10\textsuperscript{14}$ gigabytes. 
+A ten-fold increase from the 16.1 ZB of data generated in 2016 \citep{ReinselGantzRydning2017}.}, the human capacity to process it has remained relatively constant. 
+As a result, humans are delegating more and more tasks to artificial intelligence or simple algorithms.
+Financial investors are similarly increasing their reliance on algorithms\footnote{The Invesco Global Systematic Investing Study 2024, finds that over half of the 
+investors surveyed incorporate AI in some form, with applications ranging from pattern recognition to portfolio optimization \citep{Invesco2024IGSIS}.} to detect patterns within these vast data sets and to 
+take positions much faster than humanly possible.
+The Invesco Global Systematic Investing Study 
 
-In this paper, we propose a model that captures this dynamic. 
-Even if the true underlying economic process suggests that returns are essentially unpredictable, the act of agents using statistical learning to hunt for predictability can itself generate short-lived pockets of predictability.
-We show that these pockets are sparse and vary over time, echoing findings from existing literature. 
-In essence, the very process of algorithmic learning brings about the temporary predictability it seeks to exploit.
+In this paper, we propose a model that aims to study the effect of a specific form of machine learning, namely LASSO regression, on asset prices within a standard asset pricing framework. 
+In our model under rational expectations (RE) returns are unpredictable.
+Agents however suspect that conditional predictability might exist and use regressions based on the least absolute shrinkage and selection operator (LASSO) \citep{Tibshirani1996} to search for patterns in returns.
+We show that the act of agents using statistical learning to hunt for predictability can itself generate short-lived pockets of predictability.
+We show that these pockets are sparse and vary over time, echoing findings from existing literature about pockets of predictability in financial markets \citep{Chinco2019, Farmer2023}. 
+In essence, the very process of learning brings about the temporary predictability it seeks to exploit.
+
+While the existing literature has explored learning as a potential mechanism behind excess volatility \citep{Honkapohja2003, Carceles-Poveda2008}
+,time-varying price–dividend ratios, and other asset-pricing anomalies, 
+the forms of learning typically analyzed share a common limitation. 
+Most papers study self-referential or correctly specified forecasting rules, or else severely under-parametrized representations of agents’ perceived laws of motion. 
+In these environments, agents track a small number of parameters and update them recursively using variants of least squares or constant-gain learning. 
+Such approaches are analytically convenient and have generated important insights, but they fall short of capturing how modern investors actually interact with high-dimensional data.
+
+Our contribution is to move beyond this setting.
+We study a model in which agents confront an over-parametrized forecasting problem: in truth, no predictor has conditional predictive power for returns, yet agents behave as if many possible predictors might matter. 
+To discipline how agents navigate through this large information set, we model them as using the LASSO, a widely adopted regularization method in empirical finance \citep{Chinco2019}. 
+We provide what is, to our knowledge\footnote{\cite{Georges2021} study by means of simulation various types of regularization methods, including LASSO
+in a model in which forecasting rules are auto-regressive including higher-rder polynomials of past returns to allow for non-linearities.
+Compared to them we provide analytical results and focus on the use of LASSO in linear regression on high-dimensional data.}, the first theoretical characterization of LASSO-based learning in an equilibrium asset-pricing environment. This allows us to link a literature that has relied on low-dimensional, stylized learning rules with the empirical tradition in which researchers and practitioners routinely estimate high-dimensional predictive models.
+
+Endowing agents with a realistic learning rule is not only conceptually appealing; it also enables a tight connection between theory and data. 
+The model delivers strong predictions for when and how return predictability should emerge in finite samples. 
+We test these predictions using a wide set of assets and a rich vocabulary of potential predictors constructed from textual “topics” as in \cite{Bybee2021}.
+
+On the theoretical side, we show that LASSO learning generates pockets of predictability even when returns are fundamentally unpredictable. 
+Moreover, we are able to analytically characterize the probability with which such pockets arise, thereby providing a precise mechanism that rationalizes the short-lived, sparse, and episodic nature of return predictability documented in recent empirical work.
 
 % --------------------
 \section{The model}

@@ -3,44 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: aea.bst
 Database file #1: references.bib
-You've used 3 entries,
+Warning--entry type for "Invesco2024IGSIS" isn't style-file defined
+--line 449 of file references.bib
+You've used 12 entries,
             2695 wiz_defined-function locations,
-            603 strings with 4132 characters,
-and the built_in function-call counts, 16608 in all, are:
-= -- 2763
-> -- 192
+            662 strings with 5539 characters,
+and the built_in function-call counts, 72444 in all, are:
+= -- 12138
+> -- 822
 < -- 0
-+ -- 1346
-- -- 60
-* -- 1471
-:= -- 3287
-add.period$ -- 21
-call.type$ -- 3
-change.case$ -- 39
-chr.to.int$ -- 3
-cite$ -- 3
-duplicate$ -- 41
-empty$ -- 104
-format.name$ -- 60
-if$ -- 2969
++ -- 5932
+- -- 258
+* -- 6463
+:= -- 14219
+add.period$ -- 85
+call.type$ -- 12
+change.case$ -- 156
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 165
+empty$ -- 405
+format.name$ -- 261
+if$ -- 12990
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 16
-num.names$ -- 33
-pop$ -- 3
+newline$ -- 43
+num.names$ -- 132
+pop$ -- 12
 preamble$ -- 1
-purify$ -- 45
+purify$ -- 180
 quote$ -- 0
-skip$ -- 41
+skip$ -- 152
 stack$ -- 0
-substring$ -- 3943
-swap$ -- 17
-text.length$ -- 42
+substring$ -- 17358
+swap$ -- 69
+text.length$ -- 168
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 10
+type$ -- 46
 warning$ -- 0
-while$ -- 72
+while$ -- 285
 width$ -- 0
-write$ -- 18
+write$ -- 63
+(There was 1 warning)
