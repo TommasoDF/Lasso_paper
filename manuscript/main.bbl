@@ -7,10 +7,37 @@
 \harvarditem[Adam, Marcet \harvardand\ Nicolini]{Klaus Adam, Albert Marcet \harvardand\ Juan~Pablo Nicolini}{2016}{Adam2016}
 {\bf Adam, Klaus, Albert Marcet, and Juan~Pablo Nicolini.} 2016. ``Stock Market Volatility and Learning.'' {\em Journal of Finance}, 71.
 
+\harvarditem[Bybee et~al.]{Leland Bybee, Bryan~T. Kelly, Asaf Manela \harvardand\ Dacheng Xiu}{2021}{Bybee2021}
+{\bf Bybee, Leland, Bryan~T. Kelly, Asaf Manela, and Dacheng Xiu.} 2021. ``Business News and Business Cycles.'' {\em SSRN Electronic Journal}.
+
+\harvarditem[Carceles-Poveda \harvardand\ Giannitsarou]{Eva Carceles-Poveda \harvardand\ Chryssi Giannitsarou}{2008}{Carceles-Poveda2008}
+{\bf Carceles-Poveda, Eva, and Chryssi Giannitsarou.} 2008. ``Asset pricing with adaptive learning.'' {\em Review of Economic Dynamics}, 11.
+
+\harvarditem[Chinco, Clark-Joseph \harvardand\ Ye]{Alex Chinco, Adam~D. Clark-Joseph \harvardand\ Mao Ye}{2019}{Chinco2019}
+{\bf Chinco, Alex, Adam~D. Clark-Joseph, and Mao Ye.} 2019. ``Sparse Signals in the Cross-Section of Returns.'' {\em Journal of Finance}, 74.
+
 \harvarditem[Evans \harvardand\ Honkapohja]{George~W. Evans \harvardand\ Seppo Honkapohja}{2001}{GeorgeWEvans2001}
 {\bf Evans, George~W., and Seppo Honkapohja.} 2001. {\em Learning and Expectations in Macroeconomics.} Princeton University Press.
 
+\harvarditem[Farmer, Schmidt \harvardand\ Timmermann]{Leland~E. Farmer, Lawrence Schmidt \harvardand\ Allan Timmermann}{2023}{Farmer2023}
+{\bf Farmer, Leland~E., Lawrence Schmidt, and Allan Timmermann.} 2023. ``Pockets of Predictability.'' {\em Journal of Finance}, 78.
+
+\harvarditem[Georges \harvardand\ Pereira]{Christophre Georges \harvardand\ Javier Pereira}{2021}{Georges2021}
+{\bf Georges, Christophre, and Javier Pereira.} 2021. ``Market stability with machine learning agents.'' {\em Journal of Economic Dynamics and Control}, 122.
+
+\harvarditem[Honkapohja \harvardand\ Mitra]{Seppo Honkapohja \harvardand\ Kaushik Mitra}{2003}{Honkapohja2003}
+{\bf Honkapohja, Seppo, and Kaushik Mitra.} 2003. ``Learning with bounded memory in stochastic models.'' {\em Journal of Economic Dynamics and Control}, 27.
+
+\harvarditem[{Invesco}]{{Invesco}}{2024}{Invesco2024IGSIS}
+{\bf {Invesco}.} 2024. ``Invesco Global Systematic Investing Study 2024.'' Accessed: 09-12-2025.
+
 \harvarditem[Lucas]{Robert~E. Lucas}{1978}{Lucas1978}
 {\bf Lucas, Robert~E.} 1978. ``Asset Prices in an Exchange Economy.'' {\em Econometrica}, 46.
+
+\harvarditem[Reinsel, Gantz \harvardand\ Rydning]{David Reinsel, John Gantz \harvardand\ John Rydning}{2017}{ReinselGantzRydning2017}
+{\bf Reinsel, David, John Gantz, and John Rydning.} 2017. ``Data Age 2025: The Evolution of Data to Life-Critical. Don't Focus on Big Data; Focus on the Data That's Big.'' IDC.
+
+\harvarditem[Tibshirani]{Robert Tibshirani}{1996}{Tibshirani1996}
+{\bf Tibshirani, Robert.} 1996. ``Regression Shrinkage and Selection Via the Lasso.'' {\em Journal of the Royal Statistical Society. Series B: Methodological}, 58. original lasso paper.
 
 \end{thebibliography}

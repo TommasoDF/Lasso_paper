@@ -177,8 +177,8 @@ def lasso_rolling_window(X: np.ndarray,
                     pred = model.predict(X_next_scaled)[0]
                     results_data['predictions'].append(pred)
 
-                    #compute the prediction error as y^2 - (y - y^e)^2
-                    pred_error = (y_aligned[end_idx+1] **2) - ((y_aligned[end_idx+1] - pred) **2)
+                    #compute the prediction error as (y - y^e)^2
+                    pred_error = ((y_aligned[end_idx+1] - pred) **2)
                     results_data['prediction_errors'].append(pred_error)
                     
                     if date_index is not None:

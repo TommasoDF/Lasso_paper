@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  5 DEC 2025 18:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  9 DEC 2025 17:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -657,54 +657,55 @@ Package hyperref Info: Link coloring ON on input line 32.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 116.
- [2] [3]
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 221.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 231.
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2]
+Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 145.
+ [3] [4]
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 250.
+ [5]
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 260.
 
-Overfull \hbox (9.84483pt too wide) in paragraph at lines 232--235
+Overfull \hbox (9.84483pt too wide) in paragraph at lines 261--264
 []\OT1/ppl/m/it/10.95 Let $\OMS/cmsy/m/n/10.95 R$ \OT1/ppl/m/it/10.95 de-note a re-gres-sion op-er-a-tor map-
  []
 
-[4] [5]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 331.
- [6] [7]
-Overfull \hbox (1.23293pt too wide) in paragraph at lines 413--414
+[6]
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 360.
+ [7] [8]
+Overfull \hbox (1.23293pt too wide) in paragraph at lines 442--443
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares
  []
 
-[8] [9]
-Overfull \hbox (18.55505pt too wide) in paragraph at lines 495--497
+[9] [10]
+Overfull \hbox (18.55505pt too wide) in paragraph at lines 524--526
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares learn-
  []
 
-[10] (./main.bbl [11]) [12] [13] [14] [15] (./main.aux)
+[11] [12] (./main.bbl) [13] [14] [15] [16] [17] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 48EE5E58F2BF10223E03C7C9F31423D5;1835.
  ) 
 Here is how much of TeX's memory you used:
- 17153 strings out of 476025
- 283126 string characters out of 5790018
- 1868388 words of memory out of 5000000
- 37169 multiletter control sequences out of 15000+600000
+ 17194 strings out of 476025
+ 283938 string characters out of 5790018
+ 1869388 words of memory out of 5000000
+ 37196 multiletter control sequences out of 15000+600000
  532326 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,14n,145p,681b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (15 pages, 264052 bytes).
+Output written on main.pdf (17 pages, 274342 bytes).
 PDF statistics:
- 360 PDF objects out of 1000 (max. 8388607)
- 305 compressed objects within 4 object streams
- 122 named destinations out of 1000 (max. 500000)
+ 406 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
+ 136 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
