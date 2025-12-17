@@ -1,49 +1,51 @@
-This is BibTeX, Version 0.99d (TeX Live 2023)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 4 items.
 The style file: aea.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
 Warning--entry type for "Invesco2024IGSIS" isn't style-file defined
---line 449 of file references.bib
-You've used 12 entries,
+--line 977 of file references.bib
+You've used 18 entries,
             2695 wiz_defined-function locations,
-            662 strings with 5539 characters,
-and the built_in function-call counts, 72444 in all, are:
-= -- 12138
-> -- 822
+            709 strings with 6931 characters,
+and the built_in function-call counts, 99465 in all, are:
+= -- 16572
+> -- 1146
 < -- 0
-+ -- 5932
-- -- 258
-* -- 6463
-:= -- 14219
-add.period$ -- 85
-call.type$ -- 12
-change.case$ -- 156
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 165
-empty$ -- 405
-format.name$ -- 261
-if$ -- 12990
++ -- 8045
+- -- 358
+* -- 8862
+:= -- 19614
+add.period$ -- 129
+call.type$ -- 18
+change.case$ -- 234
+chr.to.int$ -- 18
+cite$ -- 18
+duplicate$ -- 252
+empty$ -- 637
+format.name$ -- 361
+if$ -- 17814
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 43
-num.names$ -- 132
-pop$ -- 12
+newline$ -- 61
+num.names$ -- 198
+pop$ -- 18
 preamble$ -- 1
-purify$ -- 180
+purify$ -- 270
 quote$ -- 0
-skip$ -- 152
+skip$ -- 227
 stack$ -- 0
-substring$ -- 17358
-swap$ -- 69
-text.length$ -- 168
+substring$ -- 23652
+swap$ -- 105
+text.length$ -- 252
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 46
+type$ -- 70
 warning$ -- 0
-while$ -- 285
+while$ -- 435
 width$ -- 0
-write$ -- 63
+write$ -- 93
 (There was 1 warning)
