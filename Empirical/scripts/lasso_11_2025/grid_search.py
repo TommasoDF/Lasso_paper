@@ -44,6 +44,7 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
         
         # Extract predictions and align data
         preds = np.array(stage1_results["predictions"]) #contains predictions up to r^e_{t+1} while y contains up to r_{t} so we need to align
+        
         #shift preds to match y
         preds = preds[:-1] # remove last prediction to align with y
         y_valid = y[-len(preds):] if isinstance(y, (pd.Series, pd.DataFrame)) else y[-len(preds):]
@@ -83,7 +84,6 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
         n_wins = len(stage1_results['lambdas'])
         dates = stage1_results.get('window_end_dates', np.arange(n_wins))
         features = stage1_results['feature_names']
-        
         # We will collect rows as dicts for speed then dataframe them
         detail_rows = []
         

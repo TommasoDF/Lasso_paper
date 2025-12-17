@@ -1,3 +1,4 @@
+import pandas as pd
 import numpy as np
 from scipy.optimize import minimize, curve_fit
 from stage1 import calculate_r_squared
@@ -51,12 +52,6 @@ def compute_alm_returns(predictions, kappa, intercept):
         - np.log(1 - kappa * np.exp(pred_t1[valid]))
         + intercept
     )
-    # alm[valid] = (
-    #     np.log(1 - kappa * np.exp(- 1 / kappa * (1 - kappa) * pred_t[valid]))
-    #     - np.log(1 - kappa * np.exp(- 1 / kappa * (1 - kappa) * pred_t1[valid]))
-    #     + intercept
-    # )
-
     return alm
 
 
@@ -96,12 +91,12 @@ def compute_stage2_r_squared(stage2_input, min_train_size=100):
         se_full = np.sqrt(np.diag(pcov_full))
         
         # Handle zero or near-zero standard errors
-        if se_full[0] < 1e-10:
+        if se_full[0] < 1e-30:
             kappa_tstat = np.nan  # Can't compute t-stat
         else:
             kappa_tstat = kappa_full / se_full[0]
         
-        if se_full[1] < 1e-10:
+        if se_full[1] < 1e-30:
             intercept_tstat = np.nan
         else:
             intercept_tstat = intercept_full / se_full[1]
@@ -111,7 +106,7 @@ def compute_stage2_r_squared(stage2_input, min_train_size=100):
         alm_fitted = compute_alm_returns(preds_full, kappa_full, intercept_full)
         
         # Calculate in-sample R²
-        y_full = stage2_input['vwretd'].values[1:len(alm_fitted)+1]
+        y_full = stage2_input['vwretd'].values[:-1]
         
         # Check if we have valid fitted values
         if len(alm_fitted) == 0:
@@ -139,47 +134,37 @@ def compute_stage2_r_squared(stage2_input, min_train_size=100):
         }
     
     # ===== OUT-OF-SAMPLE R² =====
-    # Use expanding window to generate true OOS predictions
-    n_obs = len(stage2_input)
+    # Use train-test split
     oos_predictions = []
     oos_actuals = []
-    
-    # Start predicting after we have enough data to estimate kappa
-    for t in range(min_train_size, n_obs - 1):  # -1 because we need t+1 for prediction
-        # Training data: everything up to time t-1
-        train_data = stage2_input.iloc[:t].copy()
-        
-        try:
-            # Estimate kappa on training data only
-            popt_train, _ = estimate_kappa_curve_fit(train_data)
-            kappa_train, intercept_train = popt_train
-            
-            # Make prediction for time t (this is out-of-sample!)
-            # We need predictions at t-1 and t to compute the ALM return at t
-            pred_t_minus_1 = stage2_input['predictions'].iloc[t-1]
-            pred_t = stage2_input['predictions'].iloc[t]
-            
-            # Check validity
-            # if (1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t_minus_1) > 0) and \
-            #    (1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t) > 0):
-            
-            if (1 - kappa_train * np.exp(pred_t_minus_1) > 0) and \
-               (1 - kappa_train * np.exp(pred_t) > 0):
+    test_size = 0.2
+    n = len(stage2_input['vwretd'])
+    n_test = int(n * test_size)
 
-                # Compute OOS prediction for return at time t
-                r_hat_t = (np.log(1 - kappa_train * np.exp(pred_t_minus_1)) - 
-                          np.log(1 - kappa_train * np.exp(pred_t)) + 
-                          intercept_train)
-                # r_hat_t = (np.log(1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t_minus_1)) - 
-                #           np.log(1 - kappa_train * np.exp(-1 / kappa_train * (1 - kappa_train) * pred_t)) + 
-                #           intercept_train)
-                
-                oos_predictions.append(r_hat_t)
-                oos_actuals.append(stage2_input['vwretd'].iloc[t])
-                
-        except Exception:
-            # Skip this observation if estimation fails
-            continue
+    X_train = stage2_input['predictions'].values[:-n_test]
+    y_train = stage2_input['vwretd'].values[:-n_test]
+    train_data = pd.DataFrame({'predictions': X_train, 'vwretd': y_train})
+    X_test = stage2_input['predictions'].values[-n_test:]
+    y_test = stage2_input['vwretd'].values[-n_test:]
+    test_data = pd.DataFrame({'predictions': X_test, 'vwretd': y_test})
+
+
+    #get parameters on train data
+    try:
+        popt_oos, _ = estimate_kappa_curve_fit(train_data)
+        kappa_oos, intercept_oos = popt_oos
+    except Exception as e:
+        print(f"OOS parameter estimation failed: {e}")
+        kappa_oos, intercept_oos = np.nan, np.nan
+
+    #generate OOS predictions
+    if not np.isnan(kappa_oos):
+        preds_oos = test_data['predictions'].values
+        alm_oos = compute_alm_returns(preds_oos, kappa_oos, intercept_oos)
+        
+        # Store valid OOS predictions and actuals
+        oos_predictions.extend(alm_oos)
+        oos_actuals.extend(test_data['vwretd'].values[:-1])  # Align lengths
     
     # Calculate OOS R²
     if len(oos_predictions) > 0:
@@ -196,5 +181,4 @@ def compute_stage2_r_squared(stage2_input, min_train_size=100):
         'kappa_tstat': kappa_tstat,
         'intercept': intercept_full,
         'intercept_tstat': intercept_tstat,
-        'n_oos_predictions': len(oos_predictions)
     }
