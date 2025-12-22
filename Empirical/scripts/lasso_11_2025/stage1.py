@@ -44,8 +44,6 @@ def lasso_rolling_window(X: np.ndarray,
                          lambda_mode: str = "cv",
                          fixed_lambda: Optional[float] = None) -> Dict[str, Any]:
     
-    
-
     # Extract date index if pandas object
     date_index = y.index if isinstance(y, (pd.Series, pd.DataFrame)) else None
     y = np.asarray(y).flatten()
@@ -106,8 +104,7 @@ def lasso_rolling_window(X: np.ndarray,
         print(f"Lambda selection: {mode_str}")
     
     for i in tqdm(range(burn_in - window_size, n_windows), desc="Rolling windows", disable=not verbose):
-        start_idx, end_idx = max(0, i), max(0, i) + window_size - 1
-        
+        start_idx, end_idx = max(0, i), max(0, i) + window_size # this way we selct data from 0 to window_size-1 in first iteration
         X_window = X_lagged[start_idx:end_idx]
         y_window = y_aligned[start_idx:end_idx]
         
@@ -162,15 +159,15 @@ def lasso_rolling_window(X: np.ndarray,
                 
                 # Out-of-sample prediction (Using LASSO as primary predictor)
                 if end_idx < len(y_aligned):
-                    X_next = X_lagged[end_idx + 1].reshape(1, -1) # one step-ahead prediction
+                    X_next = X_lagged[end_idx + 2].reshape(1, -1) # shift x by two step-ahead to compute beta_{t+1} x_{t+1}
                     X_next_scaled = scaler.transform(X_next) if standardize else X_next
                     pred = model.predict(X_next_scaled)[0]
                     results_data['predictions'].append(pred)
-                    target = y_aligned[end_idx + 1]
+                    target = y_aligned[end_idx + 2]
                     results_data['targets'].append(target)
                     
                     if date_index is not None:
-                        results_data['prediction_dates'].append(date_index[end_idx + 1])
+                        results_data['prediction_dates'].append(date_index[end_idx + 2])
         except Exception as e:
             if verbose:
                 print(f"Warning: Fitting failed for window {i}: {e}")
