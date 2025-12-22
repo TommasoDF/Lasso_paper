@@ -98,54 +98,22 @@ However, given that most economists cannot agree on a definitive asset pricing m
 These agents have subjective beliefs about variables beyond their control and maximize utility based on these beliefs. 
 Crucially, these agents do not know how fundamentals map to prices; instead, they learn this mapping from observed prices.
 This learning mechanism creates a feedback loop between beliefs and prices, enabling the model to match various asset-pricing moments.
+We build on \cite{Adam2016} for two main reasons.
+First, we seek to model how agents use of machine-learning techniques to form expectations about market outcomes affects the market itself. 
+A feedback loop of this kind already arises in \cite{Adam2016} under a very general learning rule, which we replace with a microfounded LASSO-based learning mechanism.
+Second, their framework assumes that agents fully understand the dividend process while remaining boundedly rational with respect to returns. 
+This structure allows us to disentangle the effects of misspecified forecasting rules for returns from misspecification regarding dividends.
 
-We use \cite{Adam2016} as the starting points for our theory of LASSO trading. 
-Doing so has two advantages:
-First, we aim to model the impact of agents using machine learning techniques to form expectations on market outcomes.
-Such a feedback loop emerges in \cite{Adam2016} already under a very general learning rule which we replace with a microfounded LASSO learning mechanism.
-Second, their framework assumes that agents understand the dividend process, yet are boundedly rational regarding returns.
-This enables us to distinguish the impact of agents employing misspecified forecasting rules for returns from mispecification regarding dividends.
-
-Our model is motivated by the empirical evidence that return predictability is an unstable phenomenon. 
-While traditional variables such as consumption growth, dividend yields, and short-term interest rates forecast returns in certain periods, their predictive power vanishes in others \citep{AngBekaert2007_RFS,GoyalWelch2003_MS,LettauLudvigson2001_JF}.
-More recent evidence points to sparsity as the second key feature of return predictability.
-\cite{gu2020empirical} compare several machine learning methods to forecast returns using a large set of potential predictors.
-
-
-More recenlty, researchers have documented similar patterns at high frequencies.
-\cite{Chinco2019} show that return predictability at high frequencies is unstable and concentrated in a small and shifting set of predictors. 
-Using LASSO regressions on a large set of candidate predictors at a high frequency, they found that predictive relationships emerge briefly and cannot be captured by a fixed forecasting model.
-The frequency of our model  is somehow in the middle as we consider daily return series.
-These findings suggest that return predictability can be explained by models in which agents search for and exploit fleeting patterns in large datasets, as we do in this paper.
-
-
-
-
-% More recently, \cite{adam2011internal} pointed out that the standard learning framework rests on the strong assumption that agents know how the object of their learning maps into prices.
-% They show that this equals assuming that agents perfectly know the market structure as well as the beliefs of other agents.
-% In \cite{Adam2016} a model is developed that relaxes this assumption by introducing the concept of internal rationality.
-% Agents have subjective beliefs about the 
-% In a more recent contribution, \cite{Adam2016} model agents as internally rational learners. 
-% Their model lets agents hold subjective beliefs about 
-
-% We extend the literature along these lines by allowing agents to use any number of predictors in their PLM.
-% This novel learning rule closely resembles how investors operate in practice, letting the data determine the model.
-
-
-
-
-% Our paper contributes to a large literature on asset pricing models with learning mechanisms. 
-% Theoretical work in this line of research mainly differs along three dimensions: (i) what agents learn about, (ii) what agents know about the true model, and (iii) what learning technology they use.
-% We will discuss the most important predecessros of our work along these dimensions.
-
-% Early models assumed that agents behave like econometricians who know the true data-generating process but are uncertain about its parameters. 
-% Learning is low-dimensional and converges to the rational expectations equilibrium (REE) as agents observe more and more data.
-% In such a setting, \cite{Timmermann1993,Timmermann1996} model agents that try to estimate the dividend growth rate and show that learning can generate excess volatility.
-% \cite{Honkapohja2003} extend this setting by limiting the memory of agents. If agents can only use of a finite sample of past observations, the model does not necessarily converge to the REE.
-
-% Later work departed from the assumption that agents know the true model. Instead agents are assumed to estimate simple forecasting rules using recursive least squares or constant-gain learning. 
-
-% More recently,
+Empirical research has established time-varying return predictability as a central feature of financial markets. 
+Variables such as consumption growth or the dividend yield contain information about future returns in some periods but not in others \citep{AngBekaert2007_RFS,GoyalWelch2003_MS,LettauLudvigson2001_JF}. 
+More recently, the literature has documented sparsity in stock return signals as an additional empirical regularity. 
+In particular, evidence suggests that among the hundreds of factors proposed in the literature, only a small subset is informative about future returns at any given point in time \citep{kozak2020shrinking,freyberger2020dissecting,Feng2020}.
+In influential work, \cite{gu2020empirical} show that machine-learning forecasts outperform traditional linear models by optimally exploiting sparse signals and allowing for nonlinear interactions. 
+Most closely related to our narrative, \cite{Chinco2019} demonstrate that LASSO regressions can uncover return predictability at high frequencies that is unstable and concentrated in a small, shifting set of predictors. 
+Such patterns cannot be captured by a fixed linear model.
+Overall, the empirical evidence suggests that return predictability often emerges unexpectedly. 
+We therefore argue that as soon as investors are aware of this, and they likely are, they will attempt to exploit these sparse and unstable signals using techniques such as the LASSO.
+We model this explicitly.
 
 % --------------------
 \section{The model}
