@@ -19,7 +19,7 @@ from stage2 import compute_stage2_r_squared
 #      FUNCTIONS
 # =======================
 
-def estimate_single_config(X, y, window_size, n_lags, lambda_val):
+def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=True, verbose=False, save_only_positve_r_squared = True):
     """
     Estimate 1st and 2nd stage for a single configuration.
     
@@ -38,16 +38,17 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
             n_lags=n_lags,
             lambda_mode="fixed", 
             fixed_lambda=lambda_val, 
-            verbose=False # Keep false to avoid spamming console in parallel
+            verbose=False, # Keep false to avoid spamming console in parallel
+            standardize=standardize
         )
        
         
         # Extract predictions and align data
-        preds = np.array(stage1_results["predictions"]) #contains predictions up to r^e_{t+1} while y contains up to r_{t} so we need to align
-        
+        preds = np.array(stage1_results["predictions"]) #contains predictions up to r^e_{t+2} while y contains up to r_{t} so we need to align
+     
         #shift preds to match y
-        preds = preds[:-1] # remove last prediction to align with y
-        y_valid = y[-len(preds):] if isinstance(y, (pd.Series, pd.DataFrame)) else y[-len(preds):]
+        preds = preds[:-2] # remove last two prediction (nans) to align with y, now it contains up to r^e_{t}
+        y_valid = y[-len(preds)-1:-1] #this contains up until r_{t-1} to align with preds
         y_vals = y_valid.values if isinstance(y_valid, (pd.Series, pd.DataFrame)) else y_valid
         
         #defining de-meaned y for comparing with stage 1 errors
@@ -87,8 +88,22 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
         # We will collect rows as dicts for speed then dataframe them
         detail_rows = []
         
-        # Retrieve coefficient arrays (Shape: n_windows x n_features) only if 'r2_insample_stage2' > 0
-        if summary['r2_insample_stage2'] > 0:
+        if save_only_positve_r_squared and summary['r2_insample_stage2'] <=0:
+            # If insample R2 is not positive, save only NaNs
+            detail_rows.append({
+                'date': None,
+                'window_size': window_size,
+                'n_lags': n_lags,
+                'lambda': lambda_val,
+                'window_index': None,
+                'lasso_intercept': np.nan,
+                # 'ols_intercept': np.nan,
+                'lasso_r2_in': np.nan,
+                'prediction_error': np.nan,
+                # 'ols_r2_in': np.nan,
+                'num_nonzero_coefficients': np.nan
+            })
+        else:
             lasso_coefs_arr = stage1_results['coefficients']
             # ols_coefs_arr = stage1_results['ols_coefficients']
         
@@ -103,7 +118,6 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
                     'lasso_intercept': stage1_results['intercepts'][i],
                     # 'ols_intercept': stage1_results['ols_intercepts'][i],
                     'lasso_r2_in': stage1_results['insample_r_squareds'][i],
-                    'prediction_error': stage1_results['prediction_errors'][i],
                     # 'ols_r2_in': stage1_results['ols_insample_r2'][i],
                     'num_nonzero_coefficients': stage1_results['num_nonzero_coefficients'][i]
                 }
@@ -115,20 +129,7 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val):
                     # row[f"OLS_{f_name}"] = ols_coefs_arr[i, f_idx]
 
                 detail_rows.append(row)
-        else:
-            detail_rows.append({
-                'date': None,
-                'window_size': window_size,
-                'n_lags': n_lags,
-                'lambda': lambda_val,
-                'window_index': None,
-                'lasso_intercept': np.nan,
-                # 'ols_intercept': np.nan,
-                'lasso_r2_in': np.nan,
-                'prediction_error': np.nan,
-                # 'ols_r2_in': np.nan,
-                'num_nonzero_coefficients': np.nan
-            })
+        
             
         details_df = pd.DataFrame(detail_rows)
         

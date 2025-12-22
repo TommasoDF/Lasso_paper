@@ -15,9 +15,9 @@ def estimate_kappa_curve_fit(stage2):
     pcov : 2D array
         Covariance matrix of parameters
     """
-    r = stage2['vwretd'].values[:-1] # up to r_{t-1}
-    pred_t = stage2['predictions'].values[:-1] # up to r^e_{t-1}
-    pred_t1 = stage2['predictions'].values[1:] # up to r^e_{t}
+    r = stage2['vwretd'].values[1:] # up to r_{t}
+    pred_t = stage2['predictions'].values[:-1] # up to r^e_{t}
+    pred_t1 = stage2['predictions'].values[1:] # up to r^e_{t+1}
     
     def alm_model(x, kappa, intercept):
         pred_t, pred_t1 = x
@@ -106,7 +106,7 @@ def compute_stage2_r_squared(stage2_input, min_train_size=100):
         alm_fitted = compute_alm_returns(preds_full, kappa_full, intercept_full)
         
         # Calculate in-sample R²
-        y_full = stage2_input['vwretd'].values[:-1]
+        y_full = stage2_input['vwretd'].values[1:]
         
         # Check if we have valid fitted values
         if len(alm_fitted) == 0:
@@ -164,7 +164,7 @@ def compute_stage2_r_squared(stage2_input, min_train_size=100):
         
         # Store valid OOS predictions and actuals
         oos_predictions.extend(alm_oos)
-        oos_actuals.extend(test_data['vwretd'].values[:-1])  # Align lengths
+        oos_actuals.extend(test_data['vwretd'].values[1:])  # Align lengths
     
     # Calculate OOS R²
     if len(oos_predictions) > 0:
