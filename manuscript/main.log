@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  17 DEC 2025 09:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  22 DEC 2025 15:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -666,38 +666,64 @@ Package hyperref Info: Link coloring ON on input line 32.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
 (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
  (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/jonat/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2] [3] [4]
-Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 209.
- [5] [6]
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 314.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 324.
+{C:/Users/jonat/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
 
-Overfull \hbox (9.84483pt too wide) in paragraph at lines 325--328
+Package natbib Warning: Citation `AngBekaert2007_RFS' on page 3 undefined on input line 106.
+
+
+Package natbib Warning: Citation `GoyalWelch2003_MS' on page 3 undefined on input line 106.
+
+
+Package natbib Warning: Citation `LettauLudvigson2001_JF' on page 3 undefined on input line 106.
+
+
+Package natbib Warning: Citation `kozak2020shrinking' on page 3 undefined on input line 108.
+
+
+Package natbib Warning: Citation `freyberger2020dissecting' on page 3 undefined on input line 108.
+
+
+Package natbib Warning: Citation `gu2020empirical' on page 3 undefined on input line 109.
+
+[3] [4]
+Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 180.
+ [5] [6]
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 285.
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 295.
+
+Overfull \hbox (9.84483pt too wide) in paragraph at lines 296--299
 []\OT1/ppl/m/it/10.95 Let $\OMS/cmsy/m/n/10.95 R$ \OT1/ppl/m/it/10.95 de-note a re-gres-sion op-er-a-tor map-
  []
 
 [7] [8]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 424.
- [9]
-Overfull \hbox (1.23293pt too wide) in paragraph at lines 506--507
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 395.
+
+Overfull \vbox (0.5766pt too high) has occurred while \output is active []
+
+ [9] [10]
+Overfull \hbox (1.23293pt too wide) in paragraph at lines 477--478
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares
  []
 
-[10] [11] [12]
-Overfull \hbox (18.55505pt too wide) in paragraph at lines 588--590
+[11] [12]
+Overfull \hbox (18.55505pt too wide) in paragraph at lines 559--561
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares learn-
  []
 
-[13] (main.bbl [14]) [15] [16] [17] [18] [19] (main.aux)
+[13] (main.bbl [14]) [15] [16] [17] [18]
+
+Package natbib Warning: There were undefined citations.
+
+[19] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
@@ -706,17 +732,17 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 48EE5E58F2BF10223E03C7C9F31423D5;1835.
  ) 
 Here is how much of TeX's memory you used:
- 17487 strings out of 467871
- 284987 string characters out of 5418375
- 728547 words of memory out of 5000000
- 45912 multiletter control sequences out of 15000+600000
+ 17491 strings out of 467871
+ 285048 string characters out of 5418375
+ 726547 words of memory out of 5000000
+ 45915 multiletter control sequences out of 15000+600000
  647760 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,14n,145p,662b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,14n,145p,662b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (19 pages, 326848 bytes).
+Output written on main.pdf (19 pages, 328251 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 143 named destinations out of 1000 (max. 500000)
+ 439 PDF objects out of 1000 (max. 8388607)
+ 144 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

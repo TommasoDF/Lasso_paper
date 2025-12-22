@@ -7,45 +7,51 @@ Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
 Warning--entry type for "Invesco2024IGSIS" isn't style-file defined
 --line 977 of file references.bib
-You've used 18 entries,
+Warning--I didn't find a database entry for "AngBekaert2007_RFS"
+Warning--I didn't find a database entry for "GoyalWelch2003_MS"
+Warning--I didn't find a database entry for "LettauLudvigson2001_JF"
+Warning--I didn't find a database entry for "kozak2020shrinking"
+Warning--I didn't find a database entry for "freyberger2020dissecting"
+Warning--I didn't find a database entry for "gu2020empirical"
+You've used 19 entries,
             2695 wiz_defined-function locations,
-            709 strings with 6931 characters,
-and the built_in function-call counts, 99465 in all, are:
-= -- 16572
-> -- 1146
+            724 strings with 7215 characters,
+and the built_in function-call counts, 106384 in all, are:
+= -- 17728
+> -- 1240
 < -- 0
-+ -- 8045
-- -- 358
-* -- 8862
-:= -- 19614
-add.period$ -- 129
-call.type$ -- 18
-change.case$ -- 234
-chr.to.int$ -- 18
-cite$ -- 18
-duplicate$ -- 252
-empty$ -- 637
-format.name$ -- 361
-if$ -- 17814
++ -- 8617
+- -- 388
+* -- 9487
+:= -- 20962
+add.period$ -- 136
+call.type$ -- 19
+change.case$ -- 247
+chr.to.int$ -- 19
+cite$ -- 19
+duplicate$ -- 266
+empty$ -- 671
+format.name$ -- 391
+if$ -- 19058
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 61
-num.names$ -- 198
-pop$ -- 18
+newline$ -- 64
+num.names$ -- 209
+pop$ -- 19
 preamble$ -- 1
-purify$ -- 270
+purify$ -- 285
 quote$ -- 0
-skip$ -- 227
+skip$ -- 240
 stack$ -- 0
-substring$ -- 23652
-swap$ -- 105
-text.length$ -- 252
+substring$ -- 25305
+swap$ -- 111
+text.length$ -- 266
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
+type$ -- 74
 warning$ -- 0
-while$ -- 435
+while$ -- 459
 width$ -- 0
-write$ -- 93
-(There was 1 warning)
+write$ -- 98
+(There were 7 warnings)
