@@ -51,6 +51,17 @@
 {\bf Farmer, Leland~E., Lawrence Schmidt, and Allan Timmermann.} 2023.
   ``Pockets of Predictability.'' {\em Journal of Finance}, 78.
 
+\harvarditem[Feng, Giglio \harvardand\ Xiu]{Guanhao Feng, Stefano Giglio
+  \harvardand\ Dacheng Xiu}{2020}{Feng2020}
+{\bf Feng, Guanhao, Stefano Giglio, and Dacheng Xiu.} 2020. ``Taming the Factor
+  Zoo: A Test of New Factors.'' {\em Journal of Finance}, 75.
+
+\harvarditem[Freyberger, Neuhierl \harvardand\ Weber]{Joachim Freyberger,
+  Andreas Neuhierl \harvardand\ Michael Weber}{2020}{freyberger2020dissecting}
+{\bf Freyberger, Joachim, Andreas Neuhierl, and Michael Weber.} 2020.
+  ``Dissecting characteristics nonparametrically.'' {\em The Review of
+  Financial Studies}, 33(5):~2326--2377.
+
 \harvarditem[Georges \harvardand\ Pereira]{Christophre Georges \harvardand\
   Javier Pereira}{2021}{Georges2021}
 {\bf Georges, Christophre, and Javier Pereira.} 2021. ``Market stability with
@@ -61,6 +72,12 @@
   Welch}{2003}{GoyalWelch2003_MS}
 {\bf Goyal, Amit, and Ivo Welch.} 2003. ``Predicting the Equity Premium with
   Dividend Ratios.'' 49(5):~639--654.
+
+\harvarditem[Gu, Kelly \harvardand\ Xiu]{Shihao Gu, Bryan Kelly \harvardand\
+  Dacheng Xiu}{2020}{gu2020empirical}
+{\bf Gu, Shihao, Bryan Kelly, and Dacheng Xiu.} 2020. ``Empirical asset pricing
+  via machine learning.'' {\em The Review of Financial Studies},
+  33(5):~2223--2273.
 
 \harvarditem[Hong, Stein \harvardand\ Yu]{Harrison Hong, Jeremy~C Stein
   \harvardand\ Jialin Yu}{2007}{hong2007simple}
@@ -76,6 +93,11 @@
 \harvarditem[{Invesco}]{{Invesco}}{2024}{Invesco2024IGSIS}
 {\bf {Invesco}.} 2024. ``Invesco Global Systematic Investing Study 2024.''
   Accessed: 09-12-2025.
+
+\harvarditem[Kozak, Nagel \harvardand\ Santosh]{Serhiy Kozak, Stefan Nagel
+  \harvardand\ Shrihari Santosh}{2020}{kozak2020shrinking}
+{\bf Kozak, Serhiy, Stefan Nagel, and Shrihari Santosh.} 2020. ``Shrinking the
+  cross-section.'' {\em Journal of Financial Economics}, 135(2):~271--292.
 
 \harvarditem[Lettau \harvardand\ Ludvigson]{Martin Lettau \harvardand\ Sydney
   Ludvigson}{2001}{LettauLudvigson2001_JF}
