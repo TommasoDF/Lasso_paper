@@ -6,46 +6,49 @@ The style file: aea.bst
 Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
 Warning--entry type for "Invesco2024IGSIS" isn't style-file defined
---line 977 of file references.bib
-You've used 18 entries,
+--line 1021 of file references.bib
+Warning--empty journal in AngBekaert2007_RFS
+Warning--empty journal in GoyalWelch2003_MS
+Warning--empty journal in LettauLudvigson2001_JF
+You've used 21 entries,
             2695 wiz_defined-function locations,
-            709 strings with 6931 characters,
-and the built_in function-call counts, 99465 in all, are:
-= -- 16572
-> -- 1146
+            727 strings with 7314 characters,
+and the built_in function-call counts, 114551 in all, are:
+= -- 19061
+> -- 1338
 < -- 0
-+ -- 8045
-- -- 358
-* -- 8862
-:= -- 19614
-add.period$ -- 129
-call.type$ -- 18
-change.case$ -- 234
-chr.to.int$ -- 18
-cite$ -- 18
-duplicate$ -- 252
-empty$ -- 637
-format.name$ -- 361
-if$ -- 17814
++ -- 9231
+- -- 418
+* -- 10213
+:= -- 22595
+add.period$ -- 150
+call.type$ -- 21
+change.case$ -- 273
+chr.to.int$ -- 21
+cite$ -- 24
+duplicate$ -- 294
+empty$ -- 760
+format.name$ -- 421
+if$ -- 20522
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 61
-num.names$ -- 198
-pop$ -- 18
+newline$ -- 70
+num.names$ -- 231
+pop$ -- 21
 preamble$ -- 1
-purify$ -- 270
+purify$ -- 315
 quote$ -- 0
-skip$ -- 227
+skip$ -- 260
 stack$ -- 0
-substring$ -- 23652
-swap$ -- 105
-text.length$ -- 252
+substring$ -- 27186
+swap$ -- 120
+text.length$ -- 294
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
-warning$ -- 0
-while$ -- 435
+type$ -- 82
+warning$ -- 3
+while$ -- 513
 width$ -- 0
-write$ -- 93
-(There was 1 warning)
+write$ -- 108
+(There were 4 warnings)

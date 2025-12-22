@@ -106,12 +106,17 @@ Such a feedback loop emerges in \cite{Adam2016} already under a very general lea
 Second, their framework assumes that agents understand the dividend process, yet are boundedly rational regarding returns.
 This enables us to distinguish the impact of agents employing misspecified forecasting rules for returns from mispecification regarding dividends.
 
-A growing body of empirical research suggests that learning-based expectation formation captures important features of actual investor behavior. 
-In particular, we are motivated by recent evidence showing that return predictability is time-varying, short-lived, and sparse. 
-For example, \cite{Chinco2019} show that return predictability at high frequencies is unstable and concentrated in a small and shifting set of predictors. 
+Our model is motivated by the empirical evidence that return predictability is an unstable phenomenon. 
+While traditional variables such as consumption growth, dividend yields, and short-term interest rates forecast returns in certain periods, their predictive power vanishes in others \citep{AngBekaert2007_RFS,GoyalWelch2003_MS,LettauLudvigson2001_JF}.
+More recent evidence points to sparsity as the second key feature of return predictability.
+\cite{gu2020empirical} compare several machine learning methods to forecast returns using a large set of potential predictors.
+
+
+More recenlty, researchers have documented similar patterns at high frequencies.
+\cite{Chinco2019} show that return predictability at high frequencies is unstable and concentrated in a small and shifting set of predictors. 
 Using LASSO regressions on a large set of candidate predictors at a high frequency, they found that predictive relationships emerge briefly and cannot be captured by a fixed forecasting model.
-\cite{Farmer2023} identify similar patterns at lower frequencies which they term "pockets of predictability.. 
-Another paper? These findings suggest that return predictability can be explained by models in which agents search for and exploit fleeting patterns in large datasets, as we do in this paper.
+The frequency of our model  is somehow in the middle as we consider daily return series.
+These findings suggest that return predictability can be explained by models in which agents search for and exploit fleeting patterns in large datasets, as we do in this paper.
 
 
 
