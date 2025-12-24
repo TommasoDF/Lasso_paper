@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  17 DEC 2025 09:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  24 DEC 2025 13:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -293,530 +293,6 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \cur@row=\count293
 \cur@col=\count294
 \conditionsep=\skip68
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty
-Package: mathpazo 2020/03/25 PSNFSS-v9.3 Palatino w/ Pazo Math (D.Puga, WaS) 
-\symupright=\mathgroup4
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:122: LaTeX Error: Command `\Gamma' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.122 ...hSymbol{\Gamma}{\mathalpha}{upright}{"00}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:123: LaTeX Error: Command `\Delta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.123 ...hSymbol{\Delta}{\mathalpha}{upright}{"01}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:124: LaTeX Error: Command `\Theta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.124 ...hSymbol{\Theta}{\mathalpha}{upright}{"02}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:125: LaTeX Error: Command `\Lambda' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.125 ...Symbol{\Lambda}{\mathalpha}{upright}{"03}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:126: LaTeX Error: Command `\Xi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.126 ...MathSymbol{\Xi}{\mathalpha}{upright}{"04}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:127: LaTeX Error: Command `\Pi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.127 ...MathSymbol{\Pi}{\mathalpha}{upright}{"05}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:128: LaTeX Error: Command `\Sigma' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.128 ...hSymbol{\Sigma}{\mathalpha}{upright}{"06}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:129: LaTeX Error: Command `\Upsilon' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.129 ...ymbol{\Upsilon}{\mathalpha}{upright}{"07}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:130: LaTeX Error: Command `\Phi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.130 ...athSymbol{\Phi}{\mathalpha}{upright}{"08}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:131: LaTeX Error: Command `\Psi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.131 ...athSymbol{\Psi}{\mathalpha}{upright}{"09}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:132: LaTeX Error: Command `\Omega' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.132 ...hSymbol{\Omega}{\mathalpha}{upright}{"0A}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:145: LaTeX Error: Command `\alpha' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.145 ...hSymbol{\alpha}{\mathalpha}{letters}{"0B}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:146: LaTeX Error: Command `\beta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.146 ...thSymbol{\beta}{\mathalpha}{letters}{"0C}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:147: LaTeX Error: Command `\gamma' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.147 ...hSymbol{\gamma}{\mathalpha}{letters}{"0D}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:148: LaTeX Error: Command `\delta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.148 ...hSymbol{\delta}{\mathalpha}{letters}{"0E}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:149: LaTeX Error: Command `\epsilon' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.149 ...ymbol{\epsilon}{\mathalpha}{letters}{"0F}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:150: LaTeX Error: Command `\zeta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.150 ...thSymbol{\zeta}{\mathalpha}{letters}{"10}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:151: LaTeX Error: Command `\eta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.151 ...athSymbol{\eta}{\mathalpha}{letters}{"11}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:152: LaTeX Error: Command `\theta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.152 ...hSymbol{\theta}{\mathalpha}{letters}{"12}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:153: LaTeX Error: Command `\iota' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.153 ...thSymbol{\iota}{\mathalpha}{letters}{"13}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:154: LaTeX Error: Command `\kappa' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.154 ...hSymbol{\kappa}{\mathalpha}{letters}{"14}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:155: LaTeX Error: Command `\lambda' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.155 ...Symbol{\lambda}{\mathalpha}{letters}{"15}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:156: LaTeX Error: Command `\mu' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.156 ...MathSymbol{\mu}{\mathalpha}{letters}{"16}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:157: LaTeX Error: Command `\nu' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.157 ...MathSymbol{\nu}{\mathalpha}{letters}{"17}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:158: LaTeX Error: Command `\xi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.158 ...MathSymbol{\xi}{\mathalpha}{letters}{"18}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:159: LaTeX Error: Command `\pi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.159 ...MathSymbol{\pi}{\mathalpha}{letters}{"19}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:160: LaTeX Error: Command `\rho' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.160 ...athSymbol{\rho}{\mathalpha}{letters}{"1A}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:161: LaTeX Error: Command `\sigma' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.161 ...hSymbol{\sigma}{\mathalpha}{letters}{"1B}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:162: LaTeX Error: Command `\tau' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.162 ...athSymbol{\tau}{\mathalpha}{letters}{"1C}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:163: LaTeX Error: Command `\upsilon' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.163 ...ymbol{\upsilon}{\mathalpha}{letters}{"1D}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:164: LaTeX Error: Command `\phi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.164 ...athSymbol{\phi}{\mathalpha}{letters}{"1E}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:165: LaTeX Error: Command `\chi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.165 ...athSymbol{\chi}{\mathalpha}{letters}{"1F}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:166: LaTeX Error: Command `\psi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.166 ...athSymbol{\psi}{\mathalpha}{letters}{"20}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:167: LaTeX Error: Command `\omega' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.167 ...hSymbol{\omega}{\mathalpha}{letters}{"21}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:168: LaTeX Error: Command `\varepsilon' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.168 ...ol{\varepsilon}{\mathalpha}{letters}{"22}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:169: LaTeX Error: Command `\vartheta' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.169 ...mbol{\vartheta}{\mathalpha}{letters}{"23}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:170: LaTeX Error: Command `\varpi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.170 ...hSymbol{\varpi}{\mathalpha}{letters}{"24}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:171: LaTeX Error: Command `\varrho' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.171 ...Symbol{\varrho}{\mathalpha}{letters}{"25}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:172: LaTeX Error: Command `\varsigma' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.172 ...mbol{\varsigma}{\mathalpha}{letters}{"26}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/mathpazo.sty:173: LaTeX Error: Command `\varphi' already defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.173 ...Symbol{\varphi}{\mathalpha}{letters}{"27}
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
  (/usr/local/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -1046,8 +522,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup5
-\symAMSb=\mathgroup6
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
@@ -1068,7 +544,7 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen276
 \Gm@dimlist=\toks34
 )
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 41.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 40.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
@@ -1098,12 +574,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip76
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count331
-))
-LaTeX Font Info:    Trying to load font information for OT1+pplx on input line 32.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pplx.fd
-File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
-)
-No file main.aux.
+)) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -1124,7 +595,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
-(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count332
 \scratchdimen=\dimen278
@@ -1147,6 +618,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 32.
+ (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
@@ -1185,57 +657,57 @@ Package hyperref Info: Link coloring ON on input line 32.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
-(C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
+(/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
- (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/jonat/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2] [3] [4]
-Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 209.
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4]
+Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 180.
  [5] [6]
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 314.
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 324.
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 285.
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 295.
 
-Overfull \hbox (9.84483pt too wide) in paragraph at lines 325--328
+Overfull \hbox (9.84483pt too wide) in paragraph at lines 296--299
 []\OT1/ppl/m/it/10.95 Let $\OMS/cmsy/m/n/10.95 R$ \OT1/ppl/m/it/10.95 de-note a re-gres-sion op-er-a-tor map-
  []
 
 [7] [8]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 424.
- [9]
-Overfull \hbox (1.23293pt too wide) in paragraph at lines 506--507
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 395.
+
+Overfull \vbox (0.5766pt too high) has occurred while \output is active []
+
+ [9] [10]
+Overfull \hbox (1.23293pt too wide) in paragraph at lines 477--478
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares
  []
 
-[10] [11] [12]
-Overfull \hbox (18.55505pt too wide) in paragraph at lines 588--590
+[11] [12]
+Overfull \hbox (18.55505pt too wide) in paragraph at lines 559--561
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares learn-
  []
 
-[13] (main.bbl [14]) [15] [16] [17] [18] [19] (main.aux)
- ***********
-LaTeX2e <2025-11-01>
-L3 programming layer <2025-11-06>
- ***********
+[13] (./main.bbl [14] [15]) [16] [17] [18] [19] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 48EE5E58F2BF10223E03C7C9F31423D5;1835.
  ) 
 Here is how much of TeX's memory you used:
- 17487 strings out of 467871
- 284987 string characters out of 5418375
- 728547 words of memory out of 5000000
- 45912 multiletter control sequences out of 15000+600000
- 647760 words of font info for 92 fonts, out of 8000000 for 9000
+ 17247 strings out of 476025
+ 285074 string characters out of 5790018
+ 1868388 words of memory out of 5000000
+ 37235 multiletter control sequences out of 15000+600000
+ 532326 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,14n,145p,662b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (19 pages, 326848 bytes).
+ 98i,14n,145p,683b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on main.pdf (19 pages, 282578 bytes).
 PDF statistics:
- 437 PDF objects out of 1000 (max. 8388607)
- 143 named destinations out of 1000 (max. 500000)
+ 467 PDF objects out of 1000 (max. 8388607)
+ 407 compressed objects within 5 object streams
+ 150 named destinations out of 1000 (max. 500000)
  89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
