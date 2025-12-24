@@ -1,12 +1,10 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
-Reallocating 'name_of_file' (item size: 1) to 4 items.
 The style file: aea.bst
-Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
 Warning--entry type for "Invesco2024IGSIS" isn't style-file defined
---line 1021 of file references.bib
+--line 511 of file references.bib
 Warning--empty journal in AngBekaert2007_RFS
 Warning--empty journal in GoyalWelch2003_MS
 Warning--empty journal in LettauLudvigson2001_JF
