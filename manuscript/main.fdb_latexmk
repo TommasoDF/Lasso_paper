@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1766583038 "main.aux" "main.bbl" "main" 1766583040 0
+["bibtex main"] 1766580174 "main.aux" "main.bbl" "main" 1766580175 0
   "./aea.bst" 1758878048 26202 034ebaf6925cb914f19ae8306f420e5b ""
-  "./references.bib" 1766583038 50327 4a3b0ee3e94edeb7d600af2174ecb5f7 ""
-  "main.aux" 1766583040 8259 2c0add0b2cb11f0d41844e71e08f5358 "pdflatex"
+  "./references.bib" 1766580172 51193 0ec30b2e63ae677521fbd08f8047f378 ""
+  "main.aux" 1766580175 8259 01cf8ad46d87471824c6878363babd94 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1766583038 "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" "main.pdf" "main" 1766583040 0
-  "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" 1766582061 49523 909a6c487be19553f951d055421e41b3 ""
+["pdflatex"] 1766580174 "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" "main.pdf" "main" 1766580175 0
+  "/Users/tommasodifrancesco/Desktop/Lasso_paper/manuscript/main.tex" 1766579904 49278 f6ef691b3062af61368546ee36863678 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1136768653 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -166,11 +166,11 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709724026 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709723959 7883460 1d7a9be62ed57029668d948feb917816 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1766583040 8259 2c0add0b2cb11f0d41844e71e08f5358 "pdflatex"
-  "main.bbl" 1766583038 6524 cac50599536e6a341525a10604d09312 "bibtex main"
-  "main.out" 1766583040 1835 48ee5e58f2bf10223e03c7c9f31423d5 "pdflatex"
-  "main.tex" 1766582061 49523 909a6c487be19553f951d055421e41b3 ""
-  "style.sty" 1766582971 1208 3f9e8c8be1532d4e373bcd3c8e83fe86 ""
+  "main.aux" 1766580175 8259 01cf8ad46d87471824c6878363babd94 "pdflatex"
+  "main.bbl" 1766580174 6826 661c5d048d0f2da01e610106f96ba13e "bibtex main"
+  "main.out" 1766580175 1835 48ee5e58f2bf10223e03c7c9f31423d5 "pdflatex"
+  "main.tex" 1766579904 49278 f6ef691b3062af61368546ee36863678 ""
+  "style.sty" 1766579366 1254 8280499e7faaa60cb479e701129e18c0 ""
   (generated)
   "main.aux"
   "main.log"
