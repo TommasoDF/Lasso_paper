@@ -48,16 +48,17 @@ Financial markets are no exception to this trend.
 Whereas investors once had access to only a handful of data series, today they can draw on a vast array of signals, ranging from traditional balance-sheet information to textual data, satellite imagery, and web traffic.
 For most of these new variables, there is no clear theoretical prior about their relationship, if any, to future stock returns. 
 Nevertheless, such data are in high demand with investors. 
-The reason is that investors increasingly rely on machine learning and artificial intelligence (AI) to find useful patterns in large datasets.\footnote{The Invesco Global Systematic Investing Study 2024 reports that more than half of surveyed investors incorporate AI, using tools ranging from pattern recognition to portfolio optimization \citep{Invesco2024IGSIS}.}
-These methods require no theorytical guidance about which variables should matter; instead, they let the data speak for themselves.
+The reason is that investors increasingly rely on machine learning and artificial intelligence (AI) to find useful patterns in large datasets.\footnote{The Invesco Global Systematic Investing Study 2024 reports that more than half of surveyed investors incorporate AI in their investment processes using it in a variety of situations, ranging from pattern recognition to portfolio optimization \citep{Invesco2024IGSIS}.}
+These methods require no theoretical guidance about which variables should matter and they let instead the data speak for themselves.
 
-This behavior is not well captured by existing asset pricing models with learning. 
-In these models, agents typically are assumed to employ self-referential or correctly specified forecasting rules, or to work with severely under-parameterized perceived laws of motion. Agents track a small number of parameters and update them recursively using variants of least squares or constant-gain learning. 
+This behavior is in contrast to the traditional FIRE (Full Information Rational Expectations) paradigm, in which agents are assumed to know the true data-generating process and to form expectations accordingly, which is
+the benchmark in asset pricing theory. 
+Even relaxation of FIRE, in the favour of learning mechanisms, models agents asemploying self-referential or correctly specified forecasting rules, or to work with under-parameterized perceived laws of motion. Agents track a small number of parameters and update them recursively using variants of least squares or constant-gain learning. 
 These frameworks are analytically convenient, but they do not describe investors who suspect that some among thousands of potential signals may forecast returns and who use flexible statistical procedures to discover such relationships without an explicit structural model in mind.
 
 We develop a model that embeds this form of statistical learning into a standard asset pricing environment. 
-Under rational expectations, returns in our economy are not predictable. 
-Agents, however, suspect that returns may be conditionally predictable using a large set of potential predictors. 
+Under FIRE, log-returns in our economy are not predictable. 
+Agents, however, suspect that returns may be conditionally predictable using a large set of potential regressors. 
 To exploit this perceived opportunity, they bet on sparsity and apply a machine learning method, least absolute shrinkage and selection operator (LASSO), to select a sparse subset of variables from the high-dimensional predictor space and to construct forecasting rules \citep{Tibshirani1996}.
 
 Our main result is that the very act of searching for predictability with such statistical learning methods can generate short-lived pockets of return predictability. 
@@ -148,14 +149,12 @@ Similarly for the aggregate consumption process we postulate that
 \begin{equation}
     \frac{C_t}{C_{t-1}} = a \varepsilon^c_t.
 \end{equation}
-
 The equilibrium price of the asset is determined by the standard no-arbitrage condition which requires that the price at time $t$ equals the discounted expected value of next period's price plus dividend, that is
 \begin{equation}\label{eq:equilibrium_price}
     P_t = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} P_{t+1} + D_{t+1}}\right],
 \end{equation}
 where $\delta$ is the discount factor and $\mathbb{E}_t[\cdot]$ is the expectation operator conditional on information available at time $t$.
-
-Under rational expectations, the equilibrium price can be solved as
+Under FIRE, the equilibrium price can be solved as
 \begin{equation}
     P_t =  \frac{\delta a^{(1 - \gamma)} \rho_e}{1 - a^{(1 - \gamma)} \rho_e} D_t,
 \end{equation}
@@ -171,17 +170,15 @@ Taking logs we obtain log-returns
 \begin{equation}
     r_{t+1} = \log(R_{t+1}) = \log(a) + \log(\varepsilon^d_{t+1}) \sim \mathcal{N}(\log(a) - s^2_d/2, s^2_d).
 \end{equation}
-
-Without loss of generality in what follows we set $\log(a) = s^2_d/2$. This implies that under rational expectations log-returns have mean zero and there is no time-$t$ information that can help forecasting returns.
+Without loss of generality in what follows we set $\log(a) = s^2_d/2$. This implies that under FIRE log-returns have mean zero and there is no time-$t$ information that can help forecasting returns.
 
 Instead of assuming that agents know the true data generating process, we follow the adaptive learning literature and assume that agents are boundedly rational and form their expectations using econometric techniques \textcolor{red}{[citations here]}.
 Equation (\ref{eq:equilibrium_price}) shows that agents have to forecast two quantities, the risk-adjusted gross return and gross dividend growth.
-We follow \cite{Adam2016} in making the following assumption.
+We follow \cite{Adam2016} in making the next assumption.
 
 \begin{assumption}
     Agents know the process for dividends and consumption and are boundedly rational only with respect to (gross) returns.
 \end{assumption}
-
 In this way we can isolate the effects of learning about returns on asset prices.
 The usual approach to learning is to endow agents with a Perceived Law of Motion (PLM) which is of the same functional form as the Actual Law of Motion (ALM) but with unknown parameters that agents estimate using available data.
 In this paper we depart from the standard approach and assume that agents use linear models and try to forecast log-returns on some set of predictors available at time $t$.
@@ -191,13 +188,11 @@ In this paper we depart from the standard approach and assume that agents use li
 % --------------------
 
 To fix ideas we start by considering the univariate case in which agents try to predict log-returns using a single predictor $x_t$.
-
 Specifically we assume that agents have a linear and stationary PLM for the asset return
 \begin{equation}\label{eq:plm_univariate}
     r_{t+1} =  x_{t} \beta + u_t,
 \end{equation}
 with $x_t \sim \mathcal{N}(0, \sigma^2_x)$ being a signal available for the agent at time $t$ which they suspect might have predictive power on log-returns.
-
 Then the agents' PLM about log-returns implies the following PLM for gross returns
 \begin{equation}
     R_{t+1} = e ^ {x_{t} \beta + u_t}.
@@ -211,7 +206,6 @@ by letting $\phi = e^{\sigma^2_u / 2}$.
 \begin{assumption}\label{ass:consumtion_independence}
     Within their perceived law of motion, agents believe that the return process and consumption growth are independent.
 \end{assumption}
-
 Assumption \ref{ass:consumtion_independence} allows us to derive risk-adjusted expected gross returns as
 \begin{equation}
     \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{P_{t+1}}{P_t} \right] = \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \right] \mathbb{E}_t\left(\frac{P_{t+1}}{P_t}\right) = a ^ {-\gamma} \phi e^{x_t \beta}.
@@ -243,7 +237,6 @@ Expression \eqref{eq:alm_univariate} is only well-defined if
 \]
 hold with probability one, which imposes state-dependent restrictions on $(x_t,\beta)$.
 To avoid these domain issues and to guarantee global existence of a stochastic equilibrium, we adopt a bounded specification for the conditional mean of returns.
-
 We modify the perceived conditional expectation of gross returns as
 \begin{equation}
     \mathbb{E}\left(R_{t+1} \mid \mathcal{F}_t\right) = \phi \exp\!\Bigl( w \tanh(x_t \beta / w) \Bigr),
@@ -267,7 +260,6 @@ and therefore
     1 - \kappa e^{w \tanh(x_t \beta / w)} > 0
     \quad \text{for all } x_t,\beta.
 \]
-
 The corresponding risk-adjusted expectations and price-dividend ratio are defined exactly as above, with $x_t \beta$ replaced by $w \tanh(x_t \beta / w)$.
 The implied (modified) ALM is
 \begin{equation}\label{eq:alm_univariate_bounded}
@@ -275,20 +267,16 @@ The implied (modified) ALM is
     + \log\!\Bigl(1 - \kappa e^{w \tanh(x_t \beta / w)}\Bigr)
     - \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t+1} \beta / w)}\Bigr).
 \end{equation}
-
 For later use, define the function
 \begin{equation}\label{eq:g_beta_def}
     g_{\beta}(x) 
     := \log\!\Bigl(1 - \kappa\, e^{w \tanh(x \beta/w)}\Bigr).
 \end{equation}
 This function is globally well-defined and smooth in $x$ and $\beta$.
-
 \begin{remark}
 For small $\sigma_x^2$ and moderate values of $\kappa$, the original ALM \eqref{eq:alm_univariate} is well-defined with high probability.
 The bounded specification \eqref{eq:alm_univariate_bounded} should then be interpreted as a globally valid extension that coincides with the baseline model in the empirically relevant region of the state space but eliminates corner cases where the log is undefined.
 \end{remark}
-
-
 Clearly this ALM is non-linear, which implies that the linear PLM used by agents is misspecified.
 In these cases it is unlikely that the learning procedure will converge to the REE and the literature has instead focused on convergence to a Stochastic Consistent Expectations Equilibrium (SCEE) \textcolor{red}{[citations here]}.
 In our case we look for an equilibirum which is cross-moment consistent in the sense that, despite their misspecification, there is a statistical self-consistency between the empirical relationship they perceive and the one which is implied by the ALM. 
@@ -320,7 +308,6 @@ associated with $\mathcal{R}$ if:
     $(r_{t+1}, x_t)$ induced by $\mu$.
 \end{enumerate}
 \end{definition}
-
 Intuitively, while a REE imposes consistency on the \emph{entire} distributions implied by the ALM and PLM, a CMCE only requires consistency on certain moments of the two distributions, and in particular of those moments that are relevant for the agent’s forecasting problem.
 
 We now turn to characterizing existence and stability of CMCEs under different learning algorithms.
@@ -612,9 +599,7 @@ This suggests that the appropriate empirical strategy is, first to estimate the 
 we endow our agents with. Then invert the T-map to recover the parameters that agents would be using in their PLM.
 Finally, use these parameters to estimate the NLS model implied by the ALM.
 
-
-
-
+% =====================================================
 \bibliography{references}
 
 \appendix
