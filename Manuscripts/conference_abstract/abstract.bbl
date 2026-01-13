@@ -1,0 +1,967 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{Adam2016}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1ecf6ea77d6328a0357dffae05831ce2}{%
+           family={Adam},
+           familyi={A\bibinitperiod},
+           given={Klaus},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9a5764e3d0cb9714e3d6c93098927d3a}{%
+           family={Marcet},
+           familyi={M\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=eebb9f811048c349f41c53fb1c09b1e9}{%
+           family={Nicolini},
+           familyi={N\bibinitperiod},
+           given={Juan\bibnamedelima Pablo},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{329bf5d64cae2bdea1a5b65c68f8db9c}
+      \strng{fullhash}{465d4da8810be90975a383b0c489758e}
+      \strng{fullhashraw}{465d4da8810be90975a383b0c489758e}
+      \strng{bibnamehash}{465d4da8810be90975a383b0c489758e}
+      \strng{authorbibnamehash}{465d4da8810be90975a383b0c489758e}
+      \strng{authornamehash}{329bf5d64cae2bdea1a5b65c68f8db9c}
+      \strng{authorfullhash}{465d4da8810be90975a383b0c489758e}
+      \strng{authorfullhashraw}{465d4da8810be90975a383b0c489758e}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{15406261}
+      \field{issue}{1}
+      \field{journaltitle}{Journal of Finance}
+      \field{title}{Stock Market Volatility and Learning}
+      \field{volume}{71}
+      \field{year}{2016}
+      \verb{doi}
+      \verb 10.1111/jofi.12364
+      \endverb
+    \endentry
+    \entry{AngBekaert2007_RFS}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=fdb83eec8db55fcc1e2e23e3c32dc62f}{%
+           family={Ang},
+           familyi={A\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f02243009236b8ee0fdd66fc193586e}{%
+           family={Bekaert},
+           familyi={B\bibinitperiod},
+           given={Geert},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{66f51e95a955eac3781d6b24afee4183}
+      \strng{fullhash}{66f51e95a955eac3781d6b24afee4183}
+      \strng{fullhashraw}{66f51e95a955eac3781d6b24afee4183}
+      \strng{bibnamehash}{66f51e95a955eac3781d6b24afee4183}
+      \strng{authorbibnamehash}{66f51e95a955eac3781d6b24afee4183}
+      \strng{authornamehash}{66f51e95a955eac3781d6b24afee4183}
+      \strng{authorfullhash}{66f51e95a955eac3781d6b24afee4183}
+      \strng{authorfullhashraw}{66f51e95a955eac3781d6b24afee4183}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of Financial Studies}
+      \field{number}{3}
+      \field{title}{Stock Return Predictability: Is It There?}
+      \field{volume}{20}
+      \field{year}{2007}
+      \field{pages}{651\bibrangedash 707}
+      \range{pages}{57}
+      \verb{doi}
+      \verb 10.1093/rfs/hhl021
+      \endverb
+    \endentry
+    \entry{barberis1998model}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=fa08e0e081b644c1db857cf040be9d3a}{%
+           family={Barberis},
+           familyi={B\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=73d7bf2d3105674f373111fc7356eec3}{%
+           family={Shleifer},
+           familyi={S\bibinitperiod},
+           given={Andrei},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4832849ac24a15ccc4fff8a339728293}{%
+           family={Vishny},
+           familyi={V\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{80d162698e31649aba658a0ec8900130}
+      \strng{fullhash}{31a8c9897a55f78dc9567df5b1b404d5}
+      \strng{fullhashraw}{31a8c9897a55f78dc9567df5b1b404d5}
+      \strng{bibnamehash}{31a8c9897a55f78dc9567df5b1b404d5}
+      \strng{authorbibnamehash}{31a8c9897a55f78dc9567df5b1b404d5}
+      \strng{authornamehash}{80d162698e31649aba658a0ec8900130}
+      \strng{authorfullhash}{31a8c9897a55f78dc9567df5b1b404d5}
+      \strng{authorfullhashraw}{31a8c9897a55f78dc9567df5b1b404d5}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Financial Economics}
+      \field{number}{3}
+      \field{title}{A model of investor sentiment}
+      \field{volume}{49}
+      \field{year}{1998}
+      \field{pages}{307\bibrangedash 343}
+      \range{pages}{37}
+    \endentry
+    \entry{Branch2010}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e431863baf14178cff7c07317f565657}{%
+           family={Branch},
+           familyi={B\bibinitperiod},
+           given={William\bibnamedelima A.},
+           giveni={W\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=64ec6b97653a5d2f8a88f3fe7d7f62af}{%
+           family={Evans},
+           familyi={E\bibinitperiod},
+           given={George\bibnamedelima W.},
+           giveni={G\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6a67f8850f3152b2c24f257a4544cf8e}
+      \strng{fullhash}{6a67f8850f3152b2c24f257a4544cf8e}
+      \strng{fullhashraw}{6a67f8850f3152b2c24f257a4544cf8e}
+      \strng{bibnamehash}{6a67f8850f3152b2c24f257a4544cf8e}
+      \strng{authorbibnamehash}{6a67f8850f3152b2c24f257a4544cf8e}
+      \strng{authornamehash}{6a67f8850f3152b2c24f257a4544cf8e}
+      \strng{authorfullhash}{6a67f8850f3152b2c24f257a4544cf8e}
+      \strng{authorfullhashraw}{6a67f8850f3152b2c24f257a4544cf8e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{08939454}
+      \field{issue}{4}
+      \field{journaltitle}{Review of Financial Studies}
+      \field{title}{Asset return dynamics and learning}
+      \field{volume}{23}
+      \field{year}{2010}
+      \verb{doi}
+      \verb 10.1093/rfs/hhp112
+      \endverb
+    \endentry
+    \entry{Bybee2021}{article}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=3488afa9300fadc3697680d12d3b03a1}{%
+           family={Bybee},
+           familyi={B\bibinitperiod},
+           given={Leland},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=72eb4034e228252ba570afc3379a23f6}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={Bryan\bibnamedelima T.},
+           giveni={B\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=367a3a1f29eee6ebc40111f79886d2b6}{%
+           family={Manela},
+           familyi={M\bibinitperiod},
+           given={Asaf},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c07af227d21eedc8d6d13f10a6243d02}{%
+           family={Xiu},
+           familyi={X\bibinitperiod},
+           given={Dacheng},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e61bfcda3a3078663a039fcf9e5a59c0}
+      \strng{fullhash}{af0fb4dcfd275d74ff606f551ea78fa9}
+      \strng{fullhashraw}{af0fb4dcfd275d74ff606f551ea78fa9}
+      \strng{bibnamehash}{af0fb4dcfd275d74ff606f551ea78fa9}
+      \strng{authorbibnamehash}{af0fb4dcfd275d74ff606f551ea78fa9}
+      \strng{authornamehash}{e61bfcda3a3078663a039fcf9e5a59c0}
+      \strng{authorfullhash}{af0fb4dcfd275d74ff606f551ea78fa9}
+      \strng{authorfullhashraw}{af0fb4dcfd275d74ff606f551ea78fa9}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SSRN Electronic Journal}
+      \field{title}{Business News and Business Cycles}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.2139/ssrn.3940030
+      \endverb
+    \endentry
+    \entry{Chinco2019}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=e765e8527dd95bdd65c835ffe6533c71}{%
+           family={Chinco},
+           familyi={C\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ec1fb1aef6b0e685afd4ef73dee710b7}{%
+           family={Clark-Joseph},
+           familyi={C\bibinithyphendelim J\bibinitperiod},
+           given={Adam\bibnamedelima D.},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=40f8923944f9a0847ab6da9de1ba61c4}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Mao},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d429708e2ca6cff8c1173a842185f0ff}
+      \strng{fullhash}{1d1496d9287b077ebc94cd2fd067a809}
+      \strng{fullhashraw}{1d1496d9287b077ebc94cd2fd067a809}
+      \strng{bibnamehash}{1d1496d9287b077ebc94cd2fd067a809}
+      \strng{authorbibnamehash}{1d1496d9287b077ebc94cd2fd067a809}
+      \strng{authornamehash}{d429708e2ca6cff8c1173a842185f0ff}
+      \strng{authorfullhash}{1d1496d9287b077ebc94cd2fd067a809}
+      \strng{authorfullhashraw}{1d1496d9287b077ebc94cd2fd067a809}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{15406261}
+      \field{issue}{1}
+      \field{journaltitle}{Journal of Finance}
+      \field{title}{Sparse Signals in the Cross-Section of Returns}
+      \field{volume}{74}
+      \field{year}{2019}
+      \verb{doi}
+      \verb 10.1111/jofi.12733
+      \endverb
+    \endentry
+    \entry{Farmer2023}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=00d7adce648cc8ff3510b8608be3fb8c}{%
+           family={Farmer},
+           familyi={F\bibinitperiod},
+           given={Leland\bibnamedelima E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f8825aadef2dc16e63fe0877182044b}{%
+           family={Schmidt},
+           familyi={S\bibinitperiod},
+           given={Lawrence},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=402c6ccc2c21c4d48ed2eef0058ff70d}{%
+           family={Timmermann},
+           familyi={T\bibinitperiod},
+           given={Allan},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9a5324919effc9253b749138ce3415b1}
+      \strng{fullhash}{89c3dcfb21b3391fa51513f098987fbb}
+      \strng{fullhashraw}{89c3dcfb21b3391fa51513f098987fbb}
+      \strng{bibnamehash}{89c3dcfb21b3391fa51513f098987fbb}
+      \strng{authorbibnamehash}{89c3dcfb21b3391fa51513f098987fbb}
+      \strng{authornamehash}{9a5324919effc9253b749138ce3415b1}
+      \strng{authorfullhash}{89c3dcfb21b3391fa51513f098987fbb}
+      \strng{authorfullhashraw}{89c3dcfb21b3391fa51513f098987fbb}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{15406261}
+      \field{issue}{3}
+      \field{journaltitle}{Journal of Finance}
+      \field{title}{Pockets of Predictability}
+      \field{volume}{78}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.1111/jofi.13229
+      \endverb
+    \endentry
+    \entry{Feng2020}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6af850775ae92a73b0ddac5f35b5377a}{%
+           family={Feng},
+           familyi={F\bibinitperiod},
+           given={Guanhao},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f6e9cca87b668e4abf657a0b1aac32a9}{%
+           family={Giglio},
+           familyi={G\bibinitperiod},
+           given={Stefano},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c07af227d21eedc8d6d13f10a6243d02}{%
+           family={Xiu},
+           familyi={X\bibinitperiod},
+           given={Dacheng},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0ab51d6a41e1680b4c85abdcf2929286}
+      \strng{fullhash}{2567eb8e92076c988380449a1e3a80e4}
+      \strng{fullhashraw}{2567eb8e92076c988380449a1e3a80e4}
+      \strng{bibnamehash}{2567eb8e92076c988380449a1e3a80e4}
+      \strng{authorbibnamehash}{2567eb8e92076c988380449a1e3a80e4}
+      \strng{authornamehash}{0ab51d6a41e1680b4c85abdcf2929286}
+      \strng{authorfullhash}{2567eb8e92076c988380449a1e3a80e4}
+      \strng{authorfullhashraw}{2567eb8e92076c988380449a1e3a80e4}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{15406261}
+      \field{issue}{3}
+      \field{journaltitle}{Journal of Finance}
+      \field{title}{Taming the Factor Zoo: A Test of New Factors}
+      \field{volume}{75}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1111/jofi.12883
+      \endverb
+    \endentry
+    \entry{freyberger2020dissecting}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8046c14c73c5d95bf403de2c567390fd}{%
+           family={Freyberger},
+           familyi={F\bibinitperiod},
+           given={Joachim},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bc1f18811160c169c4a5feec4102a78b}{%
+           family={Neuhierl},
+           familyi={N\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e9659ef13f1f7bd1fe161b20f30aaefd}{%
+           family={Weber},
+           familyi={W\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{b6ec949b98a354718c422f5177a3b303}
+      \strng{fullhash}{97fcba8aa4b9bd383aaecddfac106b3b}
+      \strng{fullhashraw}{97fcba8aa4b9bd383aaecddfac106b3b}
+      \strng{bibnamehash}{97fcba8aa4b9bd383aaecddfac106b3b}
+      \strng{authorbibnamehash}{97fcba8aa4b9bd383aaecddfac106b3b}
+      \strng{authornamehash}{b6ec949b98a354718c422f5177a3b303}
+      \strng{authorfullhash}{97fcba8aa4b9bd383aaecddfac106b3b}
+      \strng{authorfullhashraw}{97fcba8aa4b9bd383aaecddfac106b3b}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of Financial Studies}
+      \field{number}{5}
+      \field{title}{Dissecting characteristics nonparametrically}
+      \field{volume}{33}
+      \field{year}{2020}
+      \field{pages}{2326\bibrangedash 2377}
+      \range{pages}{52}
+    \endentry
+    \entry{GoyalWelch2003_MS}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=b495c15a583e3fb84162ba5050314130}{%
+           family={Goyal},
+           familyi={G\bibinitperiod},
+           given={Amit},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=600af3451e039948f3a785f4e1c0f14c}{%
+           family={Welch},
+           familyi={W\bibinitperiod},
+           given={Ivo},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{190cd15514e47d76528e2196c0cc0803}
+      \strng{fullhash}{190cd15514e47d76528e2196c0cc0803}
+      \strng{fullhashraw}{190cd15514e47d76528e2196c0cc0803}
+      \strng{bibnamehash}{190cd15514e47d76528e2196c0cc0803}
+      \strng{authorbibnamehash}{190cd15514e47d76528e2196c0cc0803}
+      \strng{authornamehash}{190cd15514e47d76528e2196c0cc0803}
+      \strng{authorfullhash}{190cd15514e47d76528e2196c0cc0803}
+      \strng{authorfullhashraw}{190cd15514e47d76528e2196c0cc0803}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Management Science}
+      \field{number}{5}
+      \field{title}{Predicting the Equity Premium with Dividend Ratios}
+      \field{volume}{49}
+      \field{year}{2003}
+      \field{pages}{639\bibrangedash 654}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1287/mnsc.49.5.639.15149
+      \endverb
+    \endentry
+    \entry{GrantThornton2025_AIAssetMgmt}{report}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=fcad8f19d202557b2af01623bc066415}{%
+           family={{Grant Thornton}},
+           familyi={G\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=b9541c221b848dad6843e5b97492e3c3}{%
+           family={ThoughtLab},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Grant Thornton / ThoughtLab}%
+      }
+      \strng{namehash}{130676fa1ee94664498ce543efba48ba}
+      \strng{fullhash}{130676fa1ee94664498ce543efba48ba}
+      \strng{fullhashraw}{130676fa1ee94664498ce543efba48ba}
+      \strng{bibnamehash}{130676fa1ee94664498ce543efba48ba}
+      \strng{authorbibnamehash}{130676fa1ee94664498ce543efba48ba}
+      \strng{authornamehash}{130676fa1ee94664498ce543efba48ba}
+      \strng{authorfullhash}{130676fa1ee94664498ce543efba48ba}
+      \strng{authorfullhashraw}{130676fa1ee94664498ce543efba48ba}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Survey of approximately 500 asset and wealth management firms globally on AI adoption and strategic use; results indicate widespread adoption of AI strategies and significant interest in generative and agentic AI applications}
+      \field{title}{The AI-Powered Investment Firm: How AI Is Transforming Wealth and Asset Management}
+      \field{type}{techreport}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.grantthornton.com/insights/articles/asset-management/2025/ai-is-transforming-asset-management
+      \endverb
+      \verb{url}
+      \verb https://www.grantthornton.com/insights/articles/asset-management/2025/ai-is-transforming-asset-management
+      \endverb
+    \endentry
+    \entry{gu2020empirical}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=6dfe1a2bf09425e309ca767a1acc7325}{%
+           family={Gu},
+           familyi={G\bibinitperiod},
+           given={Shihao},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=96799198bea175b6a69479505180a2cd}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={Bryan},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c07af227d21eedc8d6d13f10a6243d02}{%
+           family={Xiu},
+           familyi={X\bibinitperiod},
+           given={Dacheng},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{5a2306bd30910cd36a3da688076a2d28}
+      \strng{fullhash}{3fcd024cd3a906ee97216ed3d8ad76c6}
+      \strng{fullhashraw}{3fcd024cd3a906ee97216ed3d8ad76c6}
+      \strng{bibnamehash}{3fcd024cd3a906ee97216ed3d8ad76c6}
+      \strng{authorbibnamehash}{3fcd024cd3a906ee97216ed3d8ad76c6}
+      \strng{authornamehash}{5a2306bd30910cd36a3da688076a2d28}
+      \strng{authorfullhash}{3fcd024cd3a906ee97216ed3d8ad76c6}
+      \strng{authorfullhashraw}{3fcd024cd3a906ee97216ed3d8ad76c6}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Review of Financial Studies}
+      \field{number}{5}
+      \field{title}{Empirical asset pricing via machine learning}
+      \field{volume}{33}
+      \field{year}{2020}
+      \field{pages}{2223\bibrangedash 2273}
+      \range{pages}{51}
+    \endentry
+    \entry{hong2007simple}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=eb100539ab5cbadb02f75621b623b5c9}{%
+           family={Hong},
+           familyi={H\bibinitperiod},
+           given={Harrison},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=575642568e62a6731db350819c4f4dc2}{%
+           family={Stein},
+           familyi={S\bibinitperiod},
+           given={Jeremy\bibnamedelima C},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=759ad554ae0f6aa69c042198e9e21cf7}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Jialin},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{1938774e671343ea6e08384994f964e7}
+      \strng{fullhash}{37f0a3c6525e9922a94d40e87a3fc1cb}
+      \strng{fullhashraw}{37f0a3c6525e9922a94d40e87a3fc1cb}
+      \strng{bibnamehash}{37f0a3c6525e9922a94d40e87a3fc1cb}
+      \strng{authorbibnamehash}{37f0a3c6525e9922a94d40e87a3fc1cb}
+      \strng{authornamehash}{1938774e671343ea6e08384994f964e7}
+      \strng{authorfullhash}{37f0a3c6525e9922a94d40e87a3fc1cb}
+      \strng{authorfullhashraw}{37f0a3c6525e9922a94d40e87a3fc1cb}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Finance}
+      \field{number}{3}
+      \field{title}{Simple Forecasts and Paradigm Shifts}
+      \field{volume}{62}
+      \field{year}{2007}
+      \field{pages}{1207\bibrangedash 1242}
+      \range{pages}{36}
+    \endentry
+    \entry{Honkapohja2003}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=6a9be018ef92ff553e005eb5f6a24698}{%
+           family={Honkapohja},
+           familyi={H\bibinitperiod},
+           given={Seppo},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6bba5b14629d34d99516a9c62a6575fe}{%
+           family={Mitra},
+           familyi={M\bibinitperiod},
+           given={Kaushik},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0a3f62dda7993e5340d56676de68293d}
+      \strng{fullhash}{0a3f62dda7993e5340d56676de68293d}
+      \strng{fullhashraw}{0a3f62dda7993e5340d56676de68293d}
+      \strng{bibnamehash}{0a3f62dda7993e5340d56676de68293d}
+      \strng{authorbibnamehash}{0a3f62dda7993e5340d56676de68293d}
+      \strng{authornamehash}{0a3f62dda7993e5340d56676de68293d}
+      \strng{authorfullhash}{0a3f62dda7993e5340d56676de68293d}
+      \strng{authorfullhashraw}{0a3f62dda7993e5340d56676de68293d}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{01651889}
+      \field{issue}{8}
+      \field{journaltitle}{Journal of Economic Dynamics and Control}
+      \field{title}{Learning with bounded memory in stochastic models}
+      \field{volume}{27}
+      \field{year}{2003}
+      \verb{doi}
+      \verb 10.1016/S0165-1889(02)00066-0
+      \endverb
+    \endentry
+    \entry{kozak2020shrinking}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c2d9ba386c8db2695ff9e82934e0c1ab}{%
+           family={Kozak},
+           familyi={K\bibinitperiod},
+           given={Serhiy},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e3b96d363a3296b8845dc3004816b5a}{%
+           family={Nagel},
+           familyi={N\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=dff5dc2d02ef9a85e3eb3de38c4bb868}{%
+           family={Santosh},
+           familyi={S\bibinitperiod},
+           given={Shrihari},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9f893500baaddefc9b220fdff04a109d}
+      \strng{fullhash}{aea9858ea215756fc728e5fac263217c}
+      \strng{fullhashraw}{aea9858ea215756fc728e5fac263217c}
+      \strng{bibnamehash}{aea9858ea215756fc728e5fac263217c}
+      \strng{authorbibnamehash}{aea9858ea215756fc728e5fac263217c}
+      \strng{authornamehash}{9f893500baaddefc9b220fdff04a109d}
+      \strng{authorfullhash}{aea9858ea215756fc728e5fac263217c}
+      \strng{authorfullhashraw}{aea9858ea215756fc728e5fac263217c}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Financial Economics}
+      \field{number}{2}
+      \field{title}{Shrinking the cross-section}
+      \field{volume}{135}
+      \field{year}{2020}
+      \field{pages}{271\bibrangedash 292}
+      \range{pages}{22}
+    \endentry
+    \entry{LettauLudvigson2001_JF}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=1c4208fbeb8894d01d338577611e20f6}{%
+           family={Lettau},
+           familyi={L\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7a3e271e6fd8d21dd4686a09a49d17a5}{%
+           family={Ludvigson},
+           familyi={L\bibinitperiod},
+           given={Sydney},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{11a28d324f2b034380c545ec223d7718}
+      \strng{fullhash}{11a28d324f2b034380c545ec223d7718}
+      \strng{fullhashraw}{11a28d324f2b034380c545ec223d7718}
+      \strng{bibnamehash}{11a28d324f2b034380c545ec223d7718}
+      \strng{authorbibnamehash}{11a28d324f2b034380c545ec223d7718}
+      \strng{authornamehash}{11a28d324f2b034380c545ec223d7718}
+      \strng{authorfullhash}{11a28d324f2b034380c545ec223d7718}
+      \strng{authorfullhashraw}{11a28d324f2b034380c545ec223d7718}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Finance}
+      \field{number}{3}
+      \field{title}{Consumption, Aggregate Wealth, and Expected Stock Returns}
+      \field{volume}{56}
+      \field{year}{2001}
+      \field{pages}{815\bibrangedash 849}
+      \range{pages}{35}
+      \verb{doi}
+      \verb 10.1111/0022-1082.00347
+      \endverb
+    \endentry
+    \entry{Lucas1978}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d75b1c25901858e9d7cbfbb24d9dc0de}{%
+           family={Lucas},
+           familyi={L\bibinitperiod},
+           given={Robert\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \strng{fullhash}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \strng{fullhashraw}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \strng{bibnamehash}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \strng{authorbibnamehash}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \strng{authornamehash}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \strng{authorfullhash}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \strng{authorfullhashraw}{d75b1c25901858e9d7cbfbb24d9dc0de}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00129682}
+      \field{issue}{6}
+      \field{journaltitle}{Econometrica}
+      \field{title}{Asset Prices in an Exchange Economy}
+      \field{volume}{46}
+      \field{year}{1978}
+      \verb{doi}
+      \verb 10.2307/1913837
+      \endverb
+    \endentry
+    \entry{Marcet1989}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9a5764e3d0cb9714e3d6c93098927d3a}{%
+           family={Marcet},
+           familyi={M\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7befdd517ea754e0194ebd60f235f738}{%
+           family={Sargent},
+           familyi={S\bibinitperiod},
+           given={Thomas\bibnamedelima J.},
+           giveni={T\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{af79fc51325348a81896a4a93b0ea505}
+      \strng{fullhash}{af79fc51325348a81896a4a93b0ea505}
+      \strng{fullhashraw}{af79fc51325348a81896a4a93b0ea505}
+      \strng{bibnamehash}{af79fc51325348a81896a4a93b0ea505}
+      \strng{authorbibnamehash}{af79fc51325348a81896a4a93b0ea505}
+      \strng{authornamehash}{af79fc51325348a81896a4a93b0ea505}
+      \strng{authorfullhash}{af79fc51325348a81896a4a93b0ea505}
+      \strng{authorfullhashraw}{af79fc51325348a81896a4a93b0ea505}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{10957235}
+      \field{issue}{2}
+      \field{journaltitle}{Journal of Economic Theory}
+      \field{title}{Convergence of least squares learning mechanisms in self-referential linear stochastic models}
+      \field{volume}{48}
+      \field{year}{1989}
+      \verb{doi}
+      \verb 10.1016/0022-0531(89)90032-X
+      \endverb
+    \endentry
+    \entry{Tibshirani1996}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           familyi={T\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{fullhash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{fullhashraw}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{bibnamehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{authorbibnamehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{authornamehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{authorfullhash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{authorfullhashraw}{88eea600247d798f8b2ce0b2dc614492}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00359246}
+      \field{issue}{1}
+      \field{journaltitle}{Journal of the Royal Statistical Society. Series B: Methodological}
+      \field{note}{original lasso paper}
+      \field{title}{Regression Shrinkage and Selection Via the Lasso}
+      \field{volume}{58}
+      \field{year}{1996}
+      \verb{doi}
+      \verb 10.1111/j.2517-6161.1996.tb02080.x
+      \endverb
+    \endentry
+    \entry{Timmermann1996}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=1,uniquepart=given,hash=402c6ccc2c21c4d48ed2eef0058ff70d}{%
+           family={Timmermann},
+           familyi={T\bibinitperiod},
+           given={Allan},
+           giveni={A\bibinitperiod},
+           givenun=1}}%
+      }
+      \strng{namehash}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \strng{fullhash}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \strng{fullhashraw}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \strng{bibnamehash}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \strng{authorbibnamehash}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \strng{authornamehash}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \strng{authorfullhash}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \strng{authorfullhashraw}{402c6ccc2c21c4d48ed2eef0058ff70d}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00346527}
+      \field{issue}{4}
+      \field{journaltitle}{Review of Economic Studies}
+      \field{title}{Excess Volatility and Predictability of Stock Prices in Autoregressive Dividend Models with Learning}
+      \field{volume}{63}
+      \field{year}{1996}
+      \verb{doi}
+      \verb 10.2307/2297792
+      \endverb
+    \endentry
+    \entry{Timmermann1993}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=1,uniquepart=given,hash=2b087fb5f52779cfffc0b8992b15aa60}{%
+           family={Timmermann},
+           familyi={T\bibinitperiod},
+           given={Allan\bibnamedelima G.},
+           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod},
+           givenun=1}}%
+      }
+      \strng{namehash}{2b087fb5f52779cfffc0b8992b15aa60}
+      \strng{fullhash}{2b087fb5f52779cfffc0b8992b15aa60}
+      \strng{fullhashraw}{2b087fb5f52779cfffc0b8992b15aa60}
+      \strng{bibnamehash}{2b087fb5f52779cfffc0b8992b15aa60}
+      \strng{authorbibnamehash}{2b087fb5f52779cfffc0b8992b15aa60}
+      \strng{authornamehash}{2b087fb5f52779cfffc0b8992b15aa60}
+      \strng{authorfullhash}{2b087fb5f52779cfffc0b8992b15aa60}
+      \strng{authorfullhashraw}{2b087fb5f52779cfffc0b8992b15aa60}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{15314650}
+      \field{issue}{4}
+      \field{journaltitle}{Quarterly Journal of Economics}
+      \field{note}{<b>Relevance: </b>First paper to integrate learning about dividend growth process into asset pricing model<br/><br/>- uses least squares learning with varying window size<br/>- estimate nonlinear alm using monte carlo simulation<br/>- finds that learning makes prices excessivly volatile and returns predicable from dividend yield --> effects become smaller as window size increases}
+      \field{title}{How learning in financial markets generates excess volatility and predictability in stock prices}
+      \field{volume}{108}
+      \field{year}{1993}
+      \verb{doi}
+      \verb 10.2307/2118462
+      \endverb
+    \endentry
+    \entry{DataSphere2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=df637c9dfa12075a56f0ab4657075ae6}{%
+           family={Wright},
+           familyi={W\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {International Data Corporation (IDC)}%
+      }
+      \strng{namehash}{df637c9dfa12075a56f0ab4657075ae6}
+      \strng{fullhash}{df637c9dfa12075a56f0ab4657075ae6}
+      \strng{fullhashraw}{df637c9dfa12075a56f0ab4657075ae6}
+      \strng{bibnamehash}{df637c9dfa12075a56f0ab4657075ae6}
+      \strng{authorbibnamehash}{df637c9dfa12075a56f0ab4657075ae6}
+      \strng{authornamehash}{df637c9dfa12075a56f0ab4657075ae6}
+      \strng{authorfullhash}{df637c9dfa12075a56f0ab4657075ae6}
+      \strng{authorfullhashraw}{df637c9dfa12075a56f0ab4657075ae6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{note}{Accessed: <insert date you accessed the report>}
+      \field{number}{US53363625}
+      \field{title}{Worldwide IDC Global DataSphere Forecast, 2025–2029}
+      \field{type}{Market Forecast Report}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://my.idc.com/research/viewtoc.jsp?containerId=US53363625
+      \endverb
+      \verb{url}
+      \verb https://my.idc.com/research/viewtoc.jsp?containerId=US53363625
+      \endverb
+    \endentry
+    \entry{EY2025_GenAI_WealthAssetMgmt}{report}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=659125503e2f3819e7dd4ab0d69aecd6}{%
+           family={Young},
+           familyi={Y\bibinitperiod},
+           given={Ernst\bibnamedelima \&},
+           giveni={E\bibinitperiod\bibinitdelim \\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{institution}{1}{%
+        {EY (Ernst \& Young)}%
+      }
+      \strng{namehash}{659125503e2f3819e7dd4ab0d69aecd6}
+      \strng{fullhash}{659125503e2f3819e7dd4ab0d69aecd6}
+      \strng{fullhashraw}{659125503e2f3819e7dd4ab0d69aecd6}
+      \strng{bibnamehash}{659125503e2f3819e7dd4ab0d69aecd6}
+      \strng{authorbibnamehash}{659125503e2f3819e7dd4ab0d69aecd6}
+      \strng{authornamehash}{659125503e2f3819e7dd4ab0d69aecd6}
+      \strng{authorfullhash}{659125503e2f3819e7dd4ab0d69aecd6}
+      \strng{authorfullhashraw}{659125503e2f3819e7dd4ab0d69aecd6}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Survey of 100 wealth and asset management firms reporting high levels of GenAI adoption and exploration of agentic AI for strategic applications}
+      \field{title}{GenAI in Wealth \& Asset Management Survey 2025}
+      \field{type}{techreport}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.ey.com/en_us/insights/wealth-asset-management/gen-ai-in-wealth-and-asset-management-survey
+      \endverb
+      \verb{url}
+      \verb https://www.ey.com/en_us/insights/wealth-asset-management/gen-ai-in-wealth-and-asset-management-survey
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

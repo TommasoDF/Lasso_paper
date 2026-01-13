@@ -1,0 +1,17 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'abstract.blg'
+[117] biber-MSWIN64:342> INFO - === 
+[161] Biber.pm:421> INFO - Reading 'abstract.bcf'
+[277] Biber.pm:1002> INFO - Found 23 citekeys in bib section 0
+[290] Biber.pm:4487> INFO - Processing section 0
+[300] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[396] bibtex.pm:1713> INFO - LaTeX decoding ...
+[486] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[637] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[637] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[639] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[639] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[659] bbl.pm:676> INFO - Writing 'abstract.bbl' with encoding 'UTF-8'
+[670] bbl.pm:779> INFO - Output to abstract.bbl
+[670] Biber.pm:132> WARN - legacy month field 'May' in entry 'DataSphere2025' is not an integer - this will probably not sort properly.
+[671] Biber.pm:134> INFO - WARNINGS: 1
