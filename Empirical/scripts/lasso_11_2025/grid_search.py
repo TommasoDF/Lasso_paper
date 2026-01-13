@@ -2,6 +2,9 @@
 #        IMPORTS
 # =======================
 
+
+
+
 import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
@@ -19,7 +22,7 @@ from stage2 import compute_stage2_r_squared
 #      FUNCTIONS
 # =======================
 
-def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=True, verbose=False, save_only_positve_r_squared = True):
+def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=True, verbose=False, save_only_positve_r_squared = True, return_details=True):
     """
     Estimate 1st and 2nd stage for a single configuration.
     
@@ -44,7 +47,7 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=Tr
        
         
         # Extract predictions and align data
-        preds = np.array(stage1_results["predictions"]) #contains predictions up to r^e_{t+2} while y contains up to r_{t} so we need to align
+        preds = np.array(stage1_results["predictions"]) # contains predictions up to r^e_{t+2} while y contains up to r_{t} so we need to align
      
         #shift preds to match y
         preds = preds[:-2] # remove last two prediction (nans) to align with y, now it contains up to r^e_{t}
@@ -79,6 +82,10 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=Tr
             'n_windows': len(stage1_results['predictions']),
             'n_oos_predictions_stage2': stage2_results.get('n_oos_predictions', np.nan)
         }
+
+        if not return_details:
+            return {"summary": summary, "details": pd.DataFrame()}
+
         
         # --- Build Detailed Coefficients DataFrame ---
         # We construct a dataframe where each row is a time window
@@ -146,6 +153,15 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=Tr
             'r2_oos_stage2': np.nan
         }
         return {'summary': error_summary, 'details': pd.DataFrame()}
+
+
+
+
+
+
+
+
+
 
 
 def grid_search(X, y, param_grid, verbose=True, n_jobs=-1, backend="loky", prefer=None):
