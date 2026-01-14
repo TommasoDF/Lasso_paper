@@ -1,0 +1,25 @@
+In such environments, sparsity-inducing regularization methods---most prominently the least absolute shrinkage and selection operator (LASSO)---are widely used to select predictors and generate forecasts in finite samples.
+
+This paper studies the equilibrium implications of such behavior.
+Specifically, we ask: \emph{What are the asset-pricing consequences of investors who actively search for return predictability using high-dimensional, regularized learning rules, even when returns are unpredictable under rational expectations?}
+
+We develop an equilibrium mechanism we term \emph{Lasso Trading}.
+In the model, investors do not possess a structural theory linking fundamentals to returns.
+Instead, they entertain the possibility that (log) returns are conditionally predictable from a large set of candidate predictors and estimate forecasting rules using LASSO \citep{Tibshirani1996}.
+The central force is a feedback loop from learning to prices: the act of searching for predictability affects trading decisions and hence equilibrium returns.
+As a result, the economy endogenously generates \emph{sparse and short-lived episodes of return predictability}, despite the absence of predictability under rational expectations.
+
+The mechanism speaks directly to empirical evidence showing that return predictability is episodic, unstable, and concentrated in a small, shifting subset of predictors \citep{Chinco2019,Farmer2023}.
+Our contribution is twofold.
+First, we provide, to our knowledge, the first analytical characterization of LASSO-based learning in an equilibrium asset-pricing environment, thereby linking the macro-finance learning literature to the empirical tradition of high-dimensional return forecasting.
+Second, the model delivers sharp, testable implications: predictability is (i) sparse, (ii) unstable over time, and (iii) more likely when estimation relies on short memory, weak penalization, and high return volatility.
+We bring these predictions to the data using a large predictor set that includes text-based topics extracted from financial news \citep{Bybee2021}, and we estimate a structural feedback parameter governing how learning-induced beliefs map into realized returns.
+
+
+
+\paragraph{Economic mechanism.}
+LASSO learning creates a belief--price feedback loop.
+When recent data make a predictor look informative, LASSO selects it and investors trade on the perceived signal.
+Their demand moves prices in the direction implied by the forecast, so the perceived relationship becomes temporarily self-fulfilling in equilibrium.
+As the window rolls forward, the estimated coefficient typically shrinks back toward zero, the predictor is dropped, and predictability dissipates.
+As a result, predictability is sparse, episodic, and shifts across predictors over time.
