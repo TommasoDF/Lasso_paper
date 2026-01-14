@@ -53,7 +53,6 @@ def lasso_rolling_window(X: np.ndarray,
     mean_y = np.nanmean(y)
     y = y - mean_y
     
-
     # Create lagged features
     if verbose:
         print(f"Creating lagged features with {n_lags} lags...")
@@ -61,12 +60,9 @@ def lasso_rolling_window(X: np.ndarray,
     X_lagged, feature_names = create_lagged_features(X, n_lags)
     y_aligned = y[n_lags:]
 
-
-    
     if date_index is not None:
         date_index = date_index[n_lags:]
     
-
     # Safety Checks
     if X_lagged.shape[0] != y_aligned.shape[0]:
         raise ValueError("Mismatch between lagged X and aligned y observations.")
