@@ -1,17 +1,52 @@
-[0] Config.pm:328> INFO - This is Biber 2.21
-[0] Config.pm:331> INFO - Logfile is 'abstract.blg'
-[117] biber-MSWIN64:342> INFO - === 
-[161] Biber.pm:421> INFO - Reading 'abstract.bcf'
-[277] Biber.pm:1002> INFO - Found 23 citekeys in bib section 0
-[290] Biber.pm:4487> INFO - Processing section 0
-[300] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
-[396] bibtex.pm:1713> INFO - LaTeX decoding ...
-[486] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
-[637] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[637] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[639] Biber.pm:4307> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[639] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[659] bbl.pm:676> INFO - Writing 'abstract.bbl' with encoding 'UTF-8'
-[670] bbl.pm:779> INFO - Output to abstract.bbl
-[670] Biber.pm:132> WARN - legacy month field 'May' in entry 'DataSphere2025' is not an integer - this will probably not sort properly.
-[671] Biber.pm:134> INFO - WARNINGS: 1
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+The style file: aea.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: references.bib
+Warning--empty journal in AngBekaert2007_RFS
+Warning--empty journal in GoyalWelch2003_MS
+Warning--empty journal in LettauLudvigson2001_JF
+You've used 21 entries,
+            2695 wiz_defined-function locations,
+            726 strings with 7213 characters,
+and the built_in function-call counts, 118778 in all, are:
+= -- 19747
+> -- 1434
+< -- 0
++ -- 9585
+- -- 450
+* -- 10626
+:= -- 23372
+add.period$ -- 151
+call.type$ -- 21
+change.case$ -- 273
+chr.to.int$ -- 21
+cite$ -- 24
+duplicate$ -- 297
+empty$ -- 790
+format.name$ -- 450
+if$ -- 21295
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 70
+num.names$ -- 231
+pop$ -- 21
+preamble$ -- 1
+purify$ -- 315
+quote$ -- 0
+skip$ -- 261
+stack$ -- 0
+substring$ -- 28208
+swap$ -- 121
+text.length$ -- 294
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 84
+warning$ -- 3
+while$ -- 520
+width$ -- 0
+write$ -- 108
+(There were 3 warnings)
