@@ -3,9 +3,10 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: aea.bst
 Database file #1: references.bib
+Warning--I didn't find a database entry for "Hommes2013"
 You've used 25 entries,
             2695 wiz_defined-function locations,
-            748 strings with 7459 characters,
+            750 strings with 7479 characters,
 and the built_in function-call counts, 143834 in all, are:
 = -- 23955
 > -- 1714
@@ -44,3 +45,4 @@ warning$ -- 0
 while$ -- 615
 width$ -- 0
 write$ -- 128
+(There was 1 warning)
