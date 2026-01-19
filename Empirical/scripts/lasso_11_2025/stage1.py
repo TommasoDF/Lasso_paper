@@ -31,6 +31,51 @@ def create_lagged_features(X: np.ndarray, n_lags: int = 3):
 
     return np.hstack(lagged_features), feature_names
 
+def create_lagged_features_with_name(X, n_lags: int = 3):
+    """
+    Create lagged feature matrix and names.
+    Preserves original column names and appends _lag_{lag_number}.
+    
+    Parameters
+    ----------
+    X : pd.DataFrame or np.ndarray
+        If DataFrame, uses X.columns as feature names.
+        If ndarray, feature names default to feature_{i}.
+    n_lags : int
+        Number of lags.
+
+    Returns
+    -------
+    X_lagged : np.ndarray
+    feature_names : list[str]
+    """
+    # Infer names
+    if hasattr(X, "columns"):
+        base_names = list(X.columns)
+        X_values = X.to_numpy()
+    else:
+        X_values = np.asarray(X)
+        base_names = [f"feature_{i}" for i in range(X_values.shape[1])]
+
+    if n_lags == 0:
+        return X_values, base_names
+
+    n_samples, n_features = X_values.shape
+
+    # lag 1, lag 2, ...
+    lagged_blocks = [
+        X_values[n_lags - lag : n_samples - lag]
+        for lag in range(1, n_lags + 1)
+    ]
+    X_lagged = np.hstack(lagged_blocks)
+
+    feature_names = [
+        f"{base}_lag_{lag_number}"
+        for lag_number in range(1, n_lags + 1)
+        for base in base_names
+    ]
+
+    return X_lagged, feature_names
 
 def lasso_rolling_window(X: np.ndarray,
                          y: np.ndarray,
@@ -47,7 +92,7 @@ def lasso_rolling_window(X: np.ndarray,
     # Extract date index if pandas object
     date_index = y.index if isinstance(y, (pd.Series, pd.DataFrame)) else None
     y = np.asarray(y).flatten()
-    X = np.asarray(X)
+    #X = np.asarray(X)
     
     # Center returns
     mean_y = np.nanmean(y)
@@ -57,7 +102,7 @@ def lasso_rolling_window(X: np.ndarray,
     if verbose:
         print(f"Creating lagged features with {n_lags} lags...")
     
-    X_lagged, feature_names = create_lagged_features(X, n_lags)
+    X_lagged, feature_names = create_lagged_features_with_name(X, n_lags)
     y_aligned = y[n_lags:]
 
     if date_index is not None:
