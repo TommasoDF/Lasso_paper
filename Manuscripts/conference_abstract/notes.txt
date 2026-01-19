@@ -23,3 +23,27 @@ When recent data make a predictor look informative, LASSO selects it and investo
 Their demand moves prices in the direction implied by the forecast, so the perceived relationship becomes temporarily self-fulfilling in equilibrium.
 As the window rolls forward, the estimated coefficient typically shrinks back toward zero, the predictor is dropped, and predictability dissipates.
 As a result, predictability is sparse, episodic, and shifts across predictors over time.
+
+
+
+\subsection*{Related Literature}
+
+The paper relates to three strands of research.
+
+\paragraph{Learning in asset pricing.}
+A large literature studies bounded rationality by assuming that agents learn unknown parameters of a correctly specified model using least squares methods \citep{Marcet1989}.
+Classic results show that learning can generate excess volatility and return predictability \citep{Timmermann1993,Timmermann1996}.
+Subsequent work emphasizes that convergence to rational expectations need not obtain when agents have limited memory or employ misspecified forecasting models \citep{Honkapohja2003}.
+Related contributions allow agents to switch among multiple forecasting rules or to rely on parsimonious PLMs in multivariate environments \citep{barberis1998model,hong2007simple,Branch2010}.
+
+\paragraph{Internal rationality and belief--price feedback.}
+A central challenge in standard learning models is that agents often know the mapping from fundamentals to prices.
+Following \cite{Adam2016}, we adopt an internal rationality perspective in which agents optimize conditional on subjective beliefs about returns and learn from realized prices.
+This framework generates a feedback loop between beliefs and equilibrium outcomes.
+We retain the analytical discipline of a Lucas-tree economy \citep{Lucas1978}, while replacing ad hoc learning rules with a microfounded, empirically prevalent high-dimensional procedure.
+
+\paragraph{Sparse and unstable predictability.}
+Empirical evidence documents that predictive relations are time-varying \citep{AngBekaert2007_RFS,GoyalWelch2003_MS,LettauLudvigson2001_JF} and sparse across a large set of candidate signals \citep{kozak2020shrinking,freyberger2020dissecting,Feng2020}.
+Machine-learning methods exploit this sparsity and often outperform traditional linear models \citep{gu2020empirical}.
+Most closely related, \cite{Chinco2019} show that LASSO uncovers high-frequency predictability that is unstable and concentrated in a small set of predictors.
+Our contribution is to endogenize these features as equilibrium outcomes of learning and trading.
