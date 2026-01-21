@@ -1,14 +1,8 @@
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Template for working papers
-%% Tommaso Di Francesco
-%% University of Amsterdam
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Version 1.0 // February 2024
-%% 
+
 \documentclass[11pt]{article}
 
 \usepackage{style}
-%% ===============================================
+
 
 \setlength{\droptitle}{-5em} %% Don't touch
 
@@ -16,8 +10,13 @@
 % SET THE TITLE
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TITLE:
-\title{Lasso Trading}
-\author{}
+\title{Lasso Learning and Endogenous Return Predictability}
+
+\author{
+Tommaso Di Francesco\thanks{University of Bonn}
+\and
+Jonathan Seim\thanks{University of Cologne}
+}
 % DATE:
 \date{\today}
 
@@ -26,146 +25,151 @@
 \begin{document}
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pretitle{\begin{center}\bfseries\LARGE}
+\posttitle{\end{center}}
+
+
 
 {\setstretch{.8}
 \maketitle
-\centering
 }
 
-\section{Introduction}
-
-The volume of data available worldwide are growing at an unprecedented pace.
-In 2024 alone, the world generated approximately 402 million terabytes of data per day, up from 43 million just a decade earlier \citep{DataSphere2025}.
-A consequence of this data explosion is that investors today can base their decisions not only on detailed business data but also on a wide array of alternative data sources such as social media activity, satellite images, and web traffic.
-This data is in high demand with investors.
-In a survey among 150 asset-managers, 91\% indicated that they already use, or plan to implement, machine learning and artificial intelligence in their investment-process \citep{Mercer2024AI}.
-In the standard learning-based asset-pricing model, agents are endowed with a model that relates future returns to a small set of parameters \citep{Timmermann1993,hong2007simple}.
-Agents use observed data to estimate these parameters and form return expectations.
-Evidently, this is a poor representation of how investors form return expectations in a data-rich environment.
-
-We adress this gap by studying a learning mechanism that allows agents to search a large number of potential predictors for return predictability and to update the set of predictors they rely on over time.
-Specifically, we ask: \emph{Can the sparse and unstable nature of return predictability be explained as the outcome of investors actively searching for it in a large number of potential predictors?} 
-
-This paper contributes in two ways.
-First, we bring theory closer to how investors report forming expectations today: by combining many potential predictors using machine learning.
-Second, our framework is well suited to match a central empirical pattern in return predictability: it is sparse and unstable \citep{Chinco2019,Farmer2023}.
-At any point in time, only a small subset of signals forecasts returns, and the elements of this subset change over time.
-
-The central novelty of our model is a learning mechanism based on the least absolute shrinkage and selection operator (LASSO).
-LASSO is a regularized regression method that selects the most relevant predictors from a large set of candidates by shrinking small coefficients to zero \citep{Tibshirani1996}.
-In the model, investors do not possess a structural theory linking fundamentals to returns but rather belief that returns may be predictable from a large set of candidate predictors.
-They use a simple linear forecasting rule that they estimate using LASSO.
-The central mechanism in the model is a feedback loop from learning to prices: the act of searching for return predictability itself generates return predictability.
-The economy endogenously generates \emph{sparse and short-lived episodes of return predictability}, despite the absence of predictability under rational expectations.
-
-\subsection*{Related Literature}
-
-The paper relates to three strands of research.
-
-\paragraph{Learning in asset pricing.}
-A large literature studies bounded rationality by assuming that agents learn unknown parameters of a correctly specified model using least squares methods \citep{Marcet1989}.
-Classic results show that learning can generate excess volatility and return predictability \citep{Timmermann1993,Timmermann1996}.
-Subsequent work emphasizes that convergence to rational expectations need not obtain when agents have limited memory or employ misspecified forecasting models \citep{Honkapohja2003}.
-Related contributions allow agents to switch among multiple forecasting rules or to rely on parsimonious PLMs in multivariate environments \citep{barberis1998model,hong2007simple,Branch2010}.
-
-\paragraph{Internal rationality and belief--price feedback.}
-A central challenge in standard learning models is that agents often know the mapping from fundamentals to prices.
-Following \cite{Adam2016}, we adopt an internal rationality perspective in which agents optimize conditional on subjective beliefs about returns and learn from realized prices.
-This framework generates a feedback loop between beliefs and equilibrium outcomes.
-We retain the analytical discipline of a Lucas-tree economy \citep{Lucas1978}, while replacing ad hoc learning rules with a microfounded, empirically prevalent high-dimensional procedure.
-
-\paragraph{Sparse and unstable predictability.}
-Empirical evidence documents that predictive relations are time-varying \citep{AngBekaert2007_RFS,GoyalWelch2003_MS,LettauLudvigson2001_JF} and sparse across a large set of candidate signals \citep{kozak2020shrinking,freyberger2020dissecting,Feng2020}.
-Machine-learning methods exploit this sparsity and often outperform traditional linear models \citep{gu2020empirical}.
-Most closely related, \cite{Chinco2019} show that LASSO uncovers high-frequency predictability that is unstable and concentrated in a small set of predictors.
-Our contribution is to endogenize these features as equilibrium outcomes of learning and trading.
 
 
+\section*{Introduction}
 
+The volume of data available to investors has expanded dramatically over the past decade.
+Beyond traditional firm-level and macroeconomic data, market participants increasingly rely on alternative sources such as text, web traffic, satellite imagery, and social media \citep{DataSphere2025}.
+Investors now widely employ machine learning methods to extract signals from such high-dimensional data \citep{Mercer2024AI}.
+A key feature of these approaches is that they enable a systematic search for predictive relationships by allowing the data itself to determine the forecasting model, without requiring prior theoretical restrictions on which variables should predict returns.
+This behavior is not captured by standard learning-based asset-pricing models.
+In much of the existing literature, agents rely on a pre-specified forecasting rule and update a limited set of parameters using variants of least squares \citep{Timmermann1993,hong2007simple}, or switch between a small number of competing low-dimensional models \citep{barberis1998model}.
+By construction, these frameworks abstract from high-dimensional predictor spaces and from the model-selection step that is central to how modern investors learn from data.
 
+To address this gap, we study an asset-pricing model in which returns are unpredictable under rational expectations, yet investors search for forecasting signals in a large set of potential predictors.
+Our central question is whether this \emph{search for predictability} can account for two empirical features of return predictability: it is \emph{sparse}, in that only a small subset of predictors matters, and \emph{unstable}, in that predictability appears and disappears over time \citep{Chinco2019,Farmer2023}.
+We model this behavior by endowing agents with a learning rule based on the least absolute shrinkage and selection operator (LASSO) \citep{Tibshirani1996}. 
+In each period, agents estimate a linear forecasting model using LASSO, which sets most coefficients to zero and keeps only predictors with strong estimated effects that survive penalization. 
+When LASSO selects a non-zero predictor, investors trade on the resulting perceived predictability.
+Through the resulting feedback between beliefs and prices, the model generates self-sustained and short-lived windows of return predictability even though returns are unpredictable under rational expectations. 
+We formally characterize when such windows arise, showing that they are more likely under higher return volatility, limited agent memory, and stronger beliefs in predictability.
+We also test the model on the universe of U.S. listed stocks, combined with a large set of potential signals derived from U.S. financial and business news \citep{bybee2024business}. 
+In line with our narrative, the model explains an economically meaningful share of realized returns.
 
+In what follows, I briefly outline the model and its empirical implementation, and conclude by highlighting the main contributions and planned extensions.
 
-
-
-
-
-
-
-
-\subsection*{Model}
+\section*{Model}
 
 \paragraph{Environment.}
-We study a standard \cite{Lucas1978} asset-pricing model l in the flavour of \cite{Adam2016}.
+We study a standard \cite{Lucas1978} asset-pricing model.
 A representative risky asset pays dividend $D_t$ and its price $P_t$ satisfies the Euler equation
 \begin{equation}\label{eq:euler}
 P_t = \delta\,\mathbb{E}_t\!\left[\left(\frac{C_{t+1}}{C_t}\right)^{-\gamma}(P_{t+1}+D_{t+1})\right],
 \end{equation}
-where preferences exhibit constant relative risk aversion with coefficient $\gamma$ and discount factor $\delta$.
+where $C_t$ denotes consumption, preferences exhibit constant relative risk aversion with coefficient $\gamma$ and $\delta$ denotes the discount factor.
 Under rational expectations, consumption and dividends follow stationary log-normal processes and returns are conditionally unpredictable.
 
 \paragraph{Perceived law of motion.}
-Following \cite{Adam2016} we assume that agents are fully rational with respect to the dividend and consumption processes but do not with respect to returns.
-Instead, they believe that returns are predictable conditionally on one or multiple signals.
-We formalize this by endowing agents with a perceived law of motion (PLM) for log returns of the form
+Following \cite{Adam2016}, we assume that agents are fully rational with respect to the dividend and consumption processes, but not with respect to returns. 
+Instead, they hold the belief that returns are predictable conditional on one or more observable signals. 
+We formalize this belief by endowing agents with a perceived law of motion (PLM) for log returns of the form
 \begin{equation}
 r_{t+1} = X_t'\beta + u_{t+1},
 \end{equation}
-where $X_t$ is a potentially high-dimensional vector of predictors.
-Agents try to estimate the unkonw coefficient vector $\beta$ using observed data.
+where $X_t$ is a potentially high-dimensional predictor matrix.
+Agents try to estimate the unknown coefficient vector $\beta$ using observed data.
 
 \paragraph{Actual law of motion.}
 The agents expectations of future returns $X_t'\beta$ affect actual returns trough the Euler equation.
-Substituting the agents subjective beliefs into \ref{eq:euler}, we obtain the ALM for returns: 
+Substituting the agents subjective beliefs into (\ref{eq:euler}), we obtain the actual law of motion (ALM) for returns: 
 \begin{equation}\label{eq:alm_univariate}
     r_{t+1} = \log(\varepsilon_{t+1}) + \log(1 - \kappa e^{x_{t} \beta}) - \log(1 - \kappa e^{x_{t+1} \beta}),
 \end{equation}
-where $\varepsilon_{t+1}$ is an i.i.d.\ innovation and $\kappa := \delta a^{- \gamma} e^{\sigma^2_u / 2}$.
+where $\kappa := \delta a^{- \gamma} e^{\sigma^2_u / 2}$ with $\sigma^2_u$ being the variance of $u_{t+1}$.
 Note, that the resuling ALM is nonlinear, implying that the agents’ linear PLM is misspecified.
 
 \paragraph{Equilibrium.}
-Under a misspecified PLM, learning does not necessarily converge to the rational expectations equilibrium over time \citep{Honkapohja2003}.
-Instead, we focus on a notion of equilibrium that requires internal statistical consistency between beliefs and outcomes.
-We adopt a cross-moment consistent equilibrium (CMCE), in which the joint distribution of returns and predictors induced by the ALM is such that, when agents apply their learning rule (e.g.: OLS or LASSO) to this distribution, they recover the same coefficients they use to form beliefs.
-In a CMCE, prices are determined optimally given subjective beliefs, beliefs are updated using observed data generated by equilibrium prices, and the perceived forecasting moments coincide with the corresponding moments implied by the actual law of motion.
+When the perceived law of motion (PLM) is misspecified, learning need not converge to the rational expectations equilibrium \citep{Honkapohja2003}. 
+We therefore adopt a cross-moment consistent equilibrium (CMCE), which requires internal consistency between beliefs and outcomes: the joint distribution of returns and predictors implied by the actual law of motion is such that, when agents apply their learning rule, they recover the same coefficients they use to form beliefs. 
+In the CMCE, prices are determined by agents who optimize given their subjective beliefs.
+These beliefs are updated using data generated by equilibrium prices, and the forecasting moments perceived by agents coincide with those implied by the actual law of motion.
 
-\paragraph{LASSO Learning.}
-We endow our agents with a LASSO learning rule.
-In each period, they use LASSO regression on a rolling window of recent data to estimate the paramters of their PLM.
-Agents update beliefs about return predictability using LASSO on a short, rolling sample of recent data.
-Formally, agents choose the vector $\beta$ by solving the penalized least-squares problem
+\paragraph{Learning mechanism.}
+
+Agents form expectations by estimating their PLM using the LASSO.
+This regularization method allows them to consider a large set of potential predictors that can even exceed the number of available observations because LASSO shrinks small coefficients exactly to zero.
+In each period, agents run a LASSO regression on a short rolling window of recent data to select a subset of predictors, estimate their coefficients, and form return expectations.
+Formally, they choose the coefficient vector $\beta$ as the solution to the penalized least squares problem:
 \begin{equation}
-\hat\beta_t \in \arg\min_{\beta}\left\{\frac{1}{2}\sum_{i=t-n}^{t-1}\big(r_{i+1}-X_i'\beta\big)^2
+\hat{\beta}_{\text{LASSO}}  = \arg\min_{\beta}\left\{\frac{1}{2}\sum_{i=t-n}^{t-1}\big(r_{i+1}-X_i'\beta\big)^2
 \;+\;\lambda \|\beta\|_1\right\},
 \end{equation}
-where $n$ is the window length and $\lambda$ is the $\ell 1$-penalty. 
-The penalization shrinks many coefficients to exactly zero which allows the agent to consider more paramters $k$ than there are observations $n$ available.
-In the case of orthogonal regressors, we can derive a closed form solution that reduces to soft-thresholding of the least-squares estimate,
+where $n$ denotes the window length and $\lambda$ the $\ell 1$-penalty. 
+When regressors are orthonormal, we can derive a closed form solution that reduces to soft-thresholding of the least-squares estimate,
 \begin{equation}\label{eq:lasso_from_ols}
 \hat{\beta}_{\text{LASSO}} = S(\beta_{\text{OLS}}, \lambda) = \textrm{sign}(\beta_{\text{OLS}}) \cdot \max\left(0, |\beta_{\text{OLS}}| - \lambda\right),
 \end{equation}
-so a predictor is used only when its recent estimated effect is large enough to survive the penalty.
+As a result, a predictor enters the forecasting model only if the coefficient agents would estimate using ordinary least squares (OLS) exceeds the penalty $\lambda$ in absolute value.
 
 \paragraph{Main result.}
 
+Under LASSO learning, asset returns can become predictable even though they are unpredictable under rational expectations.
+This predictability arises endogenously from the feedback between investors’ beliefs and equilibrium prices.
+We characterize the conditions under which such episodes occur by deriving the probability that a given predictor is selected by the LASSO.
+To obtain a tractable characterization of this mechanism, we assume that agents update their beliefs using constant-gain learning with gain parameter $g$.\footnote{In the empirical application, we estimate the model using a rolling window that places equal weight on a fixed number of recent observations. Since this approach is analytically intractable, we approximate it in the theory with constant-gain learning. The two schemes can be related by matching the cumulative weight assigned to recent data: letting $p$ denote the proportion of total weight placed on the $\ell$ most recent observations under constant-gain learning with decay parameter $g$, the implied window length satisfies $\ell \approx \log(1-p)/\log(1-g)$.}
+For $\kappa < 1$ and small values of $g$, the probability that the LASSO estimate is nonzero equals the probability that the corresponding ordinary least squares estimate exceeds the penalty parameter $\lambda$:
+\begin{equation}
+\mathbb{P}\big(|\beta_{\text{OLS}}| > \lambda\big)
+= 1 - \left[
+\Phi\left(\frac{\lambda}{\sigma_{\text{OLS}}}\right)
+- \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS}}}\right)
+\right],
+\end{equation}
+where
+\begin{equation}
+\sigma_{\text{OLS}}
+= \left(
+g s_d^2
+\left(
+2 \sigma_x^2
+\left(1 + \frac{\kappa}{1 - \kappa}\right)
+\right)^{-1}
+\right)^{1/2}.
+\end{equation}
 
 
+\paragraph{Estimation}
+
+To estimate the model, we use two data sources.
+First, we collect daily returns for all U.S. listed stocks from CRSP over the period 1984-2017.
+Second, we use the daily attention of news to 180 financial and business topics constructed by \cite{bybee2024business} from a large corpus of U.S. news articles.
+We implement the model in a two-stage empirical design.
+In the first stage, we estimate a rolling LASSO forecasting regression using the news attention series as candidate predictors.
+In the second stage, we use the resulting return forecasts to estimate the ALM.
+If our postulated mechanism is at work in the data, the return forecasts from the first stage should explain a significant share of realized returns in the second stage.
+We show that this is indeed the case: the return forecasts explain an economically meaningful share of realized returns.
 
 
+\section*{Contribution}
 
+This paper makes three main contributions to the literature in asset pricing.
+First, in learning-based asset-pricing models, investors typically update beliefs within a small, pre-specified forecasting rule \citep{Marcet1989,Timmermann1993,barberis1998model,hong2007simple}.
+We instead study a setting in which investors have no prior idea of the true return process but instead select a new model each time they update beliefs. 
+This novel learning mechanism is a closer approximation of how investors today utilize data.
+Second, building on the internal rationality approach of \cite{Adam2016} in the Lucas-tree tradition \citep{Lucas1978}, we allow beliefs and prices to interact: when investors come to believe a signal predicts returns, they trade on it, and this trading feeds back into prices.
+This feedback loop between statistical learning and prices is new to the literature.
+Third, the model offers a parsimonious explanation for the sparse and episodic nature of return predictability documented in recent empirical work \citep{Chinco2019,Farmer2023}.
+In our framework, predictability arises intermittently from selection events and fades as signals fail to survive re-estimation and regularization. 
+This mechanism delivers sharp comparative statics, linking the frequency of predictability episodes to market conditions and the characteristics of agents search behavior.
 
+\section*{Outlook}
 
-\subsection*{Empirical Strategy}
-
-We implement a two-stage empirical design.
-In the first stage, we estimate rolling LASSO forecasting regressions using a high-dimensional predictor set that includes financial variables and news-based text topics.
-In the second stage, we estimate the equilibrium feedback parameter $\kappa$ from the nonlinear return mapping implied by the model.
-
-The theory yields sharp predictions regarding sparsity, instability, and the conditions under which learning-driven trading has economically meaningful price effects.
-
-\subsection*{Conclusion}
-
-This paper provides a tractable equilibrium framework in which high-dimensional, sparsity-inducing learning rules endogenously generate sparse and transient return predictability.
-The model rationalizes empirical patterns documented in the data and connects modern machine-learning forecasting practices to equilibrium asset pricing.
+We plan to extend our model in several directions.
+First, we plan to introduce heterogeneous agents who differ in their strength of regularization.
+For example, optimistic investors may penalize weak signals less aggressively, while pessimistic investors apply stronger penalties, generating heterogeneity in perceived predictability and trading behavior.
+Second, we will broaden the set of candidate predictors to include alternative classes of signals, such as firm fundamentals, technical indicators, and additional forms of textual and non-textual information.
+Third, we will study the role of memory more systematically by allowing agents to differ in the length of the estimation window.
+These extensions will allow us to assess how heterogeneity in beliefs, information, and memory shapes the dynamics of predictability and prices.
 
 \newpage
 
