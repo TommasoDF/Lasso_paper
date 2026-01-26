@@ -9,6 +9,8 @@
 \usepackage{style}
 
 
+
+
 %% ===============================================
 %% Setting the line spacing (3 options: only pick one)
 % \doublespacing
@@ -135,26 +137,7 @@
 
 \section{Introduction}
 
-<<<<<<< HEAD:manuscript/main.tex
-The volume and granularity of data available worldwide is growing at an unprecedented pace.
-In 2024 alone, the world generated approximately 402 million terabytes of data per day, up from 43 million just a decade earlier \citep{DataSphere2025}. 
-Financial markets are no exception to this trend.
-Whereas investors once had access to only a handful of data series, today they can draw on a vast array of signals, ranging from traditional balance-sheet information to textual data, satellite imagery, and web traffic.
-For most of these new variables, there is no clear theoretical prior about their relationship, if any, to future stock returns. 
-Nevertheless, such data are in high demand with investors. 
-The reason is that investors increasingly rely on machine learning and artificial intelligence (AI) to find useful patterns in large datasets.\footnote{The Invesco Global Systematic Investing Study 2024 reports that more than half of surveyed investors incorporate AI in their investment processes using it in a variety of situations, ranging from pattern recognition to portfolio optimization \citep{Invesco2024IGSIS}.}
-These methods require no theoretical guidance about which variables should matter and they let instead the data speak for themselves.
 
-This behavior is in contrast to the traditional FIRE (Full Information Rational Expectations) paradigm, in which agents are assumed to know the true data-generating process and to form expectations accordingly, which is
-the benchmark in asset pricing theory. 
-Even relaxation of FIRE, in the favour of learning mechanisms, models agents asemploying self-referential or correctly specified forecasting rules, or to work with under-parameterized perceived laws of motion. Agents track a small number of parameters and update them recursively using variants of least squares or constant-gain learning. 
-These frameworks are analytically convenient, but they do not describe investors who suspect that some among thousands of potential signals may forecast returns and who use flexible statistical procedures to discover such relationships without an explicit structural model in mind.
-
-We develop a model that embeds this form of statistical learning into a standard asset pricing environment. 
-Under FIRE, log-returns in our economy are not predictable. 
-Agents, however, suspect that returns may be conditionally predictable using a large set of potential regressors. 
-To exploit this perceived opportunity, they bet on sparsity and apply a machine learning method, least absolute shrinkage and selection operator (LASSO), to select a sparse subset of variables from the high-dimensional predictor space and to construct forecasting rules \citep{Tibshirani1996}.
-=======
 The volume and granularity of data available worldwide is growing at an unprecedented pace. In 2024 alone, the world generated approximately 402 million terabytes of data per day, up from 43 million just a decade earlier \citep{DataSphere2025}. 
 Financial markets are no exception to this trend. 
 Whereas investors once had access to only a handful of data series, today they draw on a vast array of signals, ranging from traditional balance-sheet information to textual data, satellite imagery, and web traffic.
@@ -170,7 +153,6 @@ While analytically convenient, these frameworks do not describe the behavior of 
 We develop a model that embeds this form of statistical learning into a standard asset pricing environment. 
 Agents suspect that returns may be conditionally predictable from a large set of observable predictors. 
 To exploit this perceived opportunity, they bet on sparsity and apply the apply the least absolute shrinkage and selection operator (LASSO) to select a sparse subset of variables from the high-dimensional predictor space \citep{Tibshirani1996}.
->>>>>>> 373f968065f10172443bc857926a49d38bd920e2:Manuscripts/manuscript/main.tex
 
 Our main result is that the very act of searching for predictability with high-dimensional statistical learning can generate short-lived pockets of return predictability. 
 In equilibrium, these pockets are sparse and evolve over time, echoing recent evidence on episodic short-horizon predictability \citep{Chinco2019, Farmer2023}. 
@@ -249,14 +231,19 @@ The asset pays a stochastic dividend $D_t$ at each discrete time period $t = 0,1
 The dividend and consumption processes are driven by multivariate normally distributed shocks
 \begin{equation}
     \begin{pmatrix}
+    \eta^d_t \\
+    \eta^c_t
+    \end{pmatrix} 
+    =
+    \begin{pmatrix}
     \log \varepsilon^d_t \\
     \log \varepsilon^c_t
     \end{pmatrix} \sim \mathcal{N}\left(\begin{pmatrix}
-    -s^2_d/2 \\
-    -s^2_c/2
+    -\sigma^2_d/2 \\
+    -\sigma^2_c/2
     \end{pmatrix}, \begin{pmatrix}
-    s^2_d & \rho s_d s_c \\
-    \rho s_d s_c & s^2_c
+    \sigma^2_d & \rho \sigma_d \sigma_c \\
+    \rho \sigma_d \sigma_c & \sigma^2_c
     \end{pmatrix}\right),
 \end{equation}
 The dividend process follows 
@@ -273,16 +260,16 @@ Similarly for the aggregate consumption process we postulate that
 \end{equation}
 The equilibrium price of the asset is determined by the standard no-arbitrage condition which requires that the price at time $t$ equals the discounted expected value of next period's price plus dividend, that is
 \begin{equation}\label{eq:equilibrium_price}
-    P_t = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \gamma} P_{t+1} + D_{t+1}}\right],
+    P_t = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \ell} P_{t+1} + D_{t+1}}\right],
 \end{equation}
-where $\delta$ is the discount factor and $\mathbb{E}_t[\cdot]$ is the expectation operator conditional on information available at time $t$.
+where $\delta$ is the discount factor, $\ell$ is the risk aversion parameter\footnote{The consumption based asset pricing literature normally used $\gamma$, but we will use $\ell$ to avoid confusion with the learning gain parameter}, and $\mathbb{E}_t[\cdot]$ is the expectation operator conditional on information available at time $t$.
 Under FIRE, the equilibrium price can be solved as
 \begin{equation}
-    P_t =  \frac{\delta a^{(1 - \gamma)} \rho_e}{1 - a^{(1 - \gamma)} \rho_e} D_t,
+    P_t =  \frac{\delta a^{(1 - \ell)} \rho_e}{1 - a^{(1 - \ell)} \rho_e} D_t,
 \end{equation}
 where 
 \begin{equation}
-    \rho_e = \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{D_{t+1}}{D_t} \right] = e ^ {\gamma(1 + \gamma) s^2_c/2} e ^ {-\gamma \rho s_c s_d} .
+    \rho_e = \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \ell} \frac{D_{t+1}}{D_t} \right] = e ^ {\ell(1 + \ell) \sigma^2_c/2} e ^ {-\ell \rho \sigma_c \sigma_d} .
 \end{equation}
 This implies a constant price-dividend ratio and an ex-dividend gross return which is given by
 \begin{equation}
@@ -290,9 +277,9 @@ This implies a constant price-dividend ratio and an ex-dividend gross return whi
 \end{equation}
 Taking logs we obtain log-returns
 \begin{equation}
-    r_{t+1} = \log(R_{t+1}) = \log(a) + \log(\varepsilon^d_{t+1}) \sim \mathcal{N}(\log(a) - s^2_d/2, s^2_d).
+    r_{t+1} = \log(R_{t+1}) = \log(a) + \eta^d_{t+1} \sim \mathcal{N}(\log(a) - \sigma^2_d/2, \sigma^2_d).
 \end{equation}
-Without loss of generality in what follows we set $\log(a) = s^2_d/2$. This implies that under FIRE log-returns have mean zero and there is no time-$t$ information that can help forecasting returns.
+Without loss of generality in what follows we set $\log(a) = \sigma^2_d/2$. This implies that under FIRE log-returns have mean zero and there is no time-$t$ information that can help forecasting returns.
 
 Instead of assuming that agents know the true data generating process, we follow the adaptive learning literature and assume that agents are boundedly rational and form their expectations using econometric techniques \textcolor{red}{[citations here]}.
 Equation (\ref{eq:equilibrium_price}) shows that agents have to forecast two quantities, the risk-adjusted gross return and gross dividend growth.
@@ -302,8 +289,6 @@ We follow \cite{Adam2016} in making the next assumption.
     Agents know the process for dividends and consumption and are boundedly rational only with respect to (gross) returns.
 \end{assumption}
 In this way we can isolate the effects of learning about returns on asset prices.
-The usual approach to learning is to endow agents with a Perceived Law of Motion (PLM) which is of the same functional form as the Actual Law of Motion (ALM) but with unknown parameters that agents estimate using available data.
-In this paper we depart from the standard approach and assume that agents use linear models and try to forecast log-returns on some set of predictors available at time $t$.
 
 % --------------------
 \subsection{Univariate PLM and ALM}
@@ -319,9 +304,11 @@ Then the agents' PLM about log-returns implies the following PLM for gross retur
 \begin{equation}
     R_{t+1} = e ^ {x_{t} \beta + u_{t+1}}.
 \end{equation}
-This implies that gross expected returns follow a log-normal distribution and their conditional forecast is
+This implies that gross expected\footnote{
+Throughout the paper we use $\tilde{\mathbb{E}}_t[\cdot]$ to denote expectations taken under the agents' PLM, while $\mathbb{E}_t[\cdot]$ denotes rational expectations.}
+ returns follow a log-normal distribution and their conditional forecast is
 \begin{equation}
-    \mathbb{E}_t(R_{t+1}) = \mathbb{E}_t\left(\frac{P_{t+1}}{P_t}\right) = e^{x_{t} \beta + \sigma^2_u / 2} = \phi e^{x_{t} \beta},
+    \tilde{\mathbb{E}}_t(R_{t+1}) = \tilde{\mathbb{E}}_t\left(\frac{P_{t+1}}{P_t}\right) = e^{x_{t} \beta + \sigma^2_u / 2} = \phi e^{x_{t} \beta},   
 \end{equation}
 by letting $\phi = e^{\sigma^2_u / 2}$.
 
@@ -330,35 +317,31 @@ by letting $\phi = e^{\sigma^2_u / 2}$.
 \end{assumption}
 Assumption \ref{ass:consumtion_independence} allows us to derive risk-adjusted expected gross returns as
 \begin{equation}
-    \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \frac{P_{t+1}}{P_t} \right] = \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \gamma} \right] \mathbb{E}_t\left(\frac{P_{t+1}}{P_t}\right) = a ^ {-\gamma} \phi e^{x_t \beta}.
+    \tilde{\mathbb{E}}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \ell} \frac{P_{t+1}}{P_t} \right] = \tilde{\mathbb{E}}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \ell} \right] \tilde{\mathbb{E}}_t\left(\frac{P_{t+1}}{P_t}\right) = a ^ {-\ell} \phi e^{x_t \beta}.
 \end{equation}
 Plugging this into (\ref{eq:equilibrium_price}) yields
 \begin{equation}
-    P_t = \frac{\delta a^{(1 - \gamma)} \rho_e}{1 - \delta a^{- \gamma} \phi e^{x_t \beta}} D_t.
+    P_t = \frac{\delta a^{(1 - \ell)} \rho_e}{1 - \delta a^{- \ell} \phi e^{x_t \beta}} D_t.
 \end{equation} 
 Now divide by $P_{t-1}$ to obtain actual gross returns
 \begin{equation}
-    R_{t} = \frac{P_{t}}{P_{t-1}} = \frac{1 - \delta a^{- \gamma} \phi e^{x_{t-1} \beta}}{1 - \delta a^{- \gamma} \phi e^{x_{t} \beta}} \frac{D_t}{D_{t-1}},
+    R_{t} = \frac{P_{t}}{P_{t-1}} = \frac{1 - \delta a^{- \ell} \phi e^{x_{t-1} \beta}}{1 - \delta a^{- \ell} \phi e^{x_{t} \beta}} \frac{D_t}{D_{t-1}},
 \end{equation}
 and taking logs and moving one step forward we obtain the ALM 
 \begin{equation}\label{eq:alm_univariate}
-    r_{t+1} = \log(\varepsilon_{t+1}) + \log(1 - \kappa e^{x_{t} \beta}) - \log(1 - \kappa e^{x_{t+1} \beta}),
+    r_{t+1} = \eta_{t+1} + \log(1 - \kappa e^{x_{t} \beta}) - \log(1 - \kappa e^{x_{t+1} \beta}),
 \end{equation}
-where $\kappa := \delta a^{- \gamma} \phi$.
-
-
-% --------------------
-\subsection{Global well-definedness and bounded returns}
+where $\kappa := \delta a^{- \ell} \phi$ and $\eta_{t+1} = \log(a) + \eta^d_{t+1}$.
 
 Expression \eqref{eq:alm_univariate} is only well-defined when $1 - \kappa e^{x_t \beta} > 0$ and $1 - \kappa e^{x_{t+1} \beta} > 0$ hold with probability one, which imposes state-dependent restrictions on $(x_t,\beta)$. To avoid these domain issues and guarantee global existence of a stochastic equilibrium, we adopt a bounded specification for the conditional mean of returns. We modify the perceived conditional expectation of gross returns to
 \begin{equation}
-    \mathbb{E}_t(R_{t+1}) = \phi \exp\bigl( w \tanh(x_t \beta / w) \bigr),
+    \tilde{\mathbb{E}}_t(R_{t+1}) = \phi \exp\bigl( w \tanh(x_t \beta / w) \bigr),
 \end{equation}
 where $w = -\log(\kappa) - \varepsilon$ for some $\varepsilon > 0$. Since $\tanh(\cdot) \in (-1,1)$, we have $w \tanh(x_t \beta / w) \in (-w,w)$ which implies $e^{w \tanh(x_t \beta / w)} \in (e^{-w}, e^{w})$. By construction $w < -\log(\kappa)$, so $e^{w} < \kappa^{-1}$ and therefore $1 - \kappa e^{w \tanh(x_t \beta / w)} > 0$ for all $x_t$ and $\beta$.
 
 The corresponding risk-adjusted expectations and price-dividend ratio are defined as before, with $x_t \beta$ replaced by $w \tanh(x_t \beta / w)$. This yields the modified ALM
 \begin{equation}\label{eq:alm_univariate_bounded}
-    r_{t+1} = \log(\varepsilon^d_{t+1})
+    r_{t+1} = \eta_{t+1}
     + \log\bigl(1 - \kappa e^{w \tanh(x_t \beta / w)}\bigr)
     - \log\bigl(1 - \kappa e^{w \tanh(x_{t+1} \beta / w)}\bigr).
 \end{equation}
@@ -367,11 +350,42 @@ For later use, we define the function
     g_{\beta}(x) 
     := \log\bigl(1 - \kappa\, e^{w \tanh(x \beta/w)}\bigr),
 \end{equation}
-which is globally well-defined and smooth in $x$ and $\beta$. For small $\sigma_x^2$ and moderate values of $\kappa$, the original ALM \eqref{eq:alm_univariate} is well-defined with high probability. The bounded specification \eqref{eq:alm_univariate_bounded} should therefore be interpreted as a globally valid extension that coincides with the baseline model in the empirically relevant region of the state space while eliminating corner cases where the logarithm is undefined.
+which is globally well-defined and smooth in $x$ and $\beta$. the original ALM \eqref{eq:alm_univariate} Given that the term $x \beta$ represents expected returns, we argue that the original ALM is well-defined with high probability.
+The bounded specification \eqref{eq:alm_univariate_bounded}, should therefore be interpreted as a globally valid extension that coincides with the baseline model in the empirically relevant region of the state space while eliminating corner cases where the logarithm is undefined.
+As noted above, agents do not know the value of $\beta$ in their PLM \eqref{eq:plm_univariate} and have to estimate it from observed data.
+We therefore consider different learning mechaisms that agents can use to update their beliefs about $\beta$ over time, sequentially building towards the LASSO learning mechanism that is the main focus of this paper.
 
-\subsection{Cross-Moment Consistent Equilibrium}
+% =====================================================
+\section{Recursive Least Squares Learning}
+% =====================================================
 
-The ALM given by \eqref{eq:alm_univariate_bounded} is nonlinear, which implies that the linear PLM used by agents is misspecified. In such cases the learning procedure is unlikely to converge to a rational expectations equilibrium. The literature has instead focused on weaker notions of equilibrium that require consistency only on specific moments rather than on entire distributions \textcolor{red}{[citations here]}. Following the concept of Stochastic Consistent Expectations Equilibrium (SCEE) introduced by \cite{Hommes2013}, we define a Cross-Moment Consistent Equilibrium (CMCE) as an equilibrium in which the population regression coefficient in agents' perceived linear model matches the projection of actual returns onto the predictor.
+We first consider Recursive Least Squares (RLS) learning, which is a recursive implementation of standard Ordinary Least Squares (OLS). At each time $t$, agents update their estimate $\beta_t$ by minimizing the sum of squared forecast errors:\footnote{We use the following timing: at time $t$ the agent forecasts $r^e_{t+1} = x_t \beta_t$ which then implies a realization for $P_t$ and subsequently $r_{t+1}$. Therefore, to avoid simultaneity issues, we assume that when computing the current estimate, the last available log-return observation is $r_{t-1}$.}
+\begin{equation}
+    \beta_t = \left(\sum^{t-1}_{i=1} x_{i-1}^2 \right)^{-1} \sum^{t-1}_{i=1} x_{i-1} r_i.
+\end{equation}
+
+This estimator admits a recursive formulation. Define $M_{t-1} = \frac{1}{t-1} \sum^{t-1}_{i=1} x_{i-1}^2$. Standard algebra, which we defer to Appendix (\ref{app:RLS}) yields the recursions
+\begin{equation}
+    M_t = M_{t-1} + \frac{1}{t} \left(x_{t-1}^2 - M_{t-1} \right),
+\end{equation}
+\begin{equation}
+    \beta_t = \beta_{t-1} + \left((t-1) M_{t-1} \right)^{-1} \left( x_{t-2} r_{t-1} - x_{t-2}^2 \beta_{t-1} \right).
+\end{equation}
+
+Under RLS learning, actual returns evolve according to
+\begin{equation}\label{eq:alm_RLS}
+    r_{t-1} = \eta_{t-1}
+    + g_{\beta_{t-2}}(x_{t-2}) - g_{\beta_{t-1}}(x_{t-1}),
+\end{equation}
+where $g_\beta(\cdot)$ is defined in \eqref{eq:g_beta_def}.
+
+A natural question is whether this learning process converges to the rational expectations equilibrium. 
+Under full information rational expectations (FIRE), returns in our model are unpredictable and $\beta = 0$. 
+However, convergence to the REE requires not only that agents' perceived relationship matches the actual relationship, but that the entire distributions implied by the PLM and ALM coincide. 
+When the ALM is nonlinear and the PLM is linear, such convergence is generally not possible. 
+The learning literature has instead focused on weaker notions of equilibrium that require consistency only on specific moments rather than on entire distributions \citep{Hommes2014}. 
+Following this approach, we define a Cross-Moment Consistent Equilibrium (CMCE) as an equilibrium in which the population regression coefficient in agents' perceived linear model matches the projection of actual returns onto the predictor.
+
 
 \begin{definition}[Cross-Moment Consistent Equilibrium]\label{def:cmce}
 A pair $(\mu,\beta)$ is a \emph{Cross-Moment Consistent Equilibrium (CMCE)} if:
@@ -379,31 +393,169 @@ A pair $(\mu,\beta)$ is a \emph{Cross-Moment Consistent Equilibrium (CMCE)} if:
     \item $\mu$ is a non-degenerate invariant probability measure for the 
     stochastic process
     \[
-        r_{t+1}
-        = \log(\varepsilon^d_{t+1})
-        + g_{\beta}(x_t)
-        - g_{\beta}(x_{t+1}),
+        r_{t-1}
+        = \eta_{t-1}
+        + g_{\beta}(x_{t-2})
+        - g_{\beta}(x_{t-1}),
     \]
     where $x_t \stackrel{iid}{\sim} \mathcal{N}(0, \sigma^2_x)$.
     
-    \item The parameter $\beta$ is the population OLS coefficient of $r_{t+1}$ 
-    on $x_t$ under the invariant measure $\mu$, that is,
+    \item The parameter $\beta$ is the population OLS coefficient of $r_{t-1}$ 
+    on $x_{t-2}$ under the invariant measure $\mu$, that is,
     \[
-        \beta = \frac{\mathbb{E}_\mu[x_t r_{t+1}]}{\mathbb{E}_\mu[x_t^2]} 
-        = \frac{\mathbb{E}_\mu[x_t r_{t+1}]}{\sigma^2_x}.
+        \beta = \frac{\operatorname{Cov}_\mu(x_{t-2} r_{t-1})}{\operatorname{Var}_\mu(x_{t-2}^2)} 
     \]
 \end{enumerate}
 \end{definition}
 
-While a rational expectations equilibrium requires that agents' perceived law of motion coincides with the actual law of motion, a CMCE requires only that the population regression coefficient in agents' perceived linear model matches the projection of actual returns onto the predictor $x_t$. This weaker notion of consistency is appropriate when agents use misspecified linear models to forecast returns generated by a nonlinear process. Despite the misspecification, there is a statistical self-consistency between the empirical relationship agents perceive and the one implied by the ALM.
+While a rational expectations equilibrium requires that agents' perceived law of motion coincides with the actual law of motion, a CMCE requires only that the population regression coefficient in agents' perceived linear model matches the projection of actual returns onto the predictor $x_{t-2}$. 
+This weaker notion of consistency is appropriate when agents use misspecified linear models to forecast returns generated by a nonlinear process. Despite the misspecification, there is a statistical self-consistency between the empirical relationship agents perceive and the one implied by the ALM.
 
-While Definition \ref{def:cmce} is formulated for population OLS, investors in practice estimate $\beta$ using finite samples and often employ regularized methods such as LASSO. A large empirical literature estimates return predictability models using short rolling windows and regularized regressions to avoid overfitting. In practice, agents work with limited samples, re-estimate frequently, and penalize coefficients that appear unstable. This empirical behavior implies short memory and time-varying parameter estimates that respond strongly to recent observations.
+\begin{proposition}\label{prop:RLS}
+    Under RLS learning there exists a unique CMCE given by $\beta = 0$. The CMCE is locally stable under learning for $\kappa \in (0,1)$.
+\end{proposition}
 
-We therefore study the learning dynamics when agents recursively update their estimates using different algorithms and characterize when such learning converges to, or fluctuates around, a CMCE. In the next sections we build a theoretical benchmark that moves gradually from infinite-memory recursive least squares (RLS) to constant-gain learning that discounts the past, and finally to LASSO with sparsity-inducing regularization. This sequence allows us to isolate the separate roles of memory and regularization. We show that with RLS and decreasing gain, the CMCE coincides with the rational expectations equilibrium and is locally stable under learning. When agents discount the past using a constant gain, the estimated parameter oscillates around the CMCE and never settles. Replacing least squares with LASSO does not eliminate these fluctuations. For small enough penalty $\lambda$, we characterize the probability that the LASSO estimate differs from zero, providing a rationale for temporary windows of predictability even when the underlying asset pricing model implies unpredictable returns.
+\textit{Proof.} In Appendix \ref{app:proof_RLS}.
+
+Notice that $\kappa = \delta a^{-\ell} \phi$ is strictly positive for all admissible parameter values. The restriction $\kappa < 1$ imposes an upper bound on the combination of the discount factor, risk aversion, and dividend growth, and is required for the REE to be well-defined. This condition holds for standard parameter calibrations.
+
+Proposition \ref{prop:RLS} shows that with infinite memory, learning eliminates perceived predictability: agents eventually accumulate enough data to recognize that returns are fundamentally unpredictable.
+However, this convergence relies critically on the assumption that all historical observations receive equal weight in estimation. 
+In practice, investors may discount older data either because they believe the economic environment is changing or because they face cognitive or computational constraints on memory. 
+We now examine how limited memory alters the learning outcome.
+
+
+
 
 % =====================================================
-\section{Recursive Least Squares Learning}
+\section{Weighted Least Squares and Constant Gain Learning}
 % =====================================================
+
+We saw that memory, in the sense of the weight assigned to past observations, plays a key role in determining the learning outcome.
+Under RLS learning with decreasing gain, agents eventually learn that returns are unpredictable.
+However, in practice agents may assign more weight to recent observations, either because they believe that the data-generating process is time-varying, or because they have limited memory capacity.
+To capture this, the second learning mechanism we consider is constant gain learning.
+This obtains by replacing the decreasing gain $1/t$ in RLS with a constant gain $g \in (0,1)$, and as we show in Appendix \ref{app:WLS} constant gain corresponds to an on-line estimation of WLS (Weighted Least Squares) with geometrically declining weights.
+
+\begin{equation}
+    \beta_t = \beta_{t-1} + \gamma M^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta_{t-1}).
+\end{equation}
+
+\begin{equation}
+    M_t = M_{t-1} + \gamma \left(x_{t-1}^2 - M_{t-1} \right).
+\end{equation}
+
+\begin{equation}
+    r_{t-1} = \eta_{t-1}
+    + \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-2} \beta_{t-2} / w)}\Bigr)
+    - \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-1} \beta_{t-1} / w)}\Bigr).
+\end{equation} 
+
+
+
+Given that the gain is not decreasing and that the updating depends on the stochastic term $\eta_{t-1}$, differently to RLS, the learning mechanism cannot converge to a fixed point.
+However, under suitable conditions and for small values of $\gamma$, and under the same stability condition $\kappa \in (0, 1)$, it can be shown that the learning dynamics will fluctuate around the CMCE.
+We formalize this in the following proposition.
+\begin{proposition}[Distribution under Constant Gain Learning] \label{prop:WLS_distribution}
+    Under Constant gain learning withwith parameter $\gamma$, and for $\kappa < 1$, for small values of $\gamma$ the estimated parameter $\beta$ approximately follows a normal distribution
+\begin{equation}
+    \beta_t \sim \mathcal{N} \left(\beta^*, \gamma \frac{\sigma_d^2 (1 - \kappa)}{2 \sigma^2_x}\right),
+\end{equation}
+where $\beta^* = 0$ is the cross-moment consistent equilibrium.
+\end{proposition}
+Proof. In Appendix \ref{app:proofs_WLS}.
+
+Proposition \ref{prop:WLS_distribution} characterizes the stochastic fluctuations in beliefs under finite memory. 
+The variance of the estimated coefficient, $\gamma \sigma_d^2 (2\sigma^2_x(1-\kappa))^{-1}$, is driven by three fundamental parameters.
+
+First, the gain parameter $\gamma$ controls memory length and directly amplifies variance. Higher $\gamma$ means agents discount past data more aggressively, giving recent observations disproportionate influence. This amplifies the impact of sampling noise: a few unusual return realizations can substantially shift beliefs when historical evidence receives little weight. 
+
+Second, dividend volatility $\sigma_d^2$ determines the fundamental uncertainty in returns. Greater return volatility generates larger forecast errors, which translate into more volatile coefficient estimates as agents attempt to fit a predictive relationship to noisy data.
+
+Third, predictor variance $\sigma^2_x$ acts as a stabilizing force. When the predictor varies widely, each observation provides more information about the forecasting relationship, reducing estimation uncertainty. 
+% =====================================================
+\section{Lasso Regression}
+% =====================================================
+
+We model sparse belief formation by endowing agents with a \emph{soft-thresholded least squares} learning rule. Concretely, agents first update a least squares estimate of the forecasting coefficient using recursive or constant-gain learning, and then apply a soft-thresholding operator before forming expectations. This mechanism preserves analytical tractability while capturing the key feature of penalized learning, namely the tendency to set coefficients exactly to zero when empirical signals are weak.
+
+Our empirical motivation is closely related to LASSO regression, which augments the least squares objective with an $\ell_1$ penalty and is widely used to promote sparsity in estimated models. 
+Rather than solving the LASSO problem directly within the learning dynamics, we adopt the soft-thresholding rule as a reduced-form representation of penalized estimation. 
+As shown in Appendix \ref{app:lasso}, this procedure is exactly equivalent to LASSO in the univariate case when regressors are orthonormal, in which case the LASSO estimator admits the closed-form representation
+\begin{equation}\label{eq:lasso_from_ols}
+\hat{\beta}_{\text{LASSO}}
+=
+S(\beta_{\text{OLS}},\lambda)
+=
+\mathrm{sign}(\beta_{\text{OLS}})
+\max\!\left\{0,|\beta_{\text{OLS}}|-\lambda\right\}.
+\end{equation}
+
+While exact orthonormality is unlikely to hold in practice, it is common to work with predictors that are uncorrelated and standardized. In such environments, soft-thresholding provides a close approximation to the LASSO solution and is routinely used in empirical applications. We therefore refer to this learning mechanism as \emph{LASSO learning}, with the understanding that it implements penalized least squares through an analytically tractable thresholding rule.
+
+Under this specification, learning dynamics can be studied using the same recursive framework developed for least squares learning. The unpenalized coefficient continues to satisfy the standard cross-moment consistency condition, while sparsity arises endogenously from the thresholding step. As we show below, this modification leaves the location of the cross-moment consistent equilibrium unchanged but alters the stochastic behavior of beliefs under constant-gain learning.
+Specifically, the estimate for $\beta_{\text{OLS}}$ will be distributed as a normal distribution centered around the fixed point, with variance proportional to the gain parameter $\gamma$. 
+This implies that for small $\lambda$ sometimes the estimates will be large enough that the LASSO estimate is non-zero. 
+Given the distribution of $\beta_{\text{OLS}}$, we have: 
+\begin{proposition}[Probability of Non-Zero LASSO Estimate]\label{prop:LASSO_estimate}
+     Under Weighted Least Squares learning with geometrically declining weights with parameter $\gamma$, and for $\kappa < 1$, for small values of $\gamma$ the probability that the LASSO estimate is different from zero is given by 
+     \begin{equation} \mathbb{P}(|{\beta}_{\text{OLS}}| > \lambda) = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS}}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS}}}\right)\right], \end{equation} where $\sigma_{\text{OLS}} = \left(\gamma s_{d}^2 \left(2 \sigma^2_x \left(1 + \frac{\kappa}{1 - \kappa} \right)\right)^{-1}\right)^{1/2}$.
+\end{proposition}
+
+Proof. In Appendix \ref{app:proof_LASSO}.
+
+
+\section{Empirical Application}
+
+The advantage of the theoretical framework developed above is that it provides a clear guide as to how to structure an empirical investigation of return predictability under learning.
+We remark that when estimating our model empirically, we face the same issue that agents face in the model.
+We have postulated a certain model which in theoritcal section is the actual law of motion, but in reality, given we do not know the 
+true ALM, we should regard it as the modeler's perceived law of motion.
+Therefore it helps to think in terms two estimations: the estimation that an agent in our model would carry out, and the estimation that we the modeler carry out.
+We again endow our agents with a linear PLM
+\begin{equation}
+    r_{t+1} = X_t \beta_t + \eta^d_{t+1},
+\end{equation} 
+
+but with respect to the theoretical counterpart, we now allow for multiple predictors collected in the vector $X_t$.
+While the closed-form results for the LASSO case, hold for orthonormal regressors only, in the empirical counterpart we are more lenient
+and only require that predictors are uncorrelated so that equation (\ref{eq:lasso_from_ols}) does not hold deterministically but only approximately.
+We then assume that agents use a rolling window, instead of geometrically declining weights, to estimate the parameters at each point in time.
+Specifically at each time $t$ the regressor matrix will contain $l$ past observations, that is
+\begin{equation}
+    X_t = \begin{bmatrix}
+    x_{t-l} \\
+    x_{t-l+1} \\
+    \vdots \\
+    x_{t-1}
+    \end{bmatrix}, \quad
+    r_{t+1} = \begin{bmatrix}
+    r_{t-l+1} \\
+    r_{t-l+2} \\
+    \vdots \\
+    r_{t}
+    \end{bmatrix}.
+\end{equation}
+For each rolling window, the agent then computes the corresponding LASSO estimator $\beta_t$.
+Given this estimator, the ALM implies the modeler's PLM
+\begin{equation}\label{eq:empirical_alm}
+    r_{t+1} = \log(1 - \kappa e^{X_t \beta_t}) - \log(1 - \kappa e^{X_{t+1} \beta_{t+1}}) + u_{t+1}.
+\end{equation}
+This suggests that an emprical strategy to test for return predictability under learning is to estimate a LASSO regression on rolling windows of historical data, and then use the estimated coefficients to construct the model-implied returns.
+Finally one would estimate (\ref{eq:empirical_alm}) using Non-Linear Least Squares (NLS).
+However as we discussed in the theoretical section, if we as researchers estimate a linear model, we would not estimate the actual parameters used by agents, but rather
+their trasformed counterpart implied by the T-map.
+This suggests that the appropriate empirical strategy is, first to estimate the (mis-specified) linear model using the exact same model
+we endow our agents with. Then invert the T-map to recover the parameters that agents would be using in their PLM.
+Finally, use these parameters to estimate the NLS model implied by the ALM.
+
+% =====================================================
+\bibliography{references}
+
+\appendix
+
+\section{Derivation of Recursive Learning Models}
+\subsection{Recursive Least Squares}\label{app:RLS}
 
 The first updating mechanism we consider is Recursive Least Squares (RLS), which is a recursive implementation of the standard Ordinary Least Squares (OLS).
 In OLS, the agent estimates the coefficients of a linear regression model by minimizing the sum of squared residuals.
@@ -441,39 +593,16 @@ For $\beta_t$ we have
     \end{aligned}
 \end{equation}
 
-The ALM associated with this learning mechanism is then
-\begin{equation}\label{eq:alm_RLS}
-    r_{t+1} = \log(\varepsilon_{t+1})
-    + \log\!\Bigl(1 - \kappa e^{w \tanh(x_t \beta_t / w)}\Bigr)
-    - \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t+1} \beta_{t+1} / w)}\Bigr).
-\end{equation}
-
-\subsection{CMCE under RLS}
-\begin{proposition}\label{prop:RLS}
-    Under RLS there exist a unique CMCE given by $\beta = 0$.
-    The CMCE is locally stable under learning for $\kappa \in (0,1)$.
-\end{proposition}
-
-Proof. In Appendix \ref{app:proofs}.
-
-Notice that $\kappa = \delta a^{- \gamma} \phi$ is strictly positive for all admissible values of the parameters.
-The upper bound implies a restriction on the combination of discount factor, risk aversion and dividend growth which is met for reasonable parameter values and also needed for the REE to be well-defined.
-
-
-
-% =====================================================
-\section{Weighted Least Squares and Constant Gain Learning}
-% =====================================================
-
+\subsection{Constant Gain Learning}\label{app:WLS}
 In Weighted Least Squares (WLS), the agent estimates the coefficients of a linear regression model by minimizing a weighted sum of squared residuals.
 The weights are typically chosen to reflect the relative importance or reliability of different observations. Assuming the linear model (\ref{eq:plm_univariate}),
 the WLS estimator can be derived from the minimization problem
 \begin{equation}
-    \min_{\beta} \sum^t_{i=1} {w_{t,i}} (y_i - \beta x_i) ^2,
+    \min_{\beta} \sum^{t-1}_{i=1} {w_{t-1,i}} (r_i - \beta x_{i-1}) ^2,
 \end{equation}
 with solution
 \begin{equation}
-    {\beta} = \left(\sum^t_{i=1} {w_{t,i}} x_i^2 \right)^{-1} \sum^t_{i=1} {w_{t,i}} x_i y_i.
+    {\beta} = \left(\sum^{t-1}_{i=1} {w_{t-1,i}} x_{i-1}^2 \right)^{-1} \sum^{t-1}_{i=1} {w_{t-1,i}} x_{i-1} r_i.
 \end{equation}
 
 In particular, we are interested in the case where the weights decline geometrically over time\footnote{
@@ -489,60 +618,44 @@ Similar to the OLS case, a recursive relationship can be derived.
 
 Define 
 \begin{equation}
-    M_t = \gamma \sum^t_{i=1} {(1 - \gamma)^{t-i}} x_i^2, \quad \beta_t = \gamma M^{-1}_t \sum^t_{i=1} {(1 - \gamma)^{t-i}} x_i y_i.
+    M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1}^2, \quad \beta_{t} = \gamma M^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i.
 \end{equation}
 First we establish a recursion for $M_t$. Start from
 \begin{equation}
-M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_i^2,
+M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1}^2,
 \end{equation}
 then
 \begin{equation}
-(1 - \gamma) M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i^2 \rightarrow (1 - \gamma) M_{t-1} + \gamma x_t^2 = M_t.
+(1 - \gamma) M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_{i-1}^2 = M_t - \gamma x_{t-1}^2.
 \end{equation}
 That is
 \begin{equation}
-    M_t = M_{t-1} + \gamma \left(x_t^2 - M_{t-1} \right).
+    M_t = M_{t-1} + \gamma \left(x_{t-1}^2 - M_{t-1} \right).
 \end{equation}
 
-Similarly for $b_t$ we start from
+Similarly for $\beta_t$ we start from the lagged expression
 \begin{equation}
-    \beta_{t-1} = \gamma M^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_i y_i,
+    \beta_{t-1} = \gamma M^{-1}_{t-2} \sum^{t-2}_{i=1} {(1 - \gamma)^{t-2-i}} x_{i-1} r_i,
 \end{equation}
 then
 \begin{equation}
-    (1- \gamma) \beta_{t-1} = \gamma M^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i y_i ,
+    (1- \gamma) \beta_{t-1} = \gamma M^{-1}_{t-2} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i ,
 \end{equation}
 and
 \begin{equation}
- \beta_{t-1} ( M_t - \gamma x_t^2) =  \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i y_i \rightarrow \beta_{t-1} (1 - \gamma M^{-1}_t x_t^2) = \gamma M^{-1}_t \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_i y_i,
+ \beta_{t-1} ( M_{t-1} - \gamma x_{t-2}^2) =  \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i \rightarrow \beta_{t-1} (1 - \gamma M^{-1}_{t-1} x_{t-2}^2) = \gamma M^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i,
 \end{equation}
-since \[M_{t-1} = \frac{1}{1 - \gamma} (M_t - \gamma x_t^2).\]
-Adding $\gamma M^{-1}_t x_t y_t$ to both sides we obtain
+since \[M_{t-2} = \frac{1}{1 - \gamma} (M_{t-1} - \gamma x_{t-2}^2).\]
+Adding $\gamma M^{-1}_{t-1} x_{t-2} r_{t-1}$ to both sides we obtain
 \begin{equation}
-    \beta_{t-1} (1 - \gamma M^{-1}_t x_t^2) + \gamma M^{-1}_t x_t y_t = \beta_t,
+    \beta_{t-1} (1 - \gamma M^{-1}_{t-1} x_{t-2}^2) + \gamma M^{-1}_{t-1} x_{t-2} r_{t-1} = \beta_t,
 \end{equation}
 which can be rearranged as
 \begin{equation}
-    \beta_t = \beta_{t-1} + \gamma M^{-1}_t x_t (y_t - x_t \beta_{t-1}).
+    \beta_t = \beta_{t-1} + \gamma M^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta_{t-1}).
 \end{equation}
 
-In relation to our model, this gives the same type of updating rule as RLS, with the only difference that the gain is now constant and equal to $\gamma$.
-Given that the gain is not decreasing and that the updating depends on the stochastic term $\varepsilon_t$, the learning rule cannot converge to a fixed point.
-However, under suitable conditions and for small values of $\gamma$, and under the same stability condition $\kappa \in (0, 1)$, it can be shown that the learning dynamics will fluctuate around the CMCE.
-
-\begin{proposition}[Distribution under Constant Gain Learning]
-    Under Weighted Least Squares learning with geometrically declining weights with parameter $\gamma$, and for $\kappa < 1$, for small values of $\gamma$ the estimated parameter $\beta$ approximately follows a normal distribution
-\begin{equation}
-    \beta_t \sim \mathcal{N} \left(\beta^*, \gamma s_{d}^2 \left(2 \sigma^2_x \left(1 + \frac{\kappa}{1 - \kappa} \right)\right)^{-1}\right),
-\end{equation}
-where $\beta^* = 0$ is the cross-moment consistent equilibrium.
-\end{proposition}
-
-% =====================================================
-\section{Lasso Regression}
-% =====================================================
-
-We now consider the case in which agents use LASSO regression to estimate the parameters of their PLM.
+\subsection{Lasso Learning}\label{app:lasso}
 The LASSO (Least Absolute Shrinkage and Selection Operator) estimator is defined as the solution to the optimization problem
 \[
 \hat{\beta}_{\text{LASSO}} = \arg\min_{\beta} \left\{\frac{1}{2}\left[(Y - X\beta)'(Y - X\beta)\right] + \lambda \sum_{j=1}^{k} |\beta_j|\right\},
@@ -583,96 +696,15 @@ To solve this problem, we consider two cases:
     \[\hat{\beta}_{\text{LASSO},j} = \min\left(0, \beta_{\text{OLS},j} + \lambda\right).\]
 \end{enumerate}
 
-Combining both cases, we can write the LASSO estimator for each coefficient as
-\begin{equation}\label{eq:lasso_from_ols}
+Combing the two cases, we obtain 
+\begin{equation}
 \hat{\beta}_{\text{LASSO}} = S(\beta_{\text{OLS}}, \lambda) = \textrm{sign}(\beta_{\text{OLS}}) \cdot \max\left(0, |\beta_{\text{OLS}}| - \lambda\right),
 \end{equation}
 where $S(\cdot)$ is the soft-thresholding operator.
 
-In the univariate case, we othonormality is trivially satisfied by standardizing the predictor variable, so in the discussion belowe we impose the addinitional assumption
 
-\begin{assumption}
-    The predictor variable $x_t$ is standardized to have zero mean and unit variance.
-\end{assumption}
-Under this condition, we can still use the recursion used in recursive and constant gain learning, and then apply the soft-thresholding operator to obtain the LASSO estimate.
-Defining by $\beta^{O}$ the estimate obtained from least squares learning (either RLS or WLS), and by $\beta^{L}$ the LASSO estimate, we have
-The mapping between the PLM and ALM now becomes
-\begin{equation}
-    \beta_{\text{OLS}} = T(\beta_{\text{LASSO}}) = - \frac{\kappa}{1 - \kappa} \beta_{\text{LASSO}},
-\end{equation}
-which can be solved case by case:
-\begin{enumerate}
-    \item If $\beta_{\text{OLS}} > \lambda > 0$, then $\beta_{\text{LASSO}} = \beta_{\text{OLS}} - \lambda \implies \beta_{\text{OLS}} =  \lambda \kappa$.
-    \item If $\beta_{\text{OLS}} < -\lambda < 0$, then $\beta_{\text{LASSO}} = \beta_{\text{OLS}} + \lambda \implies \beta_{\text{OLS}} = - \lambda \kappa$.
-    \item If $|\beta_{\text{OLS}}| \leq \lambda$, then $\beta_{\text{LASSO}} = 0 \implies \beta_{\text{OLS}} = 0$.
-\end{enumerate}
-Clearly, for the first two cases to be admissible we need $\lambda \kappa > \lambda \implies \kappa > 1$.
-Given that the dynamics are still governed by the same constant gain updating rule, we can conclude that only the third case is stable in the sense that for $\kappa < 1$ the learning dynamics will fluctuate around the fixed point.
-Identically to the previous case, the estimate for $\beta_{\text{OLS}}$ will be distributed as a normal distribution centered around the fixed point, with variance proportional to the gain parameter $\gamma$.
-This implies that for small $\lambda$ sometimes the estimates will be large enough that the LASSO estimate is non-zero.
-Given the distribution of $\beta_{\text{OLS}}$, we have:
-
-\begin{proposition}[Probability of Non-Zero LASSO Estimate]
-    Under Weighted Least Squares learning with geometrically declining weights 
-    with parameter $\gamma$, and for $\kappa < 1$, for small values of $\gamma$ the probability that the LASSO estimate is different from zero is given by
-\begin{equation}
-    \mathbb{P}(|{\beta}_{\text{OLS}}| > \lambda) 
-    = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS}}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS}}}\right)\right],
-\end{equation}
-where $\sigma_{\text{OLS}} =  \left(\gamma s_{d}^2 \left(2 \sigma^2_x \left(1 + \frac{\kappa}{1 - \kappa} \right)\right)^{-1}\right)^{1/2}$. 
-\end{proposition}
-
-
-\section{Empirical Application}
-
-The advantage of the theoretical framework developed above is that it provides a clear guide as to how to structure an empirical investigation of return predictability under learning.
-We remark that when estimating our model empirically, we face the same issue that agents face in the model.
-We have postulated a certain model which in theoritcal section is the actual law of motion, but in reality, given we do not know the 
-true ALM, we should regard it as the modeler's perceived law of motion.
-Therefore it helps to think in terms two estimations: the estimation that an agent in our model would carry out, and the estimation that we the modeler carry out.
-We again endow our agents with a linear PLM
-\begin{equation}
-    r_{t+1} = X_t \beta_t + \eta_{t+1},
-\end{equation} 
-
-but with respect to the theoretical counterpart, we now allow for multiple predictors collected in the vector $X_t$.
-While the closed-form results for the LASSO case, hold for orthonormal regressors only, in the empirical counterpart we are more lenient
-and only require that predictors are uncorrelated so that equation (\ref{eq:lasso_from_ols}) does not hold deterministically but only approximately.
-We then assume that agents use a rolling window, instead of geometrically declining weights, to estimate the parameters at each point in time.
-Specifically at each time $t$ the regressor matrix will contain $l$ past observations, that is
-\begin{equation}
-    X_t = \begin{bmatrix}
-    x_{t-l} \\
-    x_{t-l+1} \\
-    \vdots \\
-    x_{t-1}
-    \end{bmatrix}, \quad
-    r_{t+1} = \begin{bmatrix}
-    r_{t-l+1} \\
-    r_{t-l+2} \\
-    \vdots \\
-    r_{t}
-    \end{bmatrix}.
-\end{equation}
-For each rolling window, the agent then computes the corresponding LASSO estimator $\beta_t$.
-Given this estimator, the ALM implies the modeler's PLM
-\begin{equation}\label{eq:empirical_alm}
-    r_{t+1} = \log(1 - \kappa e^{X_t \beta_t}) - \log(1 - \kappa e^{X_{t+1} \beta_{t+1}}) + u_{t+1}.
-\end{equation}
-This suggests that an emprical strategy to test for return predictability under learning is to estimate a LASSO regression on rolling windows of historical data, and then use the estimated coefficients to construct the model-implied returns.
-Finally one would estimate (\ref{eq:empirical_alm}) using Non-Linear Least Squares (NLS).
-However as we discussed in the theoretical section, if we as researchers estimate a linear model, we would not estimate the actual parameters used by agents, but rather
-their trasformed counterpart implied by the T-map.
-This suggests that the appropriate empirical strategy is, first to estimate the (mis-specified) linear model using the exact same model
-we endow our agents with. Then invert the T-map to recover the parameters that agents would be using in their PLM.
-Finally, use these parameters to estimate the NLS model implied by the ALM.
-
-% =====================================================
-\bibliography{references}
-
-\appendix
 \section{Proofs}
-\subsection{Proof of proposition \ref{prop:RLS}}\label{app:proofs}
+\subsection{Proof of proposition \ref{prop:RLS}}\label{app:proof_RLS}
 
 In a CMCE the value of $\beta$ solves
 \begin{equation}
@@ -680,20 +712,20 @@ In a CMCE the value of $\beta$ solves
 \end{equation}
 where 
 \begin{equation}
-    T(\beta) = \frac{\operatorname{Cov}(r_{t+1}, x_t)}{\operatorname{Var}(x_t)} = \frac{\operatorname{Cov}(r_{t+1}, x_t)}{\sigma^2_x},
+    T(\beta) = \frac{\operatorname{Cov}(r_{t-1}, x_{t-2})}{\operatorname{Var}(x_{t-2})} = \frac{\operatorname{Cov}(r_{t-1}, x_{t-2})}{\sigma^2_x},
 \end{equation}
-and $r_{t+1}$ is given by (\ref{eq:alm_univariate}) evaluated at the stationary distribution.
+and $r_{t-1}$ is given by (\ref{eq:alm_RLS}) evaluated at the stationary distribution.
 
-To compute $\operatorname{Cov}(r_{t+1}, x_t)$ we exploit the fact that $x_t$ is independent of $\log(\varepsilon_{t+1})$ and $x_{t+1}$, which implies that
+To compute $\operatorname{Cov}(r_{t-1}, x_{t-2})$ we exploit the fact that $x_{t-2}$ is independent of $\eta^d_{t-1}$ and $x_{t-1}$, which implies that
 \begin{equation}
-    \operatorname{Cov}(r_{t+1}, x_t) = \operatorname{Cov}\left(g_{\beta}(x_t), x_t\right).
+    \operatorname{Cov}(r_{t-1}, x_{t-2}) = \operatorname{Cov}\left(g_{\beta}(x_{t-2}), x_{t-2}\right).
 \end{equation}
 
 By Stein's lemma
 \begin{equation}
-    \operatorname{Cov}(r_{t+1}, x_t) = \operatorname{Cov}(g_{\beta}(x_t), x_t) = \sigma^2_x \mathbb{E}\left[g'_{\beta}(x_t)\right].
+    \operatorname{Cov}(r_{t-1}, x_{t-2}) = \operatorname{Cov}(g_{\beta}(x_{t-2}), x_{t-2}) = \sigma^2_x \mathbb{E}\left[g'_{\beta}(x_{t-2})\right].
 \end{equation}
-This implies that $T(\beta) = \mathbb{E}\left[g'_{\beta}(x_t)\right]$.
+This implies that $T(\beta) = \mathbb{E}\left[g'_{\beta}(x_{t-2})\right]$.
 
 We can show that  $\operatorname{sign}\left[T(\beta)\right] = - \operatorname{sign}(\beta)$ unless $\beta = 0$. In fact, we have
 \begin{equation}
@@ -713,29 +745,58 @@ In particular,
 \end{equation}
 Therefore $T(\beta)$ has the opposite sign of $\beta$ for all $\beta \neq 0$, and the only fixed point is $\beta = 0$.
 
-To study local stability of the CMCE under RLS learning, we use the E-stability principle of \cite{GeorgeWEvans2001}.
-To do so we show how to cast the learning dynamics in the form of a Stochastic Recursive Algorithm (SRA) of the form 
-\begin{equation}\label{eq:general_sra}
-    \theta_t = \theta_{t-1} + \gamma_t \mathcal{H}(\theta_{t-1}, Z_t) + \gamma_t^2 \rho_t(\theta_{t-1}, Z_t),
-\end{equation}
-where $\theta_t$ is the parameter vector to be estimated, $\gamma_t$ is a sequence of gains and $\mathcal{H}(\cdot)$ and $\rho_t(\cdot)$ are functions capturing the updating mechanism.
-$Z_t$ is a vector of state variables that in general can be conditionally linear and evolving according to
-\begin{equation}\label{eq:state_evolution_sra}
-    Z_t = A(\theta_{t-1}) Z_{t-1} + B(\theta_t) W_{t},
-\end{equation}
-where $W_t$ is a random disturbance term. 
+To study local stability of the CMCE under RLS learning we follow the approach in Chapter 6 of \cite{GeorgeWEvans2001},
+which casts the learning dynamics as a Stochastic Recursion Algorithm (SRA).
+The key technical issue is that the return innovation $r_{t-1}$ depends on both $\beta_{t-1}$ and $\beta_{t-2}$. 
+To deal with this, we keep the \emph{parameter} vector first order and move the required lags into the \emph{state} vector. Specifically, define the parameter vector as
+\[
+\theta_t \equiv 
+\begin{pmatrix}
+\beta_t\\
+M_t
+\end{pmatrix},\]
+with domain $D=\mathbb R\times (0,\infty)$, and the gain sequence $\gamma_t=t^{-1}$.
 
-Under suitable assumptions about the gain sequence $\gamma_t$, the functional forms $\mathcal{H}(\cdot)$ and $\rho_t(\cdot)$, and the evolution of the state variable $Z_t$,
-\cite{GeorgeWEvans2001} show that it is possible to associate to the SRA (\ref{eq:general_sra}) a deterministic Ordinary Differential Equation (ODE) of the form
-\begin{equation}\label{eq:associated_ode}
-    \dot{\theta} = \mathbb{E}\left[\mathcal{H}(\theta, Z)\right],
-\end{equation}
-where the expectation is taken with respect to the stationary distribution of $Z_t$ when $\theta$ is fixed.
-The E-stability principle states that if the ODE (\ref{eq:associated_ode}) is locally stable around a fixed point $\theta^*$, then the SRA (\ref{eq:general_sra}) is also locally stable around the same fixed point.
+We augment the state to include the lagged belief needed by the ALM:
+\[
+Z_t \equiv 
+\begin{pmatrix}
+x_{t-1}\\
+x_{t-2}\\
+\eta_{t-1}\\
+s_{t-1} \\
+s_{t-2}
+\end{pmatrix},
+\qquad s_{t-1}\equiv \beta_{t-1}.
+\]
+Let $W_t=(x_{t-1},\eta_{t-1},1)'$. Then the state follows a conditionally linear law of motion of the form 
+\[
+Z_t = A Z_{t-1} + B(\theta_{t-1})W_{t},
+\quad
+A=
+\begin{pmatrix}
+0&0&0&0&0\\
+1&0&0&0&0\\
+0&0&0&0&0\\
+0&0&0&0&0\\
+0&0&0&1&0
+\end{pmatrix},
+\quad
+B(\theta)=
+\begin{pmatrix}
+1&0&0\\
+0&0&0\\
+0&1&0\\
+0&0&\beta\\
+0&0&0
+\end{pmatrix}.
+\]
+This construction ensures $s_{t-1}=\beta_{t-1}$ in real time, while under a fixed parameter $\theta=(\beta,M)$ we have $s\equiv \beta$ in the associated frozen-parameter state process $\bar Z_t(\theta)$. Next, write the parameter recursion in SRA form as
+\[
+\theta_t=\theta_{t-1}+\gamma_t\,\mathcal H(\theta_{t-1},Z_t)+\gamma_t^2\,\rho_t(\theta_{t-1},Z_t),
+\]
 
-We therefore show how to apply this framework to our model.
-
-First we can rearrange (\ref{eq:b_t_evolution}) to get
+by rearranging (\ref{eq:b_t_evolution}) to get
 \begin{equation}
     \begin{aligned}
         \beta_t & = \beta_{t-1} + t^{-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 \beta_{t-1} \right] \\
@@ -743,742 +804,154 @@ First we can rearrange (\ref{eq:b_t_evolution}) to get
     \end{aligned}
 \end{equation}
 
-Second, notice that $r_{t-1}$ depends on $\beta_{t-1}$ and $\beta_{t-2}$ through the ALM (\ref{eq:alm_univariate}).
-We therefore define an ancillary variable $\alpha_t = \beta_{t-1}$ so that
-\begin{equation}
-    r_{t-1} = \log(\varepsilon_{t-1})
-    + \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-2} \alpha_{t-1} / w)}\Bigr)
-    - \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-1} \beta_{t-1} / w)}\Bigr).
-\end{equation} 
-
-The full updating system for the parameters is then 
-
-\begin{equation}
-    \begin{aligned}
-        \beta_t = \beta_{t-1} + t^{-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 \beta_{t-1} \right]  + t^{-2} \frac{t}{t-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 \beta_{t-2} \right]\\
-        \alpha_t = \alpha_{t-1} + t^{-1} (\beta_{t-1} - \alpha_{t-1}) + t^{-2} \left(t(t-1)\right)(\beta_{t-1} - \alpha_{t-1}) \\
-        M_t = M_{t-1} + \frac{1}{t} \left(x_{t-1}^2 - M_{t-1} \right),
-    \end{aligned}
-\end{equation}
-
-
-Now we appropriately define 
-\begin{equation}
-\begin{aligned}
-\theta_t &= 
-\begin{pmatrix}
-\beta_t \\
-\alpha_t \\
-M_t
-\end{pmatrix}, \quad
-\gamma_t = t^{-1}
-\end{aligned}
-\end{equation}
-
-
-notice that the domain of $\theta_t$ is $\mathbb{R} \times \mathbb{R} \times \mathbb{R}_{+}$, since $M_t$ is a sum of squared variables and therefore strictly positive.
-We also define
-
-\begin{equation}
-\underbrace{
-\begin{pmatrix}
-    x_{t-1} \\
-    x_{t-2} \\
-    \log(\varepsilon_{t-1})
-\end{pmatrix}
-}_{Z_t}
-=
-\underbrace{
-\begin{pmatrix}
-    0 & 0 & 0 \\
-    1 & 0 & 0 \\
-    0 & 0 & 0
-\end{pmatrix}
-}_{A}
-\underbrace{
-\begin{pmatrix}
-    x_{t-2} \\
-    x_{t-3} \\
-    \log(\varepsilon_{t-2})
-\end{pmatrix}
-}_{Z_{t-1}}
-\;+\;
-\underbrace{
-\begin{pmatrix}
-    1 & 0 \\
-    0 & 0 \\
-    0 & 1
-\end{pmatrix}
-}_{B}
-\underbrace{
-\begin{pmatrix}
-    x_{t-1} \\
-    \log(\varepsilon_{t-1})
-\end{pmatrix}
-}_{W_t}.
-\end{equation}
-
-The state evolution clearly satisfies assumpotions (B.1) and (B.2) in Section 6.2.1 of \cite{GeorgeWEvans2001},
-since both $x_t$ and $\log(\varepsilon_t)$ are normal i.i.d variables with finite moments of all orders.
-Assumption (A.1) is satisfied by construction of the gain sequence $\gamma_t = t^{-1}$.
-For assumotion (A.2) and (A.3) write 
-
-\begin{equation}
-    \begin{aligned}
-        \mathcal{H}(\theta_{t-1}, X_t) = \begin{pmatrix}
-        M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-1} \right] \\
-        b_{t-1} - a_{t-1} \\
-        x_{t-1}^2 - M_{t-1}
-    \end{pmatrix}, \\
-    \end{aligned}
-\end{equation}
-
-\begin{equation}
-    \begin{aligned}
-        \rho_t(\theta_{t-1}, X_t) = \begin{pmatrix}
-        \frac{t}{t-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 b_{t-2} \right] \\
-        (t(t-1))(b_{t-1} - a_{t-1}) \\
-        0
-    \end{pmatrix}. \\
-    \end{aligned}
-\end{equation}
-
-
-To verify Assumption (A.2), we observe that each component of $\mathcal{H}(\theta_{t-1},Z_t)$ is continuous in $\theta$ on any compact subset of the parameter space. The transformation $w\tanh(x\theta/w)$ is smooth and bounded, which implies that
+and $\beta_{t-2}$ is replaced by the state component $s_{t-2}$, so that the required functions are
 \[
-\log\!\left(1-\kappa e^{\,w\tanh(x\theta/w)}\right)
-\]
-remains uniformly bounded for all $(\theta,x)$ whenever $\kappa e^{w}<1$. Consequently, the return innovation $r_{t-1}$ is bounded by a constant plus $|\log\varepsilon_{t-1}|$, and the expressions $x_{t-2}r_{t-1}$, $x_{t-2}^2 b_{t-1}$, and $x_{t-1}^2$ grow at most polynomially in $|x_t|$. Since the exogenous process $(x_t)$ is strictly stationary and ergodic with $\mathbb{E}[x_t^2]<\infty$ and $\mathbb{E}[x_t^4]<\infty$, all expectations defining $h(\theta)=\mathbb{E}[\mathcal{H}(\theta,X_t)]$ exist and $\mathcal{H}$ satisfies the polynomial-growth and continuity requirements of Assumption (A.2).
-
-Assumption (A.3) holds provided that $\mathcal{H}(\theta,Z)$ is twice continuously differentiable in $\theta$ with second derivatives bounded on every compact set $Q$. In our case, the mappings
-\[
-\theta \mapsto w\tanh(x\theta/w), \qquad 
-\theta \mapsto \log\!\left(1-\kappa e^{\,w\tanh(x\theta/w)}\right)
-\]
-are $C^\infty$ with all derivatives bounded uniformly on compacts, because $\tanh(\cdot)$ and its derivatives are bounded and the restriction $\kappa e^{w}<1$ keeps the logarithmic term uniformly away from its singularity. It follows that each component of $\mathcal{H}$ is twice continuously differentiable in $\theta$ with bounded second derivatives on compact sets, which verifies Assumption (A.3).
-
-The E-stability principle then applies and we can study the stability of the equilibrium by analyzing the associated ODE.
-We first obtain 
-
-\begin{equation}
-    \begin{aligned}
-        h(\theta) = \lim_{t \to \infty} \mathbb{E} \left[\mathcal{H}(\theta, \Bar{Z}_t)\right] = \begin{pmatrix}
-        M^{-1} \left[ \mathbb{E}(x_{t-2} r_{t-1}) - \beta \sigma^2_x \right] \\
-        \beta - \alpha \\
-        \sigma^2_x - M
-    \end{pmatrix} =
-    \begin{pmatrix}
-        M^{-1}\left[(T(\alpha) - \beta) \sigma^2_x\right] \\
-        \beta - \alpha \\
-        \sigma^2_x - M
-    \end{pmatrix}
-    \\
-    \end{aligned}
-\end{equation}
-where $\Bar{Z}_t$ refers to the evolution of the state variable, under fixed values of the parameters.
-
-Then we evaluate the stability of the cross-moment consistent equilibrium by studying the associated ordinary differential equation (ODE)
-\begin{equation}
-    \frac{d \theta}{d \tau} = h(\theta).
-\end{equation}
-Therefore we compute the Jacobian matrix of $h(\theta)$ evaluated at the equilibrium point $\theta = (0,0,\sigma^2_x)$
-
-\begin{equation}
-    J = \begin{pmatrix}
-         - 1 & T'(0) & 0 \\
-        1 & -1 & 0 \\
-        0 & 0 & -1
-    \end{pmatrix}.
-\end{equation}
-
-The eigenvalues of $J$ are given by
-\begin{equation}
-    \lambda_{1,2} = -1 \pm i \sqrt{\frac{\kappa}{1 - \kappa}}, \quad \lambda_3 = - 1,
-\end{equation}
-
-since 
-\begin{equation}
-    T'(\alpha) = -\mathbb{E}\left[\frac{\kappa x^2 e ^ {w \tanh(x \alpha / w)} \textrm{sech}^2(x \alpha / w)}{1 - \kappa e ^ {w \tanh(x \alpha / w)} }  \right] \left(\sigma^2_x\right)^{-1} .
-\end{equation}
-
-therefore the ODE is asymptotically stable for the whole range of $\kappa \in (0,1)$ . 
-
-
-\section{constant gain}
-
-\subsection{Proof of Proposition (Distribution under Constant-Gain Learning)}\label{app:proofs_cg}
-
-We consider Weighted Least Squares learning with geometrically declining weights and constant gain $\gamma\in(0,1)$. The learning rule can be written in recursive form as
-\begin{align}
-    M_t &= M_{t-1} + \gamma\left(x_t^2 - M_{t-1}\right), \label{eq:cg_M}\\
-    \beta_t &= \beta_{t-1} + \gamma\, M_t^{-1}\, x_t\left(r_{t+1} - x_t \beta_{t-1}\right), \label{eq:cg_beta}
-\end{align}
-where $x_t\stackrel{iid}{\sim}\mathcal N(0,\sigma_x^2)$ and $r_{t+1}$ is determined by the (bounded) ALM
-\begin{equation}\label{eq:cg_alm}
-    r_{t+1}
-    = \log(\varepsilon^d_{t+1})
-    + g_{\beta_{t-1}}(x_{t-1})
-    - g_{\beta_t}(x_t),
-    \qquad 
-    g_{\beta}(x):=\log\!\Bigl(1-\kappa e^{w\tanh(x\beta/w)}\Bigr),
-\end{equation}
-with $\kappa\in(0,1)$ and $w=-\log(\kappa)-\varepsilon$ for some $\varepsilon>0$.
-
-\paragraph{Step 1: Associated ODE and the CMCE.}
-Following Chapter~7 of \citet{GeorgeWEvans2001}, the constant-gain recursion \eqref{eq:cg_M}--\eqref{eq:cg_beta} can be viewed as a stochastic approximation algorithm with fixed gain $\gamma$.
-Its long-run behavior for small $\gamma$ is characterized by the associated deterministic ODE
-\begin{equation}\label{eq:cg_ode}
-    \dot\theta = h(\theta):=\mathbb E\big[\mathcal H(\theta,Z)\big],
-\end{equation}
-where $\theta=(\beta,M)$ and $Z$ collects the exogenous shocks.
-In our case, taking expectations conditional on fixed $(\beta,M)$ yields
-\begin{equation}
-    h(\beta,M)=
-    \begin{pmatrix}
-        M^{-1}\left(\mathbb E[x_t r_{t+1}(\beta)]-\mathbb E[x_t^2]\beta\right) \\
-        \mathbb E[x_t^2]-M
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-        M^{-1}\sigma_x^2\left(T(\beta)-\beta\right) \\
-        \sigma_x^2-M
-    \end{pmatrix},
-\end{equation}
-where
-\begin{equation}\label{eq:Tmap_cg}
-    T(\beta):=\frac{\mathbb E[x_t r_{t+1}(\beta)]}{\sigma_x^2}
-\end{equation}
-is the population OLS mapping. Hence any fixed point $(\beta^*,M^*)$ of the ODE satisfies $M^*=\sigma_x^2$ and $T(\beta^*)=\beta^*$, i.e.\ $\beta^*$ is a CMCE. From Proposition~\ref{prop:RLS}, the CMCE is unique and given by $\beta^*=0$.
-
-\paragraph{Step 2: Local stability of the ODE.}
-The Gaussian approximation for constant-gain learning in \citet[Ch.~7]{GeorgeWEvans2001} requires that the ODE \eqref{eq:cg_ode} is locally asymptotically stable at the fixed point.
-Stability of the $M$-equation is immediate, since $\dot M=\sigma_x^2-M$ has eigenvalue $-1$.
-For the $\beta$-equation, local stability is governed by the derivative of $T(\beta)-\beta$ at $\beta^*=0$.
-
-To compute $T'(0)$, note that at $\beta=0$ we have $g_0(x)=\log(1-\kappa)$, so \eqref{eq:cg_alm} implies $r_{t+1}(0)=\log(\varepsilon^d_{t+1})$, which is independent of $x_t$ and therefore $T(0)=0$.
-Moreover, differentiating \eqref{eq:Tmap_cg} at $\beta=0$ yields
-\begin{equation}
-    T'(0)=\frac{1}{\sigma_x^2}\,\mathbb E\!\left[x_t\,\partial_\beta r_{t+1}(\beta)\big|_{\beta=0}\right].
-\end{equation}
-Since $x_t$ is independent of $x_{t-1}$ and $\varepsilon^d_{t+1}$, only the term $-g_\beta(x_t)$ contributes, so
-\[
-\partial_\beta r_{t+1}(\beta)\big|_{\beta=0}=-\partial_\beta g_\beta(x_t)\big|_{\beta=0}.
-\]
-Using $g_\beta(x)=\log\!\big(1-\kappa e^{w\tanh(x\beta/w)}\big)$, we obtain
-\[
-\partial_\beta g_\beta(x)\big|_{\beta=0}
-=
--\frac{\kappa}{1-\kappa}\,x,
-\]
-because $\tanh(0)=0$ and $\frac{d}{d\beta}\tanh(x\beta/w)\big|_{\beta=0}=x/w$.
-Hence
-\begin{equation}\label{eq:Tprime0_cg}
-    T'(0)=\frac{1}{\sigma_x^2}\,\mathbb E\!\left[x_t\cdot\frac{\kappa}{1-\kappa}x_t\right]
-    =\frac{\kappa}{1-\kappa}\,,
-\end{equation}
-and therefore
-\[
-\left.\frac{d}{d\beta}\big(T(\beta)-\beta\big)\right|_{\beta=0}
-=T'(0)-1=-\frac{1}{1-\kappa}<0
-\qquad\text{for}\qquad \kappa\in(0,1).
-\]
-Thus the fixed point $(\beta^*,M^*)=(0,\sigma_x^2)$ is locally asymptotically stable for the associated ODE.
-
-\paragraph{Step 3: Gaussian approximation under constant gain.}
-By \citet[Thm.~7.9]{GeorgeWEvans2001}, local stability of the ODE implies that for sufficiently small $\gamma$ the constant-gain recursion admits an approximately stationary distribution concentrated in an $O(\sqrt{\gamma})$ neighborhood of the stable fixed point. In particular,
-\begin{equation}\label{eq:cg_gaussian}
-    \beta_t \approx \mathcal N\!\left(\beta^*,\,\gamma\,C_\beta\right),
-\end{equation}
-where $C_\beta$ solves the scalar Lyapunov equation associated with the linearization of \eqref{eq:cg_beta} around $\beta^*$.
-
-To compute $C_\beta$, linearize the $\beta$-update around $(\beta^*,M^*)=(0,\sigma_x^2)$.
-At $\beta^*$, we have $r_{t+1}=\log(\varepsilon^d_{t+1})$ and therefore the $\beta$-recursion becomes
-\[
-\beta_t
-=
-\beta_{t-1}
-+
-\gamma\left[(T'(0)-1)\beta_{t-1} + \eta_t\right]
-+o(\gamma),
+\mathcal H(\theta,Z)=
+\begin{pmatrix}
+M^{-1}\big[x_{2}\,r(\beta,s_{2};x_1,x_2,\eta)-x_2^2\,\beta\big]\\
+x_1^2-M
+\end{pmatrix},
 \qquad
-\eta_t:=\frac{x_t}{\sigma_x^2}\log(\varepsilon^d_{t+1}),
-\]
-where $\mathbb E[\eta_t]=0$ and, since $x_t$ is independent of $\varepsilon^d_{t+1}$,
-\[
-\mathrm{Var}(\eta_t)
-=
-\frac{1}{\sigma_x^4}\mathbb E[x_t^2]\mathrm{Var}\!\big(\log(\varepsilon^d_{t+1})\big)
-=
-\frac{1}{\sigma_x^4}\sigma_x^2\,s_d^2
-=
-\frac{s_d^2}{\sigma_x^2}.
-\]
-The linearized dynamics are an AR(1) with autoregressive coefficient $1+\gamma(T'(0)-1)$ and innovation variance $\gamma^2\mathrm{Var}(\eta_t)$.
-For small $\gamma$, its stationary variance is
-\begin{equation}
-    \mathrm{Var}(\beta_t)
-    \approx
-    \frac{\gamma^2\,\mathrm{Var}(\eta_t)}{-2\gamma\,(T'(0)-1)}
-    =
-    \gamma\,\frac{\mathrm{Var}(\eta_t)}{-2\,(T'(0)-1)}
-    =
-    \gamma\,\frac{(s_d^2/\sigma_x^2)}{2/(1-\kappa)}
-    =
-    \gamma\,\frac{s_d^2(1-\kappa)}{2\sigma_x^2}.
-\end{equation}
-Using $1-\kappa=\big(1+\frac{\kappa}{1-\kappa}\big)^{-1}$, we can write this equivalently as
-\[
-\mathrm{Var}(\beta_t)
-=
-\gamma\, s_d^2\left(2\sigma_x^2\left(1+\frac{\kappa}{1-\kappa}\right)\right)^{-1}.
-\]
-Combining with $\beta^*=0$ proves the stated approximation \eqref{eq:cg_gaussian} and completes the proof.
-
-
-To study the asymptotic behavior of EWRLS learning, we use the constant gain convergence results of \cite{GeorgeWEvans2001}.
-Under constant gain learning with $\gamma_t = \gamma \in (0,1)$, the parameter estimates do not converge to a point but rather converge in distribution to an asymptotic probability distribution.
-To analyze this distribution we show how to cast the learning dynamics in the form of a Stochastic Recursive Algorithm (SRA) of the form 
-\begin{equation}\label{eq:general_sra_cg}
-    \theta_n = \theta_{n-1} + \gamma \mathcal{H}(\theta_{n-1}, Z_n),
-\end{equation}
-where $\theta_n$ is the parameter vector to be estimated, $\gamma$ is a constant gain and $\mathcal{H}(\cdot)$ is a function capturing the updating mechanism.
-$Z_n$ is a vector of state variables that evolve as a Markov process according to
-\begin{equation}\label{eq:state_evolution_sra_cg}
-    Z_n = A(\theta_{n-1}) Z_{n-1} + B(\theta_n) W_n,
-\end{equation}
-where $W_n$ is a random disturbance term. 
-
-Under suitable assumptions about the gain parameter $\gamma$, the functional form $\mathcal{H}(\cdot)$, and the evolution of the state variable $Z_n$,
-\cite{GeorgeWEvans2001} show that it is possible to associate to the SRA (\ref{eq:general_sra_cg}) a deterministic Ordinary Differential Equation (ODE) of the form
-\begin{equation}\label{eq:associated_ode_cg}
-    \frac{d\theta}{dt} = h(\theta) = \mathbb{E}\left[\mathcal{H}(\theta, Z)\right],
-\end{equation}
-where the expectation is taken with respect to the stationary distribution of $Z_n$ when $\theta$ is fixed.
-Under constant gain learning, if the ODE (\ref{eq:associated_ode_cg}) has a globally asymptotically stable equilibrium point $\theta^*$ with all eigenvalues of $D_\theta h(\theta^*)$ having strictly negative real parts, then for small $\gamma$ and large $n$, the parameter estimates $\theta_n$ are approximately distributed as
-\begin{equation}
-    \theta_n \sim N\left(\theta^*, \gamma C\right),
-\end{equation}
-where the covariance matrix $C$ is given by
-\begin{equation}
-    C = \int_0^\infty e^{sB} R(\theta^*) e^{sB'} ds,
-\end{equation}
-with $B = D_\theta h(\theta^*)$ and $R(\theta^*)$ being the long-run covariance matrix of $\mathcal{H}(\theta^*, Z_n)$.
-
-We therefore show how to apply this framework to our model.
-
-First we can rearrange (\ref{eq:b_t_evolution_ewls}) to obtain the recursive system. 
-Notice that $r_t$ depends on $\beta_t$ and $\beta_{t-1}$ through the ALM (\ref{eq:alm_univariate}).
-We therefore define an ancillary variable $\alpha_t = \beta_{t-1}$ so that
-\begin{equation}
-    r_t = \log(\varepsilon_t)
-    + \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-1} \alpha_t / w)}\Bigr)
-    - \log\!\Bigl(1 - \kappa e^{w \tanh(x_t \beta_t / w)}\Bigr).
-\end{equation} 
-
-The full updating system for the parameters can be written as
-
-\begin{equation}
-    \begin{aligned}
-        \beta_t &= \beta_{t-1} + \gamma M_{t-1}^{-1} \left[ x_{t-1} r_t - x_{t-1}^2 \beta_{t-1} \right] \\
-        \alpha_t &= \alpha_{t-1} + \gamma (\beta_{t-1} - \alpha_{t-1}) \\
-        M_t &= M_{t-1} + \gamma \left(x_t^2 - M_{t-1} \right).
-    \end{aligned}
-\end{equation}
-
-
-We appropriately define 
-\begin{equation}
-\begin{aligned}
-\theta_n &= 
+\rho_t(\theta,Z)=
 \begin{pmatrix}
-\beta_n \\
-\alpha_n \\
-M_n
+\frac{t}{t-1}\,M^{-1}\big[x_{2}\,r(\beta,s_{2};x_1,x_2,\eta)-x_2^2\,s_{2}\big]\\
+0
+\end{pmatrix},
+\]
+with $Z=(x_1,x_2,\eta,s_1, s_2)$ and
+\[
+r(\beta,s_2;x_1,x_2,\eta)
+=\eta+\log\!\Bigl(1-\kappa e^{w\tanh(x_2 s_2/w)}\Bigr)-\log\!\Bigl(1-\kappa e^{w\tanh(x_1 \beta/w)}\Bigr).
+\]
+Assumptions (A.1)–(A.3) and (B.1)–(B.2) in Section 6.2.1 of \cite{GeorgeWEvans2001} hold on any compact $Q\subset D$: (A.1) holds because $\gamma_t=t^{-1}$ implies $\sum_t\gamma_t=\infty$ and $\sum_t\gamma_t^2<\infty$; 
+(B.1) holds because $W_t$ is i.i.d.\ with finite moments of all orders under $\eta_{t-1}\sim\mathcal N(0,\sigma^2)$ and $x_t\sim \mathcal N(0,\sigma_x^2)$; (B.2) holds since $A$ is constant with spectral radius $0<1$ and $B(\theta)$ is uniformly bounded and Lipschitz on $Q$; (A.2) holds because $\tanh(\cdot)$ and $\sech(\cdot)$ are bounded and, under $\kappa e^{w}<1$, the term $\log(1-\kappa e^{w\tanh(\cdot)})$ is uniformly bounded away from its singularity on $Q$, implying polynomial growth of $\mathcal H$ and $\rho_t$ in $(x_1,x_2,\ell)$, whose moments are finite; (A.3) follows because $\mathcal H$ is $C^2$ in $\theta$ on $Q$ with bounded second derivatives (again using bounded derivatives of $\tanh$ and the restriction $\kappa e^{w}<1$), hence satisfies the required Lipschitz properties. Therefore the associated ODE is
+\[
+\dot\theta = h(\theta),\qquad h(\theta)=\lim_{t\to\infty}\mathbb E\big[\mathcal H(\theta,\bar Z_t(\theta))\big].
+\]
+Under fixed $\theta=(\beta,M)$, the frozen state is stationary with $x_1,x_2\stackrel{iid}{\sim}\mathcal N(0,\sigma_x^2)$, $\eta\sim\mathcal N(0,\sigma_d^2)$ and $s\equiv \beta$, so that
+\[
+h(\beta,M)=
+\begin{pmatrix}
+M^{-1}\big(\mathbb E[x_2 r(\beta,\beta;x_1,x_2,\ell)]-\beta\sigma_x^2\big)\\
+\sigma_x^2-M
 \end{pmatrix}
-\end{aligned}
-\end{equation}
-
-
-and notice that the domain of $\theta_n$ is $\mathbb{R} \times \mathbb{R} \times \mathbb{R}_{+}$, since $M_n$ is a weighted sum of squared variables and therefore strictly positive.
-We also define the state variable
-
-\begin{equation}
-Z_n =
+=
 \begin{pmatrix}
-    x_n \\
-    x_{n-1} \\
-    \log(\varepsilon_n)
-\end{pmatrix}.
-\end{equation}
-
-The state evolution is given by
-
-\begin{equation}
-Z_n =
-\begin{pmatrix}
-    0 & 0 & 0 \\
-    1 & 0 & 0 \\
-    0 & 0 & 0
-\end{pmatrix}
-Z_{n-1}
-+
-\begin{pmatrix}
-    1 & 0 \\
-    0 & 0 \\
-    0 & 1
-\end{pmatrix}
-\begin{pmatrix}
-    x_n \\
-    \log(\varepsilon_n)
-\end{pmatrix}.
-\end{equation}
-
-Since both $x_n$ and $\log(\varepsilon_n)$ are i.i.d. normal random variables with finite moments of all orders, the state evolution satisfies Assumptions (M.1)-(M.5) in Section 7.3 of \cite{GeorgeWEvans2001}.
-The constant gain $\gamma \in (0,1)$ trivially satisfies the requirement for constant gain analysis.
-
-We define the updating function
-
-\begin{equation}
-    \mathcal{H}(\theta_{n-1}, Z_n) = 
-    \begin{pmatrix}
-        M_{n-1}^{-1} \left[ x_{n-1} r_n - x_{n-1}^2 \beta_{n-1} \right] \\
-        \beta_{n-1} - \alpha_{n-1} \\
-        x_n^2 - M_{n-1}
-    \end{pmatrix}.
-\end{equation}
-
-To verify Assumption (A.2), we observe that each component of $\mathcal{H}(\theta_{n-1},Z_n)$ is continuous in $\theta$ on any compact subset of the parameter space. The transformation $w\tanh(x\theta/w)$ is smooth and bounded, which implies that
-\[
-\log\!\left(1-\kappa e^{\,w\tanh(x\theta/w)}\right)
+(\sigma_x^2/M)\big(T(\beta)-\beta\big)\\
+\sigma_x^2-M
+\end{pmatrix},
 \]
-remains uniformly bounded for all $(\theta,x)$ whenever $\kappa e^{w}<1$. Consequently, the return innovation $r_n$ is bounded by a constant plus $|\log\varepsilon_n|$, and the expressions $x_{n-1}r_n$, $x_{n-1}^2 \beta_{n-1}$, and $x_n^2$ grow at most polynomially in $|x_n|$. Since the exogenous process $(x_n)$ is strictly stationary and ergodic with $\mathbb{E}[x_n^2]<\infty$ and $\mathbb{E}[x_n^4]<\infty$, all expectations defining $h(\theta)=\mathbb{E}[\mathcal{H}(\theta,Z_n)]$ exist and $\mathcal{H}$ satisfies the polynomial-growth and continuity requirements of Assumption (A.2).
-
-Assumption (A.3') holds provided that $\mathcal{H}(\theta,Z)$ is Lipschitz continuous in $\theta$. In our case, the mappings
+where $\mathbb E[x_2 r(\beta,\beta;\cdot)]=\sigma_x^2 T(\beta)$ by the definition of $T(\beta)$. The CMCE corresponds to the unique fixed point $(\beta^*,M^*)=(0,\sigma_x^2)$. Linearizing $h$ at $(0,\sigma_x^2)$ yields Jacobian
 \[
-\theta \mapsto w\tanh(x\theta/w), \qquad 
-\theta \mapsto \log\!\left(1-\kappa e^{\,w\tanh(x\theta/w)}\right)
-\]
-are $C^\infty$ with all derivatives bounded uniformly on compacts, because $\tanh(\cdot)$ and its derivatives are bounded and the restriction $\kappa e^{w}<1$ keeps the logarithmic term uniformly away from its singularity. It follows that each component of $\mathcal{H}$ is Lipschitz continuous in $\theta$ on compact sets, which verifies Assumption (A.3').
-
-The constant gain convergence theorem then applies and we analyze the asymptotic distribution by studying the associated ODE.
-We first obtain 
-
-\begin{equation}
-    h(\theta) = \lim_{n \to \infty} \mathbb{E} \left[\mathcal{H}(\theta, \Bar{Z}_n)\right] = 
-    \begin{pmatrix}
-        M^{-1} \left[ \mathbb{E}(x_{n-1} r_n) - \beta \sigma^2_x \right] \\
-        \beta - \alpha \\
-        \sigma^2_x - M
-    \end{pmatrix} =
-    \begin{pmatrix}
-        M^{-1}\left[(T(\alpha) - \beta) \sigma^2_x\right] \\
-        \beta - \alpha \\
-        \sigma^2_x - M
-    \end{pmatrix},
-\end{equation}
-where $\Bar{Z}_n$ refers to the evolution of the state variable under fixed values of the parameters.
-
-The equilibrium point of the ODE $d\theta/dt = h(\theta)$ is $\theta^* = (0, 0, \sigma^2_x)$.
-To verify Assumptions (H.2) and (H.3) of Theorem 7.9, we compute the Jacobian matrix of $h(\theta)$ evaluated at the equilibrium point:
-
-\begin{equation}
-    B = D_\theta h(\theta^*) = \begin{pmatrix}
-         - 1 & T'(0) & 0 \\
-        1 & -1 & 0 \\
-        0 & 0 & -1
-    \end{pmatrix},
-\end{equation}
-
-where
-\begin{equation}
-    T'(0) = -\mathbb{E}\left[\frac{\kappa x^2 e ^ {w \tanh(0)} \textrm{sech}^2(0)}{1 - \kappa e ^ {w \tanh(0)} }  \right] \left(\sigma^2_x\right)^{-1} = -\frac{\kappa}{1 - \kappa}.
-\end{equation}
-
-The eigenvalues of $B$ are given by
-\begin{equation}
-    \lambda_{1,2} = -1 \pm i \sqrt{\frac{\kappa}{1 - \kappa}}, \quad \lambda_3 = - 1.
-\end{equation}
-
-Since all eigenvalues have strictly negative real parts (equal to $-1$), Assumption (H.3) is satisfied. Moreover, as shown earlier, $\theta^* = (0,0,\sigma^2_x)$ is the unique equilibrium of the ODE and is globally asymptotically stable, satisfying Assumption (H.2).
-
-To apply Theorem 7.9, we need to verify Assumption (H.1), which requires that $h(\theta)$ has continuous first and second derivatives. This follows from the $C^\infty$ properties of the tanh function and the exponential, as noted above.
-
-We also need to verify Assumption (N.1). Part (i) follows from the fact that $x_n$ is i.i.d. normal with finite moments of all orders. Part (ii) follows from the polynomial growth properties of $\mathcal{H}$ established in verifying (A.2). Parts (iii) and (iv) require more technical verification but follow from standard results for smooth functions with polynomial growth.
-
-By Theorem 7.9, for small $\gamma$ and large $n$, the parameter estimates are approximately distributed as
-\begin{equation}
-    \theta_n \sim N\left(\theta^*, \gamma C\right),
-\end{equation}
-where the covariance matrix is
-\begin{equation}
-    C = \int_0^\infty e^{sB} R(\theta^*) e^{sB'} ds.
-\end{equation}
-
-To compute $C$, we need the long-run covariance matrix $R(\theta^*)$. Let $\mathcal{H}^*_n = \mathcal{H}(\theta^*, Z_n)$. Then
-\begin{equation}
-    R(\theta^*) = \sum_{k=-\infty}^{\infty} \text{Cov}\left(\mathcal{H}^*_k, \mathcal{H}^*_0\right).
-\end{equation}
-
-Since $Z_n$ is i.i.d., the process $\mathcal{H}^*_n$ is also i.i.d., which implies that $R(\theta^*) = \text{Var}(\mathcal{H}^*_0)$. 
-
-At $\theta^* = (0, 0, \sigma^2_x)$, we have $r_n = \log(\varepsilon_n)$ and
-\begin{equation}
-    \mathcal{H}^*_n = 
-    \begin{pmatrix}
-        \sigma^{-2}_x x_{n-1} \log(\varepsilon_n) \\
-        0 \\
-        x_n^2 - \sigma^2_x
-    \end{pmatrix}.
-\end{equation}
-
-Therefore,
-\begin{equation}
-    R(\theta^*) = 
-    \begin{pmatrix}
-        \sigma^{-4}_x \sigma^2_x \sigma^2_\varepsilon & 0 & 0 \\
-        0 & 0 & 0 \\
-        0 & 0 & \text{Var}(x_n^2)
-    \end{pmatrix} =
-    \begin{pmatrix}
-        \sigma^{-2}_x \sigma^2_\varepsilon & 0 & 0 \\
-        0 & 0 & 0 \\
-        0 & 0 & 2\sigma^4_x
-    \end{pmatrix},
-\end{equation}
-where we used $\text{Var}(x_n^2) = \mathbb{E}[x_n^4] - (\mathbb{E}[x_n^2])^2 = 3\sigma^4_x - \sigma^4_x = 2\sigma^4_x$ for a normal random variable.
-
-To compute the integral $C = \int_0^\infty e^{sB} R(\theta^*) e^{sB'} ds$, we note that $B$ has the block structure
-\begin{equation}
-    B = \begin{pmatrix}
-        B_{11} & 0 \\
-        0 & -1
-    \end{pmatrix}, \quad B_{11} = \begin{pmatrix}
-        -1 & -\frac{\kappa}{1-\kappa} \\
-        1 & -1
-    \end{pmatrix}.
-\end{equation}
-
-The matrix exponential has the corresponding block structure
-\begin{equation}
-    e^{sB} = \begin{pmatrix}
-        e^{sB_{11}} & 0 \\
-        0 & e^{-s}
-    \end{pmatrix}.
-\end{equation}
-
-For the $2 \times 2$ block $B_{11}$, we can write $B_{11} = -I + N$ where
-\begin{equation}
-    N = \begin{pmatrix}
-        0 & -\frac{\kappa}{1-\kappa} \\
-        1 & 0
-    \end{pmatrix}.
-\end{equation}
-
-Then $e^{sB_{11}} = e^{-s} e^{sN}$. Since $N^2 = -\frac{\kappa}{1-\kappa} I$, we have
-\begin{equation}
-    e^{sN} = \cos\left(s\sqrt{\frac{\kappa}{1-\kappa}}\right) I + \frac{\sin\left(s\sqrt{\frac{\kappa}{1-\kappa}}\right)}{\sqrt{\frac{\kappa}{1-\kappa}}} N.
-\end{equation}
-
-Let $\omega = \sqrt{\frac{\kappa}{1-\kappa}}$. Then
-\begin{equation}
-    e^{sB_{11}} = e^{-s} \begin{pmatrix}
-        \cos(\omega s) & -\omega \sin(\omega s) \\
-        \omega^{-1} \sin(\omega s) & \cos(\omega s)
-    \end{pmatrix}.
-\end{equation}
-
-Since $R(\theta^*)$ has the structure where only the $(1,1)$ and $(3,3)$ elements are non-zero, and these blocks are decoupled in $B$, we can compute:
-
-For the $\beta$ component:
-\begin{equation}
-    C_{11} = \int_0^\infty e^{-2s} \cos^2(\omega s) ds \cdot \sigma^{-2}_x \sigma^2_\varepsilon = \frac{\sigma^2_\varepsilon}{2\sigma^2_x} \int_0^\infty e^{-2s} (1 + \cos(2\omega s)) ds = \frac{\sigma^2_\varepsilon}{2\sigma^2_x} \left(\frac{1}{2} + \frac{2}{4 + 4\omega^2}\right).
-\end{equation}
-
-Simplifying:
-\begin{equation}
-    C_{11} = \frac{\sigma^2_\varepsilon}{4\sigma^2_x} \left(1 + \frac{1}{1 + \omega^2}\right) = \frac{\sigma^2_\varepsilon}{4\sigma^2_x} \cdot \frac{2 + \omega^2}{1 + \omega^2} = \frac{\sigma^2_\varepsilon}{4\sigma^2_x} \cdot \frac{2 - \kappa + \frac{\kappa}{1-\kappa}}{1 + \frac{\kappa}{1-\kappa}} = \frac{\sigma^2_\varepsilon}{2\sigma^2_x(1-\kappa)}.
-\end{equation}
-
-Therefore, under EWRLS with constant gain $\gamma$, the parameter $\beta_n$ converges in distribution to
-\begin{equation}
-    \beta_n \sim N\left(0, \frac{\gamma \sigma^2_\varepsilon}{2\sigma^2_x(1-\kappa)}\right),
-\end{equation}
-for small $\gamma$ and large $n$. As $\gamma \to 0$, the variance of the asymptotic distribution shrinks proportionally, and the estimates become increasingly concentrated around the CMCE $\beta = 0$.
-
------
-
-\subsection{Constant-Gain Learning: Gaussian Approximation in Our Model}\label{app:cg_proof_style}
-
-We now follow the procedure in \citet{GeorgeWEvans2001} for constant-gain learning. :contentReference[oaicite:0]{index=0}
-The goal is to characterize the long-run distribution of the constant-gain WLS estimate $\beta_t$ for small gain $\gamma$.
-As in the example in Appendix~14.2, we (i) rewrite the learning rule in the standard constant-gain form
-$\theta_t=\theta_{t-1}+\gamma H(\theta_{t-1},X_t)$, (ii) compute the associated ODE
-$\dot\theta=h(\theta)=\mathbb E[H(\theta,X)]$, (iii) verify local stability of the ODE at the unique equilibrium
-$\theta^*$, and (iv) apply the Gaussian approximation result (Theorem~7.9 in Chapter~7) to obtain
-$\theta_t\sim\mathcal N(\theta^*,\gamma C)$ for small $\gamma$.
-
-\paragraph{Step 1: Put the algorithm in standard constant-gain form.}
-Under WLS with geometrically declining weights, the updating equations are
-\begin{align}
-    \beta_t &= \beta_{t-1} + \gamma\, M_t^{-1}\, x_t\Bigl(r_{t+1}-x_t\beta_{t-1}\Bigr), \label{eq:cg_beta_app}\\
-    M_t &= M_{t-1} + \gamma\Bigl(x_t^2-M_{t-1}\Bigr), \label{eq:cg_M_app}
-\end{align}
-where $x_t\stackrel{iid}{\sim}\mathcal N(0,\sigma_x^2)$ is observed at time $t$, and $r_{t+1}$ is generated by the (bounded) ALM.
-To avoid circularity in simulation and to match the information structure in which $\beta_t$ is formed using data up to time $t-1$, we adopt the one-step-lag timing used throughout the paper:
-\begin{equation}\label{eq:cg_alm_app}
-    r_{t+1}
-    =
-    \log(\varepsilon^d_{t+1})
-    + g_{\beta_{t-1}}(x_{t-1})
-    - g_{\beta_t}(x_t),
-    \qquad
-    g_{\beta}(x):=\log\!\Bigl(1-\kappa e^{w\tanh(x\beta/w)}\Bigr),
-\end{equation}
-with $\kappa\in(0,1)$ and $w=-\log(\kappa)-\varepsilon$ for some $\varepsilon>0$.
-
-Define the parameter vector $\theta_t=(\beta_t,M_t)'$ and the state vector
-$X_t=(x_t,x_{t-1},\varepsilon^d_{t+1})$. Then \eqref{eq:cg_beta_app}--\eqref{eq:cg_M_app} can be written as
-\begin{equation}\label{eq:cg_standard_form}
-    \theta_t=\theta_{t-1}+\gamma H(\theta_{t-1},X_t),
-\end{equation}
-where $H(\theta,X)=(H_\beta(\theta,X),H_M(\theta,X))'$ is given by
-\begin{align}
-    H_\beta(\theta,X)
-    &=
-    M^{-1}\,x\Bigl(r(\beta,\cdot)-x\beta\Bigr), \\
-    H_M(\theta,X)
-    &=
-    x^2-M,
-\end{align}
-and $r(\beta,\cdot)$ denotes the return generated by \eqref{eq:cg_alm_app} under fixed parameters.
-
-\paragraph{Step 2: Associated ODE and its equilibrium.}
-Following \citet{GeorgeWEvans2001}, the associated ODE is
-\begin{equation}\label{eq:cg_ode_app}
-    \dot\theta=h(\theta):=\mathbb E\bigl[H(\theta,X)\bigr],
-\end{equation}
-where the expectation is taken with respect to the stationary distribution of $X_t$ under fixed $\theta$. :contentReference[oaicite:1]{index=1}
-Since $x_t$ is i.i.d.\ and exogenous, stationarity of $X_t$ is immediate.
-
-For the second moment, we obtain
-\begin{equation}
-    h_M(\beta,M)=\mathbb E[x_t^2]-M=\sigma_x^2-M.
-\end{equation}
-Hence $M^*=\sigma_x^2$ is the unique fixed point of the $M$-equation.
-
-For the coefficient, define the population OLS mapping
-\begin{equation}\label{eq:T_map_app}
-    T(\beta):=\frac{\mathbb E\big[x_t r_{t+1}(\beta)\big]}{\sigma_x^2}.
-\end{equation}
-Then
-\begin{equation}\label{eq:hbeta_app}
-    h_\beta(\beta,M)
-    =
-    M^{-1}\left(\mathbb E[x_t r_{t+1}(\beta)]-\mathbb E[x_t^2]\beta\right)
-    =
-    M^{-1}\sigma_x^2\bigl(T(\beta)-\beta\bigr).
-\end{equation}
-Thus any equilibrium $\theta^*=(\beta^*,M^*)$ of \eqref{eq:cg_ode_app} satisfies $M^*=\sigma_x^2$ and $T(\beta^*)=\beta^*$.
-By Proposition~\ref{prop:RLS}, $T(\beta)=\beta$ has the unique solution $\beta^*=0$. Hence
-\begin{equation}
-    \theta^*=(0,\sigma_x^2)'.
-\end{equation}
-
-\paragraph{Step 3: Local stability (E-stability condition).}
-As in the worked example, the key condition is local asymptotic stability of the ODE at $\theta^*$. :contentReference[oaicite:2]{index=2}
-The Jacobian $B=D_\theta h(\theta^*)$ is triangular:
-\[
-B=
+Dh(0,\sigma_x^2)=
 \begin{pmatrix}
-    \partial_\beta h_\beta(\theta^*) & \partial_M h_\beta(\theta^*) \\
-    0 & -1
+T'(0)-1 & 0\\
+0 & -1
 \end{pmatrix}.
 \]
-Since $h_\beta(\beta,M)=M^{-1}\sigma_x^2(T(\beta)-\beta)$, we have
+Moreover, from $g_\beta'(x)=-(\kappa\beta e^{w\tanh(x\beta/w)}\operatorname{sech}^2(x\beta/w))/(1-\kappa e^{w\tanh(x\beta/w)})$ we obtain
+$T(\beta)=\mathbb E[g_\beta'(x)]$ and hence $T'(0)=-(\kappa/(1-\kappa))$, so $T'(0)-1=-1/(1-\kappa)<0$ for all $\kappa\in(0,1)$. Thus $(0,\sigma_x^2)$ is locally asymptotically stable for the ODE, and by the E-stability principle it is also locally stable under RLS learning.
+
+\subsection{Proof of proposition \ref{prop:WLS_distribution}}\label{app:proofs_WLS}
+For the proof we use the small-$\gamma$ Gaussian approximation following Chapter 7 in \cite{GeorgeWEvans2001}.
+We use the same state-augmentation device as above to eliminate the apparent second-order dependence, and all objects are defined as in the RLS case, except that now the gain sequence is constant: $\gamma_t\equiv \gamma\in(0,1)$.
+To verify the assumptions for the Gaussian approximation, we work on an open domain $D=\{(\beta,M):\beta\in\mathbb R,\ M\in(\zeta,\infty)\}$ with $\zeta>0$ and (as standard in constant-gain RLS) impose a projection onto an arbitrary compact $Q\Subset D$ to guarantee $M_t\ge\zeta$; on $Q$, (A.2) and (A.3$'$) hold because $H(\theta,Z)$ is $C^1$ in $(\theta,Z)$ with polynomial growth in $(x_1,x_2,\eta)$, and $\tanh(\cdot)$ together with $\kappa e^{w}<1$ keep the logarithmic term uniformly away from its singularity, implying local Lipschitz and polynomial bounds for $H$ and $\partial H/\partial x$; (M.1)–(M.5) and (N.1)(i)–(iii) hold because the augmented state is a geometrically ergodic Markov chain under fixed $\theta$ (linear shift with i.i.d.\ Gaussian innovations) and has finite moments of all orders; (H.1) holds since $h(\theta)\equiv \mathbb E[H(\theta,Z^\theta)]$ has continuous first and second derivatives on $D$; (H.2)–(H.3) hold locally around the CMCE because the Jacobian $B\equiv D_\theta h(\theta^*)$ has eigenvalues with strictly negative real parts (computed below), and $D_\theta h$ is Lipschitz on $Q$. Therefore Theorem 7.9 applies, yielding for small $\gamma$ and large $t$ the approximation $\theta_t\approx N(\theta^*,\gamma C)$ with
 \[
-\partial_\beta h_\beta(\theta^*)=T'(0)-1,
+C=\int_0^\infty e^{sB}R(\theta^*)e^{sB'}\,ds,
 \qquad
-\partial_M h_\beta(\theta^*)=0,
+R_{ij}(\theta)=\sum_{k=-\infty}^{\infty}\mathrm{cov}\!\big(H_i(\theta,Z^\theta_k),H_j(\theta,Z^\theta_0)\big),
 \]
-and therefore the eigenvalues of $B$ are $T'(0)-1$ and $-1$.
+where $Z_k^\theta$ denotes the stationary frozen-$\theta$ chain. 
+In our case, under frozen $\theta=(\beta,M)$ we have
+\[
+h(\beta,M)=
+\begin{pmatrix}
+(\sigma_x^2/M)\big(T(\beta)-\beta\big)\\
+\sigma_x^2-M
+\end{pmatrix},
+\]
+so the unique equilibrium is $\theta^*=(\beta^*,M^*)=(0,\sigma_x^2)$ and
+\[
+B=D_\theta h(\theta^*)=
+\begin{pmatrix}
+T'(0)-1 & 0\\
+0 & -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+-\frac{1}{1-\kappa} & 0\\
+0 & -1
+\end{pmatrix},
+\]
+where $T'(0)=-(\kappa/(1-\kappa))$ as in the decreasing-gain analysis. At $\theta^*$, $r(\beta,s;\cdot)=\eta$ because $\tanh(0)=0$ and the two log-terms cancel, hence
+\[
+H_1(\theta^*,Z)=\sigma_x^{-2}\,x_2\eta,\qquad H_2(\theta^*,Z)=x_1^2-\sigma_x^2.
+\]
+Because $\eta$ has mean $0$ and $(x_t)$ and $(\eta_t)$ are i.i.d.\ across time, all lead-lag covariances in $R(\theta^*)$ vanish and $R(\theta^*)=\mathrm{var}(H(\theta^*,Z))$ is diagonal with
+\[
+R_{11}(\theta^*)=\mathrm{var}(\sigma_x^{-2}x_2\eta)=\sigma_x^{-4}\,\mathbb E[x_2^2]\mathbb E[\eta^2]=\frac{\sigma_d^2}{\sigma_x^{2}},\qquad
+R_{22}(\theta^*)=\mathrm{var}(x_1^2)=\mathbb E[x_1^4]-\sigma_x^4=2\sigma_x^4,
+\]
+and $R_{12}(\theta^*)=0$. Since $B$ is diagonal, the integral for $C$ is explicit:
+\[
+C_{11}=\int_0^\infty e^{2B_{11}s}R_{11}\,ds=\frac{R_{11}}{-2B_{11}}=\frac{\sigma_d^2}{\sigma_x^{2}}\cdot\frac{1-\kappa}{2},\qquad
+C_{22}=\int_0^\infty e^{2B_{22}s}R_{22}\,ds=\frac{R_{22}}{-2B_{22}}=\sigma_x^4,
+\qquad C_{12}=0.
+\]
+Consequently, for small $\gamma$ and large $t$,
+\[
+\theta_t=
+\begin{pmatrix}\beta_t\\ M_t\end{pmatrix}
+\ \approx\ 
+N\!\left(
+\begin{pmatrix}0\\ \sigma_x^2\end{pmatrix},
+\ \gamma
+\begin{pmatrix}
+\displaystyle \frac{1-\kappa}{2}\frac{\sigma_d^2}{\sigma_x^{2}} & 0\\[8pt]
+0 & \sigma_x^4
+\end{pmatrix}
+\right),
+\]
+so in particular $\beta_t\approx N\!\bigl(0,\ \gamma\,\frac{1-\kappa}{2}\frac{\sigma^2}{\sigma_x^{2}}\bigr)$ and $M_t\approx N\!\bigl(\sigma_x^2,\ \gamma\,\sigma_x^4\bigr)$.
 
-It remains to compute $T'(0)$. Under \eqref{eq:cg_alm_app}, at $\beta=0$ we have $g_0(x)=\log(1-\kappa)$ and thus
-$r_{t+1}(0)=\log(\varepsilon^d_{t+1})$, which is independent of $x_t$, so $T(0)=0$.
-Differentiating \eqref{eq:T_map_app} at $0$ and using independence of $x_t$ from $(x_{t-1},\varepsilon^d_{t+1})$ yields
-\[
-T'(0)
-=
-\frac{1}{\sigma_x^2}\mathbb E\!\left[x_t\,\partial_\beta r_{t+1}(\beta)\big|_{\beta=0}\right]
-=
--\frac{1}{\sigma_x^2}\mathbb E\!\left[x_t\,\partial_\beta g_\beta(x_t)\big|_{\beta=0}\right].
-\]
-A direct calculation gives $\partial_\beta g_\beta(x)\big|_{\beta=0}=-(\kappa/(1-\kappa))x$, so
-\begin{equation}\label{eq:Tprime0_app}
-T'(0)
-=
--\frac{1}{\sigma_x^2}\mathbb E\!\left[x_t\left(-\frac{\kappa}{1-\kappa}x_t\right)\right]
-=
--\frac{\kappa}{1-\kappa}.
-\end{equation}
-Therefore
-\[
-T'(0)-1=-\frac{1}{1-\kappa}<0
-\qquad\text{for}\qquad \kappa\in(0,1),
-\]
-and $\theta^*$ is a locally asymptotically stable equilibrium of the ODE. This is the analog of the usual E-stability condition in the constant-gain setting. :contentReference[oaicite:3]{index=3}
+\subsection{Proof of proposition \ref{prop:LASSO_estimate}}  \label{app:proof_LASSO}
 
-\paragraph{Step 4: Gaussian approximation and calculation of the asymptotic variance.}
-Under the regularity conditions stated in Theorem~7.9 of Chapter~7, local stability of the ODE implies that for small $\gamma$ and large $t$,
-\begin{equation}\label{eq:cg_asymptotic_normal}
-    \theta_t \approx \mathcal N(\theta^*,\gamma C),
-\end{equation}
-where
-\begin{equation}\label{eq:C_integral_app}
-    C=\int_0^\infty e^{sB}R^*e^{sB'}\,ds,
-    \qquad
-    R^*:=R(\theta^*)=\sum_{k=-\infty}^{\infty}\mathrm{Cov}\!\big(H(\theta^*,X_k),H(\theta^*,X_0)\big).
-\end{equation}
-Because the state variables are i.i.d., the covariance sum collapses to the one-step variance.
+Under soft-thresholded constant-gain learning, agents first compute the unpenalized weighted least squares estimate $\beta^{\text{OLS}}_t$ exactly as in Section 5, then apply the soft-thresholding operator $S(\cdot,\lambda)$ before forming expectations. 
+The key observation is that the updating rule for $\beta^{\text{OLS}}_t$ remains unchanged—only the mapping from estimates to forecasts is modified.
+Formally, the learning dynamics are
+\[
+\beta^{\text{OLS}}_t = \beta^{\text{OLS}}_{t-1} + \gamma M^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta^{\text{OLS}}_{t-1}),
+\]
+\[
+M_t = M_{t-1} + \gamma (x_{t-1}^2 - M_{t-1}),
+\]
+and agents form forecasts using $\beta_t^{\text{LASSO}} = S(\beta^{\text{OLS}}_t, \lambda)$, which enters the actual law of motion as
+\[
+r_{t} = \eta_{t} + \log\!\Bigl(1-\kappa e^{w\tanh(x_{t-1} S(\beta^{\text{OLS}}_{t-1}, \lambda)/w)}\Bigr) - \log\!\Bigl(1-\kappa e^{w\tanh(x_{t} S(\beta^{\text{OLS}}_{t}, \lambda)/w)}\Bigr).
+\]
+The crucial insight is that $\beta^{\text{OLS}}_t$ evolves according to the unpenalized system studied in Proposition \ref{prop:WLS_distribution}. The soft-thresholding operator $S(\cdot,\lambda)$ affects prices and returns through the ALM, but the statistical properties of $\beta^{\text{OLS}}_t$ itself are determined solely by the unpenalized updating rule. 
+To verify that Proposition \ref{prop:WLS_distribution} applies, we check that all assumptions from the constant-gain analysis remain satisfied. The state-augmented system is unchanged, while the mapping $H$ now includes the soft-thresholding operator through the return function $r(\cdot)$, but this does not affect regularity.
+Therfore it is enough to check assumptions (A.2) and (A.3$'$) for smoothness of $H$ which hold because
+the soft-thresholding operator $S(\beta,\lambda)$ is Lipschitz continuous in $\beta$ (with Lipschitz constant 1), and composition with the smooth $\tanh(\cdot)$ function preserves Lipschitz continuity of $r(\beta,s;\cdot)$ in $(\beta,s)$. 
+Since $\kappa e^w < 1$ by construction, the logarithmic terms remain uniformly bounded away from singularity. Thus $H$ remains $C^1$ in $\theta$ with polynomial growth in $Z$.
 
-We focus on the $\beta$-component. Evaluating $H_\beta$ at $\theta^*$ gives
+The fixed point equations for the mean dynamics are now
 \[
-H_\beta(\theta^*,X_t)
-=
-(\sigma_x^2)^{-1}x_t\,r_{t+1}(0)
-=
-(\sigma_x^2)^{-1}x_t\,\log(\varepsilon^d_{t+1}),
+\beta^{OLS*}=T(\beta^{L*}),\qquad \beta^{L*}=S(\beta^{OLS*},\lambda).
 \]
-which has mean zero. Since $x_t$ is independent of $\varepsilon^d_{t+1}$ and $\mathrm{Var}(\log(\varepsilon^d_{t+1}))=s_d^2$, we obtain
-\begin{equation}\label{eq:Rstar_beta_app}
-    R^*_{\beta\beta}
-    =
-    \mathrm{Var}\!\left((\sigma_x^2)^{-1}x_t\log(\varepsilon^d_{t+1})\right)
-    =
-    (\sigma_x^4)^{-1}\mathbb E[x_t^2]\;s_d^2
-    =
-    \frac{s_d^2}{\sigma_x^2}.
-\end{equation}
-Since the $\beta$-linearization has scalar drift $B_{\beta\beta}=T'(0)-1=-1/(1-\kappa)$, we have
+In particular, $\beta^{OLS*}=0$ implies $\beta^{L*}=0$, so $(\beta^{OLS*},M^*)=(0,\sigma_x^2)$ is always a fixed point. Any nonzero fixed point would require $|\beta^{OLS*}|>\lambda/\sigma_x^2$ and $\beta^{L*}=\beta^{OLS*}-\mathrm{sign}(\beta^{OLS*})\lambda$, implying
 \[
-C_{\beta\beta}
-=
-\int_0^\infty e^{2B_{\beta\beta}s}R^*_{\beta\beta}\,ds
-=
-\frac{R^*_{\beta\beta}}{-2B_{\beta\beta}}
-=
-\frac{(s_d^2/\sigma_x^2)}{2/(1-\kappa)}
-=
-\frac{s_d^2(1-\kappa)}{2\sigma_x^2}.
+\beta^{OLS*}=-\frac{\kappa}{1-\kappa}\Big(\beta^{OLS*}-\mathrm{sign}(\beta^{OLS*})\lambda\Big)
+\;\Rightarrow\;
+\beta^{O*}=\mathrm{sign}(\beta^{O*})\,\frac{\kappa}{1+\kappa}\,\lambda,
 \]
-Combining with \eqref{eq:cg_asymptotic_normal} yields, for small $\gamma$ and large $t$,
-\[
-\beta_t
-\approx
-\mathcal N\!\left(0,\;\gamma\,\frac{s_d^2(1-\kappa)}{2\sigma_x^2}\right)
-=
-\mathcal N\!\left(0,\;\gamma\, s_d^2\left(2\sigma_x^2\left(1+\frac{\kappa}{1-\kappa}\right)\right)^{-1}\right),
-\]
-which proves the proposition.
+which contradicts $|\beta^{O*}|>\lambda$ for all $\kappa\in(0,1)$. Hence for $\kappa\in(0,1)$ the unique fixed point is $(0,\sigma_x^2)$ and the corresponding LASSO coefficient is $\beta^{L*}=0$. 
+Local stability follows from the same argument as above, since $\beta^{L}=S(\beta^{O},\lambda/M)$ equals $0$ in a neighborhood of $\beta^{OLS}=0$.
+Since $\beta^L_t=S(\beta^{OLS}_t,\lambda)$ is a deterministic transformation, the implied approximate stationary law of the LASSO coefficient is the \emph{soft--thresholded Gaussian} and 
+\[ \mathbb{P}(|{\beta}_{\text{OLS}}| > \lambda) = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS}}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS}}}\right)\right], \]
+where $\sigma_{\text{OLS}} = \left(\gamma s_{d}^2 \left(2 \sigma^2_x \left(1 + \frac{\kappa}{1 - \kappa} \right)\right)^{-1}\right)^{1/2}$.
+
+%------------------------------------------------------
 
 
 
