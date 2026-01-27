@@ -7,9 +7,6 @@
 %% 
 \documentclass[11pt]{article}
 \usepackage{style}
-\usepackage{array} % for >{...}
-\usepackage{tabularx}
-
 
 
 
@@ -545,15 +542,6 @@ This decomposition also extends to the stability analysis: the Jacobian of the m
 In summary, uncorrelated predictors preserve the key insight that sparse predictability arises from finite-sample fluctuations in individual coefficients, with each predictor independently subject to selection when its estimated relationship happens to exceed the penalty threshold.
 
 
-
-
-
-
-
-
-
-
-
 \section{Empirical Application}
 
 \subsection{Data}
@@ -600,8 +588,6 @@ Topic attention innovations are defined as residuals from topic-specific AR(1)
 regressions estimated over the full sample.
 \end{minipage}
 \end{table}
-
-
 
 
 \subsection{Estimation Strategy}
@@ -697,6 +683,9 @@ Our model shows that...
 
 
 \section{Conclusion}
+
+
+
 
 % =====================================================
 \bibliography{references}
@@ -1176,16 +1165,5 @@ Diagonal entries ($k=l$) reflect same-lag correlations, while off-diagonal entri
 \end{minipage}
 \end{table}
 
+
 \end{document}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% This specification poses an important epistemic challenge: if a researcher estimates a simple linear model on ex-post data, they do not recover the structural parameters used by the agents. 
-% Instead, they would recover a transformed counterpart implied by the T-map.
-
-% Our empirical strategy therefore proceeds in two steps. First, we reconstruct the agents' historical beliefs by estimating the linear LASSO model on rolling windows of data to recover the sequence $\{\beta_t\}$. 
-% Second, we use these recovered belief parameters to estimate the structural parameter $\kappa$ in the ALM defined by equation (\ref{eq:empirical_alm}) via Non-Linear Least Squares (NLS). 
-% This approach allows us to test whether the non-linearities predicted by our learning model are present in the cross-section of returns.

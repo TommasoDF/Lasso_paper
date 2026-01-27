@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1769513708 "main.aux" "main.bbl" "main" 1769513710 0
+["bibtex main"] 1769531326 "main.aux" "main.bbl" "main" 1769531326 2
   "./aea.bst" 1768515426 26202 034ebaf6925cb914f19ae8306f420e5b ""
-  "./references.bib" 1768584486 52446 00ad2f6166cb1e64d80a7b05d8ffea4e ""
-  "main.aux" 1769513710 9390 2c3033111a550b251bb3a010c12832d6 "pdflatex"
+  "./references.bib" 1769529834 52446 00ad2f6166cb1e64d80a7b05d8ffea4e ""
+  "main.aux" 1769531326 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769513708 "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769513710 0
-  "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" 1769513705 73225 6d85f9da7838ac3e32826f0fa2523358 ""
+["pdflatex"] 1769531323 "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769531326 2
+  "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" 1769531216 81897 2eed9751e50670f33e783e8bfd622a6f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -162,7 +162,9 @@
   "/usr/local/texlive/2023/texmf-dist/tex/latex/thmtools/thm-restate.sty" 1676670716 8051 95aa880802fb0d403e963ac0f9a55d9a ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/thmtools/thmtools.sty" 1676670716 1913 a44407bb22a93490c0d0c33535360626 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/titling/titling.sty" 1252107870 7358 95ac619994bd30d405a74f3eca431c84 ""
+  "/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty" 1667332637 12691 5b542990fe866f3d772f71346cf85b95 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/tools/calc.sty" 1654720880 10214 de3e21cfc0eccc98ca7f8dac0ef263d2 ""
+  "/usr/local/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty" 1654720880 7147 be6981d9f5d866a5634048c4a11814a9 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/varwidth/varwidth.sty" 1238697683 10894 d359a13923460b2a73d4312d613554c8 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty" 1655066402 56148 51a9a8571c07b9921892ae11063ae853 ""
@@ -171,11 +173,13 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709724026 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709723959 7883460 1d7a9be62ed57029668d948feb917816 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1769513710 9390 2c3033111a550b251bb3a010c12832d6 "pdflatex"
-  "main.bbl" 1769513708 6760 c53d9facfeac839fbd2c7a319b32bd3a "bibtex main"
-  "main.out" 1769513710 2943 bb46391d196cd41226d94f291631a34c "pdflatex"
-  "main.tex" 1769513705 73225 6d85f9da7838ac3e32826f0fa2523358 ""
-  "style.sty" 1768924521 1510 281d3bc78f60cfab3a2783311d2906b0 ""
+  "figures/avg_nonzero_coefficients_vs_volatility.pdf" 1769530098 14139 63872731e98783c55ed39ff471d49ab0 ""
+  "figures/corr_topics_heatmap.png" 1769530098 1510515 1cbfad22d6e79f58414b586088b25c15 ""
+  "main.aux" 1769531326 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.bbl" 1769531326 0 d41d8cd98f00b204e9800998ecf8427e "bibtex main"
+  "main.out" 0 -1 0 "pdflatex"
+  "main.tex" 1769531216 81897 2eed9751e50670f33e783e8bfd622a6f ""
+  "style.sty" 1769531320 1564 ea7b6fba392e2660317f5d1d8fa4bcbe ""
   (generated)
   "main.aux"
   "main.log"
