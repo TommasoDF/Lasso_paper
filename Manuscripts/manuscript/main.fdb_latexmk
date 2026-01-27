@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1769426432 "main.aux" "main.bbl" "main" 1769426439 0
+["bibtex main"] 1769513708 "main.aux" "main.bbl" "main" 1769513710 0
   "./aea.bst" 1768515426 26202 034ebaf6925cb914f19ae8306f420e5b ""
   "./references.bib" 1768584486 52446 00ad2f6166cb1e64d80a7b05d8ffea4e ""
-  "main.aux" 1769426439 9124 dc7e79c15d8e7a66190eb0c0aecd8739 "pdflatex"
+  "main.aux" 1769513710 9390 2c3033111a550b251bb3a010c12832d6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769426438 "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769426439 0
-  "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" 1769426438 69585 0b215b1ef6fc7910b11f268950ca44f6 ""
+["pdflatex"] 1769513708 "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769513710 0
+  "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" 1769513705 73225 6d85f9da7838ac3e32826f0fa2523358 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -171,10 +171,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709724026 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709723959 7883460 1d7a9be62ed57029668d948feb917816 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1769426439 9124 dc7e79c15d8e7a66190eb0c0aecd8739 "pdflatex"
-  "main.bbl" 1769426433 6760 c53d9facfeac839fbd2c7a319b32bd3a "bibtex main"
-  "main.out" 1769426439 2648 0e1b3d5583fa97a14b7310c53050a76c "pdflatex"
-  "main.tex" 1769426438 69585 0b215b1ef6fc7910b11f268950ca44f6 ""
+  "main.aux" 1769513710 9390 2c3033111a550b251bb3a010c12832d6 "pdflatex"
+  "main.bbl" 1769513708 6760 c53d9facfeac839fbd2c7a319b32bd3a "bibtex main"
+  "main.out" 1769513710 2943 bb46391d196cd41226d94f291631a34c "pdflatex"
+  "main.tex" 1769513705 73225 6d85f9da7838ac3e32826f0fa2523358 ""
   "style.sty" 1768924521 1510 281d3bc78f60cfab3a2783311d2906b0 ""
   (generated)
   "main.aux"

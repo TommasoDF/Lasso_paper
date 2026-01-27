@@ -445,7 +445,7 @@ This obtains by replacing the decreasing gain $1/t$ in RLS with a constant gain 
     M_t = M_{t-1} + \gamma \left(x_{t-1}^2 - M_{t-1} \right).
 \end{equation}
 
-\begin{equation}
+\begin{equation}\label{eq:constant_gain_returns}
     r_{t-1} = \eta_{t-1}
     + \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-2} \beta_{t-2} / w)}\Bigr)
     - \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-1} \beta_{t-1} / w)}\Bigr).
@@ -503,6 +503,43 @@ Given the distribution of $\beta_{\text{OLS}}$, we have:
 \end{proposition}
 
 Proof. In Appendix \ref{app:proof_LASSO}.
+
+It is worth claryifing now the mechanism through which return predictability arises in our model.
+Under constant-gain learning, the evolution of beliefs can be written in on-line form as
+\begin{equation}
+\beta_t
+=
+\beta_{t-1}
++
+\gamma M_{t-1}^{-1} x_{t-2}
+\bigl(r_{t-1} - x_{t-2}\beta_{t-1}\bigr),
+\end{equation}
+where the term $r_{t-1} - x_{t-2}\beta_{t-1}$ is the one-step-ahead forecasting error.
+Large changes in $\beta_t$ therefore arise when the forecasting error is large, when the regressor realization $|x_{t-2}|$ is large, or when the local second-moment estimate $M_{t-1}$ is small.
+Given that returns evolve according to the ALM \eqref{eq:constant_gain_returns}, it is clear that 
+even when predictors $x$ and innovations $\eta$ are i.i.d.\ and independent, realizations in which $x_{t-2}$ and $\eta_{t-1}$ are accidentally aligned in sign and magnitude generate large forecast errors and hence large belief revisions.
+Economically, this implies that the probability of a regressor being selected as predictive, is larger when it seems to agents that innovations to the fundamental dividend process are correlated with movements in the predictor.
+
+\subsection{Extension to Multiple Uncorrelated Predictors}
+
+Our theoretical analysis focuses on the univariate case for analytical tractability, but all main results extend naturally to the multivariate setting when predictors are uncorrelated.
+Consider a PLM with $k$ predictors: $r_{t+1} = X_t^T \beta + u_{t+1}$, where $X_t \sim \mathcal{N}(0, \Sigma_X)$ and $\Sigma_X$ is diagonal.
+In this case, the second-moment matrix $M_t = \mathbb{E}[X_t X_t^T]$ is also diagonal, which implies that the learning dynamics decompose into $k$ independent univariate problems.
+Specifically, each coefficient $\beta_j$ evolves according to
+\begin{equation}
+\beta_{j,t} = \beta_{j,t-1} + \gamma M^{-1}_{j,t-1} x_{j,t-2} \left(r_{t-1} - X_{t-2}^T \beta_{t-1}\right),
+\end{equation}
+where $M_{j,t} = \mathbb{E}[x_{j,t}^2]$ is the $j$-th diagonal element.
+The cross-moment consistent equilibrium condition similarly decomposes: $\beta_j = T_j(\beta)$ for all $j$, where $T_j(\beta) = \operatorname{Cov}(r_{t-1}, x_{j,t-2})/\operatorname{Var}(x_{j,t-2})$.
+Under constant-gain learning with penalty parameter $\lambda$, each unpenalized coefficient is approximately normally distributed with mean zero and variance $\gamma \sigma_d^2/(2\sigma^2_{x_j}(1-\kappa))$.
+The soft-thresholding operator then applies component-wise, and the probability that predictor $j$ is selected becomes
+\begin{equation}
+\mathbb{P}(|\beta^{\text{OLS}}_j| > \lambda) = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS},j}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS},j}}\right)\right],
+\end{equation}
+where $\sigma_{\text{OLS},j}^2 = \gamma \sigma_d^2/(2\sigma^2_{x_j}(1-\kappa))$.
+Since the $\beta_j$ are mutually independent when predictors are uncorrelated, the expected number of selected predictors is simply $\mathbb{E}[\text{\# selected}] = \sum_{j=1}^k \mathbb{P}(|\beta^{\text{OLS}}_j| > \lambda)$.
+This decomposition also extends to the stability analysis: the Jacobian of the mean dynamics becomes block-diagonal, with each block corresponding to a single predictor, and the SRA framework applies after vectorizing the parameter space as $\theta_t = (\beta_t, \text{vec}(M_t))$.
+In summary, uncorrelated predictors preserve the key insight that sparse predictability arises from finite-sample fluctuations in individual coefficients, with each predictor independently subject to selection when its estimated relationship happens to exceed the penalty threshold.
 
 
 \section{Empirical Application}
