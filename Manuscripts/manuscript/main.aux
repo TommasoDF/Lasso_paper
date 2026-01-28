@@ -1,19 +1,8 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
-\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
-\global\let\oldnewlabel\newlabel
-\gdef\newlabel#1#2{\newlabelxx{#1}#2}
-\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
-\AtEndDocument{\ifx\hyper@anchor\@undefined
-\let\newlabel\oldnewlabel
-\fi}
-\fi}
-\global\let\hyper@last\relax 
-\gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\providecommand\babel@aux[2]{}
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
 \@nameuse{bbl@beforestart}
 \bibstyle{aea}
 \providecommand \oddpage@label [2]{}
@@ -38,7 +27,7 @@
 \citation{Adam2016}
 \citation{begenau2018big}
 \citation{farboodi2020long}
-\citation{AngBekaert2007_RFS,GoyalWelch2003_MS,LettauLudvigson2001_JF}
+\citation{AngBekaert2007RFS,GoyalWelch2003MS,LettauLudvigson2001JF}
 \citation{kozak2020shrinking,freyberger2020dissecting}
 \citation{Mclean2016}
 \citation{Feng2020}
@@ -49,6 +38,123 @@
 \citation{Adam2016}
 \@writefile{toc}{\contentsline {section}{\numberline {3}The model}{5}{section.3}\protected@file@percent }
 \newlabel{sec:model}{{3}{5}{The model}{section.3}{}}
+<<<<<<< HEAD
+\newlabel{eq:equilibrium_price}{{5}{5}{The model}{equation.5}{}}
+\citation{Adam2016}
+\@writefile{loe}{\contentsline {assumption}{\ifthmt@listswap \MakeUppercase assumption~1\else \numberline {1}\MakeUppercase assumption\fi }{6}{assumption.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Univariate PLM and ALM}{6}{subsection.3.1}\protected@file@percent }
+\newlabel{eq:plm_univariate}{{10}{6}{Univariate PLM and ALM}{equation.10}{}}
+\@writefile{loe}{\contentsline {assumption}{\ifthmt@listswap \MakeUppercase assumption~2\else \numberline {2}\MakeUppercase assumption\fi }{7}{assumption.2}\protected@file@percent }
+\newlabel{ass:consumtion_independence}{{2}{7}{}{assumption.2}{}}
+\newlabel{eq:alm_univariate}{{16}{7}{Univariate PLM and ALM}{equation.16}{}}
+\newlabel{eq:alm_univariate_bounded}{{18}{7}{Univariate PLM and ALM}{equation.18}{}}
+\newlabel{eq:g_beta_def}{{19}{7}{Univariate PLM and ALM}{equation.19}{}}
+\citation{Hommes2014}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Recursive Least Squares Learning}{8}{section.4}\protected@file@percent }
+\newlabel{sec:rec_ls}{{4}{8}{Recursive Least Squares Learning}{section.4}{}}
+\newlabel{eq:alm_RLS}{{23}{8}{Recursive Least Squares Learning}{equation.23}{}}
+\@writefile{loe}{\contentsline {definition}{\ifthmt@listswap \MakeUppercase definition~1\else \numberline {1}\MakeUppercase definition\fi \thmtformatoptarg {Cross-Moment Consistent Equilibrium}}{8}{definition.1}\protected@file@percent }
+\newlabel{def:cmce}{{1}{8}{Cross-Moment Consistent Equilibrium}{definition.1}{}}
+\@writefile{loe}{\contentsline {proposition}{\ifthmt@listswap \MakeUppercase proposition~1\else \numberline {1}\MakeUppercase proposition\fi }{9}{proposition.1}\protected@file@percent }
+\newlabel{prop:RLS}{{1}{9}{}{proposition.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Weighted Least Squares and Constant Gain Learning}{9}{section.5}\protected@file@percent }
+\newlabel{sec:w_ls}{{5}{9}{Weighted Least Squares and Constant Gain Learning}{section.5}{}}
+\@writefile{loe}{\contentsline {proposition}{\ifthmt@listswap \MakeUppercase proposition~2\else \numberline {2}\MakeUppercase proposition\fi \thmtformatoptarg {Distribution under Constant Gain Learning}}{10}{proposition.2}\protected@file@percent }
+\newlabel{prop:WLS_distribution}{{2}{10}{Distribution under Constant Gain Learning}{proposition.2}{}}
+\citation{Bybee2021}
+\citation{Bybee2021}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Lasso Regression}{11}{section.6}\protected@file@percent }
+\newlabel{sec:lasso}{{6}{11}{Lasso Regression}{section.6}{}}
+\newlabel{eq:lasso_from_ols}{{28}{11}{Lasso Regression}{equation.28}{}}
+\@writefile{loe}{\contentsline {proposition}{\ifthmt@listswap \MakeUppercase proposition~3\else \numberline {3}\MakeUppercase proposition\fi \thmtformatoptarg {Probability of Non-Zero LASSO Estimate}}{11}{proposition.3}\protected@file@percent }
+\newlabel{prop:LASSO_estimate}{{3}{11}{Probability of Non-Zero LASSO Estimate}{proposition.3}{}}
+\citation{Bybee2021}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Empirical Application}{12}{section.7}\protected@file@percent }
+\newlabel{sec:empirical}{{7}{12}{Empirical Application}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Data}{12}{subsection.7.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary Statistics}}{12}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:summary_stats}{{1}{12}{Summary Statistics}{table.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Estimation Strategy}{12}{subsection.7.2}\protected@file@percent }
+\citation{akiba2019optuna}
+\newlabel{eq:empirical_plm}{{31}{13}{Estimation Strategy}{equation.31}{}}
+\newlabel{eq:empirical_alm}{{32}{13}{Estimation Strategy}{equation.32}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Results}{14}{subsection.7.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summary Statistics of LASSO Estimation Results}}{14}{table.caption.2}\protected@file@percent }
+\newlabel{tab:summary_stats_lasso}{{2}{14}{Summary Statistics of LASSO Estimation Results}{table.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Average Number of Non-Zero Coefficients vs. Return Variance}}{15}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:avg_select}{{1}{15}{Average Number of Non-Zero Coefficients vs. Return Variance}{figure.caption.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Second-Stage Estimation: Summary Statistics}}{15}{table.caption.4}\protected@file@percent }
+\newlabel{tab:summary_stats_stage2}{{3}{15}{Second-Stage Estimation: Summary Statistics}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{16}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{16}{Conclusion}{section.8}{}}
+\bibdata{references}
+\bibcite{Adam2016}{{1}{2016}{{Adam, Marcet and\ Nicolini}}{{Klaus Adam, Albert Marcet and\ Juan~Pablo Nicolini}}}
+\bibcite{adam2011internal}{{2}{2011}{{Adam and\ Marcet}}{{Klaus Adam and\ Albert Marcet}}}
+\bibcite{akiba2019optuna}{{3}{2019}{{Akiba et~al.}}{{Takuya Akiba, Shotaro Sano, Toshihiko Yanase, Takeru Ohta and\ Masanori Koyama}}}
+\bibcite{AngBekaert2007RFS}{{4}{2007}{{Ang and\ Bekaert}}{{Andrew Ang and\ Geert Bekaert}}}
+\bibcite{barberis1998model}{{5}{1998}{{Barberis, Shleifer and\ Vishny}}{{Nicholas Barberis, Andrei Shleifer and\ Robert Vishny}}}
+\bibcite{begenau2018big}{{6}{2018}{{Begenau, Farboodi and\ Veldkamp}}{{Juliane Begenau, Maryam Farboodi and\ Laura Veldkamp}}}
+\bibcite{Branch2010}{{7}{2010}{{Branch and\ Evans}}{{William~A. Branch and\ George~W. Evans}}}
+\bibcite{Bybee2021}{{8}{2021}{{Bybee et~al.}}{{Leland Bybee, Bryan~T. Kelly, Asaf Manela and\ Dacheng Xiu}}}
+\bibcite{Chinco2019}{{9}{2019}{{Chinco, Clark-Joseph and\ Ye}}{{Alex Chinco, Adam~D. Clark-Joseph and\ Mao Ye}}}
+\bibcite{GeorgeWEvans2001}{{10}{2001}{{Evans and\ Honkapohja}}{{George~W. Evans and\ Seppo Honkapohja}}}
+\bibcite{farboodi2020long}{{11}{2020}{{Farboodi and\ Veldkamp}}{{Maryam Farboodi and\ Laura Veldkamp}}}
+\bibcite{Farmer2023}{{12}{2023}{{Farmer, Schmidt and\ Timmermann}}{{Leland~E. Farmer, Lawrence Schmidt and\ Allan Timmermann}}}
+\bibcite{Feng2020}{{13}{2020}{{Feng, Giglio and\ Xiu}}{{Guanhao Feng, Stefano Giglio and\ Dacheng Xiu}}}
+\bibcite{freyberger2020dissecting}{{14}{2020}{{Freyberger, Neuhierl and\ Weber}}{{Joachim Freyberger, Andreas Neuhierl and\ Michael Weber}}}
+\bibcite{Georges2021}{{15}{2021}{{Georges and\ Pereira}}{{Christophre Georges and\ Javier Pereira}}}
+\bibcite{GoyalWelch2003MS}{{16}{2003}{{Goyal and\ Welch}}{{Amit Goyal and\ Ivo Welch}}}
+\bibcite{Gu2020}{{17}{2020}{{Gu, Kelly and\ Xiu}}{{Shihao Gu, Bryan Kelly and\ Dacheng Xiu}}}
+\bibcite{Hommes2014}{{18}{2014}{{Hommes and\ Zhu}}{{Cars Hommes and\ Mei Zhu}}}
+\bibcite{hong2007simple}{{19}{2007}{{Hong, Stein and\ Yu}}{{Harrison Hong, Jeremy~C Stein and\ Jialin Yu}}}
+\bibcite{Honkapohja2003}{{20}{2003}{{Honkapohja and\ Mitra}}{{Seppo Honkapohja and\ Kaushik Mitra}}}
+\bibcite{Invesco2024IGSIS}{{21}{2024}{{Invesco}}{{Invesco}}}
+\bibcite{kozak2020shrinking}{{22}{2020}{{Kozak, Nagel and\ Santosh}}{{Serhiy Kozak, Stefan Nagel and\ Shrihari Santosh}}}
+\bibcite{LettauLudvigson2001JF}{{23}{2001}{{Lettau and\ Ludvigson}}{{Martin Lettau and\ Sydney Ludvigson}}}
+\bibcite{Lucas1978}{{24}{1978}{{Lucas}}{{Robert~E. Lucas}}}
+\bibcite{Marcet1989}{{25}{1989}{{Marcet and\ Sargent}}{{Albert Marcet and\ Thomas~J. Sargent}}}
+\bibcite{Mclean2016}{{26}{2016}{{Mclean and\ Pontiff}}{{R.~David Mclean and\ Jeffrey Pontiff}}}
+\bibcite{Tibshirani1996}{{27}{1996}{{Tibshirani}}{{Robert Tibshirani}}}
+\bibcite{Timmermann1996}{{28}{1996}{{Timmermann}}{{Allan Timmermann}}}
+\bibcite{Timmermann1993}{{29}{1993}{{Timmermann}}{{Allan~G. Timmermann}}}
+\bibcite{DataSphere2025}{{30}{2025}{{Wright}}{{Adam Wright}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Derivation of Recursive Learning Models}{19}{appendix.A}\protected@file@percent }
+\newlabel{sec:appendix_learning}{{A}{19}{Derivation of Recursive Learning Models}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Recursive Least Squares}{19}{subsection.A.1}\protected@file@percent }
+\newlabel{app:RLS}{{A.1}{19}{Recursive Least Squares}{subsection.A.1}{}}
+\newlabel{eq:b_t_evolution}{{37}{19}{Recursive Least Squares}{equation.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Constant Gain Learning}{19}{subsection.A.2}\protected@file@percent }
+\newlabel{app:WLS}{{A.2}{19}{Constant Gain Learning}{subsection.A.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Lasso Learning}{21}{subsection.A.3}\protected@file@percent }
+\newlabel{app:lasso}{{A.3}{21}{Lasso Learning}{subsection.A.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Proofs}{22}{appendix.B}\protected@file@percent }
+\newlabel{sec:proofs}{{B}{22}{Proofs}{appendix.B}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Proof of proposition \ref {prop:RLS}}{22}{subsection.B.1}\protected@file@percent }
+\newlabel{app:proof_RLS}{{B.1}{22}{Proof of proposition \ref {prop:RLS}}{subsection.B.1}{}}
+\citation{GeorgeWEvans2001}
+\citation{GeorgeWEvans2001}
+\citation{GeorgeWEvans2001}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Proof of proposition \ref {prop:WLS_distribution}}{25}{subsection.B.2}\protected@file@percent }
+\newlabel{app:proofs_WLS}{{B.2}{25}{Proof of proposition \ref {prop:WLS_distribution}}{subsection.B.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Proof of proposition \ref {prop:LASSO_estimate}}{26}{subsection.B.3}\protected@file@percent }
+\newlabel{app:proof_LASSO}{{B.3}{26}{Proof of proposition \ref {prop:LASSO_estimate}}{subsection.B.3}{}}
+\citation{Bybee2021}
+\citation{Bybee2021}
+\gdef \LT@i {\LT@entry 
+    {1}{136.08731pt}\LT@entry 
+    {1}{136.08731pt}\LT@entry 
+    {1}{136.08731pt}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Additional Tables and Figures}{27}{appendix.C}\protected@file@percent }
+\newlabel{app:tab_figures}{{C}{27}{Additional Tables and Figures}{appendix.C}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces News Topics from \citet  {Bybee2021}}}{27}{table.4}\protected@file@percent }
+\newlabel{tab:news_topics}{{4}{27}{News Topics from \citet {Bybee2021}}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Cross-Lag Correlations of Predictors}}{29}{table.caption.6}\protected@file@percent }
+\newlabel{tab:cross_lag_correlations}{{5}{29}{Cross-Lag Correlations of Predictors}{table.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Correlation matrix of news-topic attention series.}}{30}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:corr_heatmap}{{2}{30}{Correlation matrix of news-topic attention series}{figure.caption.7}{}}
+\gdef \@abspage@last{30}
+=======
 \newlabel{eq:equilibrium_price}{{5}{5}{The model}{equation.3.5}{}}
 \citation{Adam2016}
 \@writefile{loe}{\contentsline {assumption}{\ifthmt@listswap \MakeUppercase    []{a}ssumption~1\else \numberline {1}\MakeUppercase    []{a}ssumption\fi }{6}{assumption.1}\protected@file@percent }
@@ -129,3 +235,4 @@
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Cross-Lag Correlations of Predictors\relax }}{26}{table.caption.6}\protected@file@percent }
 \newlabel{tab:cross_lag_correlations}{{4}{26}{Cross-Lag Correlations of Predictors\relax }{table.caption.6}{}}
 \gdef \@abspage@last{26}
+>>>>>>> 36769dec251da4e138a47d8f4edbef6cf10de5d6
