@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 
 % Bibstyle aea.bst version 2009.05.20
@@ -44,10 +43,11 @@
 {\bf Branch, William~A., and George~W. Evans.} 2010. ``Asset return dynamics
   and learning.'' {\em Review of Financial Studies}, 23.
 
-\harvarditem[Bybee et~al.]{Leland Bybee, Bryan~T. Kelly, Asaf Manela
-  \harvardand\ Dacheng Xiu}{2021}{Bybee2021}
-{\bf Bybee, Leland, Bryan~T. Kelly, Asaf Manela, and Dacheng Xiu.} 2021.
-  ``Business News and Business Cycles.'' {\em SSRN Electronic Journal}.
+\harvarditem[Bybee et~al.]{Leland Bybee, Bryan Kelly, Asaf Manela \harvardand\
+  Dacheng Xiu}{2024}{Bybee2021}
+{\bf Bybee, Leland, Bryan Kelly, Asaf Manela, and Dacheng Xiu.} 2024.
+  ``Business news and business cycles.'' {\em The Journal of Finance},
+  79(5):~3105--3147.
 
 \harvarditem[Chinco, Clark-Joseph \harvardand\ Ye]{Alex Chinco, Adam~D.
   Clark-Joseph \harvardand\ Mao Ye}{2019}{Chinco2019}
@@ -164,5 +164,3 @@
   US53363625. Accessed: <insert date you accessed the report>.
 
 \end{thebibliography}
-=======
->>>>>>> 36769dec251da4e138a47d8f4edbef6cf10de5d6
