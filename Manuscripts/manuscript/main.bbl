@@ -15,6 +15,12 @@
   market knowledge and asset prices.'' {\em Journal of Economic Theory},
   146(3):~1224--1252.
 
+\harvarditem[Akiba et~al.]{Takuya Akiba, Shotaro Sano, Toshihiko Yanase, Takeru
+  Ohta \harvardand\ Masanori Koyama}{2019}{akiba2019optuna}
+{\bf Akiba, Takuya, Shotaro Sano, Toshihiko Yanase, Takeru Ohta, and Masanori
+  Koyama.} 2019. ``Optuna: A next-generation hyperparameter optimization
+  framework.'' 2623--2631.
+
 \harvarditem[Ang \harvardand\ Bekaert]{Andrew Ang \harvardand\ Geert
   Bekaert}{2007}{AngBekaert2007RFS}
 {\bf Ang, Andrew, and Geert Bekaert.} 2007. ``Stock Return Predictability: Is
@@ -37,10 +43,11 @@
 {\bf Branch, William~A., and George~W. Evans.} 2010. ``Asset return dynamics
   and learning.'' {\em Review of Financial Studies}, 23.
 
-\harvarditem[Bybee et~al.]{Leland Bybee, Bryan~T. Kelly, Asaf Manela
-  \harvardand\ Dacheng Xiu}{2021}{Bybee2021}
-{\bf Bybee, Leland, Bryan~T. Kelly, Asaf Manela, and Dacheng Xiu.} 2021.
-  ``Business News and Business Cycles.'' {\em SSRN Electronic Journal}.
+\harvarditem[Bybee et~al.]{Leland Bybee, Bryan Kelly, Asaf Manela \harvardand\
+  Dacheng Xiu}{2024}{Bybee2021}
+{\bf Bybee, Leland, Bryan Kelly, Asaf Manela, and Dacheng Xiu.} 2024.
+  ``Business news and business cycles.'' {\em The Journal of Finance},
+  79(5):~3105--3147.
 
 \harvarditem[Chinco, Clark-Joseph \harvardand\ Ye]{Alex Chinco, Adam~D.
   Clark-Joseph \harvardand\ Mao Ye}{2019}{Chinco2019}
