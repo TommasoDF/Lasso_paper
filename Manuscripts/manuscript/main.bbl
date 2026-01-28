@@ -10,6 +10,9 @@
 \harvarditem[Adam \harvardand\ Marcet]{Klaus Adam \harvardand\ Albert Marcet}{2011}{adam2011internal}
 {\bf Adam, Klaus, and Albert Marcet.} 2011. ``Internal rationality, imperfect market knowledge and asset prices.'' {\em Journal of Economic Theory}, 146(3):~1224--1252.
 
+\harvarditem[Ang \harvardand\ Bekaert]{Andrew Ang \harvardand\ Geert Bekaert}{2007}{AngBekaert2007RFS}
+{\bf Ang, Andrew, and Geert Bekaert.} 2007. ``Stock Return Predictability: Is It There?'' {\em The Review of Financial Studies}, 20(3):~651--707.
+
 \harvarditem[Barberis, Shleifer \harvardand\ Vishny]{Nicholas Barberis, Andrei Shleifer \harvardand\ Robert Vishny}{1998}{barberis1998model}
 {\bf Barberis, Nicholas, Andrei Shleifer, and Robert Vishny.} 1998. ``A model of investor sentiment.'' {\em Journal of Financial Economics}, 49(3):~307--343.
 
@@ -43,6 +46,9 @@
 \harvarditem[Georges \harvardand\ Pereira]{Christophre Georges \harvardand\ Javier Pereira}{2021}{Georges2021}
 {\bf Georges, Christophre, and Javier Pereira.} 2021. ``Market stability with machine learning agents.'' {\em Journal of Economic Dynamics and Control}, 122.
 
+\harvarditem[Goyal \harvardand\ Welch]{Amit Goyal \harvardand\ Ivo Welch}{2003}{GoyalWelch2003MS}
+{\bf Goyal, Amit, and Ivo Welch.} 2003. ``Predicting the Equity Premium with Dividend Ratios.'' {\em Management Science}, 49(5):~639--654.
+
 \harvarditem[Gu, Kelly \harvardand\ Xiu]{Shihao Gu, Bryan Kelly \harvardand\ Dacheng Xiu}{2020}{Gu2020}
 {\bf Gu, Shihao, Bryan Kelly, and Dacheng Xiu.} 2020. ``Empirical Asset Pricing via Machine Learning.'' {\em Review of Financial Studies}, 33.
 
@@ -60,6 +66,9 @@
 
 \harvarditem[Kozak, Nagel \harvardand\ Santosh]{Serhiy Kozak, Stefan Nagel \harvardand\ Shrihari Santosh}{2020}{kozak2020shrinking}
 {\bf Kozak, Serhiy, Stefan Nagel, and Shrihari Santosh.} 2020. ``Shrinking the cross-section.'' {\em Journal of Financial Economics}, 135(2):~271--292.
+
+\harvarditem[Lettau \harvardand\ Ludvigson]{Martin Lettau \harvardand\ Sydney Ludvigson}{2001}{LettauLudvigson2001JF}
+{\bf Lettau, Martin, and Sydney Ludvigson.} 2001. ``Consumption, Aggregate Wealth, and Expected Stock Returns.'' {\em The Journal of Finance}, 56(3):~815--849.
 
 \harvarditem[Lucas]{Robert~E. Lucas}{1978}{Lucas1978}
 {\bf Lucas, Robert~E.} 1978. ``Asset Prices in an Exchange Economy.'' {\em Econometrica}, 46.
