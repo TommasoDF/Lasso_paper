@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  28 JAN 2026 14:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.29)  28 JAN 2026 17:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -601,26 +601,44 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip79
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count357
-)) (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+)) (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen293
+\lightrulewidth=\dimen294
+\cmidrulewidth=\dimen295
+\belowrulesep=\dimen296
+\belowbottomsep=\dimen297
+\aboverulesep=\dimen298
+\abovetopsep=\dimen299
+\cmidrulesep=\dimen300
+\cmidrulekern=\dimen301
+\defaultaddspace=\dimen302
+\@cmidla=\count358
+\@cmidlb=\count359
+\@aboverulesep=\dimen303
+\@belowrulesep=\dimen304
+\@thisruleclass=\count360
+\@lastruleclass=\count361
+\@thisrulewidth=\dimen305
+) (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip80
 \LTright=\skip81
 \LTpre=\skip82
 \LTpost=\skip83
-\LTchunksize=\count358
-\LTcapwidth=\dimen293
+\LTchunksize=\count362
+\LTcapwidth=\dimen306
 \LT@head=\box68
 \LT@firsthead=\box69
 \LT@foot=\box70
 \LT@lastfoot=\box71
 \LT@gbox=\box72
-\LT@cols=\count359
-\LT@rows=\count360
-\c@LT@tables=\count361
-\c@LT@chunks=\count362
+\LT@cols=\count363
+\LT@rows=\count364
+\c@LT@tables=\count365
+\c@LT@chunks=\count366
 \LT@p@ftn=\toks38
-)
-No file main.aux.
+) (main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
@@ -641,18 +659,18 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
 LaTeX Font Info:    ... okay on input line 27.
-(C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+ (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count363
-\scratchdimen=\dimen294
+\scratchcounter=\count367
+\scratchdimen=\dimen307
 \scratchbox=\box73
-\nofMPsegments=\count364
-\nofMParguments=\count365
+\nofMPsegments=\count368
+\nofMParguments=\count369
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count366
-\MPscratchDim=\dimen295
-\MPnumerator=\count367
-\makeMPintoPDFobject=\count368
+\MPscratchCnt=\count370
+\MPscratchDim=\dimen308
+\MPnumerator=\count371
+\makeMPintoPDFobject=\count372
 \everyMPtoPDFconversion=\toks40
 ) (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -668,6 +686,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 27.
+ (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
@@ -721,843 +740,112 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 29.
  (C:\Users\jonat\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1
-
-{C:/Users/jonat/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
-
-Package natbib Warning: Citation `DataSphere2025' on page 2 undefined on input line 61.
-
-
-Package natbib Warning: Citation `Invesco2024IGSIS' on page 2 undefined on input line 64.
-
-
-Package natbib Warning: Citation `Tibshirani1996' on page 2 undefined on input line 74.
-
-
-Package natbib Warning: Citation `Chinco2019' on page 2 undefined on input line 78.
-
-
-Package natbib Warning: Citation `Farmer2023' on page 2 undefined on input line 78.
-
-
-Package natbib Warning: Citation `Adam2016' on page 2 undefined on input line 86.
-
-[2]
-
-Package natbib Warning: Citation `Bybee2021' on page 3 undefined on input line 96.
-
-
-Package natbib Warning: Citation `Chinco2019' on page 3 undefined on input line 98.
-
-
-LaTeX Warning: Reference `sec:literature' on page 3 undefined on input line 103.
-
-
-LaTeX Warning: Reference `sec:model' on page 3 undefined on input line 104.
-
-
-LaTeX Warning: Reference `sec:rec_ls' on page 3 undefined on input line 105.
-
-
-LaTeX Warning: Reference `sec:w_ls' on page 3 undefined on input line 106.
-
-
-LaTeX Warning: Reference `sec:lasso' on page 3 undefined on input line 107.
-
-
-LaTeX Warning: Reference `sec:empirical' on page 3 undefined on input line 108.
-
-
-LaTeX Warning: Reference `sec:conclusion' on page 3 undefined on input line 109.
-
-
-Package natbib Warning: Citation `Marcet1989' on page 3 undefined on input line 117.
-
-
-Package natbib Warning: Citation `Timmermann1993' on page 3 undefined on input line 119.
-
-
-Package natbib Warning: Citation `Timmermann1996' on page 3 undefined on input line 119.
-
-
-Package natbib Warning: Citation `Honkapohja2003' on page 3 undefined on input line 120.
-
-
-Package natbib Warning: Citation `barberis1998model' on page 3 undefined on input line 122.
-
-
-Package natbib Warning: Citation `hong2007simple' on page 3 undefined on input line 122.
-
-
-Package natbib Warning: Citation `Branch2010' on page 3 undefined on input line 122.
-
-[3]
-
-Package natbib Warning: Citation `adam2011internal' on page 4 undefined on input line 124.
-
-
-Package natbib Warning: Citation `Adam2016' on page 4 undefined on input line 125.
-
-
-Package natbib Warning: Citation `begenau2018big' on page 4 undefined on input line 130.
-
-
-Package natbib Warning: Citation `farboodi2020long' on page 4 undefined on input line 130.
-
-
-Package natbib Warning: Citation `AngBekaert2007RFS' on page 4 undefined on input line 133.
-
-
-Package natbib Warning: Citation `GoyalWelch2003MS' on page 4 undefined on input line 133.
-
-
-Package natbib Warning: Citation `LettauLudvigson2001JF' on page 4 undefined on input line 133.
-
-
-Package natbib Warning: Citation `kozak2020shrinking' on page 4 undefined on input line 135.
-
-
-Package natbib Warning: Citation `freyberger2020dissecting' on page 4 undefined on input line 135.
-
-
-Package natbib Warning: Citation `Mclean2016' on page 4 undefined on input line 136.
-
-
-Package natbib Warning: Citation `Feng2020' on page 4 undefined on input line 140.
-
-
-Package natbib Warning: Citation `Gu2020' on page 4 undefined on input line 141.
-
-
-Package natbib Warning: Citation `Chinco2019' on page 4 undefined on input line 142.
-
-
-Package natbib Warning: Citation `Georges2021' on page 4 undefined on input line 146.
-
-
-Package natbib Warning: Citation `Lucas1978' on page 4 undefined on input line 153.
-
-
-Package natbib Warning: Citation `Adam2016' on page 4 undefined on input line 153.
-
-[4] [5]
-
-LaTeX Warning: Reference `eq:equilibrium_price' on page 6 undefined on input line 210.
-
-
-Package natbib Warning: Citation `Adam2016' on page 6 undefined on input line 211.
-
-Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 214.
-
-LaTeX Warning: Reference `ass:consumtion_independence' on page 6 undefined on input line 243.
-
-[6]
-
-LaTeX Warning: Reference `eq:equilibrium_price' on page 7 undefined on input line 247.
-
-
-LaTeX Warning: Reference `eq:alm_univariate' on page 7 undefined on input line 261.
-
-
-LaTeX Warning: Reference `eq:alm_univariate_bounded' on page 7 undefined on input line 279.
-
-
-LaTeX Warning: Reference `eq:plm_univariate' on page 7 undefined on input line 280.
-
-[7]
-
-LaTeX Warning: Reference `app:RLS' on page 8 undefined on input line 292.
-
-
-LaTeX Warning: Reference `eq:g_beta_def' on page 8 undefined on input line 305.
-
-
-Package natbib Warning: Citation `Hommes2014' on page 8 undefined on input line 311.
-
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 315.
-
-Overfull \hbox (9.72112pt too wide) in paragraph at lines 316--317
+)
+Overfull \hbox (18.04507pt too wide) in paragraph at lines 31--38
+\OT1/ppl/m/n/10 rors mod-ern em-pir-i-cal prac-tice. Al-though re-turns are un-pre-dictable un-der full-information
+ []
+
+[1
+
+{C:/Users/jonat/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5]
+Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 213.
+ [6] [7] [8]
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 314.
+
+Overfull \hbox (9.72112pt too wide) in paragraph at lines 315--316
 []\OT1/ppl/m/it/10.95 A pair $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^V; ^^L\OT1/cmr/m/n/10.95 )$ \OT1/ppl/m/it/10.95 is a \OT1/ppl/m/n/10.95 Cross-Moment Con-
  []
 
-[8]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 339.
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 338.
 
-
-LaTeX Warning: Reference `app:proof_RLS' on page 9 undefined on input line 343.
-
-
-LaTeX Warning: Reference `prop:RLS' on page 9 undefined on input line 347.
-
-
-LaTeX Warning: Reference `app:WLS' on page 9 undefined on input line 363.
+Overfull \hbox (8.28888pt too wide) in paragraph at lines 346--350
+[]\OT1/ppl/m/n/10.95 Proposition [][]1[][] shows that with in-fi-nite mem-ory, learn-ing elim-i-nates per-ceived pre-dictabil-
+ []
 
 [9]
-
-LaTeX Warning: Reference `app:proofs_WLS' on page 10 undefined on input line 391.
-
-
-LaTeX Warning: Reference `prop:WLS_distribution' on page 10 undefined on input line 393.
-
-
-Overfull \hbox (13.1846pt too wide) in paragraph at lines 398--399
+Overfull \hbox (13.1846pt too wide) in paragraph at lines 397--398
 []\OT1/ppl/m/n/10.95 Second, div-i-dend volatil-ity $\OML/cmm/m/it/10.95 ^^[[]$ \OT1/ppl/m/n/10.95 de-ter-mines the fun-da-men-tal un-cer-tainty in re-turns. Greater
  []
 
-
-LaTeX Warning: Reference `app:lasso' on page 10 undefined on input line 409.
-
 [10]
-Overfull \hbox (1.53896pt too wide) in paragraph at lines 419--420
+Overfull \hbox (6.95836pt too wide) in paragraph at lines 404--405
+\OT1/ppl/m/n/10.95 We model be-lief for-ma-tion un-der LASSO learn-ing by en-dow-ing agents with a \OT1/ppl/m/it/10.95 soft-thresholded
+ []
+
+
+Overfull \hbox (1.53896pt too wide) in paragraph at lines 418--419
 \OT1/ppl/m/n/10.95 pre-dic-tors that are un-cor-re-lated and stan-dard-ized. In such en-vi-ron-ments, soft-thresholding
  []
 
 
-Overfull \hbox (18.55505pt too wide) in paragraph at lines 426--427
+Overfull \hbox (18.55505pt too wide) in paragraph at lines 425--426
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares learn-
  []
 
-
-LaTeX Warning: Reference `app:proof_LASSO' on page 11 undefined on input line 430.
-
-
-LaTeX Warning: Reference `eq:constant_gain_returns' on page 11 undefined on input line 444.
-
 [11]
-Overfull \hbox (29.82407pt too wide) in paragraph at lines 456--461
+Overfull \hbox (29.82407pt too wide) in paragraph at lines 455--460
 \OT1/ppl/m/n/10.95 con-di-tion sim-i-larly de-com-poses: $\OML/cmm/m/it/10.95 ^^L[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 T[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^L\OT1/cmr/m/n/10.95 )$ \OT1/ppl/m/n/10.95 for all $\OML/cmm/m/it/10.95 j$\OT1/ppl/m/n/10.95 , where $\OML/cmm/m/it/10.95 T[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^L\OT1/cmr/m/n/10.95 ) = [](\OML/cmm/m/it/10.95 r[]; x[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 =[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 )$\OT1/ppl/m/n/10.95 .
  []
 
+[12] [13]
 
-Package natbib Warning: Citation `Bybee2021' on page 12 undefined on input line 476.
-
-
-Package natbib Warning: Citation `Bybee2021' on page 12 undefined on input line 477.
+LaTeX Warning: Reference `app:tab_fig' on page 14 undefined on input line 529.
 
 
-LaTeX Warning: Reference `tab:news_topics' on page 12 undefined on input line 478.
-
-[12]
-
-LaTeX Warning: Reference `tab:summary_stats' on page 13 undefined on input line 486.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<inserted text> ...{\small }Xccccccr@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<inserted text> ...{\small }Xccccccr@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<inserted text> ...{\small }Xccccccr@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:507: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.507 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Package natbib Warning: Citation `Bybee2021' on page 13 undefined on input line 514.
-
-
-LaTeX Warning: Reference `eq:lasso_from_ols' on page 13 undefined on input line 529.
-
-
-LaTeX Warning: Reference `fig:corr_heatmap' on page 13 undefined on input line 530.
-
-
-LaTeX Warning: Reference `app:tab_fig' on page 13 undefined on input line 530.
-
-
-LaTeX Warning: Reference `tab:cross_lag_correlations' on page 13 undefined on input line 530.
-
-[13]
-Overfull \hbox (2.70033pt too wide) in paragraph at lines 552--554
+Overfull \hbox (2.70033pt too wide) in paragraph at lines 551--553
 []\OT1/ppl/m/n/10.95 For each stock $\OML/cmm/m/it/10.95 i$ \OT1/ppl/m/n/10.95 and each rolling win-dow, the agent com-putes the cor-re-spond-ing LASSO
  []
 
-
-LaTeX Warning: Reference `eq:empirical_alm' on page 14 undefined on input line 568.
-
-
-LaTeX Warning: Reference `eq:empirical_alm' on page 14 undefined on input line 569.
-
-
-Package natbib Warning: Citation `akiba2019optuna' on page 14 undefined on input line 573.
-
-
-LaTeX Warning: Reference `eq:empirical_plm' on page 14 undefined on input line 590.
-
-
-LaTeX Warning: Reference `tab:summary_stats_lasso' on page 14 undefined on input line 591.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<inserted text> ...{\small }Xccccccc@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<inserted text> ...{\small }Xccccccc@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<inserted text> ...{\small }Xccccccc@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:612: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.612 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[14]
-
-LaTeX Warning: Reference `prop:LASSO_estimate' on page 15 undefined on input line 627.
-
-
-LaTeX Warning: Reference `fig:avg_select' on page 15 undefined on input line 628.
-
-<figures/avg_nonzero_coefficients_vs_volatility.pdf, id=147, 433.62pt x 289.08pt>
+[14] [15]
+<figures/nonzero_stocks_over_time.pdf, id=378, 433.62pt x 289.08pt>
+File: figures/nonzero_stocks_over_time.pdf Graphic file (type pdf)
+<use figures/nonzero_stocks_over_time.pdf>
+Package pdftex.def Info: figures/nonzero_stocks_over_time.pdf  used on input line 649.
+(pdftex.def)             Requested size: 303.53267pt x 202.36343pt.
+<figures/pct_active_coefficients_conditional.pdf, id=380, 433.62pt x 289.08pt>
+File: figures/pct_active_coefficients_conditional.pdf Graphic file (type pdf)
+<use figures/pct_active_coefficients_conditional.pdf>
+Package pdftex.def Info: figures/pct_active_coefficients_conditional.pdf  used on input line 658.
+(pdftex.def)             Requested size: 303.53267pt x 202.36343pt.
+ [16 <./figures/nonzero_stocks_over_time.pdf>]
+<figures/avg_nonzero_coefficients_vs_volatility.pdf, id=427, 433.62pt x 289.08pt>
 File: figures/avg_nonzero_coefficients_vs_volatility.pdf Graphic file (type pdf)
 <use figures/avg_nonzero_coefficients_vs_volatility.pdf>
-Package pdftex.def Info: figures/avg_nonzero_coefficients_vs_volatility.pdf  used on input line 632.
+Package pdftex.def Info: figures/avg_nonzero_coefficients_vs_volatility.pdf  used on input line 667.
 (pdftex.def)             Requested size: 303.53267pt x 202.36343pt.
-
-LaTeX Warning: Reference `eq:empirical_alm' on page 15 undefined on input line 637.
-
-
-LaTeX Warning: Reference `tab:summary_stats_stage2' on page 15 undefined on input line 639.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<inserted text> ...{\small }Xccccccc@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<inserted text> ...{\small }Xccccccc@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<inserted text> ...{\small }Xccccccc@{}} \toprule 
-                                                  Variable & Mean & Std.\ De...
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:661: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.661 \end{tabularx}
-                    
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[15 <./figures/avg_nonzero_coefficients_vs_volatility.pdf>] [16] [17] (main.bbl [18])
-
-LaTeX Warning: Reference `eq:plm_univariate' on page 19 undefined on input line 722.
-
-[19]
-
-LaTeX Warning: Reference `eq:plm_univariate' on page 20 undefined on input line 758.
-
-[20]
-Overfull \hbox (49.89955pt too wide) detected at line 807
+ [17 <./figures/pct_active_coefficients_conditional.pdf> <./figures/avg_nonzero_coefficients_vs_volatility.pdf>] [18] [19] (main.bbl [20]) [21] [22]
+Overfull \hbox (49.89955pt too wide) detected at line 847
 [][][]\OML/cmm/m/it/10.95 ^^L[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 M[] \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^Mx[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 ^^M [] []x[]r[] \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 ^^L[]\OT1/cmr/m/n/10.95 (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^MM[]x[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 ^^MM[] [] []x[]r[];
  []
 
-[21] [22]
+[23] [24] [25]
+Overfull \hbox (1.33182pt too wide) in paragraph at lines 948--952
+\OT1/ppl/m/n/10.95 Chap-ter 6 of [][]Evans and Honkapo-hja[][] ([][]2001[][]), which casts the learn-ing dy-nam-ics as a Stochas-
+ []
 
-LaTeX Warning: Reference `prop:RLS' on page 23 undefined on input line 867.
-
-
-LaTeX Warning: Reference `eq:alm_RLS' on page 23 undefined on input line 877.
-
-[23]
-
-Package natbib Warning: Citation `GeorgeWEvans2001' on page 24 undefined on input line 908.
-
-[24]
-
-LaTeX Warning: Reference `eq:b_t_evolution' on page 25 undefined on input line 959.
-
-
-Overfull \hbox (63.35866pt too wide) detected at line 980
+[26]
+Overfull \hbox (63.35866pt too wide) detected at line 1020
 \OMS/cmsy/m/n/10.95 H\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^R; Z\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 ;  ^^Z[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^R; Z\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 ;
  []
 
-
-Package natbib Warning: Citation `GeorgeWEvans2001' on page 25 undefined on input line 986.
-
-[25]
-
-LaTeX Warning: Reference `prop:WLS_distribution' on page 26 undefined on input line 1015.
-
-
-Package natbib Warning: Citation `GeorgeWEvans2001' on page 26 undefined on input line 1016.
-
-[26]
-Overfull \hbox (64.136pt too wide) detected at line 1060
+[27] [28]
+Overfull \hbox (64.136pt too wide) detected at line 1100
 \OML/cmm/m/it/10.95 C[] \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.95 e[]R[] ds \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^A []\OML/cmm/m/it/10.95 ;  C[] \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.95 e[]R[] ds \OT1/cmr/m/n/10.95 = [] = \OML/cmm/m/it/10.95 ^^[[];  C[] \OT1/cmr/m/n/10.95 = 0\OML/cmm/m/it/10.95 :
  []
 
 
-LaTeX Warning: Reference `prop:LASSO_estimate' on page 27 undefined on input line 1077.
-
-
-Overfull \hbox (18.80621pt too wide) in paragraph at lines 1079--1082
+Overfull \hbox (18.80621pt too wide) in paragraph at lines 1119--1122
 \OT1/ppl/m/n/10.95 Under soft-thresholded constant-gain learn-ing, agents first com-pute the un-pe-nal-ized weighted
  []
 
-
-LaTeX Warning: Reference `prop:WLS_distribution' on page 27 undefined on input line 1092.
-
-
-LaTeX Warning: Reference `prop:WLS_distribution' on page 27 undefined on input line 1093.
-
-[27]
-
-Package natbib Warning: Citation `Bybee2021' on page 28 undefined on input line 1125.
-
-
-Package natbib Warning: Citation `Bybee2021' on page 28 undefined on input line 1125.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1127: Undefined control sequence.
-<recently read> \toprule 
-                         
-l.1127 \toprule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1129: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1129 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1133: Undefined control sequence.
-<recently read> \toprule 
-                         
-l.1133 \toprule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1135: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1135 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1138: Undefined control sequence.
-l.1138 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1142: Undefined control sequence.
-l.1142 \bottomrule
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1205: ignored error: Infinite glue shrinkage found in box being split [28]
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1220: Undefined control sequence.
-l.1220 \toprule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1222: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1222 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1229: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1229 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1236: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1236 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1243: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1243 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1250: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1250 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1257: Undefined control sequence.
-<recently read> \midrule 
-                         
-l.1257 \midrule
-               
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1264: Undefined control sequence.
-<recently read> \bottomrule 
-                            
-l.1264 \bottomrule
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
 [29]
-<figures/corr_topics_heatmap.png, id=328, 676.2063pt x 604.77945pt>
+c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex:1245: ignored error: Infinite glue shrinkage found in box being split [30] [31]
+<figures/corr_topics_heatmap.png, id=626, 676.2063pt x 604.77945pt>
 File: figures/corr_topics_heatmap.png Graphic file (type png)
 <use figures/corr_topics_heatmap.png>
-Package pdftex.def Info: figures/corr_topics_heatmap.png  used on input line 1281.
+Package pdftex.def Info: figures/corr_topics_heatmap.png  used on input line 1321.
 (pdftex.def)             Requested size: 433.62pt x 387.82346pt.
- [30]
-
-Package natbib Warning: There were undefined citations.
-
-[31 <./figures/corr_topics_heatmap.png>] (main.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+ [32] [33 <./figures/corr_topics_heatmap.png>] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
@@ -1566,30 +854,21 @@ L3 programming layer <2025-11-06>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  1B0CBBB7019B6F3E522F8CC0D8C45FD7;3578.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 942D0442E360987AE1B78E56BFA0187E;3563.
  ) 
 Here is how much of TeX's memory you used:
- 17963 strings out of 467871
- 293028 string characters out of 5418375
- 754411 words of memory out of 5000000
- 46337 multiletter control sequences out of 15000+600000
- 656441 words of font info for 118 fonts, out of 8000000 for 9000
+ 18080 strings out of 467871
+ 295591 string characters out of 5418375
+ 758452 words of memory out of 5000000
+ 46441 multiletter control sequences out of 15000+600000
+ 655376 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,14n,145p,1347b,683s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,14n,145p,1347b,684s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (31 pages, 1819933 bytes).
+Output written on main.pdf (33 pages, 1940744 bytes).
 PDF statistics:
- 465 PDF objects out of 1000 (max. 8388607)
- 172 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 762 PDF objects out of 1000 (max. 8388607)
+ 177 named destinations out of 1000 (max. 500000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 

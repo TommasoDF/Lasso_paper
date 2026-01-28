@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1769607825.84565 "main.aux" "main.bbl" "main" 1769607835.343 2
+["bibtex main"] 1769614176.88278 "main.aux" "main.bbl" "main" 1769616637.17461 0
   "./aea.bst" 1768904835 27471 034ebaf6925cb914f19ae8306f420e5b ""
-  "./references.bib" 1769607824 53081 00ad2f6166cb1e64d80a7b05d8ffea4e ""
-  "main.aux" 1769607834 12720 371f9bdcad639ca296d4527d3bb18eaf "pdflatex"
+  "./references.bib" 1769614171 52122 114ba2a0a4b99e19810e7d141363ce7a ""
+  "main.aux" 1769616636 13459 b56c02761bd2940f8dacea544a56a82b "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769607831.3146 "c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769607835.34369 2
+["pdflatex"] 1769616632.49303 "c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769616637.17659 0
   "C:/Users/jonat/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1769594390 279990 4b77cd2ac03c6899a395f614a432aa5e ""
   "C:/Users/jonat/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1764418466 13333512 8a15e5de28a5a416f78977aafb60672e ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -114,6 +114,7 @@
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty" 1761900684 5525 1593ca62a2554dd7423fc8a4e5a82125 ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/base/inputenc.sty" 1761900684 5048 0270515b828149155424600fd2d58ac5 ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/base/size11.clo" 1761900684 8464 f339f4d5391fbe0425b2d94c90e6819e ""
+  "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/booktabs/booktabs.sty" 1579093635 6253 f1cb470c9199e7110a27851508ed7a5c ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/breqn/breqn.sty" 1635456636 63654 7bf5503a18f0c0960efcd29690657e65 ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/breqn/cmbase.sym" 1635456636 16822 782a7dd49c020d869145e4a0bedbf436 ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/breqn/flexisym.sty" 1635456636 17550 b57de3b936fb161a9855142a7208bf94 ""
@@ -181,14 +182,16 @@
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/varwidth/varwidth.sty" 1238469540 10894 d359a13923460b2a73d4312d613554c8 ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/jonat/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex" 1769600301 83150 e2df6d018e68a37b9ef2b561e42fe305 ""
-  "figures/avg_nonzero_coefficients_vs_volatility.pdf" 1769599515 14139 63872731e98783c55ed39ff471d49ab0 ""
+  "c:/Users/jonat/Lasso_paper/Manuscripts/manuscript/main.tex" 1769616631 86075 41b2b3faaf7fd48978d2f211ce0bd216 ""
+  "figures/avg_nonzero_coefficients_vs_volatility.pdf" 1769610764 15096 e04e39a229634f8e03cae9aa66708ba5 ""
   "figures/corr_topics_heatmap.png" 1769599515 1510515 85833e30562d039f4244f2ecf896eea8 ""
-  "main.aux" 1769607834 12720 371f9bdcad639ca296d4527d3bb18eaf "pdflatex"
-  "main.bbl" 1769607826 7816 12b3aee6478d531fb986e3e726f157da "bibtex main"
-  "main.out" 1769607834 3578 1b0cbbb7019b6f3e522f8cc0d8c45fd7 "pdflatex"
-  "main.tex" 1769600301 83150 e2df6d018e68a37b9ef2b561e42fe305 ""
-  "style.sty" 1769599515 1626 ea7b6fba392e2660317f5d1d8fa4bcbe ""
+  "figures/nonzero_stocks_over_time.pdf" 1769613742 37898 a63b2b7b3b3ed426c378bb0203ba6a9a ""
+  "figures/pct_active_coefficients_conditional.pdf" 1769616189 41084 9585be06bf16a242404ceddede9ed981 ""
+  "main.aux" 1769616636 13459 b56c02761bd2940f8dacea544a56a82b "pdflatex"
+  "main.bbl" 1769614177 8156 47f9b007b2f5308e0971605b67b823a0 "bibtex main"
+  "main.out" 1769616636 3563 942d0442e360987ae1b78e56bfa0187e "pdflatex"
+  "main.tex" 1769616631 86075 41b2b3faaf7fd48978d2f211ce0bd216 ""
+  "style.sty" 1769608082 1685 60a2b61dca718d7df0b12bb6d6019ecb ""
   (generated)
   "main.aux"
   "main.log"
