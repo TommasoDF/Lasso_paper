@@ -3,10 +3,9 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: aea.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for "akiba2019optuna"
 You've used 29 entries,
             2695 wiz_defined-function locations,
-            774 strings with 8016 characters,
+            773 strings with 8001 characters,
 and the built_in function-call counts, 167664 in all, are:
 = -- 27941
 > -- 2000
@@ -45,4 +44,3 @@ warning$ -- 0
 while$ -- 713
 width$ -- 0
 write$ -- 148
-(There was 1 warning)

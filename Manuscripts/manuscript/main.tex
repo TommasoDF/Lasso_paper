@@ -471,7 +471,7 @@ In summary, uncorrelated predictors preserve the key insight that sparse predict
 
 \subsection{Data}
 
-To evaluate the model in a realistic informational environment, we test its predictions using a large cross section of assets and a high-dimensional set of news-based predictors.
+To evaluate the model in a realistic environment, we test its predictions using a large cross-section of assets and a high-dimensional set of news-based predictors.
 Our sample consists of the daily returns of all stocks that were continously listed on the New York Stock Exchange (NYSE) between 2010 and 2017.
 As predictors, we use the 180 daily news topic attention series constructed by \citet{Bybee2021} from the full text of the \textit{Wall Street Journal} using an unsupervised Latent Dirichlet Allocation (LDA) model.
 The LDA assigns each article a vector of topic proportions, which \citet{Bybee2021} aggregate to the daily frequency to measure media attention across a broad set of business, economic, political, and social topics.
@@ -499,8 +499,6 @@ Log return
 \midrule
 Topic level 
 & 0.006 & 0.004 & 0.000 & 0.116 & 3.662 & 33.361 & 340{,}020 \\
-AR(1) coefficient 
-& $-$0.021 & 0.039 & $-$0.277 & 0.007 & $-$3.641 & 16.670 & 180 \\
 Topic innovation 
 & 0.000 & 0.003 & $-$0.054 & 0.062 & 1.885 & 16.019 & 339{,}840 \\
 \bottomrule
@@ -520,69 +518,112 @@ regressions estimated over the full sample.
 
 \subsection{Estimation Strategy}
 
-Our theory has two core components: (i) a learning mechanism through which agents form beliefs about return predictability, and (ii) an asset-pricing equation that maps these beliefs into realized returns. 
+Our theory has two core components: (i) a misspecified PLM through which agents form beliefs about return predictability, and (ii) an ALM that maps these beliefs into realized returns. 
 Because neither the agents nor the econometrician observe the true data-generating process for returns, our empirical strategy mirrors the agents’ learning problem.
-We begin by estimating the PLM as in the model, while introducing two modifications to make the framework empirically implementable.
+We begin by estimating the PLM as in the model, while introducing some modifications to make the framework empirically implementable.
 
-First, we relax the assumption that regressors are orthonormal.
-Instead, we require regressors to be approximatly uncorrelated, which is a weaker but more realistic condition.
+
+First, we assume that agents estimate the PLM using a rolling window of fixed length rather than geometrically declining weights, which is more in line with standard econometric practices when dealing with potential time-varying parameters and allow us to closely mirror
+the design of \cite{Chinco2019}.
+Second, we endow agents with a full LASSO regression rather than the soft-thresholding approximation used in the theoretical analysis.
+As already remarked, the soft-thresholding operator is exactly equivalent to LASSO when regressors are orthonormal.
+Instead, we allow regressors to be approximatly uncorrelated, which is a weaker but more realistic condition.
+Third, we allow for lags of the regressors to enter the PLM, by simply stacking $n$ lags of each topic innovation as potential predictors.
+This extension captures the possibility that agents consider delayed effects of news topics on returns.
 Accordingly, equation~(\ref{eq:lasso_from_ols}) need not hold exactly, but should provide a close approximation.
-Consistent with this assumption, Figure~\ref{fig:corr_heatmap} in Appendix~\ref{app:tab_fig} shows that topic-attention innovations are close to contemporaneously uncorrelated, while Table~\ref{tab:cross_lag_correlations} documents that cross-lag correlations in the time series are also small.
-Second, we assume that agents estimate the PLM using a rolling window of fixed length rather than geometrically declining weights. 
-This rolling-window formulation provides a convenient approximation to constant-gain learning while remaining transparent and tractable in the data.
-At each date $t$, the regressor matrix contains the past $s$ observations,
+Consistent with this assumption, Figure~\ref{fig:corr_heatmap} in Appendix~\ref{app:tab_figures} shows that topic-attention innovations are close to contemporaneously uncorrelated, while Table~\ref{tab:cross_lag_correlations} documents that cross-lag correlations in the time series are also small.
+At each date \(t\), the information set consists of \(k\) topic-attention innovations. Let
+\(x_t \in \mathbb{R}^{k}\) denote the vector of innovations at time \(t\), with element
+\(x_{j,t}\) corresponding to topic \(j \in \{1,\ldots,k\}\).
+For a rolling window of length \(s\), define the regressor matrix by stacking past topic
+vectors row-wise,
 \begin{equation}
-    X_t =
-    \begin{bmatrix}
-    x_{t-s} \\
-    x_{t-s+1} \\
-    \vdots \\
-    x_{t-1}
-    \end{bmatrix},
-    \quad
-    r_{i,t+1} =
-    \begin{bmatrix}
-    r_{i,t-s+1} \\
-    r_{i,t-s+2} \\
-    \vdots \\
-    r_{i,t}
-    \end{bmatrix}.
+X_t \in \mathbb{R}^{s \times k}
+\equiv
+\begin{bmatrix}
+x_{t-s}^\top \\
+x_{t-s+1}^\top \\
+\vdots \\
+x_{t-1}^\top
+\end{bmatrix},
+\qquad
+r_{i,t+1} \in \mathbb{R}^{s}
+\equiv
+\begin{bmatrix}
+r_{i,t-s+1} \\
+r_{i,t-s+2} \\
+\vdots \\
+r_{i,t}
+\end{bmatrix}.
 \end{equation}
+Each row of \(X_t\) is a \(1 \times k\) vector of topic innovations observed at a given date,
+while each column tracks the time series of innovations for a given topic over the window.
 
-For each stock $i$ and each rolling window, the agent computes the corresponding LASSO estimator $\beta_{i,t}$.
-The empirical PLM for log returns is given by
+For each stock \(i\) and each window ending at \(t-1\), the agent estimates a LASSO
+coefficient vector
+\begin{equation}
+\beta_{i,t} \in \mathbb{R}^{k},
+\end{equation}
+so that beliefs are indexed by both time and topic. Equivalently, the collection
+\(\{\beta_{i,t}\}_t\) defines a stock-specific, time-varying belief process, where the
+\(j\)-th element \(\beta_{i,t}^{(j)}\) measures the perceived predictive content of topic \(j\)
+for stock \(i\) at date \(t\).
+The empirical perceived law of motion (PLM) for log returns is therefore
 \begin{equation}\label{eq:empirical_plm}
-    r_{i,t+1} = X_t \beta_{i,t} + \eta_{i,t+1},
+r_{i,t+1} = X_t \beta_{i,t} + \eta_{i,t+1},
 \end{equation}
-where $X_t$ denotes the vector of topic-attention innovations. 
-Applying LASSO to each rolling window yields a stock-specific, time-varying sequence of belief parameters $\{\beta_{i,t}\}$.
-After estimating the PLM, we use the resulting sequence of belief parameters $\{\beta_{i,t}\}$ to estimate the ALM implied by the asset-pricing equation.
+where \(X_t \beta_{i,t} \in \mathbb{R}^{s}\) denotes the vector of fitted within-window returns
+implied by the \(k\)-dimensional belief vector at date \(t\).
+Applying this procedure sequentially yields a time-varying sequence of belief parameters
+\(\{\beta_{i,t}\}\) for each stock.
+
+Using the estimated belief path, we then estimate the empirical actual law of motion
+(ALM) implied by the asset-pricing equation.\footnote{While the theoretical model implies
+zero unconditional mean log returns under our maintained assumptions, the empirical
+specification includes an intercept to absorb average return components not captured by
+the model.}
 \begin{equation}\label{eq:empirical_alm}
-    r_{i,t+1}
-    =
-    \log\!\left(1 - \kappa_{i} e^{X_t \beta_{i,t}}\right)
-    -
-    \log\!\left(1 - \kappa_{i} e^{X_{t+1} \beta_{i,t+1}}\right)
-    + u_{i,t+1}.
+r_{i,t+1}
+= c
++ \log\!\left(1 - \kappa_i e^{x_t^\top \beta_{i,t}}\right)
+- \log\!\left(1 - \kappa_i e^{x_{t+1}^\top \beta_{i,t+1}}\right)
++ \eta_{i,t+1},
 \end{equation}
-We estimate the unknown parameter $\kappa_i$ in equation~(\ref{eq:empirical_alm}) using Nonlinear Least Squares (NLS).
-If the model is correctly specified, we expect the estimated $\kappa_i$ to be statistically significant across stocks and equation~(\ref{eq:empirical_alm}) to account for a nontrivial share of return variation.
+where \(x_t^\top \beta_{i,t}\) is scalar because \(x_t, \beta_{i,t} \in \mathbb{R}^{k}\).
+The stock-specific parameter \(\kappa_i\) is estimated by nonlinear least squares.
+
 
 Before implementing our estimation strategy, we calibrate the three parameters governing the agent’s learning rule: 
 the rolling window length \(s\), the penalty parameter \(\lambda\), and the number of predictor lags \(n\) considered.
-We select these parameters using Bayesian optimization implemented in the Optuna package \citep{akiba2019optuna}.
-Optuna constructs a probabilistic surrogate of the objective function and directs the search toward promising
-regions of the parameter space, allowing us to identify economically relevant configurations with relatively few
-function evaluations.
-The objective function maximizes the in-sample \(R^2\) from the second-stage nonlinear least squares estimation and
-penalizes parameter combinations that yield statistically insignificant estimates, ensuring that the inferred learning
-behavior is both economically meaningful and statistically robust.
-We conduct the calibration using the CRSP value-weighted market return as the forecasting target
-and the full set of topic-innovation series as potential signals.
-Calibrating on the aggregate market return yields parameters that capture average learning dynamics and serve as
-benchmarks for the subsequent cross-sectional analysis.
-Based on 500 optimization trials, the procedure selects a rolling window length of \(s = 256\) days, a penalty
-parameter of \(\lambda = 0.0025\), and a single forecasting lag \(n = 1\).
+To do this we operate at market level, estimating the PLM and ALM using the CRSP value-weighted market return as the forecasting target and the full set of topic-innovation series as potential signals.
+We select these parameters using Bayesian optimization to maximize an objective function which is a combination of first and second-stage fit as
+\[ \text{Objective}(s, \lambda, n)
+= \kappa \cdot
+R^2_{\text{ALM}} \cdot \mathbb{I}\left(R^2_{\text{PLM}} > 0\right) \cdot \mathbb{I}\left(\kappa_{t-stat} > 1.96\right) \] 
+where \(R^2_{}\) is the in-sample \(R^2\) of the corresponding stage,
+\(\kappa_{t-stat}\) is the \(t\)-statistic of the NLS $\kappa$ coefficient.
+
+
+The objective is chosen to disciplinee the empirical implementation by restricting
+attention to learning rules under which the PLM-ALM structure is well defined.
+
+The term \(\mathbb{I}(R^2_{\text{PLM}}>0)\) serves two purposes. First, it rules out
+parameterizations for which beliefs contain no predictive content, in which case the
+belief channel in the ALM is unidentified. Second, it provides a minimal empirical
+justification for why agents would rely on a LASSO-based forecasting rule in the first
+place. If the perceived law of motion delivers no explanatory power, there would be no reason
+for agents to condition their decisions on the estimated coefficients \(\beta_{i,t}\).
+
+Conditional on a nondegenerate PLM, maximizing \(R^2_{\text{ALM}}\) selects configurations
+in which belief dynamics translate into economically relevant price movements. Finally,
+imposing \(\mathbb{I}(\kappa_{t\text{-stat}}>1.96)\) ensures that the key nonlinear feedback
+parameter is statistically identified.
+
+Lastly, this procedure allows us to choose hyper-parameters once, at the market level and then keep them 
+fixed when estimating the model for individual stocks.
+In this way we can ensure that cross-sectional variation is not driven by different hyper-parameter choices.
+The optimization yields the following calibration: rolling window length \(s = 320\) days, penalty parameter \(\lambda = 0.0025\), and number of predictor lags \(n = 12\).
+
 
 \subsection{Results}
 
@@ -629,7 +670,7 @@ To test this implication, Figure~\ref{fig:avg_select} plots, for each stock, the
 The figure reveals a clear positive relationship, providing empirical support for the model’s prediction.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/avg_nonzero_coefficients_vs_volatility.pdf}
+    \includegraphics[width=0.7\textwidth]{figures/avg_nonzero_coefficients_vs_volatility.png}
     \caption{Average Number of Non-Zero Coefficients vs. Return Variance}
     \label{fig:avg_select}
 \end{figure}
