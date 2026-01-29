@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  29 JAN 2026 11:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.3.6)  29 JAN 2026 11:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -731,103 +731,122 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 29.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [1
+)
+Overfull \hbox (18.04507pt too wide) in paragraph at lines 31--38
+\OT1/ppl/m/n/10 rors mod-ern em-pir-i-cal prac-tice. Al-though re-turns are un-pre-dictable un-der full-information
+ []
+
+[1
 
 {/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}] [2] [3] [4] [5]
-Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 214.
- [6] [7]
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 315.
+Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 213.
+ [6] [7] [8]
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 314.
 
-Overfull \hbox (9.72112pt too wide) in paragraph at lines 316--317
+Overfull \hbox (9.72112pt too wide) in paragraph at lines 315--316
 []\OT1/ppl/m/it/10.95 A pair $\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^V; ^^L\OT1/cmr/m/n/10.95 )$ \OT1/ppl/m/it/10.95 is a \OT1/ppl/m/n/10.95 Cross-Moment Con-
  []
 
-[8]
-Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 339.
+Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 338.
 
-Overfull \hbox (8.28888pt too wide) in paragraph at lines 347--351
+Overfull \hbox (8.28888pt too wide) in paragraph at lines 346--350
 []\OT1/ppl/m/n/10.95 Proposition [][]1[][] shows that with in-fi-nite mem-ory, learn-ing elim-i-nates per-ceived pre-dictabil-
  []
 
 [9]
-Overfull \hbox (13.1846pt too wide) in paragraph at lines 398--399
+Overfull \hbox (13.1846pt too wide) in paragraph at lines 397--398
 []\OT1/ppl/m/n/10.95 Second, div-i-dend volatil-ity $\OML/cmm/m/it/10.95 ^^[[]$ \OT1/ppl/m/n/10.95 de-ter-mines the fun-da-men-tal un-cer-tainty in re-turns. Greater
  []
 
 [10]
-Overfull \hbox (1.53896pt too wide) in paragraph at lines 419--420
+Overfull \hbox (6.95836pt too wide) in paragraph at lines 404--405
+\OT1/ppl/m/n/10.95 We model be-lief for-ma-tion un-der LASSO learn-ing by en-dow-ing agents with a \OT1/ppl/m/it/10.95 soft-thresholded
+ []
+
+
+Overfull \hbox (1.53896pt too wide) in paragraph at lines 418--419
 \OT1/ppl/m/n/10.95 pre-dic-tors that are un-cor-re-lated and stan-dard-ized. In such en-vi-ron-ments, soft-thresholding
  []
 
 
-Overfull \hbox (18.55505pt too wide) in paragraph at lines 426--427
+Overfull \hbox (18.55505pt too wide) in paragraph at lines 425--426
 []\OT1/ppl/m/it/10.95 Under Weighted Least Squares learn-
  []
 
 [11]
-Overfull \hbox (29.82407pt too wide) in paragraph at lines 456--461
+Overfull \hbox (29.82407pt too wide) in paragraph at lines 455--460
 \OT1/ppl/m/n/10.95 con-di-tion sim-i-larly de-com-poses: $\OML/cmm/m/it/10.95 ^^L[] \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 T[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^L\OT1/cmr/m/n/10.95 )$ \OT1/ppl/m/n/10.95 for all $\OML/cmm/m/it/10.95 j$\OT1/ppl/m/n/10.95 , where $\OML/cmm/m/it/10.95 T[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^L\OT1/cmr/m/n/10.95 ) = [](\OML/cmm/m/it/10.95 r[]; x[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 =[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[]\OT1/cmr/m/n/10.95 )$\OT1/ppl/m/n/10.95 .
  []
 
-[12] [13] [14]
-Overfull \hbox (4.80655pt too wide) in paragraph at lines 617--621
+[12] [13] [14] [15]
+Overfull \hbox (4.80655pt too wide) in paragraph at lines 616--620
 []\OT1/ppl/m/n/10.95 Conditional on a non-de-gen-er-ate PLM, max-i-miz-ing $\OML/cmm/m/it/10.95 R[]$ \OT1/ppl/m/n/10.95 se-lects con-fig-u-ra-tions in which
  []
 
-[15]
-<figures/avg_nonzero_coefficients_vs_volatility.png, id=377, 578.16pt x 433.62pt>
+<figures/nonzero_stocks_over_time.pdf, id=381, 433.62pt x 289.08pt>
+File: figures/nonzero_stocks_over_time.pdf Graphic file (type pdf)
+<use figures/nonzero_stocks_over_time.pdf>
+Package pdftex.def Info: figures/nonzero_stocks_over_time.pdf  used on input line 674.
+(pdftex.def)             Requested size: 303.53267pt x 202.36343pt.
+[16]
+<figures/pct_active_coefficients_conditional.pdf, id=390, 433.62pt x 289.08pt>
+File: figures/pct_active_coefficients_conditional.pdf Graphic file (type pdf)
+<use figures/pct_active_coefficients_conditional.pdf>
+Package pdftex.def Info: figures/pct_active_coefficients_conditional.pdf  used on input line 683.
+(pdftex.def)             Requested size: 303.53267pt x 202.36343pt.
+<figures/avg_nonzero_coefficients_vs_volatility.png, id=393, 578.16pt x 433.62pt>
 File: figures/avg_nonzero_coefficients_vs_volatility.png Graphic file (type png)
 <use figures/avg_nonzero_coefficients_vs_volatility.png>
-Package pdftex.def Info: figures/avg_nonzero_coefficients_vs_volatility.png  used on input line 673.
+Package pdftex.def Info: figures/avg_nonzero_coefficients_vs_volatility.png  used on input line 692.
 (pdftex.def)             Requested size: 303.53267pt x 227.6473pt.
- [16 <./figures/avg_nonzero_coefficients_vs_volatility.png>] [17] [18] (./main.bbl [19]) [20] [21]
-Overfull \hbox (49.89955pt too wide) detected at line 848
+ [17 <./figures/nonzero_stocks_over_time.pdf> <./figures/pct_active_coefficients_conditional.pdf>] [18 <./figures/avg_nonzero_coefficients_vs_volatility.png>] [19] [20] (./main.bbl [21]) [22] [23]
+Overfull \hbox (49.89955pt too wide) detected at line 872
 [][][]\OML/cmm/m/it/10.95 ^^L[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 M[] \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^Mx[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 ^^M [] []x[]r[] \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 ^^L[]\OT1/cmr/m/n/10.95 (1 \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 ^^MM[]x[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 ^^MM[] [] []x[]r[];
  []
 
-[22] [23] [24]
-Overfull \hbox (1.33182pt too wide) in paragraph at lines 949--953
+[24] [25] [26]
+Overfull \hbox (1.33182pt too wide) in paragraph at lines 973--977
 \OT1/ppl/m/n/10.95 Chap-ter 6 of [][]Evans and Honkapo-hja[][] ([][]2001[][]), which casts the learn-ing dy-nam-ics as a Stochas-
  []
 
-[25]
-Overfull \hbox (63.35866pt too wide) detected at line 1021
+[27]
+Overfull \hbox (63.35866pt too wide) detected at line 1045
 \OMS/cmsy/m/n/10.95 H\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^R; Z\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 ;  ^^Z[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^R; Z\OT1/cmr/m/n/10.95 ) = [] \OML/cmm/m/it/10.95 ;
  []
 
-[26] [27]
-Overfull \hbox (64.136pt too wide) detected at line 1101
+[28] [29]
+Overfull \hbox (64.136pt too wide) detected at line 1125
 \OML/cmm/m/it/10.95 C[] \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.95 e[]R[] ds \OT1/cmr/m/n/10.95 = [] = [] \OMS/cmsy/m/n/10.95 ^^A []\OML/cmm/m/it/10.95 ;  C[] \OT1/cmr/m/n/10.95 = [][] \OML/cmm/m/it/10.95 e[]R[] ds \OT1/cmr/m/n/10.95 = [] = \OML/cmm/m/it/10.95 ^^[[];  C[] \OT1/cmr/m/n/10.95 = 0\OML/cmm/m/it/10.95 :
  []
 
 
-Overfull \hbox (18.80621pt too wide) in paragraph at lines 1120--1123
+Overfull \hbox (18.80621pt too wide) in paragraph at lines 1144--1147
 \OT1/ppl/m/n/10.95 Under soft-thresholded constant-gain learn-ing, agents first com-pute the un-pe-nal-ized weighted
  []
 
-[28] [29] [30]
-<figures/corr_topics_heatmap.png, id=505, 676.2063pt x 604.77945pt>
+[30] [31] [32]
+<figures/corr_topics_heatmap.png, id=597, 676.2063pt x 604.77945pt>
 File: figures/corr_topics_heatmap.png Graphic file (type png)
 <use figures/corr_topics_heatmap.png>
-Package pdftex.def Info: figures/corr_topics_heatmap.png  used on input line 1322.
+Package pdftex.def Info: figures/corr_topics_heatmap.png  used on input line 1346.
 (pdftex.def)             Requested size: 433.62pt x 387.82346pt.
- [31] [32 <./figures/corr_topics_heatmap.png>] (./main.aux)
+ [33] [34 <./figures/corr_topics_heatmap.png>] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 942D0442E360987AE1B78E56BFA0187E;3563.
  ) 
 Here is how much of TeX's memory you used:
- 17794 strings out of 476025
- 294188 string characters out of 5790018
+ 17812 strings out of 476025
+ 294927 string characters out of 5790018
  1892388 words of memory out of 5000000
- 37722 multiletter control sequences out of 15000+600000
- 541007 words of font info for 110 fonts, out of 8000000 for 9000
+ 37735 multiletter control sequences out of 15000+600000
+ 539942 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,14n,145p,1366b,643s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,14n,145p,1366b,635s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (32 pages, 1806020 bytes).
+Output written on main.pdf (34 pages, 1882617 bytes).
 PDF statistics:
- 643 PDF objects out of 1000 (max. 8388607)
- 555 compressed objects within 6 object streams
- 175 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 734 PDF objects out of 1000 (max. 8388607)
+ 581 compressed objects within 6 object streams
+ 179 named destinations out of 1000 (max. 500000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 

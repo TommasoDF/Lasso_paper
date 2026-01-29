@@ -1076,6 +1076,7 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/booktabs/booktabs.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/tools/longtable.sty
@@ -1191,7 +1192,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplr7t.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplri7t.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
@@ -1206,8 +1206,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/palatino/pplri7t.vf
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
@@ -1247,6 +1245,16 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam1
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT ./figures/nonzero_stocks_over_time.pdf
+INPUT ./figures/nonzero_stocks_over_time.pdf
+INPUT figures/nonzero_stocks_over_time.pdf
+INPUT ./figures/nonzero_stocks_over_time.pdf
+INPUT ./figures/nonzero_stocks_over_time.pdf
+INPUT ./figures/pct_active_coefficients_conditional.pdf
+INPUT ./figures/pct_active_coefficients_conditional.pdf
+INPUT figures/pct_active_coefficients_conditional.pdf
+INPUT ./figures/pct_active_coefficients_conditional.pdf
+INPUT ./figures/pct_active_coefficients_conditional.pdf
 INPUT ./figures/avg_nonzero_coefficients_vs_volatility.png
 INPUT ./figures/avg_nonzero_coefficients_vs_volatility.png
 INPUT figures/avg_nonzero_coefficients_vs_volatility.png

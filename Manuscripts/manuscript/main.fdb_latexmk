@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1769681438 "main.aux" "main.bbl" "main" 1769681483 0
+["bibtex main"] 1769681710 "main.aux" "main.bbl" "main" 1769681713 0
   "./aea.bst" 1768515426 26202 034ebaf6925cb914f19ae8306f420e5b ""
-  "./references.bib" 1769529834 52446 00ad2f6166cb1e64d80a7b05d8ffea4e ""
-  "main.aux" 1769681482 13274 81ff2fd41412e87de06d596f0369897a "pdflatex"
+  "./references.bib" 1769681622 51475 114ba2a0a4b99e19810e7d141363ce7a ""
+  "main.aux" 1769681713 13905 675f422a9094d7d4f6c1f1844770b5d8 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769681480 "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769681483 0
-  "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" 1769681480 84095 205a04e67757545b13f681395cb8f32b ""
+["pdflatex"] 1769681710 "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" "main.pdf" "main" 1769681713 0
+  "/Users/tommasodifrancesco/Desktop/Lasso_paper/Manuscripts/manuscript/main.tex" 1769681704 86750 3d794c1746e43d77c68217284e113cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -191,11 +191,13 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "figures/avg_nonzero_coefficients_vs_volatility.png" 1769679795 37490 6588ecc956381c8dadb3cb6a63fa9fdb ""
   "figures/corr_topics_heatmap.png" 1769530098 1510515 1cbfad22d6e79f58414b586088b25c15 ""
-  "main.aux" 1769681482 13274 81ff2fd41412e87de06d596f0369897a "pdflatex"
-  "main.bbl" 1769681439 7527 914a456f324a474ac6f0898b2cc40988 "bibtex main"
-  "main.out" 1769681482 3563 942d0442e360987ae1b78e56bfa0187e "pdflatex"
-  "main.tex" 1769681480 84095 205a04e67757545b13f681395cb8f32b ""
-  "style.sty" 1769545534 1586 3f6e8ca3029b68e90e054ed28ec61aea ""
+  "figures/nonzero_stocks_over_time.pdf" 1769681622 37898 a63b2b7b3b3ed426c378bb0203ba6a9a ""
+  "figures/pct_active_coefficients_conditional.pdf" 1769681622 41084 9585be06bf16a242404ceddede9ed981 ""
+  "main.aux" 1769681713 13905 675f422a9094d7d4f6c1f1844770b5d8 "pdflatex"
+  "main.bbl" 1769681710 7539 da7d49ea399153139678bd7a4387244f "bibtex main"
+  "main.out" 1769681713 3563 942d0442e360987ae1b78e56bfa0187e "pdflatex"
+  "main.tex" 1769681704 86750 3d794c1746e43d77c68217284e113cab ""
+  "style.sty" 1769681622 1641 37d35cd00bddcc69fffac2d81e057976 ""
   (generated)
   "main.aux"
   "main.log"

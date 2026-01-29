@@ -5,24 +5,24 @@ The style file: aea.bst
 Database file #1: references.bib
 You've used 29 entries,
             2695 wiz_defined-function locations,
-            773 strings with 8001 characters,
-and the built_in function-call counts, 167664 in all, are:
-= -- 27941
+            774 strings with 7991 characters,
+and the built_in function-call counts, 167443 in all, are:
+= -- 27896
 > -- 2000
 < -- 0
-+ -- 13573
++ -- 13543
 - -- 628
-* -- 15001
-:= -- 32932
+* -- 14988
+:= -- 32883
 add.period$ -- 205
 call.type$ -- 29
 change.case$ -- 377
 chr.to.int$ -- 29
 cite$ -- 29
-duplicate$ -- 413
-empty$ -- 1082
+duplicate$ -- 414
+empty$ -- 1092
 format.name$ -- 631
-if$ -- 30088
+if$ -- 30051
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 0
@@ -32,15 +32,15 @@ pop$ -- 29
 preamble$ -- 1
 purify$ -- 435
 quote$ -- 0
-skip$ -- 367
+skip$ -- 366
 stack$ -- 0
-substring$ -- 39904
+substring$ -- 39845
 swap$ -- 171
 text.length$ -- 406
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 114
 warning$ -- 0
-while$ -- 713
+while$ -- 715
 width$ -- 0
 write$ -- 148
