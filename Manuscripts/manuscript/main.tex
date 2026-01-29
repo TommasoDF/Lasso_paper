@@ -18,9 +18,9 @@
 \vspace{-1.0cm}
 \title{\textbf{Lasso Trading}}
 \author{
-Tommaso Di Francesco\thanks{University of Bonn. Email: \texttt{tommaso.difrancesco@uni-bonn.de}.}
+Tommaso Di Francesco\thanks{University of Bonn. Email: \texttt{tdifranc@uni-bonn.de}.}
 \and
-Jonathan Seim\thanks{University of Cologne. Email: \texttt{jonathan.seim@uni-koeln.de}.}
+Jonathan Seim\thanks{University of Cologne. Email: \texttt{jonathan.seim@wiso.uni-koeln.de}.}
 }
 \date{\today}
 
@@ -29,15 +29,12 @@ Jonathan Seim\thanks{University of Cologne. Email: \texttt{jonathan.seim@uni-koe
 
 \begin{abstract}
 \noindent
-We develop an equilibrium asset-pricing model in which investors search for return predictability in high-dimensional data using a learning mechanism based on machine learning.
-Our learning mechanism thereby closley mirrors the behavior of modern investors.
-Although returns are unpredictable under full-information rational expectations, investors suspect conditional predictability and estimate a sparse forecasting rule from many signals. 
-Because beliefs affect prices through equilibrium valuation, the perceived linear forecasting model induces a nonlinear actual law of motion, so learning does not converge to rational expectations. 
-Instead, the economy converges to a cross-moment consistent equilibrium in which agents’ regression moments are statistically self-consistent with equilibrium outcomes.
-The central implication is that the \emph{act of searching} can endogenously create \emph{windows of predictability}. 
-In finite samples, LASSO intermittently selects a small set of predictors with coefficients large enough to survive the penalty; trading on these perceived signals feeds back into prices and generates short-lived, sparse predictability. 
-We provide analytical conditions for such selection events and connect them to fundamentals such as volatility and investor memory. 
-When we take test our model on the cross-section of stock returns and a high-dimensional set of predictors, we get strong empirical support for its key mechanism.
+We develop an equilibrium asset-pricing model in which investors search for return predictability in high-dimensional data using a LASSO-based learning rule that mirrors modern empirical practice.
+Although returns are unpredictable under full-information rational expectations, investors estimate sparse forecasting models from many signals.
+Because beliefs feed back into prices, the perceived linear forecasting rule induces a nonlinear actual law of motion, so learning does not converge to rational expectations.
+Instead, the economy settles into a cross-moment consistent equilibrium.
+The key implication is that the search for predictability itself endogenously generates short-lived windows of sparse predictability: chance selection events survive penalization, trading amplifies them, and predictability vanishes as beliefs revert.
+We derive analytical conditions for these episodes and show strong empirical support using stock returns and high-dimensional predictors.
 \end{abstract}
 
 \vspace{0.5cm}
@@ -51,6 +48,8 @@ When we take test our model on the cross-section of stock returns and a high-dim
 \noindent\textbf{Acknowledgements.}
 We thank seminar participants at the University of Cologne and the University of Bonn for helpful comments and discussions.
 All remaining errors are our own.
+Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under
+Germany’s Excellence Strategy – EXC 2126/2 – 390838866.
 
 \newpage
 
@@ -206,7 +205,7 @@ Taking logs we obtain log-returns
 \end{equation}
 Without loss of generality in what follows we set $\log(a) = \sigma^2_d/2$. This implies that under FIRE log-returns have mean zero and there is no time-$t$ information that can help forecasting returns.
 
-Instead of assuming that agents know the true data generating process, we follow the adaptive learning literature and assume that agents are boundedly rational and form their expectations using econometric techniques \textcolor{red}{[citations here]}.
+Instead of assuming that agents know the true data generating process, we follow the adaptive learning literature and assume that agents are boundedly rational and form their expectations using econometric techniques \citep{GeorgeWEvans2001}.
 Equation (\ref{eq:equilibrium_price}) shows that agents have to forecast two quantities, the risk-adjusted gross return and gross dividend growth.
 We follow \cite{Adam2016} in making the next assumption.
 
@@ -275,7 +274,7 @@ For later use, we define the function
     g_{\beta}(x) 
     := \log\bigl(1 - \kappa\, e^{w \tanh(x \beta/w)}\bigr),
 \end{equation}
-which is globally well-defined and smooth in $x$ and $\beta$. Given that the term $x \beta$ represents expected returns, we argue that the original ALM is well-defined with high probability.
+which is globally well-defined and smooth in $x$ and $\beta$. Given that $X_t \beta_t$ represents expected returns, which in practice move within a limited range rather than taking arbitrarily large values, we argue that the original ALM is well defined with high probability.
 The bounded specification \eqref{eq:alm_univariate_bounded}, should therefore be interpreted as a globally valid extension that coincides with the baseline model in the empirically relevant region of the state space while eliminating corner cases where the logarithm is undefined.
 As noted above, agents do not know the value of $\beta$ in their PLM \eqref{eq:plm_univariate} and have to estimate it from observed data.
 We therefore consider different learning mechaisms that agents can use to update their beliefs about $\beta$ over time, sequentially building towards the LASSO learning mechanism that is the main focus of this paper.
@@ -402,7 +401,7 @@ Third, predictor variance $\sigma^2_x$ acts as a stabilizing force. When the pre
 \section{Lasso Regression}\label{sec:lasso}
 % =====================================================
 
-We model sparse belief formation by endowing agents with a \emph{soft-thresholded least squares} learning rule. Concretely, agents first update a least squares estimate of the forecasting coefficient using recursive or constant-gain learning, and then apply a soft-thresholding operator before forming expectations. This mechanism preserves analytical tractability while capturing the key feature of penalized learning, namely the tendency to set coefficients exactly to zero when empirical signals are weak.
+We model belief formation under LASSO learning by endowing agents with a \emph{soft-thresholded least squares} learning rule. Concretely, agents first update a least squares estimate of the forecasting coefficient using recursive or constant-gain learning, and then apply a soft-thresholding operator before forming expectations. This mechanism preserves analytical tractability while capturing the key feature of penalized learning, namely the tendency to set coefficients exactly to zero when empirical signals are weak.
 
 Our empirical motivation is closely related to LASSO regression, which augments the least squares objective with an $\ell_1$ penalty and is widely used to promote sparsity in estimated models. 
 Rather than solving the LASSO problem directly within the learning dynamics, we adopt the soft-thresholding rule as a reduced-form representation of penalized estimation. 
@@ -627,9 +626,9 @@ The optimization yields the following calibration: rolling window length \(s = 3
 
 \subsection{Results}
 
-Having calibrated the learning parameters, we now turn to the empirical implementation of the model.
-We begin by estimating the PLM defined by equation~(\ref{eq:empirical_plm}) using LASSO regression separately for each stock and each rolling window.
-The results are summarized in Table~\ref{tab:summary_stats_lasso}   
+Having calibrated the learning parameters, we now implement the model in the cross-section.
+For each stock, we estimate the PLM in equation~(\ref{eq:empirical_plm}) using a rolling-window LASSO.
+This procedure delivers a time series of belief coefficients $\{\beta_{i,t}\}$ and corresponding one-step-ahead forecasts, which we summarize in Table~\ref{tab:summary_stats_lasso}.
 \begin{table}[H]
 \centering
 \caption{Summary Statistics of LASSO Estimation Results}
@@ -662,18 +661,42 @@ and the first-stage out-of-sample $R^2$, computed from the sequence of one-step-
 and (iii) the stock-level selection rate, defined as the percentage of rolling windows in which the LASSO selects at least one predictor.
 \end{minipage}
 \end{table}
-%%%%%%%%%%%%%%%%
-% HERE RESULTS INTERPRETATION
-%%%%%%%%%%%%%%%%
-Proposition~\ref{prop:LASSO_estimate} predicts that stocks with more volatile returns should exhibit a higher likelihood of nonzero LASSO estimates.
-To test this implication, Figure~\ref{fig:avg_select} plots, for each stock, the average number of non-zero coefficients selected per window against the variance of its returns.
-The figure reveals a clear positive relationship, providing empirical support for the model’s prediction.
+Table~\ref{tab:summary_stats_lasso} reports four key objects.
+The in-sample $R^2$ is positive, indicating that the LASSO learning rule explains returns within the estimation window, but not outside of it as the out-of-sample $R^2$ is negative on average.
+% SAY SOMETHING ABOUT BETA AND SELECTION RATE
+While Table~\ref{tab:summary_stats_lasso} summarizes averages across time, the model’s central mechanism is time variation in beliefs.
+Figure~\ref{fig:selection_rate} therefore plots, for each date, the number of stocks for which the learning rule selects at least one predictor.
+In other words, it shows how many stocks are perceived as predictable according to the LASSO learning rule.
+There are pronounced fluctuations: at any point in time, only a subset of stocks is perceived as predictable, and the size of this subset varies substantially.
+This pattern matches the model’s implication that beliefs about predictability are episodic rather than constant.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/nonzero_stocks_over_time.pdf}
+    \caption{Number of Stocks with Non-Zero Coefficients Over Time}
+    \label{fig:selection_rate}
+\end{figure}
+Next, we document that perceived predictability is concentrated in a few signals when it arises.
+Figure~\ref{fig:percent_active} plots the average percentage of selected predictors per stock over time, conditional on the stock having at least one non-zero coefficient.
+Even conditional on selection, the number of selected predictors is small, indicating that when agents believe in predictability, they typically attribute it to only a small subset of available signals.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/pct_active_coefficients_conditional.pdf}
+    \caption{Percentage of Active Coefficients Over Time}
+    \label{fig:percent_active}
+\end{figure}
+Finally, we test the cross-sectional implication in Proposition~\ref{prop:LASSO_estimate} that more volatile stocks should exhibit more frequent selection.
+Figure~\ref{fig:avg_select} plots, for each stock, the average number of non-zero coefficients selected per window against the variance of its returns.
+The relationship is clearly positive: stocks with higher return variance display more active coefficients on average.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{figures/avg_nonzero_coefficients_vs_volatility.png}
     \caption{Average Number of Non-Zero Coefficients vs. Return Variance}
     \label{fig:avg_select}
 \end{figure}
+We view these patterns as evidence in favor of our proposed learning rule.
+An agent applying LASSO to the data would find the rule attractive ex ante, because it delivers nontrivial in sample fit, even though its out of sample performance is weak.
+Consistent with our theory, perceived predictability is episodic, so at any point in time only a subset of stocks is viewed as predictable and, conditional on selection, beliefs are sparse and concentrated on a few predictors.
+Taken together, these results match the model’s predictions and mirror recent evidence that return predictability arises in short lived, shifting pockets rather than as a stable forecasting relation \citep{Chinco2019}.
 
 Next, we estimate the parameter $\kappa_{i}$ implied by the ALM by applying NLS to equation~(\ref{eq:empirical_alm}), taking the LASSO-estimated belief sequence ${\beta_{i,t}}$ as given.
 Identification relies on time-series variation in agents’ beliefs about return predictability, as captured by fluctuations in $X_t \beta_{i,t}$, and on the corresponding variation in realized returns. 
@@ -687,10 +710,10 @@ Intuitively, $\kappa_{i}$ is pinned down by how changes in expected returns tran
 \toprule
 Variable & Mean & Std.\ Dev. & Median & Min & Max & P5 & P95 \\
 \midrule
-In-sample $R^2$ (Stage 2)
+In-sample $R^2$ 
 & 0.001 & 0.002 & 0.000 & 0.000 & 0.005 & 0.000 & 0.004 \\
 
-Out-of-sample $R^2$ (Stage 2)
+Out-of-sample $R^2$
 & $-$0.004 & 0.005 & $-$0.002 & $-$0.013 & 0.001 & $-$0.012 & 0.000 \\
 
 $\hat{\kappa}$
@@ -716,16 +739,14 @@ $\hat{\kappa}$ denotes the estimated sensitivity parameter and its $t$-statistic
 is obtained from the NLS covariance matrix.
 Each stock-level estimation uses 1{,}500 daily observations, and the reported statistics are computed across the
 full cross-section of 1{,}620 stocks.
-
 \end{minipage}
 \end{table}
-
-
-
-Our model shows that...
+We report summary statistics for four key objects.
+%%%
+% HERE DISCUSS STAGE 2 RESULTS
+%%%
 
 % =====================================================
-
 
 \section{Conclusion}\label{sec:conclusion}
 
@@ -745,7 +766,10 @@ We plan to extend our analysis along several dimensions.
 The current model features a representative agent; a natural next step is to introduce heterogeneity in learning behavior.
 Allowing agents to differ in their learning-rule characteristics would enable us to study interactions between investors who are optimistic about return predictability and those who are pessimistic, as well as between near-rational and more severely boundedly rational agents.
 Such heterogeneity may generate richer trading dynamics and novel forms of belief--price feedback in equilibrium.
-In addition, we aim to extend the framework to environments with correlated regressors, moving beyond the near-orthogonality approximation and allowing us to characterize how correlation structures affect model selection, belief dynamics, and equilibrium outcomes under LASSO learning.
+We also aim to extend the framework to environments with correlated regressors, moving beyond the near-orthogonality approximation and allowing us to characterize how correlation structures affect model selection, belief dynamics, and equilibrium outcomes under LASSO learning.
+Lastly, in future work we want to investigate whether the topics selected by the LASSO learning rule can be linked to specific events and economic narratives at the time. 
+This would allow us to distinguish between purely random selection episodes and those driven by some underlying economic mechanism.
+
 
 % =====================================================
 
