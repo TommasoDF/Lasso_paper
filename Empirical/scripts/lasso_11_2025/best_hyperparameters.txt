@@ -1,0 +1,3 @@
+window_size: 360
+n_lags: 21
+lambda: 0.002536652371477602
