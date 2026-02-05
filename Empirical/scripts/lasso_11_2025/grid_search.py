@@ -13,7 +13,8 @@ from tqdm import tqdm
 
 from stage1 import (
     lasso_rolling_window,
-    calculate_r_squared
+    calculate_r_squared,
+    lasso_rolling_window_fast
 )
 
 from stage2 import compute_stage2_r_squared
@@ -156,7 +157,123 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=Tr
 
 
 
+def estimate_single_config_fast(X, y, window_size, n_lags, lambda_val, standardize=True, verbose=False, save_only_positve_r_squared=True, return_details=True):
+    """
+    Estimate 1st and 2nd stage for a single configuration.
+    
+    Returns
+    -------
+    dict with keys:
+      - 'summary': dict of scalar metrics
+      - 'details': DataFrame of time-series coefficients (Lasso + OLS)
+    """
+    try:
+        # Stage 1: Rolling LASSO + OLS
+        stage1_results = lasso_rolling_window_fast(
+            X=X, y=y, 
+            window_size=window_size, 
+            n_lags=n_lags,
+            lambda_mode="fixed", 
+            fixed_lambda=lambda_val, 
+            verbose=False,
+            standardize=standardize
+        )
+       
+        # Extract predictions and align data
+        preds = np.array(stage1_results["predictions"])[:-2]
+        y_valid = y[-len(preds)-1:-1]
+        y_vals = y_valid.values if isinstance(y_valid, (pd.Series, pd.DataFrame)) else y_valid
+        
+        # Defining de-meaned y for comparing with stage 1 errors
+        y_demeaned = y_vals - np.nanmean(y_vals)
 
+        #drop first element form preds and y_demeaned (nan in preds)
+        preds = preds[1:]
+        y_demeaned = y_demeaned[1:]
+        y_vals = y_vals[1:]
+        # Stage 1 Metrics
+        r2_oos_stage1 = calculate_r_squared(y_demeaned, preds)
+        
+        r2_insample_stage1 = np.nanmean(stage1_results['insample_r_squareds'])
+
+        # Stage 2 Estimation
+        stage2_input = pd.DataFrame({"vwretd": y_vals, "predictions": preds})
+        stage2_results = compute_stage2_r_squared(stage2_input, min_train_size=100)
+        
+        # --- Build Summary Dictionary ---
+        summary = {
+            'window_size': window_size,
+            'n_lags': n_lags,
+            'lambda': lambda_val,
+            'r2_insample_stage1': r2_insample_stage1,
+            'r2_oos_stage1': r2_oos_stage1,
+            'r2_insample_stage2': stage2_results['r2_insample'],
+            'r2_oos_stage2': stage2_results['r2_oos'],
+            'kappa': stage2_results['kappa'],
+            'kappa_tstat': stage2_results['kappa_tstat'],
+            'intercept': stage2_results['intercept'],
+            'intercept_tstat': stage2_results['intercept_tstat'],
+            'n_observations': len(y_vals),
+            'n_windows': len(stage1_results['predictions']),
+            'n_oos_predictions_stage2': stage2_results.get('n_oos_predictions', np.nan)
+        }
+
+        if not return_details:
+            return {"summary": summary, "details": pd.DataFrame()}
+
+        # --- Build Detailed Coefficients DataFrame ---
+        n_wins = len(stage1_results['lambdas'])
+        dates = stage1_results.get('window_end_dates', np.arange(n_wins))
+        features = stage1_results['feature_names']
+        
+        if save_only_positve_r_squared and summary['r2_insample_stage2'] <= 0:
+            # Return minimal DataFrame with NaNs
+            detail_rows = [{
+                'date': None,
+                'window_size': window_size,
+                'n_lags': n_lags,
+                'lambda': lambda_val,
+                'window_index': None,
+                'lasso_intercept': np.nan,
+                'lasso_r2_in': np.nan,
+                'prediction_error': np.nan,
+                'num_nonzero_coefficients': np.nan
+            }]
+        else:
+            lasso_coefs_arr = stage1_results['coefficients']
+            
+            # Build base DataFrame efficiently using numpy arrays
+            base_data = {
+                'date': dates if len(dates) == n_wins else list(dates) + [None] * (n_wins - len(dates)),
+                'window_size': window_size,
+                'n_lags': n_lags,
+                'lambda': lambda_val,
+                'window_index': np.arange(n_wins),
+                'lasso_intercept': stage1_results['intercepts'],
+                'lasso_r2_in': stage1_results['insample_r_squareds'],
+                'num_nonzero_coefficients': stage1_results['num_nonzero_coefficients']
+            }
+            
+            # Add feature coefficients as columns directly from numpy array
+            for f_idx, f_name in enumerate(features):
+                base_data[f"Lasso_{f_name}"] = lasso_coefs_arr[:, f_idx]
+            
+            details_df = pd.DataFrame(base_data)
+            return {'summary': summary, 'details': details_df}
+            
+        details_df = pd.DataFrame(detail_rows)
+        return {'summary': summary, 'details': details_df}
+        
+    except Exception as e:
+        error_summary = {
+            'window_size': window_size,
+            'n_lags': n_lags,
+            'lambda': lambda_val,
+            'error': str(e),
+            'kappa': np.nan, 
+            'r2_oos_stage2': np.nan
+        }
+        return {'summary': error_summary, 'details': pd.DataFrame()}
 
 
 

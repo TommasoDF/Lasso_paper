@@ -30,5 +30,5 @@ def apply():
         "text.usetex": True,
         "font.family": "serif",
         "legend.frameon": False,
-        "legend.fontsize": 11,
+        "legend.fontsize": 16,
     })

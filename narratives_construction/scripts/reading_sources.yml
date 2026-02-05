@@ -1,0 +1,64 @@
+# Journals to ingest
+journals:
+  - name: American Economic Review
+    issn: ["0002-8282", "1944-7981"]
+    providers: ["crossref", "openalex"]
+
+  - name: Econometrica
+    issn: ["0012-9682", "1468-0262"]
+    providers: ["crossref", "openalex"]
+
+  - name: The Journal of Finance
+    issn: ["0022-1082", "1540-6261"]
+    providers: ["crossref", "openalex"]
+
+  - name: Quarterly Journal of Economics
+    issn: ["0033-5533", "1531-4650"]
+    providers: ["crossref", "openalex"]
+
+  - name: The Review of Economic Studies
+    issn: ["0034-6527", "1467-937X"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Economic Dynamics and Control
+    issn: ["0165-1889", "1873-7079"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Monetary Economics
+    issn: ["0304-3932", "1873-1295"]
+    providers: ["crossref", "openalex"]
+
+
+# Topic filter: keep paper if ANY pattern matches title+abstract+keywords (if available)
+filter:
+  include_patterns:
+    - "\\bheterogeneous expectations\\b"
+    - "\\bexpectation formation\\b"
+    - "\\bagent-based\\b|\\bagent based\\b|\\bABM\\b"
+    - "\\bsocial network\\b|\\bnetworks\\b"
+    - "\\blearning\\b|\\badaptive\\b|\\bbounded rationality\\b"
+    - "\\basset pricing\\b|\\bfinancial markets\\b"
+    - "\\bmacro-finance\\b|\\bbehavioral macro\\b"
+    - "\\binformation rigidity\\b|\\bsticky information\\b"
+
+
+  exclude_patterns:
+    - "\\bcomment\\b"
+    - "\\bcorrection\\b"
+    - "\\berratum\\b"
+    - "\\bfront matter\\b"
+    - "\\beditorial\\b"
+
+  # optional: tags to attach when matched
+  # tag_rules:
+  #   education: ["\\beducation\\b", "\\bhuman capital\\b"]
+  #   expectations: ["\\bexpectation\\b", "\\bbelief\\b"]
+  #   networks: ["\\bnetwork\\b", "\\bsocial\\b"]
+  #   abm: ["\\bagent-based\\b|\\bagent based\\b|\\bABM\\b"]
+  #   macro-finance: ["\\bmacro\\b", "\\bfinancial\\b", "\\basset pricing\\b"]
+
+# Polling window
+window_days: 30
+
+# Safety: cap per journal per run
+max_new_per_journal: 30
