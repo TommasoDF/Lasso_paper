@@ -11,6 +11,9 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 import requests
 import yaml
 
+# -----------------------------------------------------------------------------
+# Paths / constants
+# -----------------------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parents[1]
 READING_YML = REPO_ROOT / "_data" / "reading.yml"
 CONFIG_YML = REPO_ROOT / "scripts" / "reading_sources.yml"
@@ -20,9 +23,12 @@ YAML_KEY = "main"
 CROSSREF_BASE = "https://api.crossref.org"
 OPENALEX_BASE = "https://api.openalex.org"
 
-USER_AGENT = "reading-list-bot/1.0 (personal academic website)"
+USER_AGENT = "reading-list-bot/2.0 (personal academic website; contact: you@example.com)"
 
 
+# -----------------------------------------------------------------------------
+# Data model
+# -----------------------------------------------------------------------------
 @dataclasses.dataclass
 class Candidate:
     id: str
@@ -37,9 +43,9 @@ class Candidate:
     raw: Dict[str, Any]
 
 
-# -------------------------
+# -----------------------------------------------------------------------------
 # YAML IO
-# -------------------------
+# -----------------------------------------------------------------------------
 def load_yaml_list(path: Path, key: str) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
     if not path.exists():
         print(f"[INFO] {path} does not exist; creating new file.")
@@ -73,9 +79,9 @@ def load_config(path: Path) -> Dict[str, Any]:
     return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
 
 
-# -------------------------
+# -----------------------------------------------------------------------------
 # Helpers
-# -------------------------
+# -----------------------------------------------------------------------------
 def norm_doi(doi: str) -> str:
     return re.sub(r"^https?://(dx\.)?doi\.org/", "", doi.strip(), flags=re.I)
 
@@ -85,7 +91,7 @@ def doi_url(doi: str) -> str:
 
 
 def authors_to_string(authors: List[str]) -> str:
-    return " , ".join(a.strip() for a in authors if a.strip())
+    return " , ".join(a.strip() for a in authors if a and a.strip())
 
 
 def join_title(t: Any) -> str:
@@ -101,10 +107,66 @@ def dateparts_to_ym(dp: Any) -> Optional[str]:
         return None
 
 
-# -------------------------
+def strip_tags(s: str) -> str:
+    # crude, but good enough for Crossref JATS-ish abstracts
+    s = re.sub(r"<[^>]+>", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def inverted_index_to_text(inv: Dict[str, Any]) -> str:
+    """
+    OpenAlex stores abstract as an inverted index: {word: [pos, pos, ...], ...}
+    Reconstruct the original token sequence.
+    """
+    if not inv or not isinstance(inv, dict):
+        return ""
+    try:
+        max_pos = max(p for positions in inv.values() for p in positions)
+    except ValueError:
+        return ""
+    tokens = [""] * (max_pos + 1)
+    for word, positions in inv.items():
+        if not isinstance(positions, list):
+            continue
+        for p in positions:
+            if isinstance(p, int) and 0 <= p <= max_pos:
+                tokens[p] = word
+    return " ".join(t for t in tokens if t)
+
+
+def compile_patterns(patterns: List[str]) -> List[re.Pattern]:
+    return [re.compile(p, flags=re.I) for p in (patterns or [])]
+
+
+def candidate_text(c: Candidate) -> str:
+    # Filter over what we have: title + venue + abstract
+    parts = [c.title or "", c.venue or "", c.abstract or ""]
+    return "\n".join(p for p in parts if p)
+
+
+def passes_filter(text: str, include_res: List[re.Pattern], exclude_res: List[re.Pattern]) -> bool:
+    if exclude_res and any(rx.search(text) for rx in exclude_res):
+        return False
+    if include_res and not any(rx.search(text) for rx in include_res):
+        return False
+    return True
+
+
+# -----------------------------------------------------------------------------
+# HTTP session
+# -----------------------------------------------------------------------------
+def make_session() -> requests.Session:
+    s = requests.Session()
+    s.headers.update({"User-Agent": USER_AGENT})
+    return s
+
+
+# -----------------------------------------------------------------------------
 # Crossref
-# -------------------------
+# -----------------------------------------------------------------------------
 def crossref_iter_by_issn(
+    session: requests.Session,
     issn: str,
     from_date: dt.date,
     until_date: dt.date,
@@ -112,14 +174,10 @@ def crossref_iter_by_issn(
     cursor: str = "*",
 ) -> Iterable[Dict[str, Any]]:
     """
-    Robust Crossref ingestion:
-    - uses /works with filter=issn:... instead of /journals/{issn}/works
+    Crossref ingestion:
+    - /works endpoint with filter=issn:...
     - cursor pagination
-    - never raises on 404 for missing journal endpoints
     """
-    session = requests.Session()
-    session.headers.update({"User-Agent": USER_AGENT})
-
     url = f"{CROSSREF_BASE}/works"
 
     while True:
@@ -133,14 +191,12 @@ def crossref_iter_by_issn(
         }
 
         r = session.get(url, params=params, timeout=30)
-
-        # Crossref /works should not 404 for an ISSN; if it does, treat as empty and stop.
         if r.status_code == 404:
             break
-
         r.raise_for_status()
-        data = r.json()
-        msg = data.get("message") or {}
+
+        payload = r.json()
+        msg = payload.get("message") or {}
         items = msg.get("items") or []
         if not items:
             break
@@ -155,17 +211,19 @@ def crossref_iter_by_issn(
         cursor = nxt
 
 
-def crossref_candidates(issns: List[str], window_days: int, cap: int) -> List[Candidate]:
+def crossref_candidates(
+    session: requests.Session, issns: List[str], window_days: int, cap: int
+) -> List[Candidate]:
     until = dt.date.today()
     since = until - dt.timedelta(days=window_days)
     out: List[Candidate] = []
 
     for issn in issns:
-        print(f"  [Crossref] ISSN {issn} (via /works filter=issn:...)")
-
+        print(f"  [Crossref] ISSN {issn}")
         fetched = 0
+
         try:
-            for it in crossref_iter_by_issn(issn, since, until, rows=100, cursor="*"):
+            for it in crossref_iter_by_issn(session, issn, since, until, rows=100, cursor="*"):
                 doi = it.get("DOI")
                 title = join_title(it.get("title"))
                 if not doi or not title:
@@ -182,7 +240,7 @@ def crossref_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
                     venue = ct.strip()
 
                 # authors
-                authors = []
+                authors: List[str] = []
                 for a in it.get("author") or []:
                     if not isinstance(a, dict):
                         continue
@@ -202,6 +260,12 @@ def crossref_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
                             date_ym = ym
                             break
 
+                # abstract (sometimes present, often JATS)
+                abs_raw = it.get("abstract")
+                abstract = None
+                if isinstance(abs_raw, str) and abs_raw.strip():
+                    abstract = strip_tags(abs_raw)
+
                 out.append(
                     Candidate(
                         id=f"doi:{doi_n}",
@@ -211,7 +275,7 @@ def crossref_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
                         venue=venue or None,
                         doi=doi_n,
                         url=doi_url(doi_n),
-                        abstract=None,
+                        abstract=abstract,
                         source="crossref",
                         raw=it,
                     )
@@ -222,20 +286,19 @@ def crossref_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
                     break
 
             print(f"    → fetched {fetched} candidates")
-
         except requests.HTTPError as e:
-            # Do not crash the entire run because one ISSN is broken / rate-limited / etc.
             print(f"    → HTTP error for ISSN {issn}: {e} (skipping)")
             continue
 
     return out
 
 
-
-# -------------------------
+# -----------------------------------------------------------------------------
 # OpenAlex
-# -------------------------
-def openalex_candidates(issns: List[str], window_days: int, cap: int) -> List[Candidate]:
+# -----------------------------------------------------------------------------
+def openalex_candidates(
+    session: requests.Session, issns: List[str], window_days: int, cap: int
+) -> List[Candidate]:
     until = dt.date.today()
     since = until - dt.timedelta(days=window_days)
     out: List[Candidate] = []
@@ -243,25 +306,21 @@ def openalex_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
     for issn in issns:
         print(f"  [OpenAlex] ISSN {issn}")
 
-        r = requests.get(
-            f"{OPENALEX_BASE}/sources/issn:{issn}",
-            headers={"User-Agent": USER_AGENT},
-            timeout=30,
-        )
+        r = session.get(f"{OPENALEX_BASE}/sources/issn:{issn}", timeout=30)
         if r.status_code == 404:
             print("    → no source found")
             continue
         r.raise_for_status()
-        source_id = r.json().get("id")
+
+        source_id = (r.json() or {}).get("id")
         if not source_id:
             print("    → source missing id")
             continue
 
-        page = 1
         fetched = 0
+        page = 1
         total_pages_scanned = 0
 
-        # IMPORTANT: filter by date in the API, not client-side, to bound pagination.
         api_filter = (
             f"primary_location.source.id:{source_id},"
             f"from_publication_date:{since.isoformat()},"
@@ -269,7 +328,7 @@ def openalex_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
         )
 
         while fetched < cap:
-            r = requests.get(
+            r = session.get(
                 f"{OPENALEX_BASE}/works",
                 params={
                     "filter": api_filter,
@@ -277,18 +336,17 @@ def openalex_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
                     "per-page": 200,
                     "page": page,
                 },
-                headers={"User-Agent": USER_AGENT},
                 timeout=30,
             )
             r.raise_for_status()
-            results = r.json().get("results", [])
+
+            results = (r.json() or {}).get("results", []) or []
             if not results:
                 break
 
             total_pages_scanned += 1
             added_this_page = 0
 
-            # Results should already be within [since, until], but keep minimal guard.
             for it in results:
                 pub = it.get("publication_date")
                 if not pub:
@@ -297,32 +355,42 @@ def openalex_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
                     continue
 
                 doi = it.get("doi")
+                title = (it.get("title") or "").strip()
+                if not title:
+                    continue
+
+                # abstract from inverted index
+                abstract = inverted_index_to_text(it.get("abstract_inverted_index") or {})
+                abstract = abstract.strip() or None
+
                 out.append(
                     Candidate(
                         id=f"doi:{norm_doi(doi)}" if doi else f"openalex:{it.get('id')}",
-                        title=(it.get("title") or "").strip(),
-                        authors=[a["author"]["display_name"] for a in it.get("authorships", []) if a.get("author")],
+                        title=title,
+                        authors=[
+                            a["author"]["display_name"]
+                            for a in (it.get("authorships") or [])
+                            if isinstance(a, dict) and a.get("author")
+                        ],
                         date_ym=pub[:7],
-                        venue=(it.get("primary_location", {}) or {}).get("source", {}).get("display_name"),
+                        venue=((it.get("primary_location") or {}).get("source") or {}).get("display_name"),
                         doi=norm_doi(doi) if doi else None,
                         url=doi_url(doi) if doi else it.get("id"),
-                        abstract=None,
+                        abstract=abstract,
                         source="openalex",
                         raw=it,
                     )
                 )
+
                 fetched += 1
                 added_this_page += 1
                 if fetched >= cap:
                     break
 
-            # If a page yields nothing, there is no point continuing.
             if added_this_page == 0:
                 break
 
             page += 1
-
-            # Safety valve: avoid pathological behavior even if API changes.
             if total_pages_scanned >= 50:
                 print("    → stopping after 50 pages (safety cap)")
                 break
@@ -332,14 +400,19 @@ def openalex_candidates(issns: List[str], window_days: int, cap: int) -> List[Ca
     return out
 
 
-
-# -------------------------
+# -----------------------------------------------------------------------------
 # Main
-# -------------------------
+# -----------------------------------------------------------------------------
 def main() -> int:
     print("[START] Updating reading list")
 
     cfg = load_config(CONFIG_YML)
+
+    # filtering
+    flt = cfg.get("filter", {}) or {}
+    include_res = compile_patterns(flt.get("include_patterns", []) or [])
+    exclude_res = compile_patterns(flt.get("exclude_patterns", []) or [])
+
     window_days = int(cfg.get("window_days", 14))
     cap = int(cfg.get("max_new_per_journal", 30))
 
@@ -350,54 +423,74 @@ def main() -> int:
         if isinstance(it, dict)
     }
 
-    added_total = 0
+    session = make_session()
 
-    for j in cfg.get("journals", []):
+    added_total = 0
+    filtered_total = 0
+
+    for j in (cfg.get("journals") or []):
         name = j.get("name", "unknown journal")
-        issns = j.get("issn", [])
-        providers = j.get("providers", ["crossref"])
+        issns = j.get("issn", []) or []
+        providers = j.get("providers", ["crossref"]) or ["crossref"]
+
+        if isinstance(issns, str):
+            issns = [issns]
 
         print(f"\n[Journal] {name}")
 
         candidates: List[Candidate] = []
         if "crossref" in providers:
-            candidates += crossref_candidates(issns, window_days, cap)
+            candidates += crossref_candidates(session, issns, window_days, cap)
         if "openalex" in providers:
-            candidates += openalex_candidates(issns, window_days, cap)
+            candidates += openalex_candidates(session, issns, window_days, cap)
 
         print(f"  total candidates: {len(candidates)}")
 
         new_here = 0
+        filtered_here = 0
+
         for c in candidates:
             if c.id in seen:
                 continue
 
-            items.insert(0, {
-                "title": c.title,
-                "authors": authors_to_string(c.authors),
-                "date": c.date_ym or f"{dt.date.today().year}-01",
-                "venue": c.venue or "",
-                "url": c.url or "",
-                "read": False,
-                "id": c.id,
-                "source": c.source,
-            })
+            text = candidate_text(c)
+            if not passes_filter(text, include_res, exclude_res):
+                filtered_here += 1
+                continue
+
+            items.insert(
+                0,
+                {
+                    "title": c.title,
+                    "authors": authors_to_string(c.authors),
+                    "date": c.date_ym or f"{dt.date.today().year}-01",
+                    "venue": c.venue or "",
+                    "url": c.url or "",
+                    "read": False,
+                    "id": c.id,
+                    "source": c.source,
+                },
+            )
 
             seen.add(c.id)
             new_here += 1
             added_total += 1
 
+        filtered_total += filtered_here
+
         if new_here:
             print(f"  → added {new_here} new papers")
         else:
             print("  → no new papers found")
+        if filtered_here:
+            print(f"  → filtered out {filtered_here} candidates")
 
     if added_total:
         data[YAML_KEY] = items
         dump_yaml(READING_YML, data)
-        print(f"\n[DONE] Added {added_total} total papers")
+        print(f"\n[DONE] Added {added_total} total papers (filtered out {filtered_total})")
     else:
-        print("\n[DONE] No changes")
+        print(f"\n[DONE] No changes (filtered out {filtered_total})")
 
     return 0
 

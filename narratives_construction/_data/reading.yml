@@ -1,0 +1,1798 @@
+main:
+- title: General Equilibrium Returns to Human and Investment Capital under Moral Hazard
+  authors: Christine A. Parlour , Johan Waldén
+  date: 2011-01
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdq010
+  read: false
+  id: doi:10.1093/restud/rdq010
+  source: openalex
+- title: 'Dynamic Trading and Asset Prices: Keynes vs. Hayek'
+  authors: Giovanni Cespa , Xavier Vives
+  date: 2011-11
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdr040
+  read: false
+  id: doi:10.1093/restud/rdr040
+  source: openalex
+- title: Heterogeneous Beliefs and Tests of Present Value Models
+  authors: Kenneth Kasa , Todd B. Walker , Charles H. Whiteman
+  date: 2013-12
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdt051
+  read: false
+  id: doi:10.1093/restud/rdt051
+  source: openalex
+- title: Asset Prices and Portfolio Choice with Learning from Experience
+  authors: Paul Ehling , Alessandro Graniero , Christian Heyerdahl-Larsen
+  date: 2017-12
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdx077
+  read: false
+  id: doi:10.1093/restud/rdx077
+  source: openalex
+- title: Manipulated Electorates and Information Aggregation
+  authors: Mehmet Ekmekçi , Stephan Lauermann
+  date: 2019-05
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdz019
+  read: false
+  id: doi:10.1093/restud/rdz019
+  source: openalex
+- title: Recovering Investor Expectations from Demand for Index Funds
+  authors: Mark Egan , Alexander MacKay , Hanbin Yang
+  date: 2021-12
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdab086
+  read: false
+  id: doi:10.1093/restud/rdab086
+  source: openalex
+- title: 'Multinomial Logit Processes and Preference Discovery: Inside and Outside the Black Box'
+  authors: Simone Cerreia‐Vioglio , Fabio Maccheroni , Mássimo Marinacci , Aldo Rustichini
+  date: 2022-08
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdac046
+  read: false
+  id: doi:10.1093/restud/rdac046
+  source: openalex
+- title: Infrequent Random Portfolio Decisions in an Open Economy Model
+  authors: Philippe Bacchetta , Eric van Wincoop , Eric R. Young
+  date: 2022-08
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdac054
+  read: false
+  id: doi:10.1093/restud/rdac054
+  source: openalex
+- title: Using Disasters to Estimate the Impact of Uncertainty
+  authors: Scott Baker , Nicholas Bloom , Stephen Terry
+  date: 2023-03
+  venue: The Review of Economic Studies
+  url: https://doi.org/10.1093/restud/rdad036
+  read: false
+  id: doi:10.1093/restud/rdad036
+  source: openalex
+- title: Mandated Disclosure, Stock Returns, and the 1964 Securities Acts Amendments
+  authors: Michael Greenstone , Paul Oyer , Annette Vissing‐Jørgensen
+  date: 2006-05
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1162/qjec.2006.121.2.399
+  read: false
+  id: doi:10.1162/qjec.2006.121.2.399
+  source: openalex
+- title: Rare Disasters and Asset Markets in the Twentieth Century*
+  authors: Robert J. Barro
+  date: 2006-07
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1162/qjec.121.3.823
+  read: false
+  id: doi:10.1162/qjec.121.3.823
+  source: openalex
+- title: Betting on Hitler—The Value of Political Connections in Nazi Germany*
+  authors: Thomas S. Ferguson , Hans‐Joachim Voth
+  date: 2008-02
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1162/qjec.2008.123.1.101
+  read: false
+  id: doi:10.1162/qjec.2008.123.1.101
+  source: openalex
+- title: The (Perceived) Returns to Education and the Demand for Schooling<sup>*</sup>
+  authors: Robert T. Jensen
+  date: 2010-04
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1162/qjec.2010.125.2.515
+  read: false
+  id: doi:10.1162/qjec.2010.125.2.515
+  source: openalex
+- title: Gaming Performance Fees By Portfolio Managers
+  authors: Dean P. Foster , H. Peyton Young
+  date: 2010-11
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1162/qjec.2010.125.4.1435
+  read: false
+  id: doi:10.1162/qjec.2010.125.4.1435
+  source: openalex
+- title: 'Long-Run Impacts of Unions on Firms: New Evidence from Financial Markets, 1961–1999 *'
+  authors: David S. Lee , Alexandre Mas
+  date: 2012-01
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjr058
+  read: false
+  id: doi:10.1093/qje/qjr058
+  source: openalex
+- title: Managerial Miscalibration*
+  authors: Itzhak Ben‐David , John R. Graham , Campbell R. Harvey
+  date: 2013-08
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjt023
+  read: false
+  id: doi:10.1093/qje/qjt023
+  source: openalex
+- title: Risk, Returns, and Multinational Production*
+  authors: José L. Fillat , Stefania Garetto
+  date: 2015-09
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjv031
+  read: false
+  id: doi:10.1093/qje/qjv031
+  source: openalex
+- title: Rare Disasters and Exchange Rates *
+  authors: Emmanuel Farhi , Xavier Gabaix
+  date: 2015-10
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjv040
+  read: false
+  id: doi:10.1093/qje/qjv040
+  source: openalex
+- title: The Growing Importance of Social Skills in the Labor Market*
+  authors: David Deming
+  date: 2017-06
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjx022
+  read: false
+  id: doi:10.1093/qje/qjx022
+  source: openalex
+- title: Who Profits from Patents? Rent-Sharing at Innovative Firms*
+  authors: Patrick Kline , Neviana Petkova , Heidi Williams , Owen Zidar
+  date: 2019-03
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjz011
+  read: false
+  id: doi:10.1093/qje/qjz011
+  source: openalex
+- title: Competing Models
+  authors: José Luis Montiel Olea , Pietro Ortoleva , Mallesh M. Pai , Andrea Prat
+  date: 2022-03
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjac015
+  read: false
+  id: doi:10.1093/qje/qjac015
+  source: openalex
+- title: 'Labor Market Returns and the Evolution of Cognitive Skills: Theory and Evidence'
+  authors: Santiago Hermo , Miika Päällysaho , David Seim , Jesse M. Shapiro
+  date: 2022-04
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjac022
+  read: false
+  id: doi:10.1093/qje/qjac022
+  source: openalex
+- title: Revealed Beliefs and the Marriage Market Return to Education
+  authors: Alison Andrew , Abi Adams‐Prassl
+  date: 2025-04
+  venue: The Quarterly Journal of Economics
+  url: https://doi.org/10.1093/qje/qjaf020
+  read: false
+  id: doi:10.1093/qje/qjaf020
+  source: openalex
+- title: Testing Hypotheses About the Number of Factors in Large Factor Models
+  authors: Alexei Onatski
+  date: 2009-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta6964
+  read: false
+  id: doi:10.3982/ecta6964
+  source: openalex
+- title: Efficient Semiparametric Estimation of the Fama-French Model and Extensions
+  authors: Gregory Connor , Matthias Hagmann , Oliver Linton
+  date: 2012-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta7432
+  read: false
+  id: doi:10.3982/ecta7432
+  source: openalex
+- title: Testing for Smooth Structural Changes in Time Series Models via Nonparametric Regression
+  authors: Bin Chen , Yongmiao Hong
+  date: 2012-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta7990
+  read: false
+  id: doi:10.3982/ecta7990
+  source: openalex
+- title: Ambiguity, Learning, and Asset Returns
+  authors: Nengjiu Ju , Jianjun Miao
+  date: 2012-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta7618
+  read: false
+  id: doi:10.3982/ecta7618
+  source: openalex
+- title: 'Alpha as Ambiguity: Robust Mean-Variance Portfolio Analysis'
+  authors: Fabio Maccheroni , Mássimo Marinacci , Doriana Ruffino
+  date: 2013-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta9678
+  read: false
+  id: doi:10.3982/ecta9678
+  source: openalex
+- title: Time-Varying Risk Premium in Large Cross-Sectional Equity Data Sets
+  authors: Patrick Gagliardini , Elisa Ossola , Olivier Scaillet
+  date: 2016-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta11069
+  read: false
+  id: doi:10.3982/ecta11069
+  source: openalex
+- title: A Rational Theory of Mutual Funds' Attention Allocation
+  authors: Marcin Kacperczyk , Stijn Van Nieuwerburgh , Laura Veldkamp
+  date: 2016-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta11412
+  read: false
+  id: doi:10.3982/ecta11412
+  source: openalex
+- title: Financial Health Economics
+  authors: Ralph S. J. Koijen , Tomas Philipson , Harald Uhlig
+  date: 2016-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta11182
+  read: false
+  id: doi:10.3982/ecta11182
+  source: openalex
+- title: Risk Preferences and the Macroeconomic Announcement Premium
+  authors: Hengjie Ai , Ravi Bansal
+  date: 2018-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta14607
+  read: false
+  id: doi:10.3982/ecta14607
+  source: openalex
+- title: Monetary Policy, Redistribution, and Risk Premia
+  authors: Rohan Kekre , Moritz Lenel
+  date: 2022-01
+  venue: Econometrica
+  url: https://doi.org/10.3982/ecta18014
+  read: false
+  id: doi:10.3982/ecta18014
+  source: openalex
+- title: 'Investor Sentiment and Corporate Finance: Micro and Macro'
+  authors: Owen Lamont , Jeremy C. Stein
+  date: 2006-04
+  venue: American Economic Review
+  url: https://doi.org/10.1257/000282806777212143
+  read: false
+  id: doi:10.1257/000282806777212143
+  source: openalex
+- title: The Cross Section of Foreign Currency Risk Premia and Consumption Growth Risk
+  authors: Hanno Lustig , Adrien Verdelhan
+  date: 2007-02
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.97.1.89
+  read: false
+  id: doi:10.1257/aer.97.1.89
+  source: openalex
+- title: 'Diamonds Are Forever, Wars Are Not: Is Conflict Bad for Private Firms?'
+  authors: Massimo Guidolin , Eliana La Ferrara
+  date: 2007-12
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.97.5.1978
+  read: false
+  id: doi:10.1257/aer.97.5.1978
+  source: openalex
+- title: An Equilibrium Model of “Global Imbalances” and Low Interest Rates
+  authors: Ricardo J. Caballero , Emmanuel Farhi , Pierre‐Olivier Gourinchas
+  date: 2008-03
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.98.1.358
+  read: false
+  id: doi:10.1257/aer.98.1.358
+  source: openalex
+- title: A Century of Global Equity Market Correlations
+  authors: Dennis P. Quinn , Hans‐Joachim Voth
+  date: 2008-04
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.98.2.535
+  read: false
+  id: doi:10.1257/aer.98.2.535
+  source: openalex
+- title: Does Innovation Cause Stock Market Runups? Evidence from the Great Crash
+  authors: Tom Nicholas
+  date: 2008-08
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.98.4.1370
+  read: false
+  id: doi:10.1257/aer.98.4.1370
+  source: openalex
+- title: 'Stocks as Lotteries: The Implications of Probability Weighting for Security Prices'
+  authors: Nicholas Barberis , Mingxin Huang
+  date: 2008-11
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.98.5.2066
+  read: false
+  id: doi:10.1257/aer.98.5.2066
+  source: openalex
+- title: Investment in Schooling and the Marriage Market
+  authors: Pierre‐André Chiappori , Murat Iyigun , Yoram Weiss
+  date: 2009-12
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.99.5.1689
+  read: false
+  id: doi:10.1257/aer.99.5.1689
+  source: openalex
+- title: Growth Opportunities and Technology Shocks
+  authors: Leonid Kogan , Dimitris Papanikolaou
+  date: 2010-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.100.2.532
+  read: false
+  id: doi:10.1257/aer.100.2.532
+  source: openalex
+- title: 'Unemployment and Small Cap Returns: The Nexus'
+  authors: Giuseppe Moscarini , Fabien Postel‐Vinay
+  date: 2010-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.100.2.333
+  read: false
+  id: doi:10.1257/aer.100.2.333
+  source: openalex
+- title: Confidence Risk and Asset Prices
+  authors: Ravi Bansal , Ivan Shaliastovich
+  date: 2010-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.100.2.537
+  read: false
+  id: doi:10.1257/aer.100.2.537
+  source: openalex
+- title: Crash and Wait? The Impact of the Great Recession on the Retirement Plans of Older Americans
+  authors: Brooke Helppie‐McFall
+  date: 2011-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.101.3.40
+  read: false
+  id: doi:10.1257/aer.101.3.40
+  source: openalex
+- title: Art and Money
+  authors: William N. Goetzmann , Luc Renneboog , Christophe Spaenjers
+  date: 2011-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.101.3.222
+  read: false
+  id: doi:10.1257/aer.101.3.222
+  source: openalex
+- title: Endogenous Information Flows and the Clustering of Announcements
+  authors: Viral V. Acharya , Peter M. DeMarzo , Ilan Kremer
+  date: 2011-12
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.101.7.2955
+  read: false
+  id: doi:10.1257/aer.101.7.2955
+  source: openalex
+- title: Salience and Asset Prices
+  authors: Pedro Bordalo , Nicola Gennaioli , Andrei Shleifer
+  date: 2013-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.103.3.623
+  read: false
+  id: doi:10.1257/aer.103.3.623
+  source: openalex
+- title: Trends in Earnings Differentials across College Majors and the Changing Task Composition of Jobs
+  authors: Joseph G. Altonji , Lisa Kahn , Jamin D. Speer
+  date: 2014-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.104.5.387
+  read: false
+  id: doi:10.1257/aer.104.5.387
+  source: openalex
+- title: Are Sticky Prices Costly? Evidence from the Stock Market
+  authors: Yuriy Gorodnichenko , Michael Weber
+  date: 2015-12
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.20131513
+  read: false
+  id: doi:10.1257/aer.20131513
+  source: openalex
+- title: The Validity of ROI as a Measure of Business Performance
+  authors: Robert Jacobson
+  date: 2016-01
+  venue: American Economic Review
+  url: https://openalex.org/W1536548085
+  read: false
+  id: openalex:https://openalex.org/W1536548085
+  source: openalex
+- title: Using a Free Permit Rule to Forecast the Marginal Abatement Cost of Proposed Climate Policy
+  authors: Kyle C. Meng
+  date: 2017-03
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.20150781
+  read: false
+  id: doi:10.1257/aer.20150781
+  source: openalex
+- title: The Social Cost of Near-Rational Investment
+  authors: Tarek A. Hassan , Thomas M. Mertens
+  date: 2017-03
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.20110433
+  read: false
+  id: doi:10.1257/aer.20110433
+  source: openalex
+- title: 'Worker Betas: Five Facts about Systematic Earnings Risk'
+  authors: Fatih Guvenen , Sam Schulhofer‐Wohl , Jae Song , Motohiro Yogo
+  date: 2017-05
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.p20171094
+  read: false
+  id: doi:10.1257/aer.p20171094
+  source: openalex
+- title: The Quanto Theory of Exchange Rates
+  authors: Lukas Kremens , Ian Martin
+  date: 2019-02
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.20180019
+  read: false
+  id: doi:10.1257/aer.20180019
+  source: openalex
+- title: 'Upping the Ante: The Equilibrium Effects of Unconditional Grants to Private Schools'
+  authors: Tahir Andrabi , Jishnu Das , Asim Ijaz Khwaja , Selçuk Özyurt , Niharika Singh
+  date: 2020-09
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.20180924
+  read: false
+  id: doi:10.1257/aer.20180924
+  source: openalex
+- title: Market-Wide Predictable Price Pressure
+  authors: Samuel M. Hartzmark , David H. Solomon
+  date: 2025-08
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.20231725
+  read: false
+  id: doi:10.1257/aer.20231725
+  source: openalex
+- title: The Value of Software
+  authors: Roberto Gómez-Cram , Alastair Lawrence
+  date: 2025-09
+  venue: American Economic Review
+  url: https://doi.org/10.1257/aer.20230463
+  read: false
+  id: doi:10.1257/aer.20230463
+  source: openalex
+- title: A Consumption‐Based Explanation of Expected Stock Returns
+  authors: Motohiro Yogo
+  date: 2006-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00848.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00848.x
+  source: openalex
+- title: Does Weak Governance Cause Weak Stock Returns? An Examination of Firm Operating Performance and Investors'
+    Expectations
+  authors: John E. Core , Wayne R. Guay , Tjomme O. Rusticus
+  date: 2006-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00851.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00851.x
+  source: openalex
+- title: Are Busy Boards Effective Monitors?
+  authors: Eliezer M. Fich , Anil Shivdasani
+  date: 2006-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00852.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00852.x
+  source: openalex
+- title: Pension Plan Funding and Stock Market Efficiency
+  authors: Francesco A. Franzoni , José María García Marín
+  date: 2006-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00859.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00859.x
+  source: openalex
+- title: Corporate Financial Policy and the Value of Cash
+  authors: Michael W. Faulkender , Rong Wang
+  date: 2006-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00894.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00894.x
+  source: openalex
+- title: Does Corporate Headquarters Location Matter for Stock Returns?
+  authors: Christo A. Pirinsky , Qinghai Wang
+  date: 2006-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00895.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00895.x
+  source: openalex
+- title: Investor Sentiment and the Cross‐Section of Stock Returns
+  authors: Malcolm Baker , Jeffrey Wurgler
+  date: 2006-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00885.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00885.x
+  source: openalex
+- title: Industry Concentration and Average Stock Returns
+  authors: Kewei Hou , David T. Robinson
+  date: 2006-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.00893.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.00893.x
+  source: openalex
+- title: Liquidity and Autocorrelations in Individual Stock Returns
+  authors: Doron Avramov , Tarun Chordia , Amit Goyal
+  date: 2006-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.01060.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.01060.x
+  source: openalex
+- title: Financially Constrained Stock Returns
+  authors: Dmitry Livdan , Horacio Sapriza , Lu Zhang
+  date: 2006-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01481.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01481.x
+  source: openalex
+- title: 'Trading Volume: Implications of an Intertemporal Capital Asset Pricing Model'
+  authors: Andrew W. Lo , Jiang Wang
+  date: 2006-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.01005.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.01005.x
+  source: openalex
+- title: Insider Trading, News Releases, and Ownership Concentration
+  authors: Jana P. Fidrmuc , Marc Goergen , Luc Renneboog
+  date: 2006-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.01008.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.01008.x
+  source: openalex
+- title: Can Mutual Fund “Stars” Really Pick Stocks? New Evidence from a Bootstrap Analysis
+  authors: Robert Kosowski , Allan Timmermann , Russ Wermers , Halbert White
+  date: 2006-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2006.01015.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2006.01015.x
+  source: openalex
+- title: 'On the Importance of Measuring Payout Yield: Implications for Empirical Asset Pricing'
+  authors: Jacob Boudoukh , Roni Michaely , Matthew Richardson , Michael R. Roberts
+  date: 2007-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01226.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01226.x
+  source: openalex
+- title: 'Efficiency and the Bear: Short Sales and Markets Around the World'
+  authors: Arturo Bris , William N. Goetzmann , Ning Zhu
+  date: 2007-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01230.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01230.x
+  source: openalex
+- title: Simple Forecasts and Paradigm Shifts
+  authors: Harrison Hong , Jeremy C. Stein , Jialin Yu
+  date: 2007-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01234.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01234.x
+  source: openalex
+- title: Lazy Investors, Discretionary Consumption, and the Cross‐Section of Stock Returns
+  authors: Ravi Jagannathan , Wang Yong
+  date: 2007-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01253.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01253.x
+  source: openalex
+- title: 'Corporate Governance and Firm Value: The Impact of the 2002 Governance Rules'
+  authors: Vidhi Chhaochharia , Yaniv Grinstein
+  date: 2007-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01257.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01257.x
+  source: openalex
+- title: Sports Sentiment and Stock Returns
+  authors: Alex Edmans , Diego Garcı́a , Øyvind Norli
+  date: 2007-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01262.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01262.x
+  source: openalex
+- title: Corporate Governance and Acquirer Returns
+  authors: Ronald W. Masulis , Cong Wang , Fei Xie
+  date: 2007-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01259.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01259.x
+  source: openalex
+- title: 'Multimarket Trading and Liquidity: Theory and Evidence'
+  authors: Shmuel Baruch , George Andrew Karolyi , Michael L. Lemmon
+  date: 2007-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01272.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01272.x
+  source: openalex
+- title: Price Convexity and Skewness
+  authors: Jianguo Xu
+  date: 2007-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01283.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01283.x
+  source: openalex
+- title: 'Short‐Sales Constraints and Price Discovery: Evidence from the Hong Kong Market'
+  authors: Eric C. Chang , Joseph Cheng , Yinghui Yu
+  date: 2007-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01270.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01270.x
+  source: openalex
+- title: 'Long‐Term Return Reversals: Overreaction or Taxes?'
+  authors: Thomas J. George , Chuan-Yang Hwang
+  date: 2007-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2007.01295.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2007.01295.x
+  source: openalex
+- title: Individual Investor Trading and Stock Returns
+  authors: Ron Kaniel , Gideon Saar , Sheridan Titman
+  date: 2008-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01316.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01316.x
+  source: openalex
+- title: Which Money Is Smart? Mutual Fund Buys and Sells of Individual and Institutional Investors
+  authors: Aneel Keswani , David Stolin
+  date: 2008-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01311.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01311.x
+  source: openalex
+- title: Price Volatility and Investor Behavior in an Overlapping Generations Model with Information Asymmetry
+  authors: Masahiro Watanabe
+  date: 2008-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01315.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01315.x
+  source: openalex
+- title: Share Issuance and Cross‐sectional Returns
+  authors: Jeffrey Pontiff , Artemiza Woodgate
+  date: 2008-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01335.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01335.x
+  source: openalex
+- title: Underreaction to Dividend Reductions and Omissions?
+  authors: Yi Liu , Samuel H. Szewczyk , Zaher Zantout
+  date: 2008-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01337.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01337.x
+  source: openalex
+- title: Earnings Management and Firm Performance Following Open‐Market Repurchases
+  authors: Guojin Gong , Henock Louis , Amy X. Sun
+  date: 2008-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01336.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01336.x
+  source: openalex
+- title: 'More Than Words: Quantifying Language to Measure Firms'' Fundamentals'
+  authors: Paul C. Tetlock , Maytal Saar‐Tsechansky , Sofus A. Macskassy
+  date: 2008-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01362.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01362.x
+  source: openalex
+- title: The Price of Immediacy
+  authors: George Chacko , Jakub W. Jurek , Erik Stafford
+  date: 2008-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01357.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01357.x
+  source: openalex
+- title: Stock Returns in Mergers and Acquisitions
+  authors: Dirk Hackbarth , Erwan Morellec
+  date: 2008-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01356.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01356.x
+  source: openalex
+- title: Asset Growth and the Cross‐Section of Stock Returns
+  authors: Michael J. Cooper , Huseyin Gulen , Michael J. Schill
+  date: 2008-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01370.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01370.x
+  source: openalex
+- title: The Selection and Termination of Investment Management Firms by Plan Sponsors
+  authors: Amit Goyal , Sunil Wahal
+  date: 2008-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01375.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01375.x
+  source: openalex
+- title: 'Marketwide Private Information in Stocks: Forecasting Currency Returns'
+  authors: Rui Albuquerque , Eva de Francisco , Luis Brandão-Marques
+  date: 2008-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01398.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01398.x
+  source: openalex
+- title: Estimating the Intertemporal Risk–Return Tradeoff Using the Implied Cost of Capital
+  authors: Ľuboš Pástor , Meenakshi Sinha , Bhaskaran Swaminathan
+  date: 2008-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01415.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01415.x
+  source: openalex
+- title: Average Returns, B/M, and Share Issues
+  authors: Eugene F. Fama , Kenneth R. French
+  date: 2008-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2008.01418.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2008.01418.x
+  source: openalex
+- title: Cash Flow, Consumption Risk, and the Cross‐section of Stock Returns
+  authors: Zhi Da
+  date: 2009-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01453.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01453.x
+  source: openalex
+- title: Financial Constraints, Debt Capacity, and the Cross‐section of Stock Returns
+  authors: Jaehoon Hahn , Hangyong Lee
+  date: 2009-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01452.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01452.x
+  source: openalex
+- title: Investor Inattention and Friday Earnings Announcements
+  authors: Stefano DellaVigna , Joshua Matthew Pollet
+  date: 2009-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01447.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01447.x
+  source: openalex
+- title: 'Trading Costs and Returns for U.S. Equities: Estimating Effective Costs from Daily Data'
+  authors: Joel Hasbrouck
+  date: 2009-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01469.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01469.x
+  source: openalex
+- title: Do Stock Mergers Create Value for Acquirers?
+  authors: Pavel G. Savor , Qi Lu
+  date: 2009-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01459.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01459.x
+  source: openalex
+- title: 'The Price of Correlation Risk: Evidence from Equity Options'
+  authors: Joost Driessen , Pascal J. Maenhout , Grigory Vilkov
+  date: 2009-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01467.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01467.x
+  source: openalex
+- title: Media Coverage and the Cross‐section of Stock Returns
+  authors: Lily H. Fang , Joël Peress
+  date: 2009-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01493.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01493.x
+  source: openalex
+- title: 'Implications of Keeping‐Up‐with‐the‐Joneses Behavior for the Equilibrium Cross Section of Stock Returns:
+    International Evidence'
+  authors: Juan-Pedro Gómez , Richard Priestley , Fernando Zapatero
+  date: 2009-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01515.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01515.x
+  source: openalex
+- title: The Price Is (Almost) Right
+  authors: Randolph B. Cohen , Christopher Polk , Tuomo Vuolteenaho
+  date: 2009-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01516.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01516.x
+  source: openalex
+- title: A Habit‐Based Explanation of the Exchange Rate Risk Premium
+  authors: Adrien Verdelhan
+  date: 2010-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01525.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01525.x
+  source: openalex
+- title: Stock Market Declines and Liquidity
+  authors: Allaudeen Hameed , Wenjin Kang , Siva Viswanathan
+  date: 2010-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01529.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01529.x
+  source: openalex
+- title: 'False Discoveries in Mutual Fund Performance: Measuring Luck in Estimated Alphas'
+  authors: Laurent Barras , Olivier Scaillet , Russ Wermers
+  date: 2010-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01527.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01527.x
+  source: openalex
+- title: Real and Financial Industry Booms and Busts
+  authors: Gerard Hoberg , Gordon M. Phillips
+  date: 2010-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01523.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01523.x
+  source: openalex
+- title: Corporate Political Contributions and Stock Returns
+  authors: Michael J. Cooper , Huseyin Gulen , Alexei V. Ovtchinnikov
+  date: 2010-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01548.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01548.x
+  source: openalex
+- title: Levered Returns
+  authors: João F. Gomes , Lukas Schmid
+  date: 2010-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2009.01541.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2009.01541.x
+  source: openalex
+- title: Intraday Patterns in the Cross‐section of Stock Returns
+  authors: Steven L. Heston , Robert A. Korajczyk , Ronnie Sadka
+  date: 2010-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2010.01573.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2010.01573.x
+  source: openalex
+- title: 'Style‐Related Comovement: Fundamentals or Labels?'
+  authors: Brian H. Boyer
+  date: 2011-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2010.01633.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2010.01633.x
+  source: openalex
+- title: Institutional Trade Persistence and Long‐Term Equity Returns
+  authors: Amil Dasgupta , Andrea Prat , Michela Verardo
+  date: 2011-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2010.01644.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2010.01644.x
+  source: openalex
+- title: The Interim Trading Skills of Institutional Investors
+  authors: Andy Puckett , Xuemin Sterling Yan
+  date: 2011-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2010.01643.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2010.01643.x
+  source: openalex
+- title: 'Security Issue Timing: What Do Managers Know, and When Do They Know It?'
+  authors: Dirk Jenter , Katharina Lewellen , Jerold B. Warner
+  date: 2011-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2010.01638.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2010.01638.x
+  source: openalex
+- title: Do Individual Investors Have Asymmetric Information Based on Work Experience?
+  authors: Trond Døskeland , Hans K. Hvide
+  date: 2011-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2011.01658.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2011.01658.x
+  source: openalex
+- title: Estimation and Evaluation of Conditional Asset Pricing Models
+  authors: Stefan Nagel , Kenneth J. Singleton
+  date: 2011-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2011.01654.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2011.01654.x
+  source: openalex
+- title: Individual Investors and Volatility
+  authors: Thierry Foucault , David Sraer , David Thesmar
+  date: 2011-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2011.01668.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2011.01668.x
+  source: openalex
+- title: The Recovery Theorem
+  authors: Stephen A. Ross
+  date: 2011-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12092
+  read: false
+  id: doi:10.1111/jofi.12092
+  source: openalex
+- title: Free Cash Flow, Issuance Costs, and Stock Prices
+  authors: Jean‐Paul Décamps , Thomas Mariotti , Jean‐Charles Rochet , Stéphane Villeneuve
+  date: 2011-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2011.01680.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2011.01680.x
+  source: openalex
+- title: 'Family‐Controlled Firms and Informed Trading: Evidence from Short Sales'
+  authors: Ronald C. Anderson , David M. Reeb , Wanli Zhao
+  date: 2012-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2011.01714.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2011.01714.x
+  source: openalex
+- title: Individual Investor Trading and Return Patterns around Earnings Announcements
+  authors: Ron Kaniel , SHUMING LIU , Gideon Saar , Sheridan Titman
+  date: 2012-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01727.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01727.x
+  source: openalex
+- title: Are Stocks Really Less Volatile in the Long Run?
+  authors: Ľuboš Pástor , Robert F. Stambaugh
+  date: 2012-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01722.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01722.x
+  source: openalex
+- title: Carry Trades and Global Foreign Exchange Volatility
+  authors: Lukas Menkhoff , Lucio Sarno , Maik Schmeling , Andreas Schrimpf
+  date: 2012-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01728.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01728.x
+  source: openalex
+- title: Decoding Inside Information
+  authors: Lauren Cohen , Christopher J. Malloy , Łukasz Pomorski
+  date: 2012-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01740.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01740.x
+  source: openalex
+- title: Technological Growth and Asset Pricing
+  authors: Nicolae Gârleanu , Stavros Panageas , Jianfeng Yu
+  date: 2012-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01747.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01747.x
+  source: openalex
+- title: Real Options, Volatility, and Stock Returns
+  authors: Gustavo Grullon , Evgeny Lyandres , Alexei Zhdanov
+  date: 2012-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01754.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01754.x
+  source: openalex
+- title: Why Are U.S. Stocks More Volatile?
+  authors: Söhnke M. Bartram , Gregory W. Brown , René M. Stulz
+  date: 2012-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01749.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01749.x
+  source: openalex
+- title: 'The Vote Is Cast: The Effect of Corporate Governance on Shareholder Value'
+  authors: Vicente Cuñat , Mireia Giné , María Guadalupe
+  date: 2012-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01776.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01776.x
+  source: openalex
+- title: Industry‐Specific Human Capital, Idiosyncratic Risk, and the Cross‐Section of Expected Stock Returns
+  authors: Esther Eiling
+  date: 2012-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01794.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01794.x
+  source: openalex
+- title: Ex Ante Skewness and Expected Stock Returns
+  authors: Jennifer Conrad , Robert F. Dittmar , Éric Ghysels
+  date: 2012-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/j.1540-6261.2012.01795.x
+  read: false
+  id: doi:10.1111/j.1540-6261.2012.01795.x
+  source: openalex
+- title: Can Time‐Varying Risk of Rare Disasters Explain Aggregate Stock Market Volatility?
+  authors: Jessica A. Wachter
+  date: 2013-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12018
+  read: false
+  id: doi:10.1111/jofi.12018
+  source: openalex
+- title: State‐Level Business Cycles and Local Return Predictability
+  authors: George M. Korniotis , Alok Kumar
+  date: 2013-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12017
+  read: false
+  id: doi:10.1111/jofi.12017
+  source: openalex
+- title: Sentiment during Recessions
+  authors: Diego Garcı́a
+  date: 2013-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12027
+  read: false
+  id: doi:10.1111/jofi.12027
+  source: openalex
+- title: How Wise Are Crowds? Insights from Retail Orders and Stock Returns
+  authors: Eric K. Kelley , Paul C. Tetlock
+  date: 2013-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12028
+  read: false
+  id: doi:10.1111/jofi.12028
+  source: openalex
+- title: 'International Stock Return Predictability: What Is the Role of the United States?'
+  authors: David E. Rapach , Jack Strauss , Guofu Zhou
+  date: 2013-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12041
+  read: false
+  id: doi:10.1111/jofi.12041
+  source: openalex
+- title: Mutual Fund Performance and the Incentive to Generate Alpha
+  authors: Diane Del Guercio , Jonathan Reuter
+  date: 2013-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12048
+  read: false
+  id: doi:10.1111/jofi.12048
+  source: openalex
+- title: Uncertainty, Time‐Varying Fear, and Asset Prices
+  authors: Itamar Drechsler
+  date: 2013-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12068
+  read: false
+  id: doi:10.1111/jofi.12068
+  source: openalex
+- title: Dynamic Trading with Predictable Returns and Transaction Costs
+  authors: Nicolae Gârleanu , Lasse Heje Pedersen
+  date: 2013-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12080
+  read: false
+  id: doi:10.1111/jofi.12080
+  source: openalex
+- title: Asset Pricing with Dynamic Margin Constraints
+  authors: Oleg Rytchkov
+  date: 2013-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12100
+  read: false
+  id: doi:10.1111/jofi.12100
+  source: openalex
+- title: Growth Opportunities, Technology Shocks, and Asset Prices
+  authors: Leonid Kogan , Dimitris Papanikolaou
+  date: 2013-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12136
+  read: false
+  id: doi:10.1111/jofi.12136
+  source: openalex
+- title: CEO Ownership, Stock Market Performance, and Managerial Discretion
+  authors: Ulf von Lilienfeld‐Toal , Stefan Ruenzi
+  date: 2014-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12139
+  read: false
+  id: doi:10.1111/jofi.12139
+  source: openalex
+- title: 'Labor Mobility: Implications for Asset Pricing'
+  authors: Andrés Donangelo
+  date: 2014-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12141
+  read: false
+  id: doi:10.1111/jofi.12141
+  source: openalex
+- title: The Joint Cross Section of Stocks and Options
+  authors: Byeong-Je An , Andrew Ang , Turan G. Bali , Nusret Cakici
+  date: 2014-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12181
+  read: false
+  id: doi:10.1111/jofi.12181
+  source: openalex
+- title: 'The Media and the Diffusion of Information in Financial Markets: Evidence from Newspaper Strikes'
+  authors: Joël Peress
+  date: 2014-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12179
+  read: false
+  id: doi:10.1111/jofi.12179
+  source: openalex
+- title: 'Alpha and Performance Measurement: The Effects of Investor Disagreement and Heterogeneity'
+  authors: Wayne E. Ferson , Jerchern Lin
+  date: 2014-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12165
+  read: false
+  id: doi:10.1111/jofi.12165
+  source: openalex
+- title: The Pre‐FOMC Announcement Drift
+  authors: David O. Lucca , Emanuel Moench
+  date: 2014-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12196
+  read: false
+  id: doi:10.1111/jofi.12196
+  source: openalex
+- title: Aggregate Jump and Volatility Risk in the Cross‐Section of Stock Returns
+  authors: Martijn Cremers , Michael Halling , David Weinbaum
+  date: 2014-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12220
+  read: false
+  id: doi:10.1111/jofi.12220
+  source: openalex
+- title: Rewarding Trading Skills without Inducing Gambling
+  authors: Igor Makarov , Guillaume Plantin
+  date: 2015-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12257
+  read: false
+  id: doi:10.1111/jofi.12257
+  source: openalex
+- title: Idiosyncratic Cash Flows and Systematic Risk
+  authors: Ilona Babenko , Oliver Boguth , Yuri Tserlukevich
+  date: 2015-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12280
+  read: false
+  id: doi:10.1111/jofi.12280
+  source: openalex
+- title: Does Academic Research Destroy Stock Return Predictability?
+  authors: R. David McLean , Jeffrey Pontiff
+  date: 2015-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12365
+  read: false
+  id: doi:10.1111/jofi.12365
+  source: openalex
+- title: 'Short Selling and Earnings Management: A Controlled Experiment'
+  authors: Vivian W. Fang , Allen Huang , Jonathan M. Karpoff
+  date: 2015-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12369
+  read: false
+  id: doi:10.1111/jofi.12369
+  source: openalex
+- title: Earnings Announcements and Systematic Risk
+  authors: Pavel G. Savor , Mungo Ivor Wilson
+  date: 2015-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12361
+  read: false
+  id: doi:10.1111/jofi.12361
+  source: openalex
+- title: Does It Pay to Bet Against Beta? On the Conditional Performance of the Beta Anomaly
+  authors: Scott Cederburg , Michael S. O’Doherty
+  date: 2015-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12383
+  read: false
+  id: doi:10.1111/jofi.12383
+  source: openalex
+- title: 'Worrying about the Stock Market: Evidence from Hospital Admissions'
+  authors: Joseph Engelberg , Christopher A. Parsons
+  date: 2016-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12386
+  read: false
+  id: doi:10.1111/jofi.12386
+  source: openalex
+- title: Good‐Specific Habit Formation and the Cross‐Section of Expected Returns
+  authors: Jules H. van Binsbergen
+  date: 2016-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12397
+  read: false
+  id: doi:10.1111/jofi.12397
+  source: openalex
+- title: Why Invest in Emerging Markets? The Role of Conditional Return Asymmetry
+  authors: Éric Ghysels , Alberto Plazzi , Rossen Valkanov
+  date: 2016-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12420
+  read: false
+  id: doi:10.1111/jofi.12420
+  source: openalex
+- title: Capital Investment, Innovative Capacity, and Stock Returns
+  authors: Praveen Kumar , Dongmei Li
+  date: 2016-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12419
+  read: false
+  id: doi:10.1111/jofi.12419
+  source: openalex
+- title: Infrequent Rebalancing, Return Autocorrelation, and Seasonality
+  authors: Vincent Bogousslavsky
+  date: 2016-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12436
+  read: false
+  id: doi:10.1111/jofi.12436
+  source: openalex
+- title: Asset Pricing with Countercyclical Household Consumption Risk
+  authors: George M. Constantinides , Anisha Ghosh
+  date: 2016-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12471
+  read: false
+  id: doi:10.1111/jofi.12471
+  source: openalex
+- title: Ex‐Dividend Profitability and Institutional Trading Skill
+  authors: Tyler R. Henry , Jennifer L. Koski
+  date: 2016-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12472
+  read: false
+  id: doi:10.1111/jofi.12472
+  source: openalex
+- title: A Labor Capital Asset Pricing Model
+  authors: Lars‐Alexander Kuehn , Mikhail Simutin , Jessie Jiaxu Wang
+  date: 2017-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12504
+  read: false
+  id: doi:10.1111/jofi.12504
+  source: openalex
+- title: 'Social Capital, Trust, and Firm Performance: The Value of Corporate Social Responsibility during the Financial
+    Crisis'
+  authors: Karl V. Lins , Henri Servaes , Ane Tamayo
+  date: 2017-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12505
+  read: false
+  id: doi:10.1111/jofi.12505
+  source: openalex
+- title: Why Does Return Predictability Concentrate in Bad Times?
+  authors: Julien Cujean , Michael Hasler
+  date: 2017-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12544
+  read: false
+  id: doi:10.1111/jofi.12544
+  source: openalex
+- title: The Share of Systematic Variation in Bilateral Exchange Rates
+  authors: Adrien Verdelhan
+  date: 2017-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12587
+  read: false
+  id: doi:10.1111/jofi.12587
+  source: openalex
+- title: Option Mispricing around Nontrading Periods
+  authors: Christopher S. Jones , Joshua Shemesh
+  date: 2017-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12603
+  read: false
+  id: doi:10.1111/jofi.12603
+  source: openalex
+- title: Real Options Models of the Firm, Capacity Overhang, and the Cross Section of Stock Returns
+  authors: Kevin Aretz , Peter F. Pope
+  date: 2018-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12617
+  read: false
+  id: doi:10.1111/jofi.12617
+  source: openalex
+- title: Anomalies and News
+  authors: Joseph Engelberg , R. David McLean , Jeffrey Pontiff
+  date: 2018-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12718
+  read: false
+  id: doi:10.1111/jofi.12718
+  source: openalex
+- title: (Almost) Model‐Free Recovery
+  authors: Paul Schneider , Fabio Trojani
+  date: 2018-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12737
+  read: false
+  id: doi:10.1111/jofi.12737
+  source: openalex
+- title: Equity Misvaluation and Default Options
+  authors: Assaf Eisdorfer , Amit Goyal , Alexei Zhdanov
+  date: 2018-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12748
+  read: false
+  id: doi:10.1111/jofi.12748
+  source: openalex
+- title: 'Labor‐Technology Substitution: Implications for Asset Pricing'
+  authors: Miao Ben Zhang
+  date: 2019-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12766
+  read: false
+  id: doi:10.1111/jofi.12766
+  source: openalex
+- title: Real Anomalies
+  authors: Jules H. van Binsbergen , Christian C. Opp
+  date: 2019-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12771
+  read: false
+  id: doi:10.1111/jofi.12771
+  source: openalex
+- title: 'Reassessing False Discoveries in Mutual Fund Performance: Skill, Luck, or Lack of Power?'
+  authors: Angie Andrikogiannopoulou , Filippos Papakonstantinou
+  date: 2019-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12784
+  read: false
+  id: doi:10.1111/jofi.12784
+  source: openalex
+- title: Stock Returns over the FOMC Cycle
+  authors: Anna Cieślak , Adair Morse , Annette Vissing‐Jørgensen
+  date: 2019-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12818
+  read: false
+  id: doi:10.1111/jofi.12818
+  source: openalex
+- title: Diagnostic Expectations and Stock Returns
+  authors: Pedro Bordalo , Nicola Gennaioli , Rafael La Porta , Andrei Shleifer
+  date: 2019-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12833
+  read: false
+  id: doi:10.1111/jofi.12833
+  source: openalex
+- title: Consumption Fluctuations and Expected Returns
+  authors: Victoria Atanasov , Stig V. Møller , Richard Priestley
+  date: 2019-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12870
+  read: false
+  id: doi:10.1111/jofi.12870
+  source: openalex
+- title: What Drives Anomaly Returns?
+  authors: Lars A. Lochstoer , Paul C. Tetlock
+  date: 2020-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12876
+  read: false
+  id: doi:10.1111/jofi.12876
+  source: openalex
+- title: Insider Investment Horizon
+  authors: Ferhat Akbas , Chao Jiang , Paul D. Koch
+  date: 2020-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12878
+  read: false
+  id: doi:10.1111/jofi.12878
+  source: openalex
+- title: Lazy Prices
+  authors: Lauren Cohen , Christopher J. Malloy , Quoc Hung Nguyen
+  date: 2020-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12885
+  read: false
+  id: doi:10.1111/jofi.12885
+  source: openalex
+- title: How Skilled Are Security Analysts?
+  authors: Alan D. Crane , Kevin Crotty
+  date: 2020-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12890
+  read: false
+  id: doi:10.1111/jofi.12890
+  source: openalex
+- title: 'Understanding Systematic Risk: A High‐Frequency Approach'
+  authors: Markus Pelger
+  date: 2020-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12898
+  read: false
+  id: doi:10.1111/jofi.12898
+  source: openalex
+- title: Cash Flow News and Stock Price Dynamics
+  authors: Davide Pettenuzzo , Riccardo Sabbatucci , Allan Timmermann
+  date: 2020-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12901
+  read: false
+  id: doi:10.1111/jofi.12901
+  source: openalex
+- title: Inalienable Customer Capital, Corporate Liquidity, and Stock Returns
+  authors: Winston Wei Dou , Yan Ji , David J. Reibstein , Wei Wu
+  date: 2020-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12960
+  read: false
+  id: doi:10.1111/jofi.12960
+  source: openalex
+- title: Measuring Mutual Fund Flow Pressure as Shock to Stock Returns
+  authors: Malcolm Wardlaw
+  date: 2020-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12962
+  read: false
+  id: doi:10.1111/jofi.12962
+  source: openalex
+- title: Stock Market Returns and Consumption
+  authors: Marco Di Maggio , Amir Kermani , Kaveh Majlesi
+  date: 2020-07
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12968
+  read: false
+  id: doi:10.1111/jofi.12968
+  source: openalex
+- title: The Perception of Dependence, Investment Decisions, and Stock Prices
+  authors: Michael Ungeheuer , Matthias Weber
+  date: 2020-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.12993
+  read: false
+  id: doi:10.1111/jofi.12993
+  source: openalex
+- title: 'The Limits of <i>p</i>‐Hacking: Some Thought Experiments'
+  authors: Andrew Y. Chen
+  date: 2021-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13036
+  read: false
+  id: doi:10.1111/jofi.13036
+  source: openalex
+- title: Cultural Biases in Equity Analysis
+  authors: Vesa Pursiainen
+  date: 2021-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13095
+  read: false
+  id: doi:10.1111/jofi.13095
+  source: openalex
+- title: Stock Market and No‐Dividend Stocks
+  authors: Adem Atmaz , Suleyman Basak
+  date: 2021-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13098
+  read: false
+  id: doi:10.1111/jofi.13098
+  source: openalex
+- title: Volatility Expectations and Returns
+  authors: Lars A. Lochstoer , Tyler Muir
+  date: 2022-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13120
+  read: false
+  id: doi:10.1111/jofi.13120
+  source: openalex
+- title: Common Risk Factors in Cryptocurrency
+  authors: Yukun Liu , Aleh Tsyvinski , Xi Wu
+  date: 2022-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13119
+  read: false
+  id: doi:10.1111/jofi.13119
+  source: openalex
+- title: 'Luck versus Skill in the Cross Section of Mutual Fund Returns: Reexamining the Evidence'
+  authors: CAMPBELL R. HARVEY , YAN LIU
+  date: 2022-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13123
+  read: false
+  id: doi:10.1111/jofi.13123
+  source: openalex
+- title: The Wisdom of the Robinhood Crowd
+  authors: Ivo Welch
+  date: 2022-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13128
+  read: false
+  id: doi:10.1111/jofi.13128
+  source: openalex
+- title: Factor Momentum and the Momentum Factor
+  authors: Sina Ehsani , Juhani T. Linnainmaa
+  date: 2022-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13131
+  read: false
+  id: doi:10.1111/jofi.13131
+  source: openalex
+- title: Are Analyst Short‐Term Trade Ideas Valuable?
+  authors: Justin Birru , Sinan Gokkaya , Xi Liu , René M. Stulz
+  date: 2022-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13130
+  read: false
+  id: doi:10.1111/jofi.13130
+  source: openalex
+- title: A New Test of Risk Factor Relevance
+  authors: Alex Chinco , Samuel M. Hartzmark , Abigail B. Sussman
+  date: 2022-04
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13135
+  read: false
+  id: doi:10.1111/jofi.13135
+  source: openalex
+- title: 'CEO Political Leanings and Store‐Level Economic Activity during the COVID‐19 Crisis: Effects on Shareholder
+    Value and Public Health'
+  authors: John M. Bizjak , Swaminathan L. Kalpathy , Vassil T. Mihov , Jue Ren
+  date: 2022-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13173
+  read: false
+  id: doi:10.1111/jofi.13173
+  source: openalex
+- title: 'Stock Market Spillovers via the Global Production Network: Transmission of U.S. Monetary Policy'
+  authors: Julian di Giovanni , Galina Hale
+  date: 2022-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13181
+  read: false
+  id: doi:10.1111/jofi.13181
+  source: openalex
+- title: 'Attention‐Induced Trading and Returns: Evidence from Robinhood Users'
+  authors: Brad M. Barber , Xing Huang , Terrance Odean , Christopher G. Schwarz
+  date: 2022-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13183
+  read: false
+  id: doi:10.1111/jofi.13183
+  source: openalex
+- title: 'Beyond Basis Basics: Liquidity Demand and Deviations from the Law of One Price'
+  authors: Todd Hazelkorn , Tobias J. Moskowitz , Kaushik Vasudevan
+  date: 2022-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13198
+  read: false
+  id: doi:10.1111/jofi.13198
+  source: openalex
+- title: Principal Portfolios
+  authors: Bryan Kelly , Semyon Malamud , Lasse Heje Pedersen
+  date: 2022-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13199
+  read: false
+  id: doi:10.1111/jofi.13199
+  source: openalex
+- title: Duration‐Driven Returns
+  authors: Niels Joachim Gormsen , Eben Lazarus
+  date: 2023-02
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13216
+  read: false
+  id: doi:10.1111/jofi.13216
+  source: openalex
+- title: Who Owns What? A Factor Model for Direct Stockholding
+  authors: Vimal Balasubramaniam , John Y. Campbell , Tarun Ramadorai , Benjamin Ranish
+  date: 2023-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13220
+  read: false
+  id: doi:10.1111/jofi.13220
+  source: openalex
+- title: Liquidity, Volume, and Order Imbalance Volatility
+  authors: Vincent Bogousslavsky , Pierre Collin‐Dufresne
+  date: 2023-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13248
+  read: false
+  id: doi:10.1111/jofi.13248
+  source: openalex
+- title: 'Retail Derivatives and Sentiment: A Sentiment Measure Constructed from Issuances of Retail Structured
+    Equity Products'
+  authors: Brian J. Henderson , Neil D. Pearson , Li Wang
+  date: 2023-05
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13253
+  read: false
+  id: doi:10.1111/jofi.13253
+  source: openalex
+- title: Global Pricing of Carbon‐Transition Risk
+  authors: Patrick Bolton , Marcin Kacperczyk
+  date: 2023-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13272
+  read: false
+  id: doi:10.1111/jofi.13272
+  source: openalex
+- title: Operating Hedge and Gross Profitability Premium
+  authors: Leonid Kogan , Jun Li , Harold H. Zhang
+  date: 2023-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13275
+  read: false
+  id: doi:10.1111/jofi.13275
+  source: openalex
+- title: 'Front‐Page News: The Effect of News Positioning on Financial Markets'
+  authors: Anastassia Fedyk
+  date: 2023-11
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13287
+  read: false
+  id: doi:10.1111/jofi.13287
+  source: openalex
+- title: The Virtue of Complexity in Return Prediction
+  authors: Bryan Kelly , Semyon Malamud , Kangying Zhou
+  date: 2023-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13298
+  read: false
+  id: doi:10.1111/jofi.13298
+  source: openalex
+- title: Dissecting the Long‐Term Performance of the Chinese Stock Market
+  authors: Franklin Allen , Jun Qian , Chenyu Shan , Julie Zhu
+  date: 2024-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13312
+  read: false
+  id: doi:10.1111/jofi.13312
+  source: openalex
+- title: Modeling Conditional Factor Risk Premia Implied by Index Option Returns
+  authors: Mathieu Fournier , Kris Jacobs , Piotr Orłowski
+  date: 2024-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13324
+  read: false
+  id: doi:10.1111/jofi.13324
+  source: openalex
+- title: Business News and Business Cycles
+  authors: Leland Bybee , Bryan Kelly , Asaf Manela , Dacheng Xiu
+  date: 2024-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13377
+  read: false
+  id: doi:10.1111/jofi.13377
+  source: openalex
+- title: Currency Management by International Fixed‐Income Mutual Funds
+  authors: Clemens Sialm , Qifei Zhu
+  date: 2024-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13381
+  read: false
+  id: doi:10.1111/jofi.13381
+  source: openalex
+- title: Putting the Price in Asset Pricing
+  authors: Thummim Cho , Christopher Polk
+  date: 2024-10
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13391
+  read: false
+  id: doi:10.1111/jofi.13391
+  source: openalex
+- title: The Disappearing Index Effect
+  authors: Robin Greenwood , Marco Sammon
+  date: 2024-12
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13410
+  read: false
+  id: doi:10.1111/jofi.13410
+  source: openalex
+- title: 'Pricing Poseidon: Extreme Weather Uncertainty and Firm Return Dynamics'
+  authors: Mathias S. Kruttli , Brigitte Roth Tran , Sumudu W. Watugala
+  date: 2025-01
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13416
+  read: false
+  id: doi:10.1111/jofi.13416
+  source: openalex
+- title: Intrahousehold Disagreement about Macroeconomic Expectations
+  authors: Da Ke
+  date: 2025-03
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13437
+  read: false
+  id: doi:10.1111/jofi.13437
+  source: openalex
+- title: Investor Factors
+  authors: Sébastien Betermier , Laurent E. Calvet , Samuli Knüpfer , Jens Soerlie Kvaerner
+  date: 2025-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13474
+  read: false
+  id: doi:10.1111/jofi.13474
+  source: openalex
+- title: Superstar Returns? Spatial Heterogeneity in Returns to Housing
+  authors: Francisco Amaral , M. Dohmen , Sebastian Kohl , Moritz Schularick
+  date: 2025-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13479
+  read: false
+  id: doi:10.1111/jofi.13479
+  source: openalex
+- title: 'Pockets of Predictability: A Replication'
+  authors: Nusret Cakici , Christian Fieberg , Tobias Neumaier , Thorsten Poddig , Adam Zaremba
+  date: 2025-08
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13484
+  read: false
+  id: doi:10.1111/jofi.13484
+  source: openalex
+- title: War Discourse and the Cross Section of Expected Stock Returns
+  authors: David Hirshleifer , Dat Mai , Kuntara Pukthuanthong
+  date: 2025-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13482
+  read: false
+  id: doi:10.1111/jofi.13482
+  source: openalex
+- title: 'Forest through the Trees: Building Cross‐Sections of Stock Returns'
+  authors: Svetlana Bryzgalova , Markus Pelger , Jason Zhu
+  date: 2025-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13477
+  read: false
+  id: doi:10.1111/jofi.13477
+  source: openalex
+- title: Anomalies and Their Short‐Sale Costs
+  authors: Dmitriy Muravyev , Neil D. Pearson , Joshua Matthew Pollet
+  date: 2025-09
+  venue: The Journal of Finance
+  url: https://doi.org/10.1111/jofi.13501
+  read: false
+  id: doi:10.1111/jofi.13501
+  source: openalex

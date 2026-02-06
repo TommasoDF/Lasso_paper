@@ -20,34 +20,36 @@ journals:
     issn: ["0034-6527", "1467-937X"]
     providers: ["crossref", "openalex"]
 
-  - name: Journal of Economic Dynamics and Control
-    issn: ["0165-1889", "1873-7079"]
-    providers: ["crossref", "openalex"]
+  # - name: Journal of Economic Dynamics and Control
+  #   issn: ["0165-1889", "1873-7079"]
+  #   providers: ["crossref", "openalex"]
 
-  - name: Journal of Monetary Economics
-    issn: ["0304-3932", "1873-1295"]
-    providers: ["crossref", "openalex"]
+  # - name: Journal of Monetary Economics
+  #   issn: ["0304-3932", "1873-1295"]
+  #   providers: ["crossref", "openalex"]
 
 
 # Topic filter: keep paper if ANY pattern matches title+abstract+keywords (if available)
 filter:
   include_patterns:
-    - "\\bheterogeneous expectations\\b"
-    - "\\bexpectation formation\\b"
-    - "\\bagent-based\\b|\\bagent based\\b|\\bABM\\b"
-    - "\\bsocial network\\b|\\bnetworks\\b"
-    - "\\blearning\\b|\\badaptive\\b|\\bbounded rationality\\b"
-    - "\\basset pricing\\b|\\bfinancial markets\\b"
-    - "\\bmacro-finance\\b|\\bbehavioral macro\\b"
-    - "\\binformation rigidity\\b|\\bsticky information\\b"
-
+  - "\\bstock returns?\\b|\\bmarket returns?\\b"
+  - "\\bexcess returns?\\b|\\babnormal returns?\\b|\\balpha\\b"
 
   exclude_patterns:
+
+    # --- Non-stock finance ---
+    - "\\bprivate equity\\b|\\bventure capital\\b|\\bhedge funds?\\b"
+    - "\\bbank(s|ing)?\\b|\\bcredit\\b|\\bloans?\\b"
+    - "\\bbonds?\\b|\\bsovereign debt\\b|\\bcorporate bonds?\\b"
+    - "\\binsurance\\b|\\bpension funds?\\b"
+
+    # --- Admin / meta ---
     - "\\bcomment\\b"
     - "\\bcorrection\\b"
     - "\\berratum\\b"
     - "\\bfront matter\\b"
     - "\\beditorial\\b"
+
 
   # optional: tags to attach when matched
   # tag_rules:
@@ -58,7 +60,7 @@ filter:
   #   macro-finance: ["\\bmacro\\b", "\\bfinancial\\b", "\\basset pricing\\b"]
 
 # Polling window
-window_days: 30
+window_days: 7300
 
 # Safety: cap per journal per run
-max_new_per_journal: 30
+max_new_per_journal: 100000
