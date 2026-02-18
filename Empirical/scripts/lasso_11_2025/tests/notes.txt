@@ -1,2 +1,0 @@
-1. simulate data using lasso rolling window l=300, lam=0.00001
-2.
