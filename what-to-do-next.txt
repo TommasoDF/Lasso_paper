@@ -1,0 +1,4 @@
+- we saw that the vectors of selection frequency are very similiar for our sample of stocks, cosine similiarity close to 1
+    is this also true if we consider the timing of selection? |calculate similiarity of matrices k x t where k = topics and t = days
+
+- 
