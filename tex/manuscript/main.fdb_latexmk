@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex main"] 1770035462 "main.aux" "main.bbl" "main" 1770035467 0
+["bibtex main"] 1772631862 "main.aux" "main.bbl" "main" 1772631867 0
   "./aea.bst" 1768515426 26202 034ebaf6925cb914f19ae8306f420e5b ""
   "./references.bib" 1769772422 51369 01e0901ef9a500f796b2bfb009a69053 ""
-  "main.aux" 1770035467 13486 fe07ab235d74d17b7343deaa81cbe403 "pdflatex"
+  "main.aux" 1772631867 13486 b11096b73593c28de2b9ec1bd6f54f62 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1770035462 "/Users/tommasodifrancesco/Desktop/Lasso_paper/tex/manuscript/main.tex" "main.pdf" "main" 1770035467 0
+["pdflatex"] 1772631862 "/Users/tommasodifrancesco/Desktop/Lasso_paper/tex/manuscript/main.tex" "main.pdf" "main" 1772631867 0
   "../../figures//avg_nonzero_coefficients_vs_volatility.png" 1769679795 37490 6588ecc956381c8dadb3cb6a63fa9fdb ""
   "../../figures//corr_topics_heatmap.png" 1769530098 1510515 1cbfad22d6e79f58414b586088b25c15 ""
   "../../figures//nonzero_coefficients_over_time.png" 1769770027 919575 e5a8378a859194dc987b1a805d3bacb5 ""
-  "/Users/tommasodifrancesco/Desktop/Lasso_paper/tex/manuscript/main.tex" 1770035355 84869 81f4ca7b472d45412fca2a2d91b002df ""
+  "/Users/tommasodifrancesco/Desktop/Lasso_paper/tex/manuscript/main.tex" 1772631857 85921 46dfbab0629353ef6fd0aac5921d0366 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -182,10 +182,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1709724026 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1709723959 7883460 1d7a9be62ed57029668d948feb917816 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "main.aux" 1770035467 13486 fe07ab235d74d17b7343deaa81cbe403 "pdflatex"
-  "main.bbl" 1770035462 7198 08b728b849c9b7d897f644fff3251b96 "bibtex main"
-  "main.out" 1770035467 3563 942d0442e360987ae1b78e56bfa0187e "pdflatex"
-  "main.tex" 1770035355 84869 81f4ca7b472d45412fca2a2d91b002df ""
+  "main.aux" 1772631867 13486 b11096b73593c28de2b9ec1bd6f54f62 "pdflatex"
+  "main.bbl" 1772631862 7198 08b728b849c9b7d897f644fff3251b96 "bibtex main"
+  "main.out" 1772631867 3563 942d0442e360987ae1b78e56bfa0187e "pdflatex"
+  "main.tex" 1772631857 85921 46dfbab0629353ef6fd0aac5921d0366 ""
   "style.sty" 1770035309 1762 92d1533e7beb805c10ef4bad74e656bb ""
   (generated)
   "main.aux"

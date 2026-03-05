@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 import warnings
 from typing import Tuple, Optional, Dict, Any, List
 from tqdm import tqdm
+import statsmodels.api as sm
 
 
 def to_ar1_innovations(X: pd.DataFrame, min_obs: int = 30) -> pd.DataFrame:
