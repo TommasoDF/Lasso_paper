@@ -21,6 +21,9 @@
     }
   ],
   "latex-workshop.latex.defaultRecipe": "latexmk → Manuscript",
+  "python.analysis.extraPaths": [
+    "./Empirical/estimation"
+  ],
   "latex-workshop.latex.clean.enabled": true,
   "latex-workshop.latex.clean.fileTypes": [
     "*.aux","*.bbl","*.blg","*.bcf","*.run.xml","*.toc","*.out","*.log","*.fls","*.fdb_latexmk","*.synctex.gz"

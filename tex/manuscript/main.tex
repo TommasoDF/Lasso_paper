@@ -1147,6 +1147,23 @@ Since $\beta^L_t=S(\beta^{OLS}_t,\lambda)$ is a deterministic transformation, th
 \[ \mathbb{P}(|{\beta}_{\text{OLS}}| > \lambda) = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS}}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS}}}\right)\right], \]
 where $\sigma_{\text{OLS}} = \left(\gamma s_{d}^2 \left(2 \sigma^2_x \left(1 + \frac{\kappa}{1 - \kappa} \right)\right)^{-1}\right)^{1/2}$.
 
+As a finite-sample benchmark for decreasing-gain learning, consider instead a fixed rolling window of length $L$, so each observation receives weight $1/L$. Under the null around CMCE, assume within a window that $r_i=\eta_i$ with $\eta_i\sim \mathcal N(0,\sigma_d^2)$, $x_i\sim \mathcal N(0,\sigma_x^2)$, and $x_i\perp \eta_i$. The OLS estimator is
+\[
+\hat\beta_{t,L}=\frac{\sum_{i=1}^{L} x_i r_i}{\sum_{i=1}^{L} x_i^2}
+=\frac{\sigma_d}{\sigma_x\sqrt{L}}\,T_L,
+\]
+where $T_L$ is Student-$t$ with $L$ degrees of freedom. Therefore the probability of selecting a non-zero coefficient under soft-thresholding is
+\[
+\mathbb P\!\left(|\hat\beta_{t,L}|>\lambda\right)
+=2\left[1-F_{t,L}\!\left(\frac{\lambda\,\sigma_x\sqrt{L}}{\sigma_d}\right)\right],
+\]
+with $F_{t,L}$ the cdf of Student-$t_L$. For large $L$, this is approximately
+\[
+\mathbb P\!\left(|\hat\beta_{t,L}|>\lambda\right)
+\approx 2\left[1-\Phi\!\left(\frac{\lambda\,\sigma_x\sqrt{L}}{\sigma_d}\right)\right],
+\]
+which decreases in both $L$ and $\lambda$ and converges to zero as $L\to\infty$.
+
 %------------------------------------------------------
 \section{Additional Tables and Figures}\label{app:tab_figures}
 
