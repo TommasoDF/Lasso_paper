@@ -23,6 +23,29 @@ from tqdm.auto import tqdm
 from grid_search import estimate_single_config_fast
 
 
+_MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def _resolve_existing_path(path: str, label: str) -> str:
+    """Resolve an existing path from CWD or this module directory."""
+    if os.path.isabs(path):
+        if os.path.exists(path):
+            return path
+        raise FileNotFoundError(f"{label} not found: '{path}'")
+
+    if os.path.exists(path):
+        return os.path.normpath(path)
+
+    module_relative = os.path.normpath(os.path.join(_MODULE_DIR, path))
+    if os.path.exists(module_relative):
+        return module_relative
+
+    raise FileNotFoundError(
+        f"{label} not found. Tried '{path}' (cwd={os.getcwd()}) and "
+        f"'{module_relative}' (module-relative)."
+    )
+
+
 # ============================================================
 # Preprocessing helpers
 # ============================================================
@@ -292,8 +315,8 @@ def save_outputs(
 # ============================================================
 
 def main(
-    returns_csv: str = "../../data/X.csv",
-    features_csv: str = "../../data/merged_return_topic_data.csv",
+    returns_csv: str = "../data/X.csv",
+    features_csv: str = "../data/merged_return_topic_data.csv",
     best_hyperparameters: str = "best_hyperparameters.txt",
     out_dir: str = ".",
     seed: int = 42,
@@ -316,7 +339,11 @@ def main(
     random.seed(seed)
     os.makedirs(out_dir, exist_ok=True)
 
-    # --- Load data ---
+    # --- Resolve inputs and load data ---
+    returns_csv = _resolve_existing_path(returns_csv, "returns_csv")
+    features_csv = _resolve_existing_path(features_csv, "features_csv")
+    best_hyperparameters = _resolve_existing_path(best_hyperparameters, "best_hyperparameters")
+
     df = pd.read_csv(returns_csv, index_col=0)
     feature_matrix = pd.read_csv(features_csv, index_col=0, parse_dates=True)
 
@@ -403,8 +430,8 @@ if __name__ == "__main__":
     import argparse
 
     p = argparse.ArgumentParser()
-    p.add_argument("--returns_csv",          default="../../data/X.csv")
-    p.add_argument("--features_csv",         default="../../data/merged_return_topic_data.csv")
+    p.add_argument("--returns_csv",          default="../data/X.csv")
+    p.add_argument("--features_csv",         default="../data/merged_return_topic_data.csv")
     p.add_argument("--best_hyperparameters", default="best_hyperparameters.txt")
     p.add_argument("--out_dir",              default=".")
     p.add_argument("--seed",                 type=int, default=42)
