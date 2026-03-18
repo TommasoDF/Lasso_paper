@@ -1,1 +1,0 @@
-Repository for a paper on the effect of traders using LASSO to forecast returns on asset prices.
