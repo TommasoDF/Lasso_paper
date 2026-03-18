@@ -138,7 +138,7 @@ def main():
     
     # 2. Load Topic Data
     print("\nLoading topic data...")
-    topics_path = repo_root / 'Data' / 'data_raw' /'topics.csv'
+    topics_path = repo_root / 'Data' / 'data_raw' / 'topics.csv'
     topics = pd.read_csv(topics_path)
     
     # Clean topic columns (removing digit-only/unnamed columns based on notebook logic)
