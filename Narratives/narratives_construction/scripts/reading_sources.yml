@@ -1,0 +1,113 @@
+# Journals to ingest
+journals:
+  - name: American Economic Review
+    issn: ["0002-8282", "1944-7981"]
+    providers: ["crossref", "openalex"]
+
+  - name: Econometrica
+    issn: ["0012-9682", "1468-0262"]
+    providers: ["crossref", "openalex"]
+
+  - name: The Journal of Finance
+    issn: ["0022-1082", "1540-6261"]
+    providers: ["crossref", "openalex"]
+
+  - name: Quarterly Journal of Economics
+    issn: ["0033-5533", "1531-4650"]
+    providers: ["crossref", "openalex"]
+
+  - name: The Review of Economic Studies
+    issn: ["0034-6527", "1467-937X"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Economic Dynamics and Control
+    issn: ["0165-1889", "1873-7079"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Monetary Economics
+    issn: ["0304-3932", "1873-1295"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Financial Economics
+    issn: ["0304-405X", "1879-2774"]
+    providers: ["crossref", "openalex"]
+
+  - name: Review of Financial Studies
+    issn: ["0893-9454", "1465-7368"]
+    providers: ["crossref", "openalex"]
+
+  - name: Review of Finance
+    issn: ["1572-3097", "1573-692X"]
+    providers: ["crossref", "openalex"]
+  
+  - name: Review of Asset Pricing Studies
+    issn: ["2045-9920", "2045-9939"]
+    providers: ["crossref", "openalex"]
+  
+  - name: Journal of Political Economy
+    issn: ["0022-3808", "1537-534X"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Banking & Finance
+    issn: ["0378-4266", "1872-6372"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Financial and Quantitative Analysis
+    issn: ["0022-1090", "1756-6916"]
+    providers: ["crossref", "openalex"]
+
+  - name: Management Science
+    issn: ["0025-1909", "1526-5501"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Econometrics
+    issn: ["0304-4076", "1872-7356"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Financial Econometrics
+    issn: ["1479-8409", "1479-8417"]
+    providers: ["crossref", "openalex"]
+
+  - name: Journal of Time Series Analysis
+    issn: ["0143-9782", "1467-9892"]
+    providers: ["crossref", "openalex"]
+
+# Topic filter: keep paper if ANY pattern matches title+abstract+keywords (if available)
+filter:
+  include_patterns:
+  - "\\bstock returns?\\b|\\bmarket returns?\\b"
+  - "\\bexcess returns?\\b|\\babnormal returns?\\b|\\balpha\\b"
+  - "\\basset pricing\\b|\\basset prices?\\b|\\basset return(s)?\\b"
+  - "\\bcross-sectional\\b|\\bcross section\\b"
+  - "\\bfactor(s)?\\b|\\bfama[- ]french\\b|\\bcarhart\\b|\\bq[- ]theory\\b"
+  - "\\bportfolio(s)?\\b|\\bportfolios?\\b"
+
+  exclude_patterns:
+
+    # --- Non-stock finance ---
+    - "\\bprivate equity\\b|\\bventure capital\\b|\\bhedge funds?\\b"
+    - "\\bbank(s|ing)?\\b|\\bcredit\\b|\\bloans?\\b"
+    - "\\bbonds?\\b|\\bsovereign debt\\b|\\bcorporate bonds?\\b"
+    - "\\binsurance\\b|\\bpension funds?\\b"
+
+    # --- Admin / meta ---
+    - "\\bcomment\\b"
+    - "\\bcorrection\\b"
+    - "\\berratum\\b"
+    - "\\bfront matter\\b"
+    - "\\beditorial\\b"
+
+
+  # optional: tags to attach when matched
+  # tag_rules:
+  #   education: ["\\beducation\\b", "\\bhuman capital\\b"]
+  #   expectations: ["\\bexpectation\\b", "\\bbelief\\b"]
+  #   networks: ["\\bnetwork\\b", "\\bsocial\\b"]
+  #   abm: ["\\bagent-based\\b|\\bagent based\\b|\\bABM\\b"]
+  #   macro-finance: ["\\bmacro\\b", "\\bfinancial\\b", "\\basset pricing\\b"]
+
+# Polling window
+window_days: 15000
+
+# Safety: cap per journal per run
+max_new_per_journal: 100000

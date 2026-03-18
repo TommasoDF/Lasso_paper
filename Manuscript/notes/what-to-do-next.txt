@@ -1,0 +1,11 @@
+- we saw that the vectors of selection frequency are very similiar for our sample of stocks, cosine similiarity close to 1
+    is this also true if we consider the timing of selection? |calculate similiarity of matrices k x t where k = topics and t = days
+
+- in our current estimation setup with one lag, only 690/1620 stocks have more than 0 selections, the others failed
+    - if r2 2nd stage in sample is negative, we receive "failed" and thus no selected topics, no details dataframe
+- alternative hyperparamters: 
+[I 2026-02-20 09:21:49,091] Trial 241 finished with value: 0.0018090199235346175 and parameters: {'window_size': 20, 'lambda': 1.2850373543458524e-06}. Best is trial 241 with value: 0.0018090199235346175.
+[I 2026-02-20 10:12:45,583] Trial 92 finished with value: 0.0018093119059927891 and parameters: {'window_size': 20, 'lambda': 1.3010494587706564e-06}. Best is trial 92 with value: 0.0018093119059927891.
+
+
+- in appendix: take topics, simulate lasso 
