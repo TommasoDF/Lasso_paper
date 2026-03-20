@@ -1,0 +1,196 @@
+\documentclass[final]{beamer}
+
+% --- Poster Configuration ---
+\usepackage[orientation=landscape,size=a0,scale=1.4]{beamerposter}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+% --- Color Definitions (Matching Tailwind Palette) ---
+\definecolor{blue900}{HTML}{1E3A8A}
+\definecolor{blue800}{HTML}{1E40AF}
+\definecolor{blue100}{HTML}{DBEAFE}
+\definecolor{blue50}{HTML}{EFF6FF}
+\definecolor{gray900}{HTML}{111827}
+\definecolor{gray800}{HTML}{1F2937}
+\definecolor{gray200}{HTML}{E5E7EB}
+\definecolor{gray100}{HTML}{F3F4F6}
+\definecolor{gray50}{HTML}{F9FAFB}
+
+% --- Global Box Styling ---
+\tcbset{
+    basebox/.style={
+        colframe=gray200,
+        colback=gray50,
+        sharp corners=false,
+        boxrule=1pt,
+        arc=10pt,
+        boxsep=10pt,
+        left=15pt, right=15pt, top=10pt, bottom=10pt,
+        fonttitle=\bfseries\large\color{blue900},
+        toptitle=5pt,
+        bottomtitle=5pt,
+        colbacktitle=gray50,
+        enhanced,
+        attach boxed title to top left={yshift=-2mm, xshift=5mm},
+        boxed title style={colframe=white, colback=white}
+    },
+    sectionheader/.style={
+        uppercase,
+        fontupper=\color{blue900}\bfseries\Large,
+        after upper={\par\vspace{2pt}\hrule height 2pt\relax}
+    }
+}
+
+% --- Document Starts Here ---
+\begin{document}
+\begin{frame}[t, plain]
+    \fill[gray100] (current page.north west) rectangle (current page.south east);
+
+    % --- HEADER SECTION ---
+    \begin{center}
+        \vspace{2cm}
+        {\Huge \textbf{\color{gray900} Sparse Learning and Endogenous Pockets of Predictability}} \\[0.5cm]
+        {\Large \color{gray800} Tommaso Di Francesco$^1$, Stefanie Huber$^1$, and Jonathan Seim$^2$} \\[0.3cm]
+        {\large \color{gray!60} $^1$University of Bonn, \quad $^2$University of Cologne}
+        \vspace{1cm}
+        \hrulefill
+        \vspace{1cm}
+    \end{center}
+
+    % --- TWO COLUMN LAYOUT ---
+    \begin{columns}[t]
+        
+        % === COLUMN 1 ===
+        \begin{column}{.48\textwidth}
+            \begin{center}
+                
+                % 1. Motivation
+                \begin{tcolorbox}[basebox, colback=blue50, colframe=blue100]
+                    {\color{blue900}\Large\textbf{1. MOTIVATION \& CORE QUESTION}} \vspace{0.5cm}
+                    \begin{itemize}
+                        \item \textbf{The Data Explosion:} Global data creation is vast. Investors increasingly rely on alternative data with little theoretical guidance.
+                        \item \textbf{The Rise of Machine Learning:} Investors use LASSO-style methods to search for predictive signals in high-dimensional environments.
+                        \item \textbf{The Gap:} Traditional models assume low-dimensional learning, failing to capture modern high-dimensional search practices.
+                    \end{itemize}
+                    \vspace{0.3cm}
+                    \begin{tcolorbox}[colback=blue100, colframe=blue100, boxrule=0pt, arc=5pt]
+                        \textbf{Core Question:} What happens to asset prices when investors use high-dimensional machine learning to search for return predictability?
+                    \end{tcolorbox}
+                \end{tcolorbox}
+
+                \vspace{1cm}
+
+                % 2. The Model Framework
+                \begin{tcolorbox}[basebox]
+                    {\color{blue900}\Large\textbf{2. THE MODEL FRAMEWORK}} \vspace{0.5cm}
+                    Agents suspect returns are predictable by high-dimensional signals $X_t$ in a Lucas exchange economy.
+                    
+                    \vspace{0.3cm}
+                    {\color{blue800}\textbf{Perceived Law of Motion (PLM):}} \\
+                    Agents use soft-thresholding (tractable LASSO):
+                    \begin{equation*}
+                        r_{t+1} = X_t^\top \beta + u_{t+1}
+                    \end{equation*}
+                    \begin{equation*}
+                        \hat{\beta}_{LASSO} = \text{sign}(\beta_{OLS}) \max\{0, |\beta_{OLS}| - \lambda\}
+                    \end{equation*}
+
+                    \vspace{0.3cm}
+                    {\color{blue800}\textbf{Actual Law of Motion (ALM):}} \\
+                    Realized returns follow a non-linear process via the Euler equation:
+                    \begin{equation*}
+                         P_t = \frac{\delta a^{(1-l)}\rho_e}{1 - \kappa e^{X_t^\top \beta}} D_t, \quad r_{t+1} = \eta_{t+1} + \log\left(\frac{1 - \kappa e^{X_t^\top \beta}}{1 - \kappa e^{X_{t+1}^\top \beta}}\right)
+                    \end{equation*}
+                \end{tcolorbox}
+
+                \vspace{1cm}
+
+                % 3. Endogenous Predictability
+                \begin{tcolorbox}[basebox]
+                    {\color{blue900}\Large\textbf{3. ENDOGENOUS PREDICTABILITY}} \vspace{0.5cm}
+                    The economy settles into a \textbf{CMCE} where fundamental predictability is zero ($\beta = 0$). Predictability is \textit{generated} by the search itself.
+                    
+                    \vspace{0.3cm}
+                    \textbf{The Life Cycle of a Signal:}
+                    \begin{enumerate}
+                        \item \textbf{Chance Selection:} Noise crosses the LASSO threshold $\lambda$.
+                        \item \textbf{Belief-Price Feedback:} Agents trade on the perceived signal.
+                        \item \textbf{Self-Fulfillment:} Trading demand creates genuine but temporary predictability.
+                        \item \textbf{Dissipation:} Older data is discounted; signals shrink back to zero.
+                    \end{enumerate}
+                \end{tcolorbox}
+
+            \end{center}
+        \end{column}
+
+        % === COLUMN 2 ===
+        \begin{column}{.48\textwidth}
+            \begin{center}
+
+                % 4. Empirical Strategy
+                \begin{tcolorbox}[basebox]
+                    {\color{blue900}\Large\textbf{4. EMPIRICAL STRATEGY}} \vspace{0.5cm}
+                    Testing the model using the cross-section of U.S. equities.
+                    \begin{itemize}
+                        \item \textbf{Data:} Daily returns for 1,620 NYSE stocks (2010--2017).
+                        \item \textbf{Predictors:} 180 daily WSJ news topic attention series.
+                    \end{itemize}
+                    \vspace{0.3cm}
+                    \textbf{Implementation:}
+                    \begin{enumerate}
+                        \item \textbf{Estimate PLM:} Rolling-window LASSO to capture $\beta_{i,t}$.
+                        \item \textbf{Estimate ALM:} Non-linear Least Squares (NLS) to find feedback $\kappa_i$.
+                    \end{enumerate}
+                \end{tcolorbox}
+
+                \vspace{1cm}
+
+                % 5. Main Findings
+                \begin{tcolorbox}[basebox]
+                    {\color{blue900}\Large\textbf{5. MAIN EMPIRICAL FINDINGS}} \vspace{0.5cm}
+                    
+                    {\color{blue800}\textbf{Finding 1: Sparsity and Episodicity}} \\
+                    LASSO selects a very small, constantly shifting subset of regressors. Predictability appears in sparse pockets.
+                    
+                    \begin{center}
+                        \begin{tcolorbox}[colback=gray200, colframe=gray400, width=0.8\textwidth, height=6cm, valign=center, center upper]
+                            \color{gray800} [ INSERT FIGURE 1 HERE ] \\
+                            \small Average Active Coefficients over Time
+                        \end{tcolorbox}
+                    \end{center}
+
+                    {\color{blue800}\textbf{Finding 2: The Role of Volatility}} \\
+                    Survival probability of signals increases with return variance.
+                    
+                    \begin{center}
+                        \begin{tcolorbox}[colback=gray200, colframe=gray400, width=0.8\textwidth, height=6cm, valign=center, center upper]
+                            \color{gray800} [ INSERT FIGURE 2 HERE ] \\
+                            \small Non-Zero Coefficients vs. Return Variance
+                        \end{tcolorbox}
+                    \end{center}
+
+                    {\color{blue800}\textbf{Finding 3: Validation}} \\
+                    Sensitivity parameter $\kappa$ is significant for 25\% of the cross-section.
+                \end{tcolorbox}
+
+                \vspace{1cm}
+
+                % 6. Conclusion
+                \begin{tcolorbox}[basebox, colback=gray800, colframe=gray900]
+                    {\color{white}\Large\textbf{6. CONCLUSION}} \vspace{0.5cm}
+                    \begin{itemize}
+                        \item \color{gray200} \textbf{Methodological:} A framework to embed ML search into structural asset pricing.
+                        \item \color{gray200} \textbf{Economic:} Predictability emerges endogenously and transiently from the act of searching big data.
+                    \end{itemize}
+                \end{tcolorbox}
+
+            \end{center}
+        \end{column}
+
+    \end{columns}
+\end{frame}
+\end{document}
