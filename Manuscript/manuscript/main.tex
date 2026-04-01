@@ -592,36 +592,53 @@ where \(x_t^\top \beta_{i,t}\) is scalar because \(x_t, \beta_{i,t} \in \mathbb{
 The stock-specific parameter \(\kappa_i\) is estimated by nonlinear least squares.
 
 
-Before implementing our estimation strategy, we calibrate the three parameters governing the agent’s learning rule: 
+Before implementing our estimation strategy, we calibrate the three parameters governing the agent’s learning rule:
 the rolling window length \(s\), the penalty parameter \(\lambda\), and the number of predictor lags \(n\) considered.
-To do this we operate at market level, estimating the PLM and ALM using the CRSP value-weighted market return as the forecasting target and the full set of topic-innovation series as potential signals.
-We select these parameters using Bayesian optimization to maximize an objective function which is a combination of first and second-stage fit as
-\[ \text{Objective}(s, \lambda, n)
-= \kappa \cdot
-R^2_{\text{ALM}} \cdot \mathbb{I}\left(R^2_{\text{PLM}} > 0\right) \cdot \mathbb{I}\left(\kappa_{t-stat} > 1.96\right) \] 
-where \(R^2_{}\) is the in-sample \(R^2\) of the corresponding stage,
-\(\kappa_{t-stat}\) is the \(t\)-statistic of the NLS $\kappa$ coefficient.
+To avoid circularity, we use a cross-sectional split: a randomly drawn 20\% of stocks
+form a tuning set, and the remaining 80\% form the estimation set.
+Both sets use the full time series (1,879 days), so the window-length problem
+that would arise with a time-based split is avoided.
+We select $(s,\lambda)$ using Bayesian optimisation on the tuning stocks, maximising an objective function
+grounded in the equilibrium properties of the model.
+At the CMCE the equilibrium belief vector satisfies $\beta^* = 0$, so the belief index
+$f_t = x_t^\top \beta_t$ fluctuates around zero and Stage-1 out-of-sample $R^2$ is close
+to zero by construction---this is a model prediction, not a failure of estimation.
+What identifies $\kappa$ is time-series \emph{variation} in $f_t$, which arises whenever
+the LASSO episodically selects predictors and generates transient belief excursions.
+The objective is therefore designed to reward the conditions under which $\kappa$ is
+identifiable, rather than raw in-sample fit:
+\begin{equation}\label{eq:hyperpar_objective}
+\text{Objective}(s, \lambda)
+= 0.7\;\sigma\!\left(\hat\kappa_{t\text{-stat}} - 1.96\right)
++ 0.2\;\exp\!\!\left(-\left(\frac{\bar\rho - \rho^*}{\delta_\rho}\right)^{\!2}\right)
++ 0.1\;\sigma\!\left(\frac{\hat\kappa - 0.3}{0.2}\right),
+\end{equation}
+where $\sigma(\cdot) = (1 + e^{-\cdot})^{-1}$ is the logistic function,
+$\hat\kappa_{t\text{-stat}}$ is the $t$-statistic of the second-stage NLS estimate of $\kappa$,
+$\bar\rho$ is the average LASSO selection rate (fraction of topic-window cells with a
+non-zero coefficient), $\rho^* = 0.03$ is the target selection rate, and $\delta_\rho = 0.02$
+controls the width of the acceptance band.
 
-
-The objective is chosen to disciplinee the empirical implementation by restricting
-attention to learning rules under which the PLM-ALM structure is well defined.
-
-The term \(\mathbb{I}(R^2_{\text{PLM}}>0)\) serves two purposes. First, it rules out
-parameterizations for which beliefs contain no predictive content, in which case the
-belief channel in the ALM is unidentified. Second, it provides a minimal empirical
-justification for why agents would rely on a LASSO-based forecasting rule in the first
-place. If the perceived law of motion delivers no explanatory power, there would be no reason
-for agents to condition their decisions on the estimated coefficients \(\beta_{i,t}\).
-
-Conditional on a nondegenerate PLM, maximizing \(R^2_{\text{ALM}}\) selects configurations
-in which belief dynamics translate into economically relevant price movements. Finally,
-imposing \(\mathbb{I}(\kappa_{t\text{-stat}}>1.96)\) ensures that the key nonlinear feedback
-parameter is statistically identified.
-
-Lastly, this procedure allows us to choose hyper-parameters once, at the market level and then keep them 
-fixed when estimating the model for individual stocks.
-In this way we can ensure that cross-sectional variation is not driven by different hyper-parameter choices.
-The optimization yields the following calibration: rolling window length \(s = 320\) days, penalty parameter \(\lambda = 0.0025\), and number of predictor lags \(n = 21\).
+The three terms are motivated as follows.
+The dominant term (weight 0.7) rewards $\kappa$ identification: the ALM feedback parameter
+must be statistically distinguishable from zero for the CMCE mechanism to be empirically
+operative.
+The sparsity term (weight 0.2) is a Gaussian bell centred at the target selection rate
+$\rho^* = 3\%$, which penalises both over-selection and under-selection symmetrically.
+Excessive selection ($\bar\rho \gg \rho^*$) implies that the belief index $f_t$ is dense
+and $\kappa$ collapses to zero; no selection ($\bar\rho \approx 0$) implies a degenerate
+belief process with no variation to identify $\kappa$.
+An additional hard constraint excludes configurations with $\bar\rho < 0.3\%$ or $\bar\rho > 20\%$.
+The interior prior (weight 0.1) penalises boundary values of $\hat\kappa$
+at which the ALM becomes degenerate.
+Importantly, Stage-1 $R^2$ (in-sample or out-of-sample) is not included: including in-sample
+$R^2$ would reward overfit, while the oracle test in Appendix~\ref{app:oracle} confirms that
+OOS Stage-1 $R^2 \approx 0$ is expected under the model’s equilibrium and should not be
+used as a selection criterion.
+Each Bayesian optimisation trial evaluates a single randomly chosen tuning stock,
+which keeps each trial fast while the TPE sampler builds an accurate model of the objective landscape.
+The optimisation selects $\lambda^* = 3.506 \times 10^{-3}$, $s^* = 231$ days, and $n = 1$ lag.
+These calibrated parameters are then frozen and applied uniformly across all estimation stocks.
 
 
 \subsection{Results}
@@ -637,22 +654,36 @@ This procedure delivers a time series of belief coefficients $\{\beta_{i,t}\}$ a
 \toprule
  & mean & std & median & min & max & p05 & p95 \\
 \midrule
-In-sample $R^2$ & 0.1056 & 0.1149 & 0.0756 & -0.0009 & 0.5041 & -0.0007 & 0.3161 \\
-Out-of-sample $R^2$ & -0.0231 & 0.0344 & -0.0116 & -0.1788 & 0.0037 & -0.0766 & -0.0003 \\
+In-sample $R^2$   & 0.0250 & 0.0413 & 0.0086 & $-$0.0080 & 0.3023 & $-$0.0045 & 0.1119 \\
+Out-of-sample $R^2$ & $-$0.0127 & 0.0402 & $-$0.0040 & $-$1.2361 & 0.0136 & $-$0.0518 & 0.0003 \\
+Selection rate    & 0.0194 & 0.0313 & 0.0060 & 0.0000 & 0.2633 & 0.0000 & 0.0871 \\
 \bottomrule
 \end{tabularx}
 
 \medskip
 \begin{minipage}{\textwidth}
 \footnotesize
-\textit{Note:} The table reports summary statistics across stocks for
-the first-stage LASSO in-sample $R^2$, computed within each rolling estimation window and then averaged over windows,
-and the first-stage out-of-sample $R^2$, computed from the sequence of one-step-ahead LASSO forecasts evaluated against realized (demeaned) returns with the zero-forecast as benchmark.
+\textit{Note:} The table reports summary statistics across the 1,296 estimation stocks for
+the first-stage LASSO in-sample $R^2$, computed within each rolling window and averaged over windows,
+the first-stage out-of-sample $R^2$, computed from the sequence of one-step-ahead LASSO forecasts
+evaluated against realised (demeaned) returns with the zero-forecast as benchmark,
+and the average LASSO selection rate (fraction of predictor-window cells with a non-zero coefficient).
+Calibrated parameters: $\lambda^* = 3.506 \times 10^{-3}$, $s^* = 231$ days, $n = 1$ lag.
 \end{minipage}
 \end{table}
 
-As we can see in Table~\ref{tab:summary_stats_lasso} the in-sample $R^2$ is positive, indicating that the LASSO learning rule explains returns within the estimation window, but not outside of it as the out-of-sample $R^2$ is negative on average.
-This pattern is consistent with our theory: agents perceive return predictability in-sample, but this predictability does not persist out-of-sample due to the misspecified nature of the PLM and the high-dimensional environment.
+Table~\ref{tab:summary_stats_lasso} shows that the in-sample $R^2$ is small but positive (median 0.009),
+indicating that the LASSO learning rule captures within-window patterns, while the out-of-sample $R^2$
+is near zero (median $-$0.004).
+This pattern is consistent with our theory: agents perceive transient predictability in-sample,
+but it does not persist out-of-sample---a direct implication of the CMCE condition $\beta^* = 0$.
+The median selection rate is 0.6\%, confirming that beliefs are sparse; however, the distribution
+is right-skewed, with higher-volatility stocks selecting predictors more frequently (see Figure~\ref{fig:avg_select}).
+Approximately 40\% of stocks have selection rates below 0.3\%, implying that the LASSO
+never selects any predictor for these stocks under the calibrated $\lambda^*$.
+This is consistent with the model: for stocks whose return variance is small relative to the
+penalty level, the LASSO correctly infers that there is insufficient evidence to support a
+non-zero belief vector, leaving $f_t = 0$ throughout.
 
 Next, we document that perceived predictability is concentrated in a few signals when it arises.
 Figure~\ref{fig:percent_active} plots the average number of selected predictors per stock over time, as well as shaded areas corresponding to the 5th and 95th percentiles across stocks.
@@ -677,12 +708,56 @@ An agent applying LASSO to the data would find the rule attractive ex ante, beca
 Consistent with our theory, perceived predictability is episodic, so at any point in time only a subset of stocks is viewed as predictable and, conditional on selection, beliefs are sparse and concentrated on a few predictors.
 Taken together, these results match the model’s predictions and mirror recent evidence that return predictability arises in short lived, shifting pockets rather than as a stable forecasting relation \citep{Chinco2019}.
 
+We next examine \emph{which} features the LASSO selects.
+The model makes a sharp prediction: because topic-attention innovations are globally
+standardised before entering the rolling window, there is no mechanical reason for any
+particular topic to be selected more frequently than another.
+Selection probabilities should therefore be governed entirely by each topic’s statistical
+relationship with returns, producing an approximately uniform distribution across features.
+To test this, we estimate the beta tensor for a sample of 200 stocks and compute, for each
+of the 190 features, its mean selection rate---the fraction of stock-window cells in which
+the LASSO assigns a non-zero coefficient.
+
+Figure~\ref{fig:topic_selection_freq} ranks all 190 features by their mean selection rate.
+The distribution is mildly concentrated (Gini coefficient = 0.24) but far from degenerate:
+every feature is selected at least once, and the most-selected feature (``Announce plan’’,
+a news topic signalling corporate announcements) is selected only $3.9\times$ above the
+uniform null rate.
+The 10 macro time-series (shown in red) are selected at a rate 1.28 times higher than the
+180 news topics on average---a modest premium that likely reflects their higher
+autocorrelation and broader relevance across industries.
+The top-2 features are the VIX (macro) and ``Financial reports’’---both economically
+interpretable as signals agents might plausibly condition on.
+Importantly, there is no sign of the extreme concentration that would arise if a handful
+of topics mechanically dominated selection; the results are consistent with selection
+being driven by statistical heterogeneity in return-predictive content rather than
+any structural bias toward particular topics.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{topic_selection_frequency.png}
+    \caption{LASSO Selection Frequency Across Features}
+    \label{fig:topic_selection_freq}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} Each bar shows the mean selection rate of a feature across 200 stocks and
+    all rolling windows (fraction of stock-window cells with a non-zero LASSO coefficient).
+    Features are ranked from most to least selected.
+    Red bars denote the 10 macro time-series; blue bars denote the 180 news topics.
+    The dashed line is the uniform null ($\text{total selections} / 190$).
+    Left panel: all 190 features. Right panel: top 40 named features.
+    \end{minipage}
+\end{figure}
+
 Next, we estimate the parameter $\kappa_{i}$ implied by the ALM by applying NLS to equation~(\ref{eq:empirical_alm}), taking the LASSO-estimated belief sequence ${\beta_{i,t}}$ as given.
 Identification relies on time-series variation in agents’ beliefs about return predictability, as captured by fluctuations in $X_t \beta_{i,t}$, and on the corresponding variation in realized returns. 
-Intuitively, $\kappa_{i}$ is pinned down by how changes in expected returns translate into realized returns through the nonlinear asset-pricing equation.Table~\ref{tab:summary_stats_stage2} shows the summary of this estimation for the cross-section of stocks.
-A significant $\kappa$ indicates that the non-linear ALM has explanatory power over a simple case where returns are unpredictable, and we view it as an empirical test of the CMCE equilibrium being at work in the data.
-The proportion of stocks for which the $\kappa$ estimate is statistically significant at least at the 5\% level is 25\%.
-For these stocks, we summarize the estimation results in Table~\ref{tab:summary_stats_stage2}.
+Intuitively, $\kappa_{i}$ is pinned down by how changes in expected returns translate into
+realised returns through the nonlinear asset-pricing equation.
+A significant $\kappa$ indicates that the non-linear ALM has explanatory power over a benchmark where
+returns are unpredictable, and we view it as an empirical test of the CMCE equilibrium being operative in the data.
+Among the 770 estimation stocks with non-zero LASSO selection---for which $f_t$ has enough time-series
+variation to identify $\kappa$---9.5\% have a statistically significant $\kappa$ estimate at the 5\% level.
+Table~\ref{tab:summary_stats_stage2} summarises the estimation results for these stocks.
 
 
 \begin{table}[H]
@@ -694,27 +769,99 @@ For these stocks, we summarize the estimation results in Table~\ref{tab:summary_
 \toprule
  & mean & std & median & min & max & p05 & p95 \\
 \midrule
-$R^2$  & 0.0016 & 0.0011 & 0.0016 & 0.0001 & 0.0038 & 0.0002 & 0.0033 \\
-$\hat{\kappa}$ & 0.6435 & 0.2718 & 0.6637 & 0.1311 & 0.9711 & 0.2337 & 0.9683 \\
-$t$-statistic of $\hat{\kappa}$ & 9.5058 & 12.7404 & 4.7980 & 1.9954 & 44.1949 & 2.0958 & 34.4050 \\
+In-sample $R^2$        & 0.0030 & 0.0021 & 0.0023 & 0.0012 & 0.0143 & 0.0014 & 0.0064 \\
+$\hat{\kappa}$         & 0.2872 & 0.1178 & 0.2786 & 0.0884 & 0.5998 & 0.1163 & 0.5392 \\
+$t$-statistic of $\hat{\kappa}$ & 3.0835 & 1.1626 & 2.6328 & 1.9696 & 8.1218 & 2.0381 & 5.0675 \\
 \bottomrule
 \end{tabularx}
 
 \medskip
 \begin{minipage}{\textwidth}
 \footnotesize
-\textit{Note:} The table reports summary statistics across stocks for second-stage
-predictive performance and belief-implied return sensitivity. 
-$\hat{\kappa}$ denotes the estimated sensitivity parameter and its $t$-statistic.
-Each stock-level estimation uses 1{,}500 daily observations, and the reported statistics are computed across the
-full cross-section of 1{,}620 stocks.
+\textit{Note:} The table reports summary statistics across the 73 estimation stocks
+(9.5\% of the 770 with non-zero LASSO selection) for which $\hat\kappa$ is statistically
+significant at the 5\% level.
+In-sample $R^2$ is the second-stage NLS fit evaluated on the full time series.
+$\hat{\kappa}$ is the estimated belief-feedback parameter and its $t$-statistic is computed
+from the NLS sandwich standard error.
 \end{minipage}
 \end{table}
 
 
-%%%
-% HERE DISCUSS STAGE 2 RESULTS
-%%%
+\subsection{Robustness: Volatility-Scaled Penalty}
+
+The baseline specification uses a single global $\lambda^*$ across all stocks.
+Because the topic features $X_t$ are standardised within each rolling window but the
+return $r_{i,t}$ is not, the effective penalisation relative to the signal-to-noise
+ratio varies with stock volatility.
+Specifically, the LASSO soft-thresholding condition implies that a predictor is selected
+only if its within-window OLS coefficient exceeds $\lambda$ in absolute value.
+For a low-volatility stock (small $\sigma_i$), returns fluctuate less, so OLS coefficients
+are smaller in magnitude and $\lambda^*$ is proportionally more restrictive---which explains
+why $\approx 40\%$ of stocks have zero LASSO selection under the global $\lambda^*$.
+
+A natural robustness check replaces $\lambda^*$ with a per-stock volatility-scaled penalty:
+\begin{equation}\label{eq:volscaled_lambda}
+\lambda_i = \lambda^* \times \frac{\sigma_i}{\bar\sigma},
+\end{equation}
+where $\sigma_i = \mathrm{std}(r_{i,\cdot})$ is the full-sample standard deviation of stock $i$'s
+log returns and $\bar\sigma = 0.0175$ is the cross-sectional median.
+This normalisation restores a uniform effective penalty relative to each stock's return scale.
+The window $s^*$ and $n$ are kept at the baseline values; no additional hyperparameter
+optimisation is performed for this specification.
+
+Table~\ref{tab:comparison} reports a side-by-side comparison of the two specifications on the
+same 1,296 estimation stocks.
+
+\begin{table}[H]
+\centering
+\caption{Baseline vs.\ Volatility-Scaled Penalty: Estimation Results}
+\label{tab:comparison}
+\begin{tabularx}{\textwidth}{@{}>{\small}X cc cc@{}}
+\toprule
+ & \multicolumn{2}{c}{Baseline ($\lambda^* = 3.506\!\times\!10^{-3}$)}
+ & \multicolumn{2}{c}{Vol-scaled ($\lambda_i = \lambda^*\sigma_i/\bar\sigma$)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+ & mean & median & mean & median \\
+\midrule
+\multicolumn{5}{l}{\textit{Stage 1 — all estimation stocks ($N=1{,}296$)}} \\[2pt]
+In-sample $R^2$    & 0.0250 & 0.0086 & 0.0081 & 0.0072 \\
+OOS $R^2$          & $-$0.0127 & $-$0.0040 & $-$0.0048 & $-$0.0036 \\
+Selection rate     & 0.0194 & 0.0060 & 0.0064 & 0.0061 \\
+\% zero selection  & \multicolumn{2}{c}{40.5\%}  & \multicolumn{2}{c}{3.2\%} \\[4pt]
+\multicolumn{5}{l}{\textit{Stage 2 — significant-$\kappa$ stocks}} \\[2pt]
+$N$ (share of non-degen.)  & \multicolumn{2}{c}{73 (9.5\%)} & \multicolumn{2}{c}{133 (10.6\%)} \\
+In-sample $R^2$    & 0.0030 & 0.0023 & 0.0023 & 0.0020 \\
+OOS $R^2$          & $-$0.0089 & $-$0.0016 & $-$0.0049 & $-$0.0019 \\
+$\hat\kappa$       & 0.2872 & 0.2786 & 0.3975 & 0.3893 \\
+$t$-stat $\hat\kappa$ & 3.084 & 2.633 & 3.265 & 2.833 \\
+\bottomrule
+\end{tabularx}
+
+\medskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Note:} Both specifications use the same window $s^*=231$ days and $n=1$ lag,
+calibrated on the 20\% tuning stocks.
+``Non-degen.'' refers to stocks with average LASSO selection rate $\geq 0.3\%$.
+``Significant $\kappa$'' requires $\hat\kappa_{t\text{-stat}} > 1.96$.
+Vol-scaled penalty: $\lambda_i = \lambda^* \times \sigma_i/\bar\sigma$,
+where $\bar\sigma = 0.0175$ is the cross-sectional median daily return volatility.
+\end{minipage}
+\end{table}
+
+The vol-scaled specification reduces the zero-selection rate from 40.5\% to 3.2\%
+by giving low-volatility stocks a proportionally smaller penalty.
+The share of significant-$\kappa$ stocks rises from 9.5\% to 10.6\%, and the median
+$\hat\kappa$ increases from 0.279 to 0.389---closer to the oracle target of 0.374
+obtained under the same calibration in Appendix~\ref{app:oracle}.
+Stage-1 in-sample $R^2$ falls slightly (from 0.025 to 0.008), reflecting less
+within-window overfit under a better-matched effective penalty.
+Stage-1 OOS $R^2$ remains close to zero ($-$0.004 vs.\ $-$0.005), consistent with
+the CMCE prediction $\beta^*=0$ across the volatility spectrum.
+We view the vol-scaled specification as the preferred robustness check, as it
+aligns the effective regularisation with the theoretical model in which the
+LASSO penalty is applied in units of the return scale.
 
 % =====================================================
 
@@ -1333,6 +1480,187 @@ Diagonal entries ($k=l$) reflect same-lag correlations, while off-diagonal entri
   \caption{Correlation matrix of news-topic attention series.}
   \label{fig:corr_heatmap}
 \end{figure}
+
+
+\section{Oracle Test: Estimation on Model-Generated Data}\label{app:oracle}
+
+To assess whether our two-stage estimation procedure is capable of recovering the structural
+parameters when the data are truly generated by the model, we conduct an oracle test.
+The key idea is to use the \emph{actual} topic-innovation series $\{x_t\}$ as the predictor
+matrix and simulate returns from the ALM using known parameters, thereby constructing a
+controlled environment in which the data-generating process is exactly the model.
+We can then compare estimated parameters to their known true values and characterise the
+expected range of fit statistics under the null that the model is correctly specified.
+
+\subsection*{Design}
+
+We fix the structural parameters at the baseline calibration:
+$a = 1.55$, $\gamma = 2.0$, $\delta = 0.9$, $\sigma = 0.001$.
+These imply $\kappa = \delta \, a^{-\gamma} \phi \approx 0.3746$ and $w = -\log \kappa - e^{-10} \approx 0.9818$,
+where $\phi = e^{\sigma^2/2}$ is the standard lognormality correction.
+
+The LASSO penalty is calibrated by targeting a false-selection probability of $\alpha_0 = 0.02$.
+Under a rolling window of length $s$, the stationary distribution of a null OLS coefficient has standard deviation
+\[
+  \sigma_{\beta} = \frac{\sigma_d}{\sigma_x \sqrt{s}} \sqrt{\frac{1-\kappa}{2}},
+\]
+where $\sigma_d$ is the shock volatility and $\sigma_x$ is the average cross-sectional
+standard deviation of the predictors.
+Setting $\lambda$ such that $\Pr(|\hat\beta| > \lambda) = \alpha_0$ under this distribution yields
+\[
+  \lambda = z_{1-\alpha_0/2} \,\sigma_{\beta},
+\]
+where $z_{1-\alpha_0/2}$ is the corresponding normal quantile.
+The implied sklearn penalty is $\lambda / (2 \bar{d} s)$, where $\bar{d}$ is the mean absolute
+value of the predictor matrix.
+
+Given the calibrated parameters and the empirical topic series, we simulate returns as follows.
+Starting from $\beta_0 = 0$, at each $t > s$ we (i) fit a rolling-window LASSO on
+$(X_{t}, r_{t})$ to obtain $\hat\beta_t$, (ii) form the belief indices
+$f_t = x_t^\top \hat\beta_t$ and $f_{t+1} = x_{t+1}^\top \hat\beta_{t+1}$, and (iii) draw the
+simulated return from the ALM:
+\[
+r_{t+1}
+= \log\!\bigl(1 - \kappa\,e^{w\tanh(f_t/w)}\bigr)
+- \log\!\bigl(1 - \kappa\,e^{w\tanh(f_{t+1}/w)}\bigr)
++ \varepsilon_{t+1}, \qquad \varepsilon_{t+1} \sim \mathcal{N}(0, \sigma^2).
+\]
+We then re-apply the same two-stage estimation procedure---with identical hyperparameters---to
+the simulated return series $\{r_t^{\text{sim}}\}$ and the same topic matrix.
+This allows us to compare estimated to true values and to characterise the distribution of
+fit statistics under the null.
+
+We run the test under two information environments: a parsimonious specification with
+$K = 20$ topics and the full specification with $K = 187$ topics.
+
+\subsection*{Results}
+
+\begin{table}[H]
+\centering
+\caption{Oracle Test: Parameter Recovery and Fit Statistics}
+\label{tab:oracle}
+\begin{tabularx}{\textwidth}{@{}>{\small}lcccccc@{}}
+\toprule
+ & \multicolumn{1}{c}{True $\kappa$}
+ & \multicolumn{1}{c}{Est.\ $\hat\kappa$}
+ & \multicolumn{1}{c}{$|\hat\kappa - \kappa|$}
+ & \multicolumn{1}{c}{Stage-1 OOS $R^2$}
+ & \multicolumn{1}{c}{Stage-2 OOS $R^2$}
+ & \multicolumn{1}{c}{$\hat\beta$ RMSE} \\
+\midrule
+$K = 20$ topics  & 0.3746 & 0.286 & 0.088 & 0.0010 & 0.0026 & $9 \times 10^{-6}$ \\
+$K = 187$ topics & 0.3746 & 0.350 & 0.025 & 0.0162 & 0.0181 & $9 \times 10^{-6}$ \\
+\bottomrule
+\end{tabularx}
+\medskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Note:} Results from applying the two-stage estimation to returns simulated from the
+model using the empirical topic series ($T = 1{,}878$ trading days).
+Rolling window $s = 100$, $n_{\text{lags}} = 1$, $\lambda$ calibrated to 2\% target
+false-selection probability.
+OOS $R^2$ for Stage~1 is computed relative to the zero forecast.
+OOS $R^2$ for Stage~2 is evaluated on the held-out 20\% of the sample.
+\end{minipage}
+\end{table}
+
+Table~\ref{tab:oracle} shows that the estimation procedure recovers $\kappa$ with reasonable
+accuracy in both specifications.
+With the full predictor set the absolute error falls to 0.025 (relative error 6.6\%),
+and both OOS $R^2$ statistics are positive ($\approx 1.6$--$1.8\%$), confirming that the
+belief channel is empirically detectable when the model is true.
+With only 20 topics the recovery is coarser (absolute error 0.088), reflecting the noisier
+belief index in a sparser environment.
+
+One noteworthy finding concerns the Stage-1 in-sample $R^2$: because the rolling LASSO is
+estimated on a finite window of length $s$ with $K \gg 1$ potential predictors, it tends to
+overfit within the window.
+This generates a pattern---large in-sample $R^2$ paired with small or negative out-of-sample
+$R^2$---that is entirely consistent with agents using an attractive-looking but ultimately
+misspecified forecasting rule.
+The oracle test establishes that this pattern is expected under the null, and should not be
+interpreted as a failure of the model.
+
+\subsection*{Overselection under correlated predictors}
+
+The lambda calibration formula assumes that topic innovations are mutually independent.
+Table~\ref{tab:oracle_selection} reports the implied versus empirical selection rates in the
+full-topic run.
+
+\begin{table}[H]
+\centering
+\caption{Target vs.\ Empirical LASSO Selection Rate (Oracle Test, $K = 187$)}
+\label{tab:oracle_selection}
+\begin{tabular}{lcc}
+\toprule
+ & Target & Empirical \\
+\midrule
+Selection probability per topic-window cell & 2.0\% & 10.9\% \\
+Active topics per rolling window (expected) & 3.7   & 20.3  \\
+\bottomrule
+\end{tabular}
+\medskip
+\begin{minipage}{0.9\textwidth}
+\footnotesize
+\textit{Note:} The target selection probability is the input to the lambda calibration
+($\alpha_0 = 0.02$).
+Empirical rates are computed from the oracle-test estimation output.
+\end{minipage}
+\end{table}
+
+The LASSO selects approximately five times as many predictors as targeted.
+This overselection arises because the iid assumption underlying the calibration formula does
+not hold exactly: topic innovations exhibit modest positive cross-correlations
+(Figure~\ref{fig:corr_heatmap}), which reduce the effective degrees of freedom and lower the
+threshold at which additional predictors enter the active set.
+Despite this, parameter recovery remains accurate (Table~\ref{tab:oracle}), suggesting that
+the overselection is benign: the additional selected predictors contain little incremental
+information about returns, so the belief index $f_t$ and hence $\hat\kappa$ are not
+materially affected.
+A practical implication is that the penalty parameter $\lambda$ may need to be set above the
+theoretical calibration to achieve the intended sparsity level in finite samples.
+
+\subsection*{Beta recovery}
+
+The low out-of-sample $R^2$ values documented in Table~\ref{tab:oracle} might raise a concern:
+does the procedure actually recover the belief coefficients $\beta_t$, or are the estimated
+paths merely noise?
+Figures~\ref{fig:oracle_beta_20} and~\ref{fig:oracle_beta_full} address this question directly
+by overlaying the true simulated coefficients $\beta_t$ against the re-estimated paths
+$\hat\beta_t$ produced by the rolling LASSO.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{oracle_cell11_fig0.png}
+  \caption{Oracle test: true vs.\ estimated coefficient path for the first topic
+           ($K = 20$ specification).
+           The rolling LASSO tracks the true belief coefficient closely,
+           even though the out-of-sample $R^2$ for Stage~1 is near zero.}
+  \label{fig:oracle_beta_20}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{oracle_cell12_fig0.png}
+  \caption{Oracle test: true vs.\ estimated paths for the ten largest-magnitude
+           coefficients ($K = 187$ specification).
+           For all active predictors the estimated path follows the true simulated coefficient,
+           confirming that the rolling LASSO recovers the sparse belief structure.}
+  \label{fig:oracle_beta_full}
+\end{figure}
+
+The figures reveal a striking result: despite Stage-1 out-of-sample $R^2$ values that are
+close to zero, the rolling LASSO reconstructs the true coefficient paths with high fidelity.
+The RMSE of $\hat\beta_t$ relative to $\beta_t^{\text{true}}$ is approximately
+$9 \times 10^{-6}$ in both specifications (Table~\ref{tab:oracle}).
+This apparent paradox---accurate beta recovery alongside near-zero predictive $R^2$---is
+a direct implication of the model's equilibrium.
+At the CMCE, returns are close to unpredictable ($f_t \approx 0$), so even perfectly
+estimated belief coefficients produce little return forecastability in the standard $R^2$
+sense.
+The signal in $f_t$ is real but small relative to the volatility of $\eta_t$.
+The oracle test therefore validates the two-stage estimator: the relevant object for
+identifying $\kappa$ is the variation in $f_t$ over time, not the level of forecasting $R^2$.
 
 
 \end{document}

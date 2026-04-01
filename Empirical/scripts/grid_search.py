@@ -62,10 +62,14 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=Tr
         r2_oos_stage1 = calculate_r_squared(y_demeaned, preds)
         r2_insample_stage1 = np.nanmean(stage1_results['insample_r_squareds'])
 
+        # Selection rate: fraction of (window, feature) cells where LASSO coef != 0
+        n_features = stage1_results['coefficients'].shape[1] if len(stage1_results['coefficients'].shape) > 1 else 1
+        avg_selection_rate = float(np.mean(stage1_results['num_nonzero_coefficients'])) / n_features
+
         # Stage 2 Estimation
         stage2_input = pd.DataFrame({"vwretd": y_vals, "predictions": preds})
         stage2_results = compute_stage2_r_squared(stage2_input, min_train_size=100)
-        
+
         # --- Build Summary Dictionary ---
         summary = {
             'window_size': window_size,
@@ -81,13 +85,14 @@ def estimate_single_config(X, y, window_size, n_lags, lambda_val, standardize=Tr
             'intercept_tstat': stage2_results['intercept_tstat'],
             'n_observations': len(y_vals),
             'n_windows': len(stage1_results['predictions']),
-            'n_oos_predictions_stage2': stage2_results.get('n_oos_predictions', np.nan)
+            'n_oos_predictions_stage2': stage2_results.get('n_oos_predictions', np.nan),
+            'avg_selection_rate': avg_selection_rate,
         }
 
         if not return_details:
             return {"summary": summary, "details": pd.DataFrame()}
 
-        
+
         # --- Build Detailed Coefficients DataFrame ---
         # We construct a dataframe where each row is a time window
         n_wins = len(stage1_results['lambdas'])
@@ -228,7 +233,8 @@ def estimate_single_config_fast(X, y, window_size, n_lags, lambda_val, standardi
             'intercept_tstat': stage2_results['intercept_tstat'],
             'n_observations': len(y_vals),
             'n_windows': len(stage1_results['predictions']),
-            'n_oos_predictions_stage2': stage2_results.get('n_oos_predictions', np.nan)
+            'n_oos_predictions_stage2': stage2_results.get('n_oos_predictions', np.nan),
+            'avg_selection_rate': float(np.mean(stage1_results['num_nonzero_coefficients'])) / (stage1_results['coefficients'].shape[1] if len(stage1_results['coefficients'].shape) > 1 else 1),
         }
 
         if not return_details:

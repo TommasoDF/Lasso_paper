@@ -1,0 +1,7 @@
+window_size: 231
+n_lags: 1
+lambda: 0.003505898780188227
+tune_frac: 0.2
+n_tune_stocks: 324
+n_estim_stocks: 1296
+optuna_score: 0.610536
