@@ -749,6 +749,234 @@ any structural bias toward particular topics.
     \end{minipage}
 \end{figure}
 
+\paragraph{Selection intensity across stocks.}
+Figure~\ref{fig:topic_selection_by_stock} examines the same sparsity from the
+cross-sectional dimension: for each stock, we compute the average number of topics
+selected per rolling window and plot its distribution across the 1{,}296 estimation
+stocks.
+Under the volatility-scaled penalty, the distribution is unimodal and well-behaved
+(mean = 1.22, median = 1.15, standard deviation = 0.46), with only 1.5\% of stocks
+averaging fewer than 0.5 selected topics per window---confirming that the zero-selection
+problem of the global-$\lambda$ specification is eliminated.
+The right tail extends to roughly 3.7 topics per window for the most-selected stocks.
+By sector, Energy \& Mining stocks exhibit the highest selection intensity
+(mean = 1.44), consistent with oil-market topics carrying a strong statistical signal;
+Consumer stocks have the lowest (mean = 0.93).
+Together with Figure~\ref{fig:topic_selection_freq}, this establishes that sparsity
+is a genuine feature of the data in both dimensions: only a handful of topics are
+selected for any given stock (cross-feature sparsity), and the number of topics
+selected varies substantially across stocks (cross-sectional sparsity).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{topic_selection_by_stock.png}
+    \caption{LASSO Selection Intensity Across Stocks}
+    \label{fig:topic_selection_by_stock}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} Left panel: histogram of the average number of topics selected per
+    rolling window across the 1{,}296 estimation stocks (vol-scaled $\lambda_i$).
+    Dashed red line is the cross-sectional mean (1.22); dash-dot orange line is the
+    median (1.15).
+    Right panel: box plots of the same quantity by broad industry sector.
+    \end{minipage}
+\end{figure}
+
+\paragraph{Time-series variation in selection intensity.}
+Figure~\ref{fig:selection_rate_time} plots the cross-sectional mean, interquartile
+range, and p10--p90 band of the number of topics selected per stock per rolling
+window, alongside the aggregate selection rate, over the full 2011--2017 sample.
+
+Selection intensity is far from constant.
+The aggregate selection rate peaks at 2.37\% in January 2012---during the height of
+the European sovereign debt crisis, when macro news was unusually informative about
+cross-sectional returns---and troughs at 0.06\% in October 2014, a period of
+exceptional calm in US equity markets.
+This roughly 37-fold range confirms that predictability is episodic: there are
+identifiable windows in which agents broadly find statistical signals, and extended
+periods in which nearly no topic clears the LASSO threshold for any stock.
+The S\&P downgrade (August 2011), taper tantrum (May 2013), China flash crash
+(August 2015), Brexit vote, and 2016 US election are all associated with visible
+upticks in selection intensity, consistent with macro uncertainty driving a
+temporary increase in perceived return predictability.
+
+The p10--p90 band shows that heterogeneity across stocks is substantial at every
+point in time: even during peak episodes, many stocks select no topics, while a
+small group selects several simultaneously.
+This cross-sectional dispersion is itself informative---it suggests that systematic
+episodes of predictability are not fully aggregate but partly stock-specific,
+reflecting which stocks happen to have a rolling window whose coefficient estimates
+cross the threshold at a given date.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{selection_rate_over_time.png}
+    \caption{Topic Selection Intensity Over Time}
+    \label{fig:selection_rate_time}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} \textbf{Top panel}: cross-sectional distribution of the number of
+    topics selected per stock per rolling window (10-day centred moving average).
+    Dark band = IQR (p25--p75); light band = p10--p90; line = cross-sectional mean.
+    \textbf{Bottom panel}: aggregate selection rate (fraction of all stock-feature pairs
+    with a non-zero LASSO coefficient, left axis) and fraction of stocks selecting zero
+    topics (right axis, dashed orange).
+    Red dashed vertical lines mark selected macro events within the sample period.
+    \end{minipage}
+\end{figure}
+
+\paragraph{Persistence of topic selection.}
+We next ask whether selection episodes are transient or persistent: once a topic is
+selected for a given stock, does it remain selected in subsequent rolling windows?
+We characterise persistence along three complementary dimensions, reported in
+Figure~\ref{fig:topic_selection_persistence}.
+
+The \emph{run-length distribution} (top-left panel) shows the number of consecutive
+windows a topic remains selected after first being picked up, pooled across all
+180{,}586 selection episodes.
+The distribution is heavily right-skewed: the median run length is only 4 windows
+(approximately one trading week), yet the 95th percentile reaches 69 windows and
+the maximum is 433.
+This mixture of short and long episodes suggests two co-existing regimes: a majority
+of transient selections that are quickly discarded as new data enter the rolling
+window, and a minority of persistent episodes where the statistical signal is
+sufficiently strong to survive many window updates.
+
+The \emph{survival curve} (top-right panel) estimates $P(\text{selected at } t+k \mid
+\text{selected at } t)$ for lags $k = 1, \ldots, 120$ windows.
+Persistence decays rapidly at first---73\% of selection events survive to the next
+window, 54\% to lag 5---but the curve flattens considerably thereafter: 38\% of
+episodes persist to lag 20 and 22\% to lag 60 (roughly three months of trading days).
+This slow-decaying tail is consistent with the CMCE mechanism: a topic that has been
+selected generates self-fulfilling predictability, which sustains itself until enough
+new observations dilute the rolling-window coefficient estimate.
+
+The \emph{mean autocorrelation function} of the binary selection indicator (bottom-left
+panel), averaged over the 39{,}808 stock-topic pairs with at least 0.5\% mean selection
+rate, corroborates this picture.
+The first-order autocorrelation is 0.89 and decays slowly ($\text{AC}(5) = 0.70$,
+$\text{AC}(20) = 0.40$), far from the near-zero values expected under i.i.d.\ selection.
+
+Finally, the bottom-right panel shows a representative heatmap for the most actively
+selected stock, with topics ranked by total selection count.
+The heatmap reveals that the same small set of topics tends to be selected repeatedly
+across non-overlapping windows, interspersed with gaps, rather than a uniform or
+rotating pattern.
+This is consistent with a narrative in which certain topic--stock pairs reflect
+genuinely recurring statistical relationships that agents periodically rediscover.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{topic_selection_persistence.png}
+    \caption{Persistence of Topic Selection Episodes}
+    \label{fig:topic_selection_persistence}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} All panels are based on the vol-scaled $\lambda_i$ estimation
+    (1{,}296 stocks, 190 features, 1{,}648 trading days).
+    \textbf{Top-left}: histogram of run lengths (consecutive windows a topic remains
+    selected), pooled across 180{,}586 episodes; truncated at 80 windows for readability.
+    \textbf{Top-right}: survival curve $P(\text{selected at }t+k \mid \text{selected at }t)$
+    estimated for each onset event and averaged across all stock-topic pairs.
+    \textbf{Bottom-left}: mean autocorrelation function of the binary selection indicator,
+    averaged over 39{,}808 active stock-topic pairs (mean selection rate $\geq 0.5\%$).
+    \textbf{Bottom-right}: heatmap of topic selection over time for the most actively
+    selected stock (top 30 topics by total selection count; every 5th window plotted).
+    \end{minipage}
+\end{figure}
+
+\paragraph{Narrative alignment.}
+While the model predicts that selection is governed by statistical properties alone,
+we test whether there is an additional, non-statistical component: do agents
+disproportionately select features that are narratively coherent with the economic
+identity of the firm?
+Under the volatility-scaled penalty $\lambda_i$, the effective regularisation is
+uniform across stocks, so features cannot be mechanically favoured by return-scale
+differences.
+Any residual cross-feature heterogeneity in selection rates must therefore reflect
+either the statistical content of each topic--return pair or its narrative content.
+
+We proxy narrative relevance using the text of each firm's most recent 10-K filing.
+For each of the 591 firms with available filings from the SEC EDGAR database, we
+compute a TF-IDF vector over the Business Description section (Item~1) and compare
+it against a TF-IDF vector of the key terms associated with each of the 190 features.
+The resulting cosine similarity $\cos_{ij} \in [0,1]$ measures the degree to which
+feature $j$'s topic vocabulary appears in firm $i$'s own description of its business.
+
+We estimate a panel regression:
+\begin{equation}\label{eq:narrative_reg}
+\bar{s}_{ij} = \alpha_i + \delta_j + \beta\,\cos_{ij} + \varepsilon_{ij},
+\end{equation}
+where $\bar{s}_{ij}$ is the mean LASSO selection rate for stock $i$ and feature $j$,
+$\alpha_i$ are stock fixed effects (absorbing heterogeneity in overall selection
+propensity), and $\delta_j$ are feature fixed effects (absorbing differences in
+aggregate popularity of each topic).
+The coefficient $\beta$ captures whether a feature is selected more often
+\emph{conditional on} the stock's overall propensity and the feature's overall
+popularity---a clean, within-stock-and-topic test of narrative alignment.
+
+Table~\ref{tab:narrative_alignment} reports the results.
+Across 112{,}290 stock-feature observations, $\hat\beta = 0.0088$ ($t = 2.02$, $p = 0.043$):
+a one-standard-deviation increase in 10-K cosine similarity raises the within-cell
+selection rate by 0.00012 percentage points after removing stock and feature fixed effects.
+The overall Spearman rank correlation is $\rho = +0.026$ ($p < 0.0001$).
+The effect is most pronounced in Consumer stocks ($\hat\beta = 0.065$, $t = 5.19$) and
+in the Financials sector ($\rho = +0.036$, $p < 0.0001$); it is absent or reversed in
+Technology and Healthcare.
+
+We also test a between-stock hypothesis: are firms whose 10-K vocabulary overlaps
+broadly with the full feature set (``narratively central'' firms) selected more
+overall?
+We measure narrative centrality as the average cosine similarity across all 190
+features and find no significant correlation with mean selection rate
+($\rho = +0.049$, $p = 0.23$).
+This rules out a mechanical reading: the top narrative-central stocks are regional
+banks and utilities, which use broad financial language that overlaps with many
+topics by construction.
+
+Taken together, these results indicate that statistical relevance is the primary
+driver of topic selection---consistent with the model---but that a small, genuine
+within-stock narrative alignment component exists in certain sectors.
+Agents appear slightly more likely to act on statistical predictions that align with
+their prior understanding of the firm's economic identity, consistent with the
+narrative economics view of \citet{Shiller2017}.
+
+\begin{table}[H]
+\centering
+\caption{Narrative Alignment: 10-K Similarity and LASSO Selection Rates}
+\label{tab:narrative_alignment}
+\begin{tabularx}{\textwidth}{@{}>{\small}X r r r r r@{}}
+\toprule
+ & $N_{\text{stocks}}$ & $N_{\text{obs}}$ & Spearman $\rho$ & Panel FE $\hat\beta$ & $t$-stat \\
+\midrule
+\multicolumn{6}{l}{\textit{Panel A: All sectors pooled}} \\[2pt]
+Overall   & 591 & 112{,}290 & $+0.026^{***}$ & $0.0088$ & $2.02^{**}$ \\[6pt]
+\multicolumn{6}{l}{\textit{Panel B: By sector}} \\[2pt]
+Energy \& Mining      & 36  & 6{,}840  & $+0.021^{*}$   & $0.0074$ & $0.39$ \\
+Financials            & 137 & 26{,}030 & $+0.036^{***}$ & $0.0147$ & $1.85^{*}$ \\
+Technology            & 25  & 4{,}750  & $-0.002$        & $-0.0302$ & $-1.06$ \\
+Healthcare            & 13  & 2{,}470  & $-0.022$        & $0.0427$ & $0.99$ \\
+Consumer              & 71  & 13{,}490 & $+0.014$        & $0.0652$ & $5.19^{***}$ \\
+Industrials           & 101 & 19{,}190 & $+0.022^{***}$ & $-0.0157$ & $-1.38$ \\
+Utilities \& Telecom  & 35  & 6{,}650  & $+0.085^{***}$ & $0.0158$ & $0.79$ \\[6pt]
+\multicolumn{6}{l}{\textit{Panel C: Between-stock narrative centrality}} \\[2pt]
+Mean sim.\ vs.\ mean sel.\ rate & 591 & --- & $+0.049$ & --- & --- \\
+\bottomrule
+\end{tabularx}
+\medskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Note:} $\bar{s}_{ij}$ is the mean LASSO selection rate for stock $i$ and feature $j$
+across all rolling windows.
+Cosine similarity $\cos_{ij}$ is computed between TF-IDF vectors of each firm's 10-K
+Business Description (Item~1) and the key-term string of each WSJ topic feature.
+Panel FE $\hat\beta$ is from OLS on the within-transformed data (stock $+$ feature fixed effects).
+Panel~C reports the Spearman correlation between each firm's average cosine similarity
+across all features (``narrative centrality'') and its average selection rate.
+Significance: $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.
+\end{minipage}
+\end{table}
+
 Next, we estimate the parameter $\kappa_{i}$ implied by the ALM by applying NLS to equation~(\ref{eq:empirical_alm}), taking the LASSO-estimated belief sequence ${\beta_{i,t}}$ as given.
 Identification relies on time-series variation in agents’ beliefs about return predictability, as captured by fluctuations in $X_t \beta_{i,t}$, and on the corresponding variation in realized returns. 
 Intuitively, $\kappa_{i}$ is pinned down by how changes in expected returns translate into
