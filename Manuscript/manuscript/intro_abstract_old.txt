@@ -1,0 +1,75 @@
+\begin{abstract}
+\noindent
+We develop an asset-pricing model in which investors search for return predictability in high-dimensional data using a LASSO-based learning rule that mirrors empirical practices.
+Although returns are unpredictable under full-information rational expectations, investors test this hypothesis by regressing returns on a vast array of signals.
+We show that this behavior induces a nonlinear feedback from beliefs to prices that prevents convergence to rational expectations and instead generates transient, sparse episodes of predictability.
+The key implication is that the search for predictability itself endogenously generates short-lived windows of predictability.
+We characterize these dynamics analytically and document their empirical relevance in the cross-section of U.S. stock returns.
+\end{abstract}
+
+\vspace{0.5cm}
+
+\noindent\textbf{Keywords:} Asset pricing, learning, LASSO, return predictability, high-dimensional forecasting.  
+
+\noindent\textbf{JEL Classification:} G12, G14, C55.
+
+\vspace{1.0cm}
+
+\noindent\textbf{Acknowledgements.}
+Huber and Seim acknowledge funding from the German Research Foundation (DFG) under Germany’s Excellence Strategy (EXC 2126/2-390838866).
+
+\newpage
+
+\section{Introduction}
+
+
+The volume and granularity of data generated worldwide have expanded at an unprecedented pace. 
+In 2024 alone, global data creation reached approximately 402 million terabytes per day, up from about 43 million a decade earlier \citep{DataSphere2025}. 
+Financial markets have mirrored this expansion. Whereas investors once relied on a limited set of economic and accounting indicators, they now draw on a broad and rapidly growing array of signals, including textual data, satellite imagery, and web-based activity. 
+For most of these variables, however, economic theory offers little guidance on their relevance for forecasting stock returns. 
+Despite this lack of theoretical discipline, demand for alternative data remains strong, as investors increasingly employ machine learning techniques to search for predictive patterns within high-dimensional datasets  \citep{Invesco2024IGSIS}. 
+These methods work without prior restrictions on which variables should matter, allowing the data to guide model selection.
+
+This behavior is not well captured by existing asset-pricing models with learning. 
+In such frameworks, agents are assumed to learn using some perceived law of motion specified by the modeler.
+As a result, learning is confined to tracking a small number of parameters, which are updated recursively using variants of least squares or constant-gain algorithms. 
+While analytically convenient, these approaches provide a poor description of modern investment behavior, where investors routinely consider thousands of potential signals without committing to a specific structural model.
+
+We develop a model that embeds statistical learning into an otherwise standard asset-pricing environment. 
+Agents in our model suspect that returns may be conditionally predictable from a high-dimensional set of observable predictors. 
+To exploit this perceived opportunity, they employ a learning rule that is based on the least absolute shrinkage and selection operator (LASSO) \citep{Tibshirani1996}.
+Agents first estimate a perceived law of motion (PLM) using least squares and then reduce the dimensionality of their model by shrinking all coefficients to zero that are below a certain threshold.
+
+Our main result is that the act of searching for predictability among many candidate predictors can itself generate short-lived pockets of return predictability. 
+In equilibrium, these episodes are sparse and short-lived, in line with recent evidence on episodic short-horizon predictability \citep{Chinco2019, Farmer2023}. 
+The mechanism follows a simple life cycle. 
+In finite samples, the learning rule occasionally selects predictors with estimated coefficients large enough to survive the shrinkage.
+When investors trade on this perceived predictability, their demand feeds back into prices, transforming the perceived signal into genuine but temporary return predictability. 
+As new data arrive and older observations are discounted, the selected coefficients revert toward zero, the signal dissipates, and prices return to behavior consistent with unconditional unpredictability.
+
+We reach this result, by formalizing the mechanism in a Lucas-type exchange economy with a single risky asset.
+Under rational expectations, the price–dividend ratio is constant and returns are unpredictable. 
+We follow \citet{Adam2016} and depart from rational expectations by assuming that agents know the dividend and consumption process but not the process for returns. 
+Instead, they suspect that returns are conditionally predictable from a large set of observable signals. 
+Each period, investors estimate a PLM in which next periods return depends linearly on a set of predictors.
+As the number of candidate predictors exceeds the sample size by a large margin, standard linear estimation techniques are infeasible and the agent estimates the PLM using a soft-thresholding rule similiar to the LASSO. 
+Beliefs then feed into equilibrium prices through the actual law of motion (ALM) governing returns.
+In contrast to the linear PLM, the ALM is nonlinear and thus misspecified.
+In this case, learning is unlikely to converge to the true law of motion.
+Instead, the economy converges to a cross-moment consistent equilibrium (CMCE) in which agents estimated forecasting moments coincide with those generated by the equilibrium itself.
+Occasional variable-selection events can then trigger predictable return episodes that persist only until the corresponding coefficients shrink back toward zero.
+
+We test the models predictions using a large sample of NYSE-listed stocks and a set of 180 news attention series constructed in \citet{Bybee2021}.
+Our estimations confirm several key implications of the model.
+First, we document that LASSO uncovers episodic return predictability concentrated in a small and shifting set of predictors, consistent with \citet{Chinco2019}. 
+Second, we show that the frequency of these episodes is related to the volatility of the return process. 
+Third, we find that our model can explain a significant fraction of the cross-sectional variation in stock returns.
+
+The rest of the paper is structured as follows. 
+Section~\ref{sec:literature} discusses related literature.
+Section~\ref{sec:model} presents the model environment. 
+Section~\ref{sec:rec_ls} analyzes the asset-pricing equilibrium under recursive least squares. 
+Section~\ref{sec:w_ls} analyzes the asset-pricing equilibrium under weighted least squares. 
+Section~\ref{sec:lasso} introduces LASSO learning and derives our main results. 
+Section~\ref{sec:empirical} estimates the model on a sample of daily stock returns. 
+Section~\ref{sec:conclusion} concludes.

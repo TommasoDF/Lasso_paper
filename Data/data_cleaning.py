@@ -1,6 +1,5 @@
 import os
 from pyexpat import features
-from pyexpat import features
 import sys
 import warnings
 import numpy as np
@@ -131,12 +130,12 @@ def main():
     END_DATE = '2017-12-31'
     STANDARDIZE_FEATURES = True
     
+    # --- NEW OPTION: Set to False to exclude FRED data and only use topics ---
+    USE_FRED_DATA = False 
+    
     repo_root = get_repo_root()
     
-    # 1. Download Macro Data
-    df_macro = fetch_fred_data(FRED_API_KEY, START_DATE, END_DATE)
-    
-    # 2. Load Topic Data
+    # 1. Load Topic Data
     print("\nLoading topic data...")
     topics_path = repo_root / 'Data' / 'data_raw' / 'topics.csv'
     topics = pd.read_csv(topics_path)
@@ -146,17 +145,24 @@ def main():
     topics.set_index('date', inplace=True)
     topics.index = pd.to_datetime(topics.index)
     
-    # 3. Combine Macro and Topic Data
-    print("Merging macro and topic datasets...")
-    combined_data = df_macro.merge(topics, left_index=True, right_index=True, how='inner')
+    # 2. Handle Data Merging based on configuration
+    if USE_FRED_DATA:
+        # Download Macro Data
+        df_macro = fetch_fred_data(FRED_API_KEY, START_DATE, END_DATE)
+        print("Merging macro and topic datasets...")
+        combined_data = df_macro.merge(topics, left_index=True, right_index=True, how='inner')
+    else:
+        print("Skipping FRED macro data. Using only topics...")
+        # Slice the topics dataframe to match the requested date range
+        combined_data = topics.loc[START_DATE:END_DATE]
     
-    # 4. Apply AR Innovation Extraction
+    # 3. Apply AR Innovation Extraction
     features = extract_best_ar_innovations(combined_data)
     
     # Clean up innovations (drop early rows lost to lags, ensure float, drop NaNs)
     features = features.iloc[1:].astype(float).dropna(axis=0, how='any')
     
-    # 5. Standardize Features
+    # 4. Standardize Features
     if STANDARDIZE_FEATURES:
         print("\nStandardizing features...")
         scaler = StandardScaler()
@@ -166,26 +172,16 @@ def main():
             columns=features.columns
         )
         
-    print(f'Final feature matrix shape: {features.shape}')
     print(f'Average variance after preprocessing: {float(features.var().mean()):.6f}')
 
-    # 5. Standardize Features
-    if STANDARDIZE_FEATURES:
-        print("\nStandardizing features...")
-        scaler = StandardScaler()
-        features = pd.DataFrame(
-            scaler.fit_transform(features),
-            index=features.index,
-            columns=features.columns
-        )
-    
-    # --- NEW: Correlation Check ---
+    # 5. Correlation Check
     check_feature_correlation(features, threshold=0.2) 
-    # ------------------------------
 
     print(f'\nFinal feature matrix shape: {features.shape}')
     
-    output_path = repo_root / 'Data' / 'clean_data' / 'final_macro_topic_features.csv'
+    # Change the output filename based on whether FRED is included or not
+    output_filename = 'final_macro_topic_features.csv' if USE_FRED_DATA else 'final_topic_only_features.csv'
+    output_path = repo_root / 'Data' / 'clean_data' / output_filename
     
     # Create the directory if it doesn't exist
     output_path.parent.mkdir(parents=True, exist_ok=True)

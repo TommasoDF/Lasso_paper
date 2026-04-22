@@ -1,12 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{style}
 
-
-
-
-
-
-
 %% ===============================================
 %% Setting the line spacing (3 options: only pick one)
 % \doublespacing
@@ -33,16 +27,18 @@
 
 \begin{abstract}
 \noindent
-We develop an asset-pricing model in which investors search for return predictability in high-dimensional data using a LASSO-based learning rule that mirrors empirical practices.
-Although returns are unpredictable under full-information rational expectations, investors test this hypothesis by regressing returns on a vast array of signals.
-We show that this behavior induces a nonlinear feedback from beliefs to prices that prevents convergence to rational expectations and instead generates transient, sparse episodes of predictability.
-The key implication is that the search for predictability itself endogenously generates short-lived windows of predictability.
-We characterize these dynamics analytically and document their empirical relevance in the cross-section of U.S. stock returns.
+We develop an asset-pricing model in which boundedly rational investors form beliefs about return predictability in a high-dimensional information environment. 
+Although returns are fundamentally unpredictable under rational expectations, investors actively search for patterns by regressing returns on a vast array of potential predictors. 
+To choose relevant signals, agents employ a LASSO-based learning rule.
+We show that this behavior induces a nonlinear feedback loop from beliefs to prices that prevents convergence to rational expectations.
+Instead, the search for predictability endogenously generates transient, sparse episodes of return predictability.
+We characterize these belief dynamics analytically and document their empirical relevance using a large sample of the cross-section of U.S. stock returns and a set of news-based signals.
+The results demonstrate how bounded memory and shifting attention to specific news narratives can create short-lived pockets of return predictability.
 \end{abstract}
 
 \vspace{0.5cm}
 
-\noindent\textbf{Keywords:} Asset pricing, learning, LASSO, return predictability, high-dimensional forecasting.  
+\noindent\textbf{Keywords:} Asset pricing, learning, LASSO, return predictability, high-dimensional forecasting, bounded rationality, selective attention. 
 
 \noindent\textbf{JEL Classification:} G12, G14, C55.
 
@@ -55,56 +51,55 @@ Huber and Seim acknowledge funding from the German Research Foundation (DFG) und
 
 \section{Introduction}
 
+Financial markets, much like other sectors of the economy, have become more data-driven over recent decades.
+Whereas investors historically relied on a narrow set of macroeconomic and accounting indicators to form return expectations, contemporary market participants have access to an unprecedented volume of information.
+These include a vast array of alternative signals, including textual data, satellite imagery, and news narratives where the relationship with future asset returns is seldomly clear.
+Nevertheless, survey evidence indicates that the demand for these unconventional data sources continues to grow rapidly \citep{lowenstein_sandler_2026}.
+To compensate for the lack of guiding economic theory, investors increasingly deploy machine learning techniques to process this high-dimensional information \citep{cfa_invesco_2024}.
+These statistical algorithms enable investors to discover empirical patterns organically, without imposing rigid prior restrictions on model specification or variable selection.
+However, this dynamic process of broad information acquisition and data-driven belief updating is not adequately captured by existing asset-pricing literature.
+Standard adaptive learning frameworks typically assume that agents form expectations by recursively updating a fixed, low-dimensional perceived law of motion.
+While analytically convenient, such frameworks provide an inadequate description of modern investment behavior, wherein cognitively constrained agents must evaluate thousands of potential signals without committing to a definitive structural model from the outset.
 
-The volume and granularity of data generated worldwide have expanded at an unprecedented pace. 
-In 2024 alone, global data creation reached approximately 402 million terabytes per day, up from about 43 million a decade earlier \citep{DataSphere2025}. 
-Financial markets have mirrored this expansion. Whereas investors once relied on a limited set of economic and accounting indicators, they now draw on a broad and rapidly growing array of signals, including textual data, satellite imagery, and web-based activity. 
-For most of these variables, however, economic theory offers little guidance on their relevance for forecasting stock returns. 
-Despite this lack of theoretical discipline, demand for alternative data remains strong, as investors increasingly employ machine learning techniques to search for predictive patterns within high-dimensional datasets  \citep{Invesco2024IGSIS}. 
-These methods work without prior restrictions on which variables should matter, allowing the data to guide model selection.
+We develop a model that embeds boundedly rational belief formation and statistical learning into an otherwise standard asset-pricing environment.
+Agents in our model suspect that returns may be conditionally predictable from a high-dimensional set of observable predictors.
+To exploit this perceived opportunity while managing information overload, they employ a learning rule based on the least absolute shrinkage and selection operator (LASSO) \citep{Tibshirani1996}.
+Functionally, this mirrors a cognitive process of selective attention.
+Agents first estimate a perceived law of motion (PLM) using least squares and then reduce the dimensionality of their forecasting rule by shrinking all coefficients below a certain threshold to zero, effectively ignoring weak signals.
 
-This behavior is not well captured by existing asset-pricing models with learning. 
-In such frameworks, agents are assumed to learn using some perceived law of motion specified by the modeler.
-As a result, learning is confined to tracking a small number of parameters, which are updated recursively using variants of least squares or constant-gain algorithms. 
-While analytically convenient, these approaches provide a poor description of modern investment behavior, where investors routinely consider thousands of potential signals without committing to a specific structural model.
+Our main result is that the act of searching for predictability among many candidate signals can itself generate short-lived pockets of return predictability.
+In equilibrium, these episodes are sparse and transient, in line with recent evidence on episodic short-horizon predictability \citep{Chinco2019, Farmer2023}.
+The mechanism follows a simple life cycle driven by the interaction between belief updating and bounded memory.
+Because agents heavily discount historical data and rely on recent observations to estimate their perceived law of motion, their learning heuristic occasionally selects predictors whose finite-sample correlations are temporarily large enough to survive the shrinkage threshold.
+When investors update their beliefs and trade on this perceived predictability, their demand feeds back into prices, transforming the perceived signal into genuine but temporary return predictability.
+Crucially, this predictability is transient precisely because of bounded memory: as new data arrive and the specific noisy observations that triggered the initial selection fade from the agents' effective memory, the estimated coefficients revert toward zero.
+Consequently, the narrative loses its salience, and prices return to behavior consistent with unconditional unpredictability.
 
-We develop a model that embeds statistical learning into an otherwise standard asset-pricing environment. 
-Agents in our model suspect that returns may be conditionally predictable from a high-dimensional set of observable predictors. 
-To exploit this perceived opportunity, they employ a learning rule that is based on the least absolute shrinkage and selection operator (LASSO) \citep{Tibshirani1996}.
-Agents first estimate a perceived law of motion (PLM) using least squares and then reduce the dimensionality of their model by shrinking all coefficients to zero that are below a certain threshold.
-
-Our main result is that the act of searching for predictability among many candidate predictors can itself generate short-lived pockets of return predictability. 
-In equilibrium, these episodes are sparse and short-lived, in line with recent evidence on episodic short-horizon predictability \citep{Chinco2019, Farmer2023}. 
-The mechanism follows a simple life cycle. 
-In finite samples, the learning rule occasionally selects predictors with estimated coefficients large enough to survive the shrinkage.
-When investors trade on this perceived predictability, their demand feeds back into prices, transforming the perceived signal into genuine but temporary return predictability. 
-As new data arrive and older observations are discounted, the selected coefficients revert toward zero, the signal dissipates, and prices return to behavior consistent with unconditional unpredictability.
-
-We reach this result, by formalizing the mechanism in a Lucas-type exchange economy with a single risky asset.
-Under rational expectations, the price–dividend ratio is constant and returns are unpredictable. 
-We follow \citet{Adam2016} and depart from rational expectations by assuming that agents know the dividend and consumption process but not the process for returns. 
-Instead, they suspect that returns are conditionally predictable from a large set of observable signals. 
-Each period, investors estimate a PLM in which next periods return depends linearly on a set of predictors.
-As the number of candidate predictors exceeds the sample size by a large margin, standard linear estimation techniques are infeasible and the agent estimates the PLM using a soft-thresholding rule similiar to the LASSO. 
-Beliefs then feed into equilibrium prices through the actual law of motion (ALM) governing returns.
+We reach this result by formalizing the mechanism in a Lucas-type exchange economy with a single risky asset \citep{Lucas1978}.
+Under rational expectations, the price–dividend ratio is constant and returns are unpredictable.
+We follow \citet{Adam2016} and depart from rational expectations by assuming that agents know the fundamental dividend and consumption process but not the process for returns.
+Instead, they suspect that returns are conditionally predictable from a large set of observable signals.
+Each period, investors estimate a PLM in which next period's return depends linearly on a set of predictors.
+Because the number of candidate predictors exceeds the number of observation available, standard linear updating is infeasible, prompting the use of a soft-thresholding rule similar to the LASSO.
+These beliefs then feed into equilibrium prices through the actual law of motion (ALM) governing returns.
 In contrast to the linear PLM, the ALM is nonlinear and thus misspecified.
 In this case, learning is unlikely to converge to the true law of motion.
-Instead, the economy converges to a cross-moment consistent equilibrium (CMCE) in which agents estimated forecasting moments coincide with those generated by the equilibrium itself.
-Occasional variable-selection events can then trigger predictable return episodes that persist only until the corresponding coefficients shrink back toward zero.
+Instead, the economy converges to a cross-moment consistent equilibrium (CMCE) in which agents' subjective forecasting moments coincide with those generated by the equilibrium itself.
+Occasional shifts in attention to specific variables trigger predictable return episodes that persist only until new observations arrive and replace old observations in agents memory.
 
-We test the models predictions using a large sample of NYSE-listed stocks and a set of 180 news attention series constructed in \citet{Bybee2021}.
+We test the model's predictions using a large sample of NYSE-listed stocks and a set of 180 news attention series constructed in \citet{Bybee2021}.
 Our estimations confirm several key implications of the model.
-First, we document that LASSO uncovers episodic return predictability concentrated in a small and shifting set of predictors, consistent with \citet{Chinco2019}. 
-Second, we show that the frequency of these episodes is related to the volatility of the return process. 
-Third, we find that our model can explain a significant fraction of the cross-sectional variation in stock returns.
+First, we document that agents uncover episodic return predictability concentrated in a small and shifting set of signals, consistent with \citet{Chinco2019}.
+Second, we show that the frequency of these episodes is related to the volatility of the return process.
+Third, we find that our framework of selective attention and endogenous belief-price feedback can explain a significant fraction of the cross-sectional variation in stock returns.
 
-The rest of the paper is structured as follows. 
+The rest of the paper is structured as follows.
 Section~\ref{sec:literature} discusses related literature.
-Section~\ref{sec:model} presents the model environment. 
-Section~\ref{sec:rec_ls} analyzes the asset-pricing equilibrium under recursive least squares. 
-Section~\ref{sec:w_ls} analyzes the asset-pricing equilibrium under weighted least squares. 
-Section~\ref{sec:lasso} introduces LASSO learning and derives our main results. 
-Section~\ref{sec:empirical} estimates the model on a sample of daily stock returns. 
+Section~\ref{sec:model} presents the model environment.
+Section~\ref{sec:rec_ls} analyzes the asset-pricing equilibrium under recursive least squares.
+Section~\ref{sec:w_ls} analyzes the asset-pricing equilibrium under weighted least squares.
+Section~\ref{sec:lasso} introduces LASSO learning and derives our main results.
+Section~\ref{sec:empirical} estimates the model on a sample of daily stock returns.
 Section~\ref{sec:conclusion} concludes.
 
 \section{Related Literature}\label{sec:literature}
@@ -592,53 +587,28 @@ where \(x_t^\top \beta_{i,t}\) is scalar because \(x_t, \beta_{i,t} \in \mathbb{
 The stock-specific parameter \(\kappa_i\) is estimated by nonlinear least squares.
 
 
-Before implementing our estimation strategy, we calibrate the three parameters governing the agent’s learning rule:
-the rolling window length \(s\), the penalty parameter \(\lambda\), and the number of predictor lags \(n\) considered.
-To avoid circularity, we use a cross-sectional split: a randomly drawn 20\% of stocks
-form a tuning set, and the remaining 80\% form the estimation set.
-Both sets use the full time series (1,879 days), so the window-length problem
-that would arise with a time-based split is avoided.
-We select $(s,\lambda)$ using Bayesian optimisation on the tuning stocks, maximising an objective function
-grounded in the equilibrium properties of the model.
-At the CMCE the equilibrium belief vector satisfies $\beta^* = 0$, so the belief index
-$f_t = x_t^\top \beta_t$ fluctuates around zero and Stage-1 out-of-sample $R^2$ is close
-to zero by construction---this is a model prediction, not a failure of estimation.
-What identifies $\kappa$ is time-series \emph{variation} in $f_t$, which arises whenever
-the LASSO episodically selects predictors and generates transient belief excursions.
-The objective is therefore designed to reward the conditions under which $\kappa$ is
-identifiable, rather than raw in-sample fit:
+Prior to implementing our estimation strategy, we calibrate the three fundamental parameters of the agent's learning rule: the rolling window duration ($s$), the LASSO penalty ($\lambda$), and the number of predictor lags ($n$).
+To prevent look-ahead bias and ensure the robustness of our results, we employ a cross-sectional split where 20\% of the stocks are randomly assigned to a tuning set, with the remaining 80\% reserved for the estimation set.
+Both subsets utilize the full time series of 1,879 days, thereby avoiding the window-length constraints and structural breaks that often complicate time-based validation splits.
+We determine the optimal pair $(s, \lambda)$ via Bayesian optimization on the tuning set, utilizing an objective function grounded in the model's equilibrium properties.
+In a CMCE, the true belief vector satisfies $\beta^* = 0$, implying that the belief index $f_t = X_t^\top \beta_t$ should fluctuate around zero.
+Consequently, a Stage-1 out-of-sample $R^2$ near zero is a direct theoretical prediction of the model rather than an indication of estimation failure.
+The identification of the feedback parameter $\kappa$ relies on time-series variation in $f_t$, which is generated whenever the LASSO episodically selects predictors and produces transient belief excursions.
+Our objective function is therefore designed to reward the conditions under which $\kappa$ is statistically identifiable rather than maximizing raw in-sample fit:
 \begin{equation}\label{eq:hyperpar_objective}
-\text{Objective}(s, \lambda)
-= 0.7\;\sigma\!\left(\hat\kappa_{t\text{-stat}} - 1.96\right)
-+ 0.2\;\exp\!\!\left(-\left(\frac{\bar\rho - \rho^*}{\delta_\rho}\right)^{\!2}\right)
-+ 0.1\;\sigma\!\left(\frac{\hat\kappa - 0.3}{0.2}\right),
+\text{Objective}(s, \lambda) = 0.7 \cdot \sigma\left(\hat\kappa_{t\text{-stat}} - 1.96\right) + 0.2 \cdot \exp\left(-\left(\frac{\bar\rho - \rho^*}{\delta_\rho}\right)^{\!2}\right) + 0.1 \cdot \sigma\left(\frac{\hat\kappa - 0.3}{0.2}\right),
 \end{equation}
-where $\sigma(\cdot) = (1 + e^{-\cdot})^{-1}$ is the logistic function,
-$\hat\kappa_{t\text{-stat}}$ is the $t$-statistic of the second-stage NLS estimate of $\kappa$,
-$\bar\rho$ is the average LASSO selection rate (fraction of topic-window cells with a
-non-zero coefficient), $\rho^* = 0.03$ is the target selection rate, and $\delta_\rho = 0.02$
-controls the width of the acceptance band.
-
-The three terms are motivated as follows.
-The dominant term (weight 0.7) rewards $\kappa$ identification: the ALM feedback parameter
-must be statistically distinguishable from zero for the CMCE mechanism to be empirically
-operative.
-The sparsity term (weight 0.2) is a Gaussian bell centred at the target selection rate
-$\rho^* = 3\%$, which penalises both over-selection and under-selection symmetrically.
-Excessive selection ($\bar\rho \gg \rho^*$) implies that the belief index $f_t$ is dense
-and $\kappa$ collapses to zero; no selection ($\bar\rho \approx 0$) implies a degenerate
-belief process with no variation to identify $\kappa$.
-An additional hard constraint excludes configurations with $\bar\rho < 0.3\%$ or $\bar\rho > 20\%$.
-The interior prior (weight 0.1) penalises boundary values of $\hat\kappa$
-at which the ALM becomes degenerate.
-Importantly, Stage-1 $R^2$ (in-sample or out-of-sample) is not included: including in-sample
-$R^2$ would reward overfit, while the oracle test in Appendix~\ref{app:oracle} confirms that
-OOS Stage-1 $R^2 \approx 0$ is expected under the model’s equilibrium and should not be
-used as a selection criterion.
-Each Bayesian optimisation trial evaluates a single randomly chosen tuning stock,
-which keeps each trial fast while the TPE sampler builds an accurate model of the objective landscape.
-The optimisation selects $\lambda^* = 3.506 \times 10^{-3}$, $s^* = 231$ days, and $n = 1$ lag.
-These calibrated parameters are then frozen and applied uniformly across all estimation stocks.
+where $\sigma(\cdot) = (1 + e^{-\cdot})^{-1}$ denotes the logistic function, $\hat\kappa_{t\text{-stat}}$ is the $t$-statistic of the second-stage NLS estimate, $\bar\rho$ is the average LASSO selection rate, $\rho^* = 0.03$ is the target sparsity level, and $\delta_\rho = 0.02$ defines the width of the acceptance band.
+The three terms in the objective are motivated by specific structural requirements.
+The primary term (weight 0.7) rewards the statistical significance of $\kappa$, as the feedback mechanism must be distinguishable from zero for the CMCE mechanism to be empirically operative.
+The sparsity term (weight 0.2) follows a Gaussian distribution centered at $\rho^* = 3\%$, symmetrically penalizing both excessive and insufficient feature selection.
+High selection rates ($\bar\rho \gg \rho^*$) would result in a dense belief index where $\kappa$ tends to collapse toward zero, whereas a lack of selection ($\bar\rho \approx 0$) yields a degenerate belief process with insufficient variation to identify the feedback effect.
+We further impose a hard constraint excluding any configurations resulting in an average selection rate below 0.3\% or above 20\%.
+The interior prior (weight 0.1) serves to penalize boundary values of $\hat\kappa$ where the asset-pricing model becomes degenerate.
+Notably, we exclude Stage-1 $R^2$ from the objective; rewarding in-sample fit would encourage overfitting, while our oracle tests in Appendix~\ref{app:oracle} confirm that a near-zero out-of-sample $R^2$ is the correct equilibrium benchmark.
+During the optimization process, each trial evaluates a single randomly selected tuning stock, which facilitates rapid iteration while the Tree-structured Parzen Estimator (TPE) constructs an accurate model of the objective landscape.
+The optimization yields the calibrated values $\lambda = 3.506 \times 10^{-3}$, $s = 231$ days, and $n = 1$ lag.
+These parameters are subsequently frozen and applied uniformly across the full cross-section of estimation stocks.
 
 
 \subsection{Results}
@@ -646,300 +616,227 @@ These calibrated parameters are then frozen and applied uniformly across all est
 Having calibrated the learning parameters, we now implement the model in the cross-section.
 For each stock, we estimate the PLM in equation~(\ref{eq:empirical_plm}) using a rolling-window LASSO.
 This procedure delivers a time series of belief coefficients $\{\beta_{i,t}\}$ and corresponding one-step-ahead forecasts, which we summarize in Table~\ref{tab:summary_stats_lasso}.
+
 \begin{table}[H]
 \centering
 \caption{Summary Statistics of LASSO Estimation Results}
 \label{tab:summary_stats_lasso}
 \begin{tabularx}{\textwidth}{@{}>{\small}Xccccccc@{}}
 \toprule
- & mean & std & median & min & max & p05 & p95 \\
+ & mean & std & median & min & max & p05 & p95 \\
 \midrule
-In-sample $R^2$   & 0.0250 & 0.0413 & 0.0086 & $-$0.0080 & 0.3023 & $-$0.0045 & 0.1119 \\
+In-sample $R^2$   & 0.0250 & 0.0413 & 0.0086 & $-$0.0080 & 0.3023 & $-$0.0045 & 0.1119 \\
 Out-of-sample $R^2$ & $-$0.0127 & 0.0402 & $-$0.0040 & $-$1.2361 & 0.0136 & $-$0.0518 & 0.0003 \\
-Selection rate    & 0.0194 & 0.0313 & 0.0060 & 0.0000 & 0.2633 & 0.0000 & 0.0871 \\
+Selection rate    & 0.0194 & 0.0313 & 0.0060 & 0.0000 & 0.2633 & 0.0000 & 0.0871 \\
 \bottomrule
 \end{tabularx}
-
 \medskip
 \begin{minipage}{\textwidth}
 \footnotesize
-\textit{Note:} The table reports summary statistics across the 1,296 estimation stocks for
-the first-stage LASSO in-sample $R^2$, computed within each rolling window and averaged over windows,
-the first-stage out-of-sample $R^2$, computed from the sequence of one-step-ahead LASSO forecasts
-evaluated against realised (demeaned) returns with the zero-forecast as benchmark,
-and the average LASSO selection rate (fraction of predictor-window cells with a non-zero coefficient).
-Calibrated parameters: $\lambda^* = 3.506 \times 10^{-3}$, $s^* = 231$ days, $n = 1$ lag.
+\textit{Note:} The table reports summary statistics across the 1,296 estimation stocks for the first-stage LASSO in-sample $R^2$, computed within each rolling window and averaged over windows, the first-stage out-of-sample $R^2$, computed from the sequence of one-step-ahead LASSO forecasts evaluated against realised (demeaned) returns with the zero-forecast as benchmark, and the average LASSO selection rate (fraction of predictor-window cells with a non-zero coefficient).
 \end{minipage}
 \end{table}
 
-Table~\ref{tab:summary_stats_lasso} shows that the in-sample $R^2$ is small but positive (median 0.009),
-indicating that the LASSO learning rule captures within-window patterns, while the out-of-sample $R^2$
-is near zero (median $-$0.004).
-This pattern is consistent with our theory: agents perceive transient predictability in-sample,
-but it does not persist out-of-sample---a direct implication of the CMCE condition $\beta^* = 0$.
-The median selection rate is 0.6\%, confirming that beliefs are sparse; however, the distribution
-is right-skewed, with higher-volatility stocks selecting predictors more frequently (see Figure~\ref{fig:avg_select}).
-Approximately 40\% of stocks have selection rates below 0.3\%, implying that the LASSO
-never selects any predictor for these stocks under the calibrated $\lambda^*$.
-This is consistent with the model: for stocks whose return variance is small relative to the
-penalty level, the LASSO correctly infers that there is insufficient evidence to support a
-non-zero belief vector, leaving $f_t = 0$ throughout.
+Table~\ref{tab:summary_stats_lasso} shows that the in-sample $R^2$ is small but positive, indicating that the LASSO learning rule fits the return process within windows.
+The out-of-sample $R^2$ is near zero.
+The patterns are consistent with our theory: agents perceive transient predictability in-sample, but it does not persist out-of-sample.
+This is a direct implication of the CMCE condition $\beta^* = 0$.
+The median selection rate is 0.6\%, confirming that beliefs are sparse.
+Approximately 40\% of stocks have selection rates below 0.3\%, implying that the LASSO never selects any predictor for these stocks.
+This is also consistent with the model: for stocks whose return variance is small relative to the penalty level, the LASSO correctly infers that there is insufficient evidence to support a non-zero belief vector, leaving $f_t = 0$ throughout.
 
-Next, we document that perceived predictability is concentrated in a few signals when it arises.
+With the LASSO-estimated belief sequence $\{\beta_{i,t}\}$ in hand, we turn directly to the main coefficient of interest and estimate the parameter $\kappa_{i}$ implied by the ALM by applying nonlinear least squares to equation~(\ref{eq:empirical_alm}).
+Identification relies on time-series variation in agents’ beliefs about return predictability, as captured by fluctuations in $X_t \beta_{i,t}$, and on the corresponding variation in realized returns.
+Intuitively, $\kappa_{i}$ is pinned down by how changes in expected returns translate into realised returns through the nonlinear asset-pricing equation.
+A significant $\kappa$ indicates that the non-linear ALM has explanatory power over a benchmark where returns are unpredictable, and we view it as an empirical test of the CMCE equilibrium being present in the data.
+Of the 770 estimation stocks with non-zero LASSO selection, for which $f_t$ exhibits sufficient time-series variation to identify $\kappa$, 9.5\% have a statistically significant estimate at the 5\% level.
+Table~\ref{tab:summary_stats_stage2} summarises the estimation results for these stocks.
+
+\begin{table}[H]
+\centering
+\caption{Second-Stage Estimation: Summary Statistics}
+\label{tab:summary_stats_stage2}
+\begin{tabularx}{\textwidth}{@{}>{\small}Xccccccc@{}}
+\toprule
+ & mean & std & median & min & max & p05 & p95 \\
+\midrule
+In-sample $R^2$        & 0.0030 & 0.0021 & 0.0023 & 0.0012 & 0.0143 & 0.0014 & 0.0064 \\
+$\hat{\kappa}$         & 0.2872 & 0.1178 & 0.2786 & 0.0884 & 0.5998 & 0.1163 & 0.5392 \\
+$t$-statistic of $\hat{\kappa}$ & 3.0835 & 1.1626 & 2.6328 & 1.9696 & 8.1218 & 2.0381 & 5.0675 \\
+\bottomrule
+\end{tabularx}
+\medskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Note:} The table reports summary statistics across the 73 estimation stocks (9.5\% of the 770 with non-zero LASSO selection) for which $\hat\kappa$ is statistically significant at the 5\% level.
+In-sample $R^2$ is the second-stage NLS fit evaluated on the full time series.
+$\hat{\kappa}$ is the estimated belief-feedback parameter and its $t$-statistic is computed from the NLS sandwich standard error.
+\end{minipage}
+\end{table}
+
+Having established the explanatory power of the ALM, we next explore the underlying properties of the estimated beliefs that drive these results.
+First, we document that perceived predictability is concentrated in a few signals when it arises.
 Figure~\ref{fig:percent_active} plots the average number of selected predictors per stock over time, as well as shaded areas corresponding to the 5th and 95th percentiles across stocks.
-Out of the whole possible 3780 regressors, the number of selected predictors is small, indicating that when agents believe in predictability, they typically attribute it to only a small subset of available signals.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{nonzero_coefficients_over_time.png}
-    \caption{Average Number of Active Coefficients over Time}
-    \label{fig:percent_active}
+Out of the whole possible 190 predictors, the share that is selected is small, indicating that when agents believe in predictability, they typically attribute it to only a small subset of available signals.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{active_coefficients_over_time.png}
+    \caption{Average Number of Active Coefficients over Time}
+    \label{fig:percent_active}
 \end{figure}
-Finally, we test the cross-sectional implication in Proposition~\ref{prop:LASSO_estimate} that more volatile stocks should exhibit more frequent selection.
+
+We also test the cross-sectional implication in Proposition~\ref{prop:LASSO_estimate} that more volatile stocks should exhibit more frequent selection.
 Figure~\ref{fig:avg_select} plots, for each stock, the average number of non-zero coefficients selected per window against the variance of its returns.
-The relationship is clearly positive: stocks with higher return variance display more active coefficients on average.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{avg_nonzero_coefficients_vs_volatility.png}
-    \caption{Average Number of Non-Zero Coefficients vs. Return Variance}
-    \label{fig:avg_select}
+The relationship is clearly positive.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{scatter_variance_vs_active.png}
+    \caption{Average Number of Non-Zero Coefficients vs. Return Variance}
+    \label{fig:avg_select}
 \end{figure}
+
 We view these patterns as evidence in favor of our proposed learning rule.
-An agent applying LASSO to the data would find the rule attractive ex ante, because it delivers nontrivial in sample fit, even though its out of sample performance is weak.
+An agent applying LASSO-based learning to the data would find the rule attractive ex ante, because it delivers nontrivial in sample fit, even though its out of sample performance is weak.
 Consistent with our theory, perceived predictability is episodic, so at any point in time only a subset of stocks is viewed as predictable and, conditional on selection, beliefs are sparse and concentrated on a few predictors.
 Taken together, these results match the model’s predictions and mirror recent evidence that return predictability arises in short lived, shifting pockets rather than as a stable forecasting relation \citep{Chinco2019}.
 
 We next examine \emph{which} features the LASSO selects.
-The model makes a sharp prediction: because topic-attention innovations are globally
-standardised before entering the rolling window, there is no mechanical reason for any
-particular topic to be selected more frequently than another.
-Selection probabilities should therefore be governed entirely by each topic’s statistical
-relationship with returns, producing an approximately uniform distribution across features.
-To test this, we estimate the beta tensor for a sample of 200 stocks and compute, for each
-of the 190 features, its mean selection rate---the fraction of stock-window cells in which
-the LASSO assigns a non-zero coefficient.
+The model makes a sharp prediction: because topic-attention innovations are globally standardised before entering the rolling window, there is no mechanical reason for any particular topic to be selected more frequently than another.
+Selection probabilities should therefore be governed entirely by each topic’s statistical relationship with returns, producing an approximately uniform distribution across features.
+To test this, we estimate the full beta tensor across all stocks and calculate the mean selection rate for each of the 190 features, defined as the proportion of stock-window observations in which the LASSO identifies a non-zero coefficient.
 
-Figure~\ref{fig:topic_selection_freq} ranks all 190 features by their mean selection rate.
-The distribution is mildly concentrated (Gini coefficient = 0.24) but far from degenerate:
-every feature is selected at least once, and the most-selected feature (``Announce plan’’,
-a news topic signalling corporate announcements) is selected only $3.9\times$ above the
-uniform null rate.
-The 10 macro time-series (shown in red) are selected at a rate 1.28 times higher than the
-180 news topics on average---a modest premium that likely reflects their higher
-autocorrelation and broader relevance across industries.
-The top-2 features are the VIX (macro) and ``Financial reports’’---both economically
-interpretable as signals agents might plausibly condition on.
-Importantly, there is no sign of the extreme concentration that would arise if a handful
-of topics mechanically dominated selection; the results are consistent with selection
-being driven by statistical heterogeneity in return-predictive content rather than
-any structural bias toward particular topics.
+Figure~\ref{fig:topic_selection_freq} ranks the 190 candidate features by their mean selection rate.
+While the distribution exhibits mild concentration (Gini coefficient = 0.24), it is not degenerate.
+Every feature is selected at least once, and the most frequently selected feature (``Announce plan'', a news topic signaling corporate announcements) is selected $3.9 \times$ above the uniform null rate.
+The 10 macro time-series (highlighted in red) are selected at a rate $1.3 \times$ higher than the 180 news topics on average.
+This modest premium likely reflects their higher autocorrelation and broader relevance across diverse industries.
+The top two features are the VIX (macro) and ``Announce plan'' (news), both of which are economically interpretable as fundamental signals that market agents plausibly condition upon.
+Importantly, we find no evidence of the extreme concentration that would arise if a small subset of features mechanically dominated the selection process.
+These results are consistent with selection being driven by statistical heterogeneity in return-predictive content rather than structural bias toward specific categories.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{topic_selection_frequency.png}
-    \caption{LASSO Selection Frequency Across Features}
-    \label{fig:topic_selection_freq}
-    \begin{minipage}{\textwidth}
-    \footnotesize
-    \textit{Note:} Each bar shows the mean selection rate of a feature across 200 stocks and
-    all rolling windows (fraction of stock-window cells with a non-zero LASSO coefficient).
-    Features are ranked from most to least selected.
-    Red bars denote the 10 macro time-series; blue bars denote the 180 news topics.
-    The dashed line is the uniform null ($\text{total selections} / 190$).
-    Left panel: all 190 features. Right panel: top 40 named features.
-    \end{minipage}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{selection_frequency.png}
+    \caption{LASSO Selection Frequency Across Features}
+    \label{fig:topic_selection_freq}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} Each bar represents the mean selection rate for a specific feature, defined as the proportion of stock-window observations with a non-zero LASSO coefficient across the 1,296 estimation stocks. Features are ordered by selection frequency. Red and blue bars distinguish the 10 macro time-series from the 180 news topics, respectively. The horizontal dashed line indicates the uniform null rate (total selections divided by 190). The left panel displays the full set of 190 features, while the right panel highlights the top 40 most frequently selected features.
+    \end{minipage}
 \end{figure}
 
-\paragraph{Selection intensity across stocks.}
-Figure~\ref{fig:topic_selection_by_stock} examines the same sparsity from the
-cross-sectional dimension: for each stock, we compute the average number of topics
-selected per rolling window and plot its distribution across the 1{,}296 estimation
-stocks.
-Under the volatility-scaled penalty, the distribution is unimodal and well-behaved
-(mean = 1.22, median = 1.15, standard deviation = 0.46), with only 1.5\% of stocks
-averaging fewer than 0.5 selected topics per window---confirming that the zero-selection
-problem of the global-$\lambda$ specification is eliminated.
-The right tail extends to roughly 3.7 topics per window for the most-selected stocks.
-By sector, Energy \& Mining stocks exhibit the highest selection intensity
-(mean = 1.44), consistent with oil-market topics carrying a strong statistical signal;
-Consumer stocks have the lowest (mean = 0.93).
-Together with Figure~\ref{fig:topic_selection_freq}, this establishes that sparsity
-is a genuine feature of the data in both dimensions: only a handful of topics are
-selected for any given stock (cross-feature sparsity), and the number of topics
-selected varies substantially across stocks (cross-sectional sparsity).
+\paragraph{Cross-Sectional Selection Intensity.}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{topic_selection_by_stock.png}
-    \caption{LASSO Selection Intensity Across Stocks}
-    \label{fig:topic_selection_by_stock}
-    \begin{minipage}{\textwidth}
-    \footnotesize
-    \textit{Note:} Left panel: histogram of the average number of topics selected per
-    rolling window across the 1{,}296 estimation stocks (vol-scaled $\lambda_i$).
-    Dashed red line is the cross-sectional mean (1.22); dash-dot orange line is the
-    median (1.15).
-    Right panel: box plots of the same quantity by broad industry sector.
-    \end{minipage}
+Figure~\ref{fig:topic_selection_by_stock} characterizes the cross-sectional dimension of selection sparsity.
+For each of the 1,296 stocks in our sample, we compute the average number of features selected per rolling window and plot the resulting distribution.
+The distribution is markedly right-skewed and exhibits a significant mass at zero.
+Consistent with our previous analysis, approximately 40\% of stocks average near zero selected features per window, reflecting the stringency of the global penalty for low-volatility assets.
+Sectoral analysis reveals that Energy \& Mining stocks exhibit the highest selection intensity, likely driven by the persistent statistical signals of oil-market dynamics and higher baseline variance.
+Conversely, stocks of financial firms display the lowest selection intensity.
+Taken together with Figure~\ref{fig:topic_selection_freq}, these results establish that sparsity is a structural feature of the data in two dimensions: agents typically select only a parsimonious subset of available features for any individual stock (cross-feature sparsity), and the degree of this selection varies meaningfully across the investment universe (cross-sectional sparsity).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{selection_intensity.png}
+    \caption{LASSO Selection Intensity Across Stocks}
+    \label{fig:topic_selection_by_stock}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} Left panel: Histogram of the average number of features selected per rolling window across the 1{,}296 estimation stocks.
+    Dashed red line is the cross-sectional mean; dash-dot orange line is the median.
+    Right panel: Box plots of the same quantity by broad industry sector.
+    \end{minipage}
 \end{figure}
 
 \paragraph{Time-series variation in selection intensity.}
-Figure~\ref{fig:selection_rate_time} plots the cross-sectional mean, interquartile
-range, and p10--p90 band of the number of topics selected per stock per rolling
-window, alongside the aggregate selection rate, over the full 2011--2017 sample.
 
-Selection intensity is far from constant.
-The aggregate selection rate peaks at 2.37\% in January 2012---during the height of
-the European sovereign debt crisis, when macro news was unusually informative about
-cross-sectional returns---and troughs at 0.06\% in October 2014, a period of
-exceptional calm in US equity markets.
-This roughly 37-fold range confirms that predictability is episodic: there are
-identifiable windows in which agents broadly find statistical signals, and extended
-periods in which nearly no topic clears the LASSO threshold for any stock.
-The S\&P downgrade (August 2011), taper tantrum (May 2013), China flash crash
-(August 2015), Brexit vote, and 2016 US election are all associated with visible
-upticks in selection intensity, consistent with macro uncertainty driving a
-temporary increase in perceived return predictability.
+Figure~\ref{fig:selection_rate_time} plots the cross-sectional mean, interquartile range, and p10--p90 band of the number of features selected per stock per rolling window, alongside the aggregate selection rate, over the full 2011--2017 sample.
+Selection intensity exhibits significant temporal variation over the sample period.
+The aggregate selection rate reaches its peak in January 2012 (4\%), coinciding with the height of the European sovereign debt crisis when macroeconomic news was highly informative for cross-sectional returns.
+Conversely, the rate falls to a trough of 0.5\% in October 2014, reflecting a period of exceptional calm in U.S. equity markets.
+This substantial range of variation confirms that perceived predictability is episodic, characterized by identifiable windows of signal detection interspersed with extended periods where few features clear the LASSO threshold.
+Systemic events like the S\&P credit downgrade (August 2011), the ``taper tantrum'' (May 2013), the Chinese market turbulence (August 2015), the Brexit referendum, and the 2016 U.S. election—are all associated with visible surges in selection intensity.
+These patterns are consistent with the view that macroeconomic uncertainty drives temporary increases in perceived return predictability.
+The $p10$--$p90$ interval reveals that cross-sectional heterogeneity remains substantial at every point in time.
+Even during peak episodes, many stocks select no feature, while a small subset selects multiple predictors simultaneously.
+This persistent dispersion suggests that systematic episodes of predictability are not purely aggregate phenomena but are partly stock-specific, reflecting the subset of firms whose rolling-window estimates happen to exceed the selection threshold at a given date.
 
-The p10--p90 band shows that heterogeneity across stocks is substantial at every
-point in time: even during peak episodes, many stocks select no topics, while a
-small group selects several simultaneously.
-This cross-sectional dispersion is itself informative---it suggests that systematic
-episodes of predictability are not fully aggregate but partly stock-specific,
-reflecting which stocks happen to have a rolling window whose coefficient estimates
-cross the threshold at a given date.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{selection_rate_over_time.png}
-    \caption{Topic Selection Intensity Over Time}
-    \label{fig:selection_rate_time}
-    \begin{minipage}{\textwidth}
-    \footnotesize
-    \textit{Note:} \textbf{Top panel}: cross-sectional distribution of the number of
-    topics selected per stock per rolling window (10-day centred moving average).
-    Dark band = IQR (p25--p75); light band = p10--p90; line = cross-sectional mean.
-    \textbf{Bottom panel}: aggregate selection rate (fraction of all stock-feature pairs
-    with a non-zero LASSO coefficient, left axis) and fraction of stocks selecting zero
-    topics (right axis, dashed orange).
-    Red dashed vertical lines mark selected macro events within the sample period.
-    \end{minipage}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{selection_intensity_over_time.png}
+    \caption{Topic Selection Intensity Over Time}
+    \label{fig:selection_rate_time}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} \textbf{Top panel}: Cross-sectional distribution of the number of features selected per stock per rolling window (10-day centred moving average).
+    Dark band = IQR (p25--p75); light band = p10--p90; line = cross-sectional mean.
+    \textbf{Bottom panel}: Aggregate selection rate (fraction of all stock-feature pairs with a non-zero LASSO coefficient, left axis) and fraction of stocks selecting zero features (right axis, dashed orange).
+    Red dashed vertical lines mark selected macro events within the sample period.
+    \end{minipage}
 \end{figure}
 
 \paragraph{Persistence of topic selection.}
-We next ask whether selection episodes are transient or persistent: once a topic is
-selected for a given stock, does it remain selected in subsequent rolling windows?
-We characterise persistence along three complementary dimensions, reported in
-Figure~\ref{fig:topic_selection_persistence}.
 
-The \emph{run-length distribution} (top-left panel) shows the number of consecutive
-windows a topic remains selected after first being picked up, pooled across all
-180{,}586 selection episodes.
-The distribution is heavily right-skewed: the median run length is only 4 windows
-(approximately one trading week), yet the 95th percentile reaches 69 windows and
-the maximum is 433.
-This mixture of short and long episodes suggests two co-existing regimes: a majority
-of transient selections that are quickly discarded as new data enter the rolling
-window, and a minority of persistent episodes where the statistical signal is
-sufficiently strong to survive many window updates.
+We investigate the temporal properties of selection episodes to determine whether a topic, once selected for a specific stock, remains active in subsequent rolling windows.
+Figure~\ref{fig:topic_selection_persistence} characterizes this persistence across three complementary dimensions.
+The \emph{run-length distribution} (top-left panel), pooled across 623,223 selection episodes, is markedly right-skewed.
+While the median run length is only 4 windows (approximately one trading week), the 95th percentile reaches 78 windows, with a maximum observed length of 544.
+This distribution suggests the coexistence of two distinct regimes: a majority of transient selections that are discarded as new data enter the window, and a minority of highly persistent episodes where the statistical signal is sufficiently robust to survive numerous updates.
+The \emph{survival curve} (top-right panel) estimates the conditional probability $P(\text{selected at } t+k \mid \text{selected at } t)$ for lags up to 120 windows.
+Persistence decays rapidly in the immediate term, with 74\% of events surviving to the next window and 41\% to the fifth—before the curve flattens considerably.
+Notably, 18\% of episodes persist to lag 20 and 7\% survive to lag 60, representing roughly three months of trading.
+This slow-decaying tail aligns with the CMCE mechanism, wherein a selected topic generates self-fulfilling predictability that sustains itself until the rolling-window estimate is sufficiently diluted by new observations.
+The \emph{mean autocorrelation function} (bottom-left panel), averaged over 86,358 active stock-topic pairs, further substantiates this temporal dependence.
+The first-order autocorrelation is 0.89 and exhibits a gradual decay ($\text{AC}(5) = 0.73$, $\text{AC}(20) = 0.46$), diverging significantly from the near-zero values expected under an i.i.d.\ selection process.
+Finally, the bottom-right panel provides a representative heatmap of selection activity for the stock with the highest average selection rate.
+Rather than a uniform or rotating pattern, the heatmap reveals that a concentrated set of features is selected repeatedly across non-overlapping windows.
+These results suggest that certain topic--stock pairs represent genuinely recurring statistical relationships that market agents periodically rediscover.
 
-The \emph{survival curve} (top-right panel) estimates $P(\text{selected at } t+k \mid
-\text{selected at } t)$ for lags $k = 1, \ldots, 120$ windows.
-Persistence decays rapidly at first---73\% of selection events survive to the next
-window, 54\% to lag 5---but the curve flattens considerably thereafter: 38\% of
-episodes persist to lag 20 and 22\% to lag 60 (roughly three months of trading days).
-This slow-decaying tail is consistent with the CMCE mechanism: a topic that has been
-selected generates self-fulfilling predictability, which sustains itself until enough
-new observations dilute the rolling-window coefficient estimate.
-
-The \emph{mean autocorrelation function} of the binary selection indicator (bottom-left
-panel), averaged over the 39{,}808 stock-topic pairs with at least 0.5\% mean selection
-rate, corroborates this picture.
-The first-order autocorrelation is 0.89 and decays slowly ($\text{AC}(5) = 0.70$,
-$\text{AC}(20) = 0.40$), far from the near-zero values expected under i.i.d.\ selection.
-
-Finally, the bottom-right panel shows a representative heatmap for the most actively
-selected stock, with topics ranked by total selection count.
-The heatmap reveals that the same small set of topics tends to be selected repeatedly
-across non-overlapping windows, interspersed with gaps, rather than a uniform or
-rotating pattern.
-This is consistent with a narrative in which certain topic--stock pairs reflect
-genuinely recurring statistical relationships that agents periodically rediscover.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{topic_selection_persistence.png}
-    \caption{Persistence of Topic Selection Episodes}
-    \label{fig:topic_selection_persistence}
-    \begin{minipage}{\textwidth}
-    \footnotesize
-    \textit{Note:} All panels are based on the vol-scaled $\lambda_i$ estimation
-    (1{,}296 stocks, 190 features, 1{,}648 trading days).
-    \textbf{Top-left}: histogram of run lengths (consecutive windows a topic remains
-    selected), pooled across 180{,}586 episodes; truncated at 80 windows for readability.
-    \textbf{Top-right}: survival curve $P(\text{selected at }t+k \mid \text{selected at }t)$
-    estimated for each onset event and averaged across all stock-topic pairs.
-    \textbf{Bottom-left}: mean autocorrelation function of the binary selection indicator,
-    averaged over 39{,}808 active stock-topic pairs (mean selection rate $\geq 0.5\%$).
-    \textbf{Bottom-right}: heatmap of topic selection over time for the most actively
-    selected stock (top 30 topics by total selection count; every 5th window plotted).
-    \end{minipage}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{distribution_survival_autocorrelation.png}
+    \caption{Persistence of Topic Selection Episodes}
+    \label{fig:topic_selection_persistence}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} All panels are based on 1,296 stocks, 190 features and 1,648 trading days. 
+    \textbf{Top-left}: Histogram of run lengths (consecutive windows a topic remains selected), pooled across 623,223 episodes; truncated at 80 windows for readability. 
+    \textbf{Top-right}: Survival curve $P(\text{selected at }t+k \mid \text{selected at }t)$ estimated for each onset event and averaged across all stock-topic pairs. 
+    \textbf{Bottom-left}: Mean autocorrelation function of the binary selection indicator, averaged over 86,358 active stock-topic pairs (mean selection rate $\geq 0.5\%$). 
+    \textbf{Bottom-right}: Heatmap of topic selection over time for the most actively selected stock (top 30 topics by total selection count; every 5th window plotted).
+    \end{minipage}
 \end{figure}
 
 \paragraph{Narrative alignment.}
-While the model predicts that selection is governed by statistical properties alone,
-we test whether there is an additional, non-statistical component: do agents
-disproportionately select features that are narratively coherent with the economic
-identity of the firm?
-Under the volatility-scaled penalty $\lambda_i$, the effective regularisation is
-uniform across stocks, so features cannot be mechanically favoured by return-scale
-differences.
-Any residual cross-feature heterogeneity in selection rates must therefore reflect
-either the statistical content of each topic--return pair or its narrative content.
 
-We proxy narrative relevance using the text of each firm's most recent 10-K filing.
-For each of the 591 firms with available filings from the SEC EDGAR database, we
-compute a TF-IDF vector over the Business Description section (Item~1) and compare
-it against a TF-IDF vector of the key terms associated with each of the 190 features.
-The resulting cosine similarity $\cos_{ij} \in [0,1]$ measures the degree to which
-feature $j$'s topic vocabulary appears in firm $i$'s own description of its business.
+While our model posits that feature selection is driven purely by statistical properties, we investigate whether a non-statistical component also plays a role: do agents disproportionately select features that are ``narratively coherent'' with a firm's core business?
+Because the penalty, $\lambda$, mechanically induces higher selection frequencies for highly volatile stocks, we use stock-level fixed effects to absorb these baseline differences.
+Consequently, any residual variation in how often different features are selected for a given stock must reflect either the true statistical relationship between the topic and the stock's returns, or its narrative relevance.
+To quantify this narrative relevance, we measure the linguistic overlap between the predictive topics and the firm's own self-description.
+We extract the formal business description from each firm's annual 10-K report, specifically the section legally mandated by the SEC as ``Item 1: Business''.
+For the 591 firms with available documents in the EDGAR database, we compute a TF-IDF vector of this text and compare it against the TF-IDF vector of key terms for each of the 180 news-topics.
+The resulting cosine similarity, $\cos_{ij} \in [0,1]$, serves as our proxy for how closely topic $j$'s vocabulary aligns with firm $i$'s stated economic identity.
+We estimate this relationship using the following panel regression:
 
-We estimate a panel regression:
 \begin{equation}\label{eq:narrative_reg}
-\bar{s}_{ij} = \alpha_i + \delta_j + \beta\,\cos_{ij} + \varepsilon_{ij},
+\bar{s}_{ij} = \alpha_i + \delta_j + \beta \cos_{ij} + \varepsilon_{ij},
 \end{equation}
-where $\bar{s}_{ij}$ is the mean LASSO selection rate for stock $i$ and feature $j$,
-$\alpha_i$ are stock fixed effects (absorbing heterogeneity in overall selection
-propensity), and $\delta_j$ are feature fixed effects (absorbing differences in
-aggregate popularity of each topic).
-The coefficient $\beta$ captures whether a feature is selected more often
-\emph{conditional on} the stock's overall propensity and the feature's overall
-popularity---a clean, within-stock-and-topic test of narrative alignment.
 
+where $\bar{s}_{ij}$ is the mean LASSO selection rate for stock $i$ and feature $j$.
+The inclusion of stock fixed effects, $\alpha_i$, absorbs firm-level differences in overall selection propensity, while feature fixed effects, $\delta_j$, account for the aggregate popularity of specific topics.
+Thus, the coefficient $\beta$ isolates the precise within-firm, within-topic effect of narrative alignment.
 Table~\ref{tab:narrative_alignment} reports the results.
-Across 112{,}290 stock-feature observations, $\hat\beta = 0.0088$ ($t = 2.02$, $p = 0.043$):
-a one-standard-deviation increase in 10-K cosine similarity raises the within-cell
-selection rate by 0.00012 percentage points after removing stock and feature fixed effects.
-The overall Spearman rank correlation is $\rho = +0.026$ ($p < 0.0001$).
-The effect is most pronounced in Consumer stocks ($\hat\beta = 0.065$, $t = 5.19$) and
-in the Financials sector ($\rho = +0.036$, $p < 0.0001$); it is absent or reversed in
-Technology and Healthcare.
-
-We also test a between-stock hypothesis: are firms whose 10-K vocabulary overlaps
-broadly with the full feature set (``narratively central'' firms) selected more
-overall?
-We measure narrative centrality as the average cosine similarity across all 190
-features and find no significant correlation with mean selection rate
-($\rho = +0.049$, $p = 0.23$).
-This rules out a mechanical reading: the top narrative-central stocks are regional
-banks and utilities, which use broad financial language that overlaps with many
-topics by construction.
-
-Taken together, these results indicate that statistical relevance is the primary
-driver of topic selection---consistent with the model---but that a small, genuine
-within-stock narrative alignment component exists in certain sectors.
-Agents appear slightly more likely to act on statistical predictions that align with
-their prior understanding of the firm's economic identity, consistent with the
-narrative economics view of \citet{Shiller2017}.
+Across 112,290 stock-topic observations, we find a statistically significant but economically modest effect. 
+A one-standard-deviation increase in cosine similarity raises the residual selection rate by 0.00012 percentage points.
+The overall Spearman rank correlation is also positive and highly significant.
+Notably, as shown in Panel B, this narrative alignment is concentrated in the Consumer and Financial sectors, but is entirely absent or reversed in Technology and Healthcare.
+We additionally test a between-firm hypothesis: are ``narratively central'' firms, meaning those whose business descriptions broadly overlap with the vocabulary of the entire feature set, more likely to have topics selected overall?
+Using the average cosine similarity across all 180 topics as a proxy for a firm's narrative centrality, we find no significant correlation with its mean selection rate.
+The most narratively central stocks, such as regional banks and utilities, naturally use broad financial terminology that overlaps with many topics, which rules out a mechanical link between a firm's language breadth and its overall selection frequency.
+Ultimately, these findings suggest that while statistical relevance remains the primary driver of feature selection, a marginal narrative alignment effect persists in specific sectors.
+Agents appear slightly more inclined to act on statistical signals when those signals resonate with their prior understanding of a firm's established economic identity, an observation consistent with the narrative economics framework of \citet{Shiller2017}.
 
 \begin{table}[H]
 \centering
@@ -947,18 +844,18 @@ narrative economics view of \citet{Shiller2017}.
 \label{tab:narrative_alignment}
 \begin{tabularx}{\textwidth}{@{}>{\small}X r r r r r@{}}
 \toprule
- & $N_{\text{stocks}}$ & $N_{\text{obs}}$ & Spearman $\rho$ & Panel FE $\hat\beta$ & $t$-stat \\
+ & $N_{\text{stocks}}$ & $N_{\text{obs}}$ & Spearman $\rho$ & Panel FE $\hat\beta$ & $t$-stat \\
 \midrule
 \multicolumn{6}{l}{\textit{Panel A: All sectors pooled}} \\[2pt]
-Overall   & 591 & 112{,}290 & $+0.026^{***}$ & $0.0088$ & $2.02^{**}$ \\[6pt]
+Overall   & 591 & 112{,}290 & $+0.026^{***}$ & $0.0088$ & $2.02^{**}$ \\[6pt]
 \multicolumn{6}{l}{\textit{Panel B: By sector}} \\[2pt]
-Energy \& Mining      & 36  & 6{,}840  & $+0.021^{*}$   & $0.0074$ & $0.39$ \\
-Financials            & 137 & 26{,}030 & $+0.036^{***}$ & $0.0147$ & $1.85^{*}$ \\
-Technology            & 25  & 4{,}750  & $-0.002$        & $-0.0302$ & $-1.06$ \\
-Healthcare            & 13  & 2{,}470  & $-0.022$        & $0.0427$ & $0.99$ \\
-Consumer              & 71  & 13{,}490 & $+0.014$        & $0.0652$ & $5.19^{***}$ \\
-Industrials           & 101 & 19{,}190 & $+0.022^{***}$ & $-0.0157$ & $-1.38$ \\
-Utilities \& Telecom  & 35  & 6{,}650  & $+0.085^{***}$ & $0.0158$ & $0.79$ \\[6pt]
+Energy \& Mining      & 36  & 6{,}840  & $+0.021^{*}$   & $0.0074$ & $0.39$ \\
+Financials            & 137 & 26{,}030 & $+0.036^{***}$ & $0.0147$ & $1.85^{*}$ \\
+Technology            & 25  & 4{,}750  & $-0.002$        & $-0.0302$ & $-1.06$ \\
+Healthcare            & 13  & 2{,}470  & $-0.022$        & $0.0427$ & $0.99$ \\
+Consumer              & 71  & 13{,}490 & $+0.014$        & $0.0652$ & $5.19^{***}$ \\
+Industrials           & 101 & 19{,}190 & $+0.022^{***}$ & $-0.0157$ & $-1.38$ \\
+Utilities \& Telecom  & 35  & 6{,}650  & $+0.085^{***}$ & $0.0158$ & $0.79$ \\[6pt]
 \multicolumn{6}{l}{\textit{Panel C: Between-stock narrative centrality}} \\[2pt]
 Mean sim.\ vs.\ mean sel.\ rate & 591 & --- & $+0.049$ & --- & --- \\
 \bottomrule
@@ -966,89 +863,45 @@ Mean sim.\ vs.\ mean sel.\ rate & 591 & --- & $+0.049$ & --- & --- \\
 \medskip
 \begin{minipage}{\textwidth}
 \footnotesize
-\textit{Note:} $\bar{s}_{ij}$ is the mean LASSO selection rate for stock $i$ and feature $j$
-across all rolling windows.
-Cosine similarity $\cos_{ij}$ is computed between TF-IDF vectors of each firm's 10-K
-Business Description (Item~1) and the key-term string of each WSJ topic feature.
-Panel FE $\hat\beta$ is from OLS on the within-transformed data (stock $+$ feature fixed effects).
-Panel~C reports the Spearman correlation between each firm's average cosine similarity
-across all features (``narrative centrality'') and its average selection rate.
-Significance: $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.
+\textit{Note:} $\bar{s}_{ij}$ is the mean LASSO selection rate for stock $i$ and feature $j$ across all rolling windows.
+Cosine similarity $\cos_{ij}$ is computed between TF-IDF vectors of each firm's 10-K Business Description (Item~1) and the key-term string of each WSJ topic feature.
+Panel FE $\hat\beta$ is from OLS on the within-transformed data with stock and topic fixed effects.
+Panel~C reports the Spearman correlation between each firm's average cosine similarity across all features (``narrative centrality'') and its average selection rate.
+Significance is denoted as $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.
 \end{minipage}
 \end{table}
-
-Next, we estimate the parameter $\kappa_{i}$ implied by the ALM by applying NLS to equation~(\ref{eq:empirical_alm}), taking the LASSO-estimated belief sequence ${\beta_{i,t}}$ as given.
-Identification relies on time-series variation in agents’ beliefs about return predictability, as captured by fluctuations in $X_t \beta_{i,t}$, and on the corresponding variation in realized returns. 
-Intuitively, $\kappa_{i}$ is pinned down by how changes in expected returns translate into
-realised returns through the nonlinear asset-pricing equation.
-A significant $\kappa$ indicates that the non-linear ALM has explanatory power over a benchmark where
-returns are unpredictable, and we view it as an empirical test of the CMCE equilibrium being operative in the data.
-Among the 770 estimation stocks with non-zero LASSO selection---for which $f_t$ has enough time-series
-variation to identify $\kappa$---9.5\% have a statistically significant $\kappa$ estimate at the 5\% level.
-Table~\ref{tab:summary_stats_stage2} summarises the estimation results for these stocks.
-
-
-\begin{table}[H]
-\centering
-\caption{Second-Stage Estimation: Summary Statistics}
-\label{tab:summary_stats_stage2}
-
-\begin{tabularx}{\textwidth}{@{}>{\small}Xccccccc@{}}
-\toprule
- & mean & std & median & min & max & p05 & p95 \\
-\midrule
-In-sample $R^2$        & 0.0030 & 0.0021 & 0.0023 & 0.0012 & 0.0143 & 0.0014 & 0.0064 \\
-$\hat{\kappa}$         & 0.2872 & 0.1178 & 0.2786 & 0.0884 & 0.5998 & 0.1163 & 0.5392 \\
-$t$-statistic of $\hat{\kappa}$ & 3.0835 & 1.1626 & 2.6328 & 1.9696 & 8.1218 & 2.0381 & 5.0675 \\
-\bottomrule
-\end{tabularx}
-
-\medskip
-\begin{minipage}{\textwidth}
-\footnotesize
-\textit{Note:} The table reports summary statistics across the 73 estimation stocks
-(9.5\% of the 770 with non-zero LASSO selection) for which $\hat\kappa$ is statistically
-significant at the 5\% level.
-In-sample $R^2$ is the second-stage NLS fit evaluated on the full time series.
-$\hat{\kappa}$ is the estimated belief-feedback parameter and its $t$-statistic is computed
-from the NLS sandwich standard error.
-\end{minipage}
-\end{table}
-
 
 \subsection{Robustness: Volatility-Scaled Penalty}
 
-The baseline specification uses a single global $\lambda^*$ across all stocks.
+The baseline specification uses a single global $\lambda$ across all stocks.
 Because the topic features $X_t$ are standardised within each rolling window but the
 return $r_{i,t}$ is not, the effective penalisation relative to the signal-to-noise
 ratio varies with stock volatility.
 Specifically, the LASSO soft-thresholding condition implies that a predictor is selected
 only if its within-window OLS coefficient exceeds $\lambda$ in absolute value.
 For a low-volatility stock (small $\sigma_i$), returns fluctuate less, so OLS coefficients
-are smaller in magnitude and $\lambda^*$ is proportionally more restrictive---which explains
-why $\approx 40\%$ of stocks have zero LASSO selection under the global $\lambda^*$.
-
-A natural robustness check replaces $\lambda^*$ with a per-stock volatility-scaled penalty:
+are smaller in magnitude and $\lambda$ is proportionally more restrictive, which explains
+why $\approx 40\%$ of stocks have zero LASSO selection under the global $\lambda$.
+A natural robustness check replaces $\lambda$ with a per-stock volatility-scaled penalty:
 \begin{equation}\label{eq:volscaled_lambda}
-\lambda_i = \lambda^* \times \frac{\sigma_i}{\bar\sigma},
+\lambda_i = \lambda \times \frac{\sigma_i}{\bar\sigma},
 \end{equation}
 where $\sigma_i = \mathrm{std}(r_{i,\cdot})$ is the full-sample standard deviation of stock $i$'s
 log returns and $\bar\sigma = 0.0175$ is the cross-sectional median.
 This normalisation restores a uniform effective penalty relative to each stock's return scale.
-The window $s^*$ and $n$ are kept at the baseline values; no additional hyperparameter
+The window $s$ and $n$ are kept at the baseline values and no additional hyperparameter
 optimisation is performed for this specification.
-
 Table~\ref{tab:comparison} reports a side-by-side comparison of the two specifications on the
 same 1,296 estimation stocks.
-
+ 
 \begin{table}[H]
 \centering
 \caption{Baseline vs.\ Volatility-Scaled Penalty: Estimation Results}
 \label{tab:comparison}
 \begin{tabularx}{\textwidth}{@{}>{\small}X cc cc@{}}
 \toprule
- & \multicolumn{2}{c}{Baseline ($\lambda^* = 3.506\!\times\!10^{-3}$)}
- & \multicolumn{2}{c}{Vol-scaled ($\lambda_i = \lambda^*\sigma_i/\bar\sigma$)} \\
+ & \multicolumn{2}{c}{Baseline ($\lambda = 3.506\!\times\!10^{-3}$)}
+ & \multicolumn{2}{c}{Vol-scaled ($\lambda_i = \lambda\sigma_i/\bar\sigma$)} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}
  & mean & median & mean & median \\
 \midrule
@@ -1069,11 +922,11 @@ $t$-stat $\hat\kappa$ & 3.084 & 2.633 & 3.265 & 2.833 \\
 \medskip
 \begin{minipage}{\textwidth}
 \footnotesize
-\textit{Note:} Both specifications use the same window $s^*=231$ days and $n=1$ lag,
+\textit{Note:} Both specifications use the same window $s=231$ days and $n=1$ lag,
 calibrated on the 20\% tuning stocks.
 ``Non-degen.'' refers to stocks with average LASSO selection rate $\geq 0.3\%$.
 ``Significant $\kappa$'' requires $\hat\kappa_{t\text{-stat}} > 1.96$.
-Vol-scaled penalty: $\lambda_i = \lambda^* \times \sigma_i/\bar\sigma$,
+Vol-scaled penalty: $\lambda_i = \lambda \times \sigma_i/\bar\sigma$,
 where $\bar\sigma = 0.0175$ is the cross-sectional median daily return volatility.
 \end{minipage}
 \end{table}
@@ -1081,7 +934,7 @@ where $\bar\sigma = 0.0175$ is the cross-sectional median daily return volatilit
 The vol-scaled specification reduces the zero-selection rate from 40.5\% to 3.2\%
 by giving low-volatility stocks a proportionally smaller penalty.
 The share of significant-$\kappa$ stocks rises from 9.5\% to 10.6\%, and the median
-$\hat\kappa$ increases from 0.279 to 0.389---closer to the oracle target of 0.374
+$\hat\kappa$ increases from 0.279 to 0.389 which is closer to the oracle target of 0.374
 obtained under the same calibration in Appendix~\ref{app:oracle}.
 Stage-1 in-sample $R^2$ falls slightly (from 0.025 to 0.008), reflecting less
 within-window overfit under a better-matched effective penalty.
@@ -1103,14 +956,15 @@ In finite samples, agents occasionally select predictors by chance.
 When this occurs, trading on the perceived signal feeds back into prices, making the predictability temporarily self-fulfilling.
 As new data arrive and older observations drop out of the agents’ effective memory, coefficient estimates revert back to zero, and the induced predictability disappears.
 The theory yields tractable conditions linking the frequency of selection events to fundamentals and features of the information environment.
-Empirically, we implement the model on daily returns for 1{,}620 NYSE-listed stocks from 2010--2017 using 180 Wall Street Journal topic-attention innovations as predictors.
+Empirically, we implement the model on daily returns for 1{,}620 NYSE-listed stocks from 2010--2017 using 180 Wall Street Journal news-attention innovations as predictors.
 Consistent with the model, predictability is episodic and sparse, and selection occurs more frequently for higher-volatility stocks.
 
 
 We plan to extend our analysis along several dimensions.
 The current model features a representative agent; a natural next step is to introduce heterogeneity in learning behavior.
 On the empirical side, the model cannot explain heterogeneity in the probability that different features are selected, beyond what is implied by their statistical properties. 
-The data, however, exhibit systematic cross-feature variation in selection frequencies. We therefore test whether this variation reflects an additional, non-statistical component of behavior. 
+The data, however, exhibit systematic cross-feature variation in selection frequencies. 
+We therefore test whether this variation reflects an additional, non-statistical component of behavior. 
 Specifically, we hypothesize that, after estimating the statistical model, agents are more likely to act on its signals when the resulting predictions are consistent with their pre-existing narratives about how the stock market works and about plausible causal links between specific features and asset prices.
 
 
@@ -1120,6 +974,8 @@ Specifically, we hypothesize that, after estimating the statistical model, agent
 \newpage
 
 \bibliography{references}
+
+\newpage
 
 \appendix
 
@@ -1702,10 +1558,10 @@ Diagonal entries ($k=l$) reflect same-lag correlations, while off-diagonal entri
 
 
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{corr_topics_heatmap.png}
-  \caption{Correlation matrix of news-topic attention series.}
+  \includegraphics[width=\linewidth]{heatmap.png}
+  \caption{Heatmap of correlation between news-topics.}
   \label{fig:corr_heatmap}
 \end{figure}
 
@@ -1848,47 +1704,47 @@ materially affected.
 A practical implication is that the penalty parameter $\lambda$ may need to be set above the
 theoretical calibration to achieve the intended sparsity level in finite samples.
 
-\subsection*{Beta recovery}
+% \subsection*{Beta recovery}
 
-The low out-of-sample $R^2$ values documented in Table~\ref{tab:oracle} might raise a concern:
-does the procedure actually recover the belief coefficients $\beta_t$, or are the estimated
-paths merely noise?
-Figures~\ref{fig:oracle_beta_20} and~\ref{fig:oracle_beta_full} address this question directly
-by overlaying the true simulated coefficients $\beta_t$ against the re-estimated paths
-$\hat\beta_t$ produced by the rolling LASSO.
+% The low out-of-sample $R^2$ values documented in Table~\ref{tab:oracle} might raise a concern:
+% does the procedure actually recover the belief coefficients $\beta_t$, or are the estimated
+% paths merely noise?
+% Figures~\ref{fig:oracle_beta_20} and~\ref{fig:oracle_beta_full} address this question directly
+% by overlaying the true simulated coefficients $\beta_t$ against the re-estimated paths
+% $\hat\beta_t$ produced by the rolling LASSO.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{oracle_cell11_fig0.png}
-  \caption{Oracle test: true vs.\ estimated coefficient path for the first topic
-           ($K = 20$ specification).
-           The rolling LASSO tracks the true belief coefficient closely,
-           even though the out-of-sample $R^2$ for Stage~1 is near zero.}
-  \label{fig:oracle_beta_20}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=\linewidth]{oracle_cell11_fig0.png}
+%   \caption{Oracle test: true vs.\ estimated coefficient path for the first topic
+%            ($K = 20$ specification).
+%            The rolling LASSO tracks the true belief coefficient closely,
+%            even though the out-of-sample $R^2$ for Stage~1 is near zero.}
+%   \label{fig:oracle_beta_20}
+% \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{oracle_cell12_fig0.png}
-  \caption{Oracle test: true vs.\ estimated paths for the ten largest-magnitude
-           coefficients ($K = 187$ specification).
-           For all active predictors the estimated path follows the true simulated coefficient,
-           confirming that the rolling LASSO recovers the sparse belief structure.}
-  \label{fig:oracle_beta_full}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=\linewidth]{oracle_cell12_fig0.png}
+%   \caption{Oracle test: true vs.\ estimated paths for the ten largest-magnitude
+%            coefficients ($K = 187$ specification).
+%            For all active predictors the estimated path follows the true simulated coefficient,
+%            confirming that the rolling LASSO recovers the sparse belief structure.}
+%   \label{fig:oracle_beta_full}
+% \end{figure}
 
-The figures reveal a striking result: despite Stage-1 out-of-sample $R^2$ values that are
-close to zero, the rolling LASSO reconstructs the true coefficient paths with high fidelity.
-The RMSE of $\hat\beta_t$ relative to $\beta_t^{\text{true}}$ is approximately
-$9 \times 10^{-6}$ in both specifications (Table~\ref{tab:oracle}).
-This apparent paradox---accurate beta recovery alongside near-zero predictive $R^2$---is
-a direct implication of the model's equilibrium.
-At the CMCE, returns are close to unpredictable ($f_t \approx 0$), so even perfectly
-estimated belief coefficients produce little return forecastability in the standard $R^2$
-sense.
-The signal in $f_t$ is real but small relative to the volatility of $\eta_t$.
-The oracle test therefore validates the two-stage estimator: the relevant object for
-identifying $\kappa$ is the variation in $f_t$ over time, not the level of forecasting $R^2$.
+% The figures reveal a striking result: despite Stage-1 out-of-sample $R^2$ values that are
+% close to zero, the rolling LASSO reconstructs the true coefficient paths with high fidelity.
+% The RMSE of $\hat\beta_t$ relative to $\beta_t^{\text{true}}$ is approximately
+% $9 \times 10^{-6}$ in both specifications (Table~\ref{tab:oracle}).
+% This apparent paradox---accurate beta recovery alongside near-zero predictive $R^2$---is
+% a direct implication of the model's equilibrium.
+% At the CMCE, returns are close to unpredictable ($f_t \approx 0$), so even perfectly
+% estimated belief coefficients produce little return forecastability in the standard $R^2$
+% sense.
+% The signal in $f_t$ is real but small relative to the volatility of $\eta_t$.
+% The oracle test therefore validates the two-stage estimator: the relevant object for
+% identifying $\kappa$ is the variation in $f_t$ over time, not the level of forecasting $R^2$.
 
 
 \end{document}

@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{Motivation}{2}{0}{1}
-\beamer@sectionintoc {2}{Current Status}{6}{0}{2}
-\beamer@sectionintoc {3}{Model Setup}{7}{0}{3}
-\beamer@sectionintoc {4}{Emprical Application}{14}{0}{4}

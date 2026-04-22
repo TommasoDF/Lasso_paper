@@ -404,7 +404,7 @@ def main(
         features_csv = Path(features_csv)
 
     if best_hyperparameters is None:
-        best_hyperparameters = REPO_ROOT / "Data" / "clean_data" / "best_hyperparameters.txt"
+        best_hyperparameters = REPO_ROOT / "Data" / "clean_data" / "best_hyperparameters_holdout.txt"
     else:
         best_hyperparameters = Path(best_hyperparameters)
 
