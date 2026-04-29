@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/dev/null find:*)",
+      "Bash(/Users/tommasodifrancesco/Desktop/Lasso_paper/.venv/bin/python3 -c \":*)",
+      "Bash(ls /Users/tommasodifrancesco/Desktop/Lasso_paper/Theory/simulation_data*.csv)",
+      "Bash(ls /Users/tommasodifrancesco/Desktop/Lasso_paper/Theory/*.csv)",
+      "Bash(python3 tenk_topic_similarity.py --max-stocks 5)",
+      "Bash(pdflatex -interaction=nonstopmode main.tex)",
+      "Bash(git stash:*)",
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(python3 -c ':*)"
+    ]
+  }
+}
