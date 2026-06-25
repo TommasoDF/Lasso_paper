@@ -1,0 +1,715 @@
+\section{Proofs}\label{sec:proofs}
+\subsection{Proof of proposition \ref{prop:RLS}}\label{app:proof_RLS}
+
+In a CMCE the value of $\beta$ solves
+\begin{equation}
+    T(\beta) - \beta = 0,
+\end{equation}
+where 
+\begin{equation}
+    T(\beta) = \frac{\operatorname{Cov}(r_{t-1}, x_{t-2})}{\operatorname{Var}(x_{t-2})} = \frac{\operatorname{Cov}(r_{t-1}, x_{t-2})}{\sigma^2_x},
+\end{equation}
+and $r_{t-1}$ is given by (\ref{eq:alm_RLS}) evaluated at the stationary distribution.
+
+To compute $\operatorname{Cov}(r_{t-1}, x_{t-2})$ we exploit the fact that $x_{t-2}$ is independent of $\eta^d_{t-1}$ and $x_{t-1}$, which implies that
+\begin{equation}
+    \operatorname{Cov}(r_{t-1}, x_{t-2}) = \operatorname{Cov}\left(g_{\beta}(x_{t-2}), x_{t-2}\right).
+\end{equation}
+
+By Stein's lemma
+\begin{equation}
+    \operatorname{Cov}(r_{t-1}, x_{t-2}) = \operatorname{Cov}(g_{\beta}(x_{t-2}), x_{t-2}) = \sigma^2_x \mathbb{E}\left[g'_{\beta}(x_{t-2})\right].
+\end{equation}
+This implies that $T(\beta) = \mathbb{E}\left[g'_{\beta}(x_{t-2})\right]$.
+
+We can show that  $\operatorname{sign}\left[T(\beta)\right] = - \operatorname{sign}(\beta)$ unless $\beta = 0$. In fact, we have
+\begin{equation}
+    g_{\beta}'(x)
+= -\,\frac{\kappa\,\beta\, e^{w\tanh(x \beta/w)}\, \operatorname{sech}^2(x \beta/w)}
+        {1 - \kappa e^{w\tanh(x \beta/w)}}.
+\end{equation}
+In the numerator, every multiplicative factor except $\beta$ is strictly positive since
+$\kappa>0$, $e^{w\tanh(x \beta/w)}>0$, and $\operatorname{sech}^2(x \beta/w)>0$.
+The denominator is also strictly positive since $w$ is chosen exactly to make the second term smaller than 1.
+Hence the sign of $g_\beta'(x)$ is determined entirely by $-\beta$.
+In particular,
+\begin{equation}
+    \operatorname{sign}\left[T(\beta)\right] 
+    = \operatorname{sign}\left[ - \beta \,\mathbb{E}\left(\frac{\kappa\, e^{w\tanh(x \beta/w)}\, \operatorname{sech}^2(x \beta/w)}
+        {1 - \kappa e^{w\tanh(x \beta/w)}}\right)\right] = - \operatorname{sign}(\beta).
+\end{equation}
+Therefore $T(\beta)$ has the opposite sign of $\beta$ for all $\beta \neq 0$, and the only fixed point is $\beta = 0$.
+
+To study local stability of the CMCE under RLS learning we follow the approach in Chapter 6 of \cite{GeorgeWEvans2001},
+which casts the learning dynamics as a Stochastic Recursion Algorithm (SRA).
+The key technical issue is that the return innovation $r_{t-1}$ depends on both $\beta_{t-1}$ and $\beta_{t-2}$. 
+To deal with this, we keep the \emph{parameter} vector first order and move the required lags into the \emph{state} vector. Specifically, define the parameter vector as
+\[
+\theta_t \equiv 
+\begin{pmatrix}
+\beta_t\\
+M_t
+\end{pmatrix},\]
+with domain $D=\mathbb R\times (0,\infty)$, and the gain sequence $\gamma_t=t^{-1}$.
+
+We augment the state to include the lagged belief needed by the ALM:
+\[
+Z_t \equiv 
+\begin{pmatrix}
+x_{t-1}\\
+x_{t-2}\\
+\eta_{t-1}\\
+s_{t-1} \\
+s_{t-2}
+\end{pmatrix},
+\qquad s_{t-1}\equiv \beta_{t-1}.
+\]
+Let $W_t=(x_{t-1},\eta_{t-1},1)'$. Then the state follows a conditionally linear law of motion of the form 
+\[
+Z_t = A Z_{t-1} + B(\theta_{t-1})W_{t},
+\quad
+A=
+\begin{pmatrix}
+0&0&0&0&0\\
+1&0&0&0&0\\
+0&0&0&0&0\\
+0&0&0&0&0\\
+0&0&0&1&0
+\end{pmatrix},
+\quad
+B(\theta)=
+\begin{pmatrix}
+1&0&0\\
+0&0&0\\
+0&1&0\\
+0&0&\beta\\
+0&0&0
+\end{pmatrix}.
+\]
+This construction ensures $s_{t-1}=\beta_{t-1}$ in real time, while under a fixed parameter $\theta=(\beta,M)$ we have $s\equiv \beta$ in the associated frozen-parameter state process $\bar Z_t(\theta)$. Next, write the parameter recursion in SRA form as
+\[
+\theta_t=\theta_{t-1}+\gamma_t\,\mathcal H(\theta_{t-1},Z_t)+\gamma_t^2\,\rho_t(\theta_{t-1},Z_t),
+\]
+
+by rearranging (\ref{eq:b_t_evolution}) to get
+\begin{equation}
+    \begin{aligned}
+        \beta_t & = \beta_{t-1} + t^{-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 \beta_{t-1} \right] \\
+        & + t^{-2} \frac{t}{t-1} M^{-1}_{t-1} \left[ x_{t-2} r_{t-1} - x_{t-2}^2 \beta_{t-2} \right].
+    \end{aligned}
+\end{equation}
+
+and $\beta_{t-2}$ is replaced by the state component $s_{t-2}$, so that the required functions are
+\[
+\mathcal H(\theta,Z)=
+\begin{pmatrix}
+M^{-1}\big[x_{2}\,r(\beta,s_{2};x_1,x_2,\eta)-x_2^2\,\beta\big]\\
+x_1^2-M
+\end{pmatrix},
+\qquad
+\rho_t(\theta,Z)=
+\begin{pmatrix}
+\frac{t}{t-1}\,M^{-1}\big[x_{2}\,r(\beta,s_{2};x_1,x_2,\eta)-x_2^2\,s_{2}\big]\\
+0
+\end{pmatrix},
+\]
+with $Z=(x_1,x_2,\eta,s_1, s_2)$ and
+\[
+r(\beta,s_2;x_1,x_2,\eta)
+=\eta+\log\!\Bigl(1-\kappa e^{w\tanh(x_2 s_2/w)}\Bigr)-\log\!\Bigl(1-\kappa e^{w\tanh(x_1 \beta/w)}\Bigr).
+\]
+Assumptions (A.1)–(A.3) and (B.1)–(B.2) in Section 6.2.1 of \cite{GeorgeWEvans2001} hold on any compact $Q\subset D$: (A.1) holds because $\gamma_t=t^{-1}$ implies $\sum_t\gamma_t=\infty$ and $\sum_t\gamma_t^2<\infty$; 
+(B.1) holds because $W_t$ is i.i.d.\ with finite moments of all orders under $\eta_{t-1}\sim\mathcal N(0,\sigma^2)$ and $x_t\sim \mathcal N(0,\sigma_x^2)$; (B.2) holds since $A$ is constant with spectral radius $0<1$ and $B(\theta)$ is uniformly bounded and Lipschitz on $Q$; (A.2) holds because $\tanh(\cdot)$ and $\sech(\cdot)$ are bounded and, under $\kappa e^{w}<1$, the term $\log(1-\kappa e^{w\tanh(\cdot)})$ is uniformly bounded away from its singularity on $Q$, implying polynomial growth of $\mathcal H$ and $\rho_t$ in $(x_1,x_2,\ell)$, whose moments are finite; (A.3) follows because $\mathcal H$ is $C^2$ in $\theta$ on $Q$ with bounded second derivatives (again using bounded derivatives of $\tanh$ and the restriction $\kappa e^{w}<1$), hence satisfies the required Lipschitz properties. Therefore the associated ODE is
+\[
+\dot\theta = h(\theta),\qquad h(\theta)=\lim_{t\to\infty}\mathbb E\big[\mathcal H(\theta,\bar Z_t(\theta))\big].
+\]
+Under fixed $\theta=(\beta,M)$, the frozen state is stationary with $x_1,x_2\stackrel{iid}{\sim}\mathcal N(0,\sigma_x^2)$, $\eta\sim\mathcal N(0,\sigma_d^2)$ and $s\equiv \beta$, so that
+\[
+h(\beta,M)=
+\begin{pmatrix}
+M^{-1}\big(\mathbb E[x_2 r(\beta,\beta;x_1,x_2,\ell)]-\beta\sigma_x^2\big)\\
+\sigma_x^2-M
+\end{pmatrix}
+=
+\begin{pmatrix}
+(\sigma_x^2/M)\big(T(\beta)-\beta\big)\\
+\sigma_x^2-M
+\end{pmatrix},
+\]
+where $\mathbb E[x_2 r(\beta,\beta;\cdot)]=\sigma_x^2 T(\beta)$ by the definition of $T(\beta)$. The CMCE corresponds to the unique fixed point $(\beta^*,M^*)=(0,\sigma_x^2)$. Linearizing $h$ at $(0,\sigma_x^2)$ yields Jacobian
+\[
+Dh(0,\sigma_x^2)=
+\begin{pmatrix}
+T'(0)-1 & 0\\
+0 & -1
+\end{pmatrix}.
+\]
+Moreover, from $g_\beta'(x)=-(\kappa\beta e^{w\tanh(x\beta/w)}\operatorname{sech}^2(x\beta/w))/(1-\kappa e^{w\tanh(x\beta/w)})$ we obtain
+$T(\beta)=\mathbb E[g_\beta'(x)]$ and hence $T'(0)=-(\kappa/(1-\kappa))$, so $T'(0)-1=-1/(1-\kappa)<0$ for all $\kappa\in(0,1)$. Thus $(0,\sigma_x^2)$ is locally asymptotically stable for the ODE, and by the E-stability principle it is also locally stable under RLS learning.
+
+\subsection{Proof of proposition \ref{prop:WLS_distribution}}\label{app:proofs_WLS}
+For the proof we use the small-$\gamma$ Gaussian approximation following Chapter 7 in \cite{GeorgeWEvans2001}.
+We use the same state-augmentation device as above to eliminate the apparent second-order dependence, and all objects are defined as in the RLS case, except that now the gain sequence is constant: $\gamma_t\equiv \gamma\in(0,1)$.
+To verify the assumptions for the Gaussian approximation, we work on an open domain $D=\{(\beta,M):\beta\in\mathbb R,\ M\in(\zeta,\infty)\}$ with $\zeta>0$ and (as standard in constant-gain RLS) impose a projection onto an arbitrary compact $Q\Subset D$ to guarantee $M_t\ge\zeta$; on $Q$, (A.2) and (A.3$'$) hold because $H(\theta,Z)$ is $C^1$ in $(\theta,Z)$ with polynomial growth in $(x_1,x_2,\eta)$, and $\tanh(\cdot)$ together with $\kappa e^{w}<1$ keep the logarithmic term uniformly away from its singularity, implying local Lipschitz and polynomial bounds for $H$ and $\partial H/\partial x$; (M.1)–(M.5) and (N.1)(i)–(iii) hold because the augmented state is a geometrically ergodic Markov chain under fixed $\theta$ (linear shift with i.i.d.\ Gaussian innovations) and has finite moments of all orders; (H.1) holds since $h(\theta)\equiv \mathbb E[H(\theta,Z^\theta)]$ has continuous first and second derivatives on $D$; (H.2)–(H.3) hold locally around the CMCE because the Jacobian $B\equiv D_\theta h(\theta^*)$ has eigenvalues with strictly negative real parts (computed below), and $D_\theta h$ is Lipschitz on $Q$. Therefore Theorem 7.9 applies, yielding for small $\gamma$ and large $t$ the approximation $\theta_t\approx N(\theta^*,\gamma C)$ with
+\[
+C=\int_0^\infty e^{sB}R(\theta^*)e^{sB'}\,ds,
+\qquad
+R_{ij}(\theta)=\sum_{k=-\infty}^{\infty}\mathrm{cov}\!\big(H_i(\theta,Z^\theta_k),H_j(\theta,Z^\theta_0)\big),
+\]
+where $Z_k^\theta$ denotes the stationary frozen-$\theta$ chain. 
+In our case, under frozen $\theta=(\beta,M)$ we have
+\[
+h(\beta,M)=
+\begin{pmatrix}
+(\sigma_x^2/M)\big(T(\beta)-\beta\big)\\
+\sigma_x^2-M
+\end{pmatrix},
+\]
+so the unique equilibrium is $\theta^*=(\beta^*,M^*)=(0,\sigma_x^2)$ and
+\[
+B=D_\theta h(\theta^*)=
+\begin{pmatrix}
+T'(0)-1 & 0\\
+0 & -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+-\frac{1}{1-\kappa} & 0\\
+0 & -1
+\end{pmatrix},
+\]
+where $T'(0)=-(\kappa/(1-\kappa))$ as in the decreasing-gain analysis. At $\theta^*$, $r(\beta,s;\cdot)=\eta$ because $\tanh(0)=0$ and the two log-terms cancel, hence
+\[
+H_1(\theta^*,Z)=\sigma_x^{-2}\,x_2\eta,\qquad H_2(\theta^*,Z)=x_1^2-\sigma_x^2.
+\]
+Because $\eta$ has mean $0$ and $(x_t)$ and $(\eta_t)$ are i.i.d.\ across time, all lead-lag covariances in $R(\theta^*)$ vanish and $R(\theta^*)=\mathrm{var}(H(\theta^*,Z))$ is diagonal with
+\[
+R_{11}(\theta^*)=\mathrm{var}(\sigma_x^{-2}x_2\eta)=\sigma_x^{-4}\,\mathbb E[x_2^2]\mathbb E[\eta^2]=\frac{\sigma_d^2}{\sigma_x^{2}},\qquad
+R_{22}(\theta^*)=\mathrm{var}(x_1^2)=\mathbb E[x_1^4]-\sigma_x^4=2\sigma_x^4,
+\]
+and $R_{12}(\theta^*)=0$. Since $B$ is diagonal, the integral for $C$ is explicit:
+\[
+C_{11}=\int_0^\infty e^{2B_{11}s}R_{11}\,ds=\frac{R_{11}}{-2B_{11}}=\frac{\sigma_d^2}{\sigma_x^{2}}\cdot\frac{1-\kappa}{2},\qquad
+C_{22}=\int_0^\infty e^{2B_{22}s}R_{22}\,ds=\frac{R_{22}}{-2B_{22}}=\sigma_x^4,
+\qquad C_{12}=0.
+\]
+Consequently, for small $\gamma$ and large $t$,
+\[
+\theta_t=
+\begin{pmatrix}\beta_t\\ M_t\end{pmatrix}
+\ \approx\ 
+N\!\left(
+\begin{pmatrix}0\\ \sigma_x^2\end{pmatrix},
+\ \gamma
+\begin{pmatrix}
+\displaystyle \frac{1-\kappa}{2}\frac{\sigma_d^2}{\sigma_x^{2}} & 0\\[8pt]
+0 & \sigma_x^4
+\end{pmatrix}
+\right),
+\]
+so in particular $\beta_t\approx N\!\bigl(0,\ \gamma\,\frac{1-\kappa}{2}\frac{\sigma^2}{\sigma_x^{2}}\bigr)$ and $M_t\approx N\!\bigl(\sigma_x^2,\ \gamma\,\sigma_x^4\bigr)$.
+
+\subsection{Proof of proposition \ref{prop:LASSO_estimate}}  \label{app:proof_LASSO}
+
+Under soft-thresholded constant-gain learning, agents first compute the unpenalized weighted least squares estimate $\beta^{\text{OLS}}_t$ exactly as in Section 5, then apply the soft-thresholding operator $S(\cdot,\lambda)$ before forming expectations. 
+The key observation is that the updating rule for $\beta^{\text{OLS}}_t$ remains unchanged—only the mapping from estimates to forecasts is modified.
+Formally, the learning dynamics are
+\[
+\beta^{\text{OLS}}_t = \beta^{\text{OLS}}_{t-1} + \gamma M^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta^{\text{OLS}}_{t-1}),
+\]
+\[
+M_t = M_{t-1} + \gamma (x_{t-1}^2 - M_{t-1}),
+\]
+and agents form forecasts using $\beta_t^{\text{LASSO}} = S(\beta^{\text{OLS}}_t, \lambda)$, which enters the actual law of motion as
+\[
+r_{t} = \eta_{t} + \log\!\Bigl(1-\kappa e^{w\tanh(x_{t-1} S(\beta^{\text{OLS}}_{t-1}, \lambda)/w)}\Bigr) - \log\!\Bigl(1-\kappa e^{w\tanh(x_{t} S(\beta^{\text{OLS}}_{t}, \lambda)/w)}\Bigr).
+\]
+The crucial insight is that $\beta^{\text{OLS}}_t$ evolves according to the unpenalized system studied in Proposition \ref{prop:WLS_distribution}. The soft-thresholding operator $S(\cdot,\lambda)$ affects prices and returns through the ALM, but the statistical properties of $\beta^{\text{OLS}}_t$ itself are determined solely by the unpenalized updating rule. 
+To verify that Proposition \ref{prop:WLS_distribution} applies, we check that all assumptions from the constant-gain analysis remain satisfied. The state-augmented system is unchanged, while the mapping $H$ now includes the soft-thresholding operator through the return function $r(\cdot)$, but this does not affect regularity.
+Therfore it is enough to check assumptions (A.2) and (A.3$'$) for smoothness of $H$ which hold because
+the soft-thresholding operator $S(\beta,\lambda)$ is Lipschitz continuous in $\beta$ (with Lipschitz constant 1), and composition with the smooth $\tanh(\cdot)$ function preserves Lipschitz continuity of $r(\beta,s;\cdot)$ in $(\beta,s)$. 
+Since $\kappa e^w < 1$ by construction, the logarithmic terms remain uniformly bounded away from singularity. Thus $H$ remains $C^1$ in $\theta$ with polynomial growth in $Z$.
+
+The fixed point equations for the mean dynamics are now
+\[
+\beta^{OLS*}=T(\beta^{L*}),\qquad \beta^{L*}=S(\beta^{OLS*},\lambda).
+\]
+In particular, $\beta^{OLS*}=0$ implies $\beta^{L*}=0$, so $(\beta^{OLS*},M^*)=(0,\sigma_x^2)$ is always a fixed point. Any nonzero fixed point would require $|\beta^{OLS*}|>\lambda/\sigma_x^2$ and $\beta^{L*}=\beta^{OLS*}-\mathrm{sign}(\beta^{OLS*})\lambda$, implying
+\[
+\beta^{OLS*}=-\frac{\kappa}{1-\kappa}\Big(\beta^{OLS*}-\mathrm{sign}(\beta^{OLS*})\lambda\Big)
+\;\Rightarrow\;
+\beta^{O*}=\mathrm{sign}(\beta^{O*})\,\frac{\kappa}{1+\kappa}\,\lambda,
+\]
+which contradicts $|\beta^{O*}|>\lambda$ for all $\kappa\in(0,1)$. Hence for $\kappa\in(0,1)$ the unique fixed point is $(0,\sigma_x^2)$ and the corresponding LASSO coefficient is $\beta^{L*}=0$. 
+Local stability follows from the same argument as above, since $\beta^{L}=S(\beta^{O},\lambda/M)$ equals $0$ in a neighborhood of $\beta^{OLS}=0$.
+Since $\beta^L_t=S(\beta^{OLS}_t,\lambda)$ is a deterministic transformation, the implied approximate stationary law of the LASSO coefficient is the \emph{soft--thresholded Gaussian} and 
+\[ \mathbb{P}(|{\beta}_{\text{OLS}}| > \lambda) = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS}}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS}}}\right)\right], \]
+where $\sigma_{\text{OLS}} = \left(\gamma s_{d}^2 \left(2 \sigma^2_x \left(1 + \frac{\kappa}{1 - \kappa} \right)\right)^{-1}\right)^{1/2}$.
+
+As a finite-sample benchmark for decreasing-gain learning, consider instead a fixed rolling window of length $L$, so each observation receives weight $1/L$. Under the null around CMCE, assume within a window that $r_i=\eta_i$ with $\eta_i\sim \mathcal N(0,\sigma_d^2)$, $x_i\sim \mathcal N(0,\sigma_x^2)$, and $x_i\perp \eta_i$. The OLS estimator is
+\[
+\hat\beta_{t,L}=\frac{\sum_{i=1}^{L} x_i r_i}{\sum_{i=1}^{L} x_i^2}
+=\frac{\sigma_d}{\sigma_x\sqrt{L}}\,T_L,
+\]
+where $T_L$ is Student-$t$ with $L$ degrees of freedom. Therefore the probability of selecting a non-zero coefficient under soft-thresholding is
+\[
+\mathbb P\!\left(|\hat\beta_{t,L}|>\lambda\right)
+=2\left[1-F_{t,L}\!\left(\frac{\lambda\,\sigma_x\sqrt{L}}{\sigma_d}\right)\right],
+\]
+with $F_{t,L}$ the cdf of Student-$t_L$. For large $L$, this is approximately
+\[
+\mathbb P\!\left(|\hat\beta_{t,L}|>\lambda\right)
+\approx 2\left[1-\Phi\!\left(\frac{\lambda\,\sigma_x\sqrt{L}}{\sigma_d}\right)\right],
+\]
+which decreases in both $L$ and $\lambda$ and converges to zero as $L\to\infty$.
+
+\subsection{Proofs for the GARCH Extension}\label{app:proofs_GARCH}
+
+\subsection{Proof of Proposition \ref{prop:RLS_garch}}\label{app:proof_RLS_garch}
+
+\textbf{Fixed point.} The CMCE condition is unchanged: $\beta$ solves $T(\beta)-\beta=0$ with
+$T(\beta)=\mathrm{Cov}(r_{t-1},x_{t-2})/\sigma_x^2$. As in the proof of Proposition \ref{prop:RLS},
+$x_{t-2}$ is independent of $(\eta_{t-1},x_{t-1})$, and under Assumption \ref{ass:garch} it is also
+independent of $v_{t-1}$ at every lead and lag (independence of $\{v_t\}$ and $\{x_t\}$ is assumed
+directly). Hence
+\[
+\mathrm{Cov}(r_{t-1},x_{t-2}) = \mathrm{Cov}\bigl(g_\beta(x_{t-2}),x_{t-2}\bigr) = \sigma_x^2\,
+\mathbb E\bigl[g'_\beta(x_{t-2})\bigr]
+\]
+by Stein's lemma exactly as before: this step uses only that $x_{t-2}\sim\mathcal N(0,\sigma_x^2)$ and
+$x_{t-2}\perp \eta_{t-1}$; it never uses $\mathrm{Var}(\eta_{t-1})$, and in particular is insensitive
+to whether that variance is constant or stochastic. Thus $T(\beta)=\mathbb E[g'_\beta(x_{t-2})]$
+verbatim, and the sign argument $\mathrm{sign}[T(\beta)]=-\mathrm{sign}(\beta)$ for $\beta\neq 0$
+established in Appendix \ref{app:proof_RLS} is unaffected by Assumption \ref{ass:garch}. Hence
+$\beta^*=0$ remains the unique CMCE.
+
+\textbf{Local stability.} We re-verify the SRA regularity conditions on a state vector augmented to
+carry the volatility process. Define
+\[
+\theta_t \equiv \begin{pmatrix}\beta_t\\ M_t\end{pmatrix}, \qquad
+Z_t \equiv \begin{pmatrix} x_{t-1}\\ x_{t-2}\\ \eta_{t-1}\\ v_{t-1}\\ \varepsilon_{t-2} \\ s_{t-1}\\ s_{t-2}\end{pmatrix},
+\qquad s_{t-1}\equiv \beta_{t-1},
+\]
+where $v_{t-1}$ and $\varepsilon_{t-2}$ are carried in the state precisely so that the GARCH recursion
+\eqref{eq:garch11} and the construction $\eta_{t-1}=(\bar\sigma_d^2-v_{t-1})/2+\sqrt{v_{t-1}}\varepsilon_{t-1}$
+are measurable functions of state and current shocks, mirroring the device used in Appendix
+\ref{app:proof_RLS} to carry $s_{t-2}=\beta_{t-2}$. The maps $\mathcal H$ and $\rho_t$ defining the SRA
+recursion $\theta_t=\theta_{t-1}+\gamma_t\mathcal H(\theta_{t-1},Z_t)+\gamma_t^2\rho_t(\theta_{t-1},Z_t)$
+are formally identical to those in Appendix \ref{app:proof_RLS}, since $r(\beta,s_2;x_1,x_2,\eta)$
+depends on $\eta$ only through its realized value, not through how $\eta$ was generated.
+
+What changes is the verification of conditions (B.1)--(B.2): $W_t=(x_{t-1},\eta_{t-1},1)'$ is no
+longer i.i.d., because $\eta_{t-1}$ is a (conditionally Gaussian) martingale difference sequence whose
+conditional variance $v_{t-1}$ is itself a stationary, autocorrelated process. We therefore replace the
+i.i.d. verification with the following three facts, each standard for GARCH(1,1):
+\begin{enumerate}
+\item[(i)] Under $\alpha+\delta<1$, $\{v_t\}$ admits a unique strictly stationary, ergodic solution to
+\eqref{eq:garch11} \citep{BougerolPicard1992,Nelson1990}.
+\item[(ii)] Under the strengthened condition $3\alpha^2+2\alpha\delta+\delta^2<1$ assumed above,
+$\mathbb E[v_t^2]<\infty$ \citep{Bollerslev1986}, which together with $\varepsilon_t\perp v_t$ gives
+$\mathbb E[\eta_t^4]<\infty$. We use only this fourth-moment bound below; we do \emph{not} claim, and
+do not need, finite moments of all orders, which need not hold for GARCH(1,1) at arbitrary
+$(\alpha,\delta)$ with $\alpha+\delta<1$.
+\item[(iii)] $\{v_t\}$ (and hence the augmented chain $(x_t,\eta_t,v_t,\varepsilon_t)$) is geometrically
+ergodic / $\beta$-mixing with summable mixing coefficients \citep{CarrascoChen2002}, which is the
+property substituting for i.i.d.-ness in the law-of-large-numbers and martingale-CLT steps underlying
+Evans--Honkapohja's Theorem 6.1 (the ODE approximation theorem for SRA).
+\end{enumerate}
+Given (i)--(iii), conditions (A.1)--(A.3) are verified exactly as in Appendix \ref{app:proof_RLS}: (A.1)
+is unaffected (it concerns only the gain sequence $\gamma_t=t^{-1}$); (A.2) follows because $\mathcal H$
+has the same functional form in $(x_1,x_2,\eta)$ as before, and the finite fourth moments from (ii)
+control its growth; (A.3) follows because $\mathcal H$ is $C^2$ in $\theta$ with bounded second
+derivatives on any compact $Q\subset D$, using boundedness of $\tanh$ and $\mathrm{sech}$ and
+$\kappa e^w<1$, none of which involve $\eta$'s distribution. Condition (B.1) is replaced by (ii)+(iii)
+above (finite relevant moments plus mixing in place of i.i.d.-ness), and (B.2) is unaffected since $A$
+and $B(\theta)$ in the state law of motion do not involve $v_t$'s law.
+
+Because $x_{t-2}\perp(\eta_{t-1},v_{t-1})$, the drift function
+$h(\theta)=\lim_t \mathbb E[\mathcal H(\theta,\bar Z_t(\theta))]$ depends on the distribution of $\eta$
+only through $\mathbb E[x_2\eta]=\mathbb E[x_2]\,\mathbb E[\eta]=0$ (using independence and
+$\mathbb E[\eta_t]=0$, which holds unconditionally under Assumption \ref{ass:garch} regardless of the
+time-varying conditional variance). Hence
+\[
+h(\beta,M) = \begin{pmatrix}(\sigma_x^2/M)(T(\beta)-\beta)\\ \sigma_x^2 - M\end{pmatrix}
+\]
+is identical, term for term, to the constant-volatility case, so the unique fixed point
+$(\beta^*,M^*)=(0,\sigma_x^2)$, the Jacobian
+$Dh(0,\sigma_x^2)=\mathrm{diag}(T'(0)-1,-1)=\mathrm{diag}(-1/(1-\kappa),-1)$, and local asymptotic
+stability of the ODE for all $\kappa\in(0,1)$ are all unchanged. By the E-stability principle, local
+stability under RLS learning follows. $\blacksquare$
+
+\subsection{Proof of Proposition \ref{prop:LASSO_estimate_garch}}\label{app:proof_LASSO_garch}
+
+\textbf{Step 1: unconditional second moment of $\eta_t$.} Using \eqref{eq:eta_garch} and
+$\varepsilon_t\perp v_t$ with $\mathbb E[\varepsilon_t]=0$, $\mathbb E[\varepsilon_t^2]=1$,
+\[
+\eta_t^2 = \frac{(\bar\sigma_d^2-v_t)^2}{4} + (\bar\sigma_d^2-v_t)\sqrt{v_t}\,\varepsilon_t + v_t\varepsilon_t^2,
+\]
+so taking expectations and using $\mathbb E[v_t]=\bar\sigma_d^2$,
+\begin{equation}\label{eq:eta2_exact}
+\mathbb E[\eta_t^2] = \frac{\mathrm{Var}(v_t)}{4} + \bar\sigma_d^2 .
+\end{equation}
+This is exact, not an approximation. Repeating the constant-gain Gaussian approximation argument of
+Appendix \ref{app:proofs_WLS} verbatim --- the augmented state, the regularity verification of
+\ref{app:proof_RLS_garch} applies unchanged to the constant-gain ($\gamma_t\equiv\gamma$) case by the
+same argument used in Appendix \ref{app:proofs_WLS} to upgrade decreasing-gain regularity to
+constant-gain regularity --- the noise covariance at $\theta^*=(0,\sigma_x^2)$ is
+$R_{11}(\theta^*)=\sigma_x^{-4}\mathbb E[x_2^2]\,\mathbb E[\eta^2]=\sigma_x^{-2}\mathbb E[\eta^2]$
+using $x_2\perp \eta$, and using \eqref{eq:eta2_exact} this gives the \emph{unconditional} long-run
+variance
+\[
+C_{11} = \frac{1-\kappa}{2}\cdot\frac{\bar\sigma_d^2 + \mathrm{Var}(v_t)/4}{\sigma_x^2},
+\]
+so that, to leading order when $\mathrm{Var}(v_t)\ll \bar\sigma_d^2$ (a ``small fluctuations'' regime,
+which holds e.g. when $\alpha,\delta$ are not too close to the boundary $\alpha+\delta=1$),
+\[
+\beta_t^{\mathrm{OLS}} \ \dot\sim\ \mathcal N\!\left(0,\ \gamma\,\frac{(1-\kappa)\bar\sigma_d^2}{2\sigma_x^2}\right),
+\]
+which is exactly Proposition \ref{prop:WLS_distribution} with $\sigma_d^2\to\bar\sigma_d^2$. This
+\emph{unconditional} statement is a rigorous corollary of Evans--Honkapohja's Theorem 7.9 (constant-gain
+Gaussian approximation), under the same regularity verification as in Appendix
+\ref{app:proof_RLS_garch}, adapted to constant gain exactly as in Appendix \ref{app:proofs_WLS}.
+
+\textbf{Step 2: why the conditional statement requires more than Theorem 7.9.} Theorem 7.9 yields a
+single Gaussian law for $\theta_t$ in which the noise covariance $R(\theta^*)$ is a long-run
+(autocovariance-summed) average over the \emph{entire} stationary distribution of $v_t$; it does not,
+by itself, produce a family of Gaussian laws indexed by the currently realized state $v_{t-1}$.
+Substituting $v_{t-1}$ for $\bar\sigma_d^2$ inside the variance formula, as in
+\eqref{eq:local_gaussian_garch}, is therefore \emph{not} a direct corollary of Theorem 7.9 and must be
+justified separately, via a time-scale-separation (adiabatic) argument.
+
+\textbf{Step 3: the correct adiabatic argument and the correct comparison.} The constant-gain belief
+$\beta_t^{\mathrm{OLS}}$ has its own characteristic relaxation time of order $1/\gamma$ (the rate at
+which the deterministic part of the recursion forgets initial conditions, governed by the Jacobian
+eigenvalue $-1/(1-\kappa)$, i.e. independent of $\gamma$ only after rescaling time by $\gamma$; in
+unrescaled time the relevant averaging window over which $\beta_t^{\mathrm{OLS}}$ effectively pools
+information is $O(1/\gamma)$ observations). The volatility state $v_t$ has its own characteristic
+relaxation time $1/(1-\alpha-\delta)$ (the rate at which shocks to $v_t$ decay under \eqref{eq:garch11}).
+A genuine separation of time scales in which $v_{t-1}$ can be treated as locally frozen over the
+window that determines $\beta_t^{\mathrm{OLS}}$'s local fluctuations requires the volatility process to
+be \emph{persistent relative to the belief's averaging window}, i.e.
+\[
+\frac{1-\alpha-\delta}{\gamma}\ \longrightarrow\ 0,
+\]
+equivalently $\gamma \gg 1-\alpha-\delta$: the GARCH process must be close to (but, for stationarity,
+strictly inside) the unit-root boundary relative to the size of the learning gain. This is the opposite
+comparison from what governs the original Gaussian approximation theorem's validity (which requires
+$\gamma$ itself to be small, $\gamma\to 0$, for the diffusion approximation to be accurate at all); the
+two limits ($\gamma\to 0$ for Theorem 7.9 to apply, and $\gamma/(1-\alpha-\delta)\to\infty$ for the
+volatility-state to be locally frozen within the belief's averaging window) must be taken jointly,
+with $\gamma\to 0$ while $(1-\alpha-\delta)/\gamma\to 0$, i.e. $1-\alpha-\delta = o(\gamma)$. We take this
+as an explicit additional standing assumption (stated in Proposition \ref{prop:LASSO_estimate_garch})
+rather than asserting it follows from $\alpha+\delta<1$ alone, since for fixed, non-degenerate
+$(\alpha,\delta)$ bounded away from $1$, no such separation holds and only the unconditional Step 1
+result is justified.
+
+Under this joint limit, on time windows of length $O(1/\gamma)$ around any time $t$, $v_{s}\approx
+v_{t-1}$ for $s$ in the window with error $O\bigl((1-\alpha-\delta)/\gamma\bigr)\to 0$, and the
+constant-gain Gaussian approximation argument of Step 1 can be repeated with $v$ frozen at $v_{t-1}$
+rather than averaged over its stationary law: the local noise covariance becomes
+$R_{11}(\theta^*;v_{t-1}) \approx \sigma_x^{-2}\, v_{t-1}$ (replacing $\mathbb E[\eta^2]=\bar\sigma_d^2$
+by its local value $v_{t-1}$, since conditional on a frozen $v_{t-1}$, $\eta_t\approx
+\sqrt{v_{t-1}}\,\varepsilon_t$ has conditional second moment $v_{t-1}$ to leading order, the Jensen
+correction term being $O(1-\alpha-\delta)$ smaller and asymptotically negligible under the assumed scale
+separation), giving the local variance
+\[
+C_{11}(v_{t-1}) \approx \frac{1-\kappa}{2}\cdot\frac{v_{t-1}}{\sigma_x^2},
+\]
+and hence \eqref{eq:local_gaussian_garch}, namely
+\[
+\beta_t^{\mathrm{OLS}}\mid v_{t-1}\ \dot\sim\ \mathcal N\!\left(0,\ \gamma\,\frac{(1-\kappa)v_{t-1}}{2\sigma_x^2}\right)
+= \mathcal N\!\left(0,\ \frac{\gamma v_{t-1}}{2\sigma_x^2}\Bigl(1+\tfrac{\kappa}{1-\kappa}\Bigr)^{-1}\right).
+\]
+We stress that this conditional statement is an \emph{adiabatic/quasi-stationary approximation}, valid
+to leading order under the stated joint asymptotic regime, and not an exact finite-$\gamma$,
+finite-persistence result; it should be reported with this caveat.
+
+\textbf{Step 4: selection probability.} Applying the soft-thresholding argument of Appendix
+\ref{app:proof_LASSO} conditionally on $v_{t-1}$ --- which goes through unchanged, since it only uses
+that $\beta_t^{\mathrm{OLS}}$ is (conditionally) Gaussian with some variance $\sigma_{\mathrm{OLS},t}^2$
+--- gives
+\[
+\mathbb P_t\bigl(|\beta_t^{\mathrm{OLS}}|>\lambda \mid v_{t-1}\bigr)
+= 1-\left[\Phi\!\left(\frac{\lambda}{\sigma_{\mathrm{OLS},t}}\right)-\Phi\!\left(\frac{-\lambda}{\sigma_{\mathrm{OLS},t}}\right)\right],
+\qquad \sigma_{\mathrm{OLS},t}^2=\frac{\gamma v_{t-1}}{2\sigma_x^2(1+\kappa/(1-\kappa))}.
+\]
+Since $\Phi(\lambda/\sigma)-\Phi(-\lambda/\sigma)$ is strictly decreasing in $\sigma$ for $\lambda>0$,
+the displayed selection probability is strictly increasing in $\sigma_{\mathrm{OLS},t}^2$ and hence in
+$v_{t-1}$. Finally, taking expectations of the conditional law over the stationary distribution of
+$v_{t-1}$ and Taylor-expanding $\Phi$ to second order around $\bar\sigma_d^2$ recovers the unconditional
+Proposition \ref{prop:LASSO_estimate} (with $\sigma_d^2\to\bar\sigma_d^2$) up to a correction of order
+$\mathrm{Var}(v_t)/\bar\sigma_d^2$, consistently with Step 1. $\blacksquare$
+
+\subsection{Proofs for the Fundamentals-Correlated Predictor Extension}\label{app:proofs_corr}
+
+\subsection{Proof of Proposition \ref{prop:corr_equilibrium}}\label{app:proof_RLS_corr}
+
+\textbf{Step 1: bivariate CMCE conditions.} By the same argument as in Appendix \ref{app:proof_RLS},
+$x_{1,t-2}$ and $x_{2,t-2}$ are each independent of $(x_{1,t-1},x_{2,t-1})$ (no serial correlation in
+$x$), so
+\[
+\operatorname{Cov}(r_{t-1},x_{j,t-2}) = \operatorname{Cov}\bigl(\eta_{t-1},x_{j,t-2}\bigr) +
+\operatorname{Cov}\bigl(g_\beta(x_{1,t-2},x_{2,t-2}),x_{j,t-2}\bigr), \qquad j=1,2.
+\]
+For $j=1$: $x_{1,t-2}\perp\eta_{t-1}$ by Assumption \ref{ass:corr_predictor}, so the first term vanishes.
+For $j=2$: by \eqref{eq:eta_corr}, $\operatorname{Cov}(\eta_{t-1},x_{2,t-2})=\rho_{x\eta}\sigma_d\sigma_{x_2}$.
+For the second term, $(x_{1,t-2},x_{2,t-2})$ are independent Gaussians, so the multivariate Stein's
+lemma gives, for each $j$,
+\[
+\operatorname{Cov}\bigl(g_\beta(x_{1,t-2},x_{2,t-2}),x_{j,t-2}\bigr) = \sigma_{x_j}^2\,
+\mathbb E\!\left[\frac{\partial g_\beta}{\partial x_j}(x_{1,t-2},x_{2,t-2})\right]
+= \sigma_{x_j}^2\,\beta_j\,\mathbb E\bigl[\phi'(x_{1,t-2}\beta_1+x_{2,t-2}\beta_2)\bigr],
+\]
+using $g_\beta(x_1,x_2)=\phi(x_1\beta_1+x_2\beta_2)$ and the chain rule $\partial g_\beta/\partial
+x_j=\beta_j\phi'(x_1\beta_1+x_2\beta_2)$. Dividing by $\sigma_{x_j}^2$ and writing
+$\mathcal E(\beta_1,\beta_2):=\mathbb E[\phi'(x_1\beta_1+x_2\beta_2)]$ for $(x_1,x_2)$ at the stationary
+law of Assumption \ref{ass:corr_predictor}, the CMCE conditions $\beta_j=T_j(\beta)$ become
+\begin{equation}\label{eq:T1T2}
+T_1(\beta_1,\beta_2)=\beta_1\,\mathcal E(\beta_1,\beta_2), \qquad
+T_2(\beta_1,\beta_2)=\rho_{x\eta}\frac{\sigma_d}{\sigma_{x_2}}+\beta_2\,\mathcal E(\beta_1,\beta_2).
+\end{equation}
+$\beta_1=0$ solves $T_1(0,\beta_2)=0=\beta_1$ for every $\beta_2$, so $\beta_1^*=0$ is a solution of the
+first equation regardless of $\beta_2$. Substituting $\beta_1=0$ into the second equation, the index
+collapses to $z=x_2\beta_2$ and $\mathcal E(0,\beta_2)=\mathbb E[\phi'(x_2\beta_2)]$ is exactly the
+expectation defining the univariate map $T(\beta_2)=\beta_2\,\mathbb E[\phi'(x_2\beta_2)]$ of
+Proposition \ref{prop:RLS} (with $\sigma_x\to\sigma_{x_2}$). Hence $T_2(0,\beta_2)=\rho_{x\eta}
+\sigma_d/\sigma_{x_2}+T(\beta_2)$, and the bivariate system reduces to $\beta_1^*=0$ together with
+\eqref{eq:beta2_star_implicit}.
+
+\textbf{Step 2: local existence, uniqueness, and sign via the implicit function theorem.} Define
+$F(\beta_2):=\beta_2-T(\beta_2)$ and $G(\beta_2,\rho_{x\eta}):=F(\beta_2)-\rho_{x\eta}\sigma_d/\sigma_{x_2}$,
+so \eqref{eq:beta2_star_implicit} is $G(\beta_2,\rho_{x\eta})=0$. By the proof of Proposition
+\ref{prop:RLS} (Appendix \ref{app:proof_RLS}), $T$ is $C^1$ in a neighborhood of $0$ (indeed $C^2$, by
+the same bounded-derivative argument used to verify (A.3) there) with $T'(0)=-\kappa/(1-\kappa)$, so
+\[
+\frac{\partial G}{\partial\beta_2}(0,0)=F'(0)=1-T'(0)=1+\frac{\kappa}{1-\kappa}=\frac{1}{1-\kappa}>0
+\quad\text{for all }\kappa\in(0,1).
+\]
+Since $G(0,0)=0$ and $\partial G/\partial\beta_2(0,0)\neq0$, the implicit function theorem yields an
+open interval $(-\bar\rho,\bar\rho)$, $\bar\rho\in(0,1]$, and a unique $C^1$ function
+$\beta_2^*:(-\bar\rho,\bar\rho)\to\mathbb R$ with $\beta_2^*(0)=0$ and
+$G(\beta_2^*(\rho_{x\eta}),\rho_{x\eta})\equiv0$ on this interval, which is precisely the local
+existence-and-uniqueness statement of Proposition \ref{prop:corr_equilibrium}. Differentiating the
+identity $G(\beta_2^*(\rho_{x\eta}),\rho_{x\eta})=0$ at $\rho_{x\eta}=0$,
+\[
+F'(0)\,\frac{d\beta_2^*}{d\rho_{x\eta}}\bigg|_0 = \frac{\sigma_d}{\sigma_{x_2}}
+\quad\Longrightarrow\quad
+\frac{d\beta_2^*}{d\rho_{x\eta}}\bigg|_0 = (1-\kappa)\,\frac{\sigma_d}{\sigma_{x_2}}>0,
+\]
+which is \eqref{eq:beta2_star_deriv}. By continuity of $\beta_2^*(\cdot)$ and $\beta_2^*(0)=0$,
+$\beta_2^*(\rho_{x\eta})$ has the same sign as $\rho_{x\eta}$ in a (possibly smaller) neighborhood of
+$0$, and is nonzero there for $\rho_{x\eta}\neq0$. We do not claim, and the argument above does not
+deliver, existence or uniqueness of $\beta_2^*(\rho_{x\eta})$ outside $(-\bar\rho,\bar\rho)$; see Remark
+\ref{rem:scope_corr}.
+
+\textbf{Step 3: the Jacobian is exactly diagonal at $(\beta_1^*,\beta_2^*)=(0,\beta_2^*(\rho_{x\eta}))$.}
+From \eqref{eq:T1T2},
+\[
+\frac{\partial T_1}{\partial\beta_1} = \mathcal E(\beta_1,\beta_2) + \beta_1\frac{\partial\mathcal
+E}{\partial\beta_1}, \qquad
+\frac{\partial T_1}{\partial\beta_2} = \beta_1\frac{\partial\mathcal E}{\partial\beta_2}, \qquad
+\frac{\partial T_2}{\partial\beta_1} = \beta_2\frac{\partial\mathcal E}{\partial\beta_1}, \qquad
+\frac{\partial T_2}{\partial\beta_2} = \mathcal E(\beta_1,\beta_2) + \beta_2\frac{\partial\mathcal
+E}{\partial\beta_2}.
+\]
+Evaluated at $\beta_1=0$: the off-diagonal entry $\partial T_1/\partial\beta_2$ vanishes identically
+because of the multiplicative factor $\beta_1=0$. For the other off-diagonal entry,
+$\partial\mathcal E/\partial\beta_1=\mathbb E[\phi''(x_1\beta_1+x_2\beta_2)\,x_1]$, and at $\beta_1=0$
+this is $\mathbb E[\phi''(x_2\beta_2)\,x_1]=\mathbb E[\phi''(x_2\beta_2)]\,\mathbb E[x_1]=0$ by
+independence of $x_1$ and $x_2$ and $\mathbb E[x_1]=0$; hence $\partial T_2/\partial\beta_1|_{\beta_1=0}
+=\beta_2\cdot0=0$ as well (and this holds regardless of whether $\beta_2=\beta_2^*$). The two diagonal
+entries at $(0,\beta_2^*)$ are
+\[
+\frac{\partial T_1}{\partial\beta_1}\bigg|_{(0,\beta_2^*)} = \mathcal E(0,\beta_2^*) =
+\mathbb E[\phi'(x_2\beta_2^*)], \qquad
+\frac{\partial T_2}{\partial\beta_2}\bigg|_{(0,\beta_2^*)} = \mathcal E(0,\beta_2^*) +
+\beta_2^*\frac{\partial\mathcal E}{\partial\beta_2}(0,\beta_2^*) = T'(\beta_2^*),
+\]
+where the last equality holds because $T(\beta_2)=\beta_2\,\mathbb E[\phi'(x_2\beta_2)]=\beta_2\,
+\mathcal E(0,\beta_2)$ is exactly the univariate composition, so $T'(\beta_2)=\mathcal
+E(0,\beta_2)+\beta_2\,\partial_{\beta_2}\mathcal E(0,\beta_2)$ by the product rule. Thus the Jacobian of
+$(T_1,T_2)$ at $(0,\beta_2^*(\rho_{x\eta}))$ is \emph{exactly} diagonal,
+\[
+D T(0,\beta_2^*) = \operatorname{diag}\Bigl(\mathbb E[\phi'(x_2\beta_2^*)],\ T'(\beta_2^*)\Bigr),
+\]
+for every $\rho_{x\eta}$ at which $\beta_2^*$ is defined (not only approximately near $\rho_{x\eta}=0$),
+because the vanishing of both off-diagonal entries used only $\beta_1=0$ and $x_1\perp x_2$, $\mathbb
+E[x_1]=0$ — properties that hold for every value of $\beta_2$.
+
+\textbf{Step 4: local stability.} Following the SRA argument of Appendix \ref{app:proof_RLS} verbatim,
+augmented to a $\theta_t=(\beta_{1,t},\beta_{2,t},M_{1,t},M_{2,t})$ parameter vector and a correspondingly
+augmented state vector carrying $(x_{1,t-1},x_{2,t-1},x_{1,t-2},x_{2,t-2},\eta_{t-1},s_{1,t-1},s_{2,t-1},
+s_{1,t-2},s_{2,t-2})$, the same verification of conditions (A.1)--(A.3) and (B.1)--(B.2) goes through:
+$\mathcal H$ retains the same functional form in $(x_1,x_2,\eta)$, composed with the bounded $\tanh$,
+$\operatorname{sech}^2$ functions and the restriction $\kappa e^w<1$, so it is $C^2$ with bounded second
+derivatives on any compact $Q$, and $(x_{1,t},x_{2,t},\eta_t)$ remains i.i.d.\ with finite moments of all
+orders under Assumption \ref{ass:corr_predictor} (the correlation in \eqref{eq:eta_corr} is a
+within-period-pair linear combination of jointly Gaussian variables, hence itself Gaussian with finite
+moments of all orders). The drift ODE is $\dot\theta=h(\theta)$ with
+\[
+h(\beta_1,\beta_2,M_1,M_2) = \begin{pmatrix} (\sigma_{x_1}^2/M_1)(T_1(\beta)-\beta_1) \\
+(\sigma_{x_2}^2/M_2)(T_2(\beta)-\beta_2) \\ \sigma_{x_1}^2-M_1 \\ \sigma_{x_2}^2-M_2 \end{pmatrix},
+\]
+whose fixed point in the $\beta$-block is $(\beta_1^*,\beta_2^*)=(0,\beta_2^*(\rho_{x\eta}))$ by Steps 1--2,
+with $(M_1^*,M_2^*)=(\sigma_{x_1}^2,\sigma_{x_2}^2)$. The Jacobian of the $\beta$-block of $h$ at this
+fixed point is $\operatorname{diag}(\sigma_{x_1}^2/M_1^*,\sigma_{x_2}^2/M_2^*)\cdot\bigl(DT(0,\beta_2^*)-I\bigr)
+=DT(0,\beta_2^*)-I$ by Step 3, i.e.
+\[
+\operatorname{diag}\Bigl(\mathbb E[\phi'(x_2\beta_2^*)]-1,\ T'(\beta_2^*)-1\Bigr),
+\]
+exactly diagonal, and the $M$-block contributes the further diagonal entries $-1,-1$ exactly as in
+Appendix \ref{app:proof_RLS}; the full $4\times4$ Jacobian is therefore diagonal with no
+cross-block coupling between $\beta$ and $M$ at this fixed point (the off-diagonal $\beta$--$M$ blocks
+vanish because $T_j(\beta)-\beta_j$ does not depend on $M$, and the $M$-block does not depend on
+$\beta$). At $\rho_{x\eta}=0$ (so $\beta_2^*=0$), both diagonal $\beta$-entries equal $\mathbb
+E[\phi'(0)]-1=T'(0)-1=-1/(1-\kappa)<0$, recovering exactly the Jacobian of Appendix \ref{app:proof_RLS}
+(as a sanity check: the two predictors are then dynamically decoupled univariate copies of the baseline
+model). By continuity of $\beta_2^*(\cdot)$ (Step 2) and continuity of $\mathbb E[\phi'(x_2\beta_2)]$ and
+$T'(\beta_2)$ in $\beta_2$ (both inherit smoothness from $\phi\in C^2$ and dominated convergence under
+the Gaussian law of $x_2$, exactly as used to verify (A.3) in Appendix \ref{app:proof_RLS}), both
+eigenvalues $\mathbb E[\phi'(x_2\beta_2^*(\rho_{x\eta}))]-1$ and $T'(\beta_2^*(\rho_{x\eta}))-1$ remain
+strictly negative for $\rho_{x\eta}$ in a neighborhood of $0$ (shrinking $\bar\rho$ from Step 2 if
+necessary so that both eigenvalues stay bounded away from $0$ on the whole interval). Since the Jacobian
+is exactly diagonal at every such $\rho_{x\eta}$ (Step 3), its eigenvalues are simply its diagonal
+entries, with no need for a separate argument about complex eigenvalues or coupling terms. Hence
+$(\beta_1^*,\beta_2^*(\rho_{x\eta}))$ is locally asymptotically stable for the ODE for every
+$\rho_{x\eta}$ in this neighborhood and every $\kappa\in(0,1)$, and by the E-stability principle it is
+locally stable under RLS learning. $\blacksquare$
+
+\subsection{Proof of Proposition \ref{prop:corr_selection}}\label{app:proof_LASSO_corr}
+
+\textbf{Step 1: exact distribution of $\hat\beta_{2,L}$.} Within the rolling window, write, using the
+benchmark's own relabeled index $i=1,\dots,L$ and \eqref{eq:eta_corr},
+\[
+\eta_i = \rho_{x\eta}\frac{\sigma_d}{\sigma_{x_2}}x_{2,i} + \sigma_d\sqrt{1-\rho_{x\eta}^2}\,\tilde\eta_i,
+\qquad \tilde\eta_i\stackrel{iid}{\sim}\mathcal N(0,1),\ \ \tilde\eta_i\perp\{x_{2,j}\}_{j}.
+\]
+Under the benchmark's null $r_i\approx\eta_i$, the OLS estimator is
+\[
+\hat\beta_{2,L} = \frac{\sum_{i=1}^L x_{2,i}\eta_i}{\sum_{i=1}^L x_{2,i}^2}
+= \rho_{x\eta}\frac{\sigma_d}{\sigma_{x_2}} + \sigma_d\sqrt{1-\rho_{x\eta}^2}\,
+\frac{\sum_{i=1}^L x_{2,i}\tilde\eta_i}{\sum_{i=1}^L x_{2,i}^2}.
+\]
+Condition on $\{x_{2,i}\}_{i=1}^L$. Since $\tilde\eta_i\perp\{x_{2,j}\}_j$ and $\tilde\eta_i\stackrel{
+iid}{\sim}\mathcal N(0,1)$, the conditional law of $\sum_i x_{2,i}\tilde\eta_i$ is $\mathcal N\bigl(0,
+\sum_i x_{2,i}^2\bigr)$, so
+\[
+\frac{\sum_{i=1}^L x_{2,i}\tilde\eta_i}{\sqrt{\sum_{i=1}^L x_{2,i}^2}} \;\Big|\; \{x_{2,i}\} \ \sim\
+\mathcal N(0,1),
+\]
+independent of $\{x_{2,i}\}$ itself by the same argument used in the baseline benchmark (the conditional
+law does not depend on the conditioning value). Hence
+\[
+\frac{\sum_{i=1}^L x_{2,i}\tilde\eta_i}{\sum_{i=1}^L x_{2,i}^2} = \frac{Z}{\sqrt{\sum_{i=1}^L x_{2,i}^2}},
+\qquad Z\sim\mathcal N(0,1),\ Z\perp\{x_{2,i}\}.
+\]
+With $x_{2,i}\stackrel{iid}{\sim}\mathcal N(0,\sigma_{x_2}^2)$, $\sum_{i=1}^L x_{2,i}^2/\sigma_{x_2}^2
+\sim\chi^2_L$ independent of $Z$, and writing $\sum_i x_{2,i}^2=\sigma_{x_2}^2\chi^2_L$,
+\[
+\frac{\sum_{i=1}^L x_{2,i}\tilde\eta_i}{\sum_{i=1}^L x_{2,i}^2}
+= \frac{Z}{\sigma_{x_2}\sqrt{\chi^2_L}}
+= \frac{1}{\sigma_{x_2}\sqrt L}\cdot\frac{Z}{\sqrt{\chi^2_L/L}}
+= \frac{T_L}{\sigma_{x_2}\sqrt L},
+\]
+where $T_L:=Z/\sqrt{\chi^2_L/L}$ is, by definition, Student-$t$ with $L$ degrees of freedom (a standard
+normal divided by the square root of an independent $\chi^2_L/L$), exactly the same construction as in
+the baseline benchmark of Appendix \ref{app:proof_LASSO}. Substituting back,
+\[
+\hat\beta_{2,L} = \rho_{x\eta}\frac{\sigma_d}{\sigma_{x_2}} + \sigma_d\sqrt{1-\rho_{x\eta}^2}\cdot
+\frac{1}{\sigma_{x_2}\sqrt L}T_L = \rho_{x\eta}\frac{\sigma_d}{\sigma_{x_2}} +
+\sqrt{1-\rho_{x\eta}^2}\,\frac{\sigma_d}{\sigma_{x_2}\sqrt L}\,T_L,
+\]
+which is \eqref{eq:beta2hat_L}, exact for every $L\geq1$ and every $\rho_{x\eta}\in(-1,1)$ (no
+large-$L$ approximation has been used in this step).
+
+\textbf{Step 2: Gaussian approximation and the selection probability.} For moderately large $L$ we
+approximate $T_L\approx Z'\sim\mathcal N(0,1)$ (the exact statement instead uses the noncentral
+generalization of the Student-$t$ selection formula in Appendix \ref{app:proof_LASSO}, which we do not
+pursue in closed form here). Under this approximation, $\hat\beta_{2,L}\;\dot\sim\;\mathcal
+N\bigl(\rho_{x\eta}\sigma_d/\sigma_{x_2},\,(1-\rho_{x\eta}^2)\sigma_d^2/(\sigma_{x_2}^2L)\bigr)$, so
+\[
+\mathbb P(|\hat\beta_{2,L}|>\lambda) \approx 1-\Phi\!\left(\frac{\lambda-\rho_{x\eta}\sigma_d/\sigma_{x_2}}
+{\sigma_d\sqrt{1-\rho_{x\eta}^2}/(\sigma_{x_2}\sqrt L)}\right) +
+\Phi\!\left(\frac{-\lambda-\rho_{x\eta}\sigma_d/\sigma_{x_2}}{\sigma_d\sqrt{1-\rho_{x\eta}^2}/(\sigma_{x_2}
+\sqrt L)}\right).
+\]
+Writing $c:=\lambda\sigma_{x_2}/\sigma_d$ and simplifying the arguments,
+\[
+\frac{\lambda-\rho_{x\eta}\sigma_d/\sigma_{x_2}}{\sigma_d\sqrt{1-\rho_{x\eta}^2}/(\sigma_{x_2}\sqrt L)}
+=\sqrt L\,\frac{c-\rho_{x\eta}}{\sqrt{1-\rho_{x\eta}^2}}, \qquad
+\frac{-\lambda-\rho_{x\eta}\sigma_d/\sigma_{x_2}}{\sigma_d\sqrt{1-\rho_{x\eta}^2}/(\sigma_{x_2}\sqrt L)}
+=-\sqrt L\,\frac{c+\rho_{x\eta}}{\sqrt{1-\rho_{x\eta}^2}},
+\]
+which gives \eqref{eq:Prho_gaussian} with $\xi(\rho_{x\eta}):=(c-\rho_{x\eta})/\sqrt{1-\rho_{x\eta}^2}$
+and $\zeta(\rho_{x\eta}):=(c+\rho_{x\eta})/\sqrt{1-\rho_{x\eta}^2}$,
+\[
+P(\rho_{x\eta}) = \bigl[1-\Phi(\sqrt L\,\xi)\bigr] + \Phi(-\sqrt L\,\zeta).
+\]
+
+\textbf{Step 3: derivatives of $\xi$ and $\zeta$.} Direct differentiation gives
+\begin{equation}\label{eq:xi_zeta_prime}
+\xi'(\rho_{x\eta}) = \frac{\rho_{x\eta} c-1}{(1-\rho_{x\eta}^2)^{3/2}}, \qquad
+\zeta'(\rho_{x\eta}) = \frac{1+\rho_{x\eta} c}{(1-\rho_{x\eta}^2)^{3/2}}.
+\end{equation}
+(We re-derive these directly: $\xi=(c-\rho)(1-\rho^2)^{-1/2}$, so $\xi'=-(1-\rho^2)^{-1/2}+(c-\rho)\rho(1-
+\rho^2)^{-3/2}=(1-\rho^2)^{-3/2}\bigl[-(1-\rho^2)+\rho(c-\rho)\bigr]=(1-\rho^2)^{-3/2}(\rho c-1)$, matching
+\eqref{eq:xi_zeta_prime}; the computation for $\zeta'$ is identical with $c\to-c$ sign flips undone,
+$\zeta'=(1-\rho^2)^{-3/2}\bigl[(1-\rho^2)+\rho(c+\rho)\bigr]=(1-\rho^2)^{-3/2}(1+\rho c)$.) For $\rho_{x\eta}
+\in(0,1)$ and $c>0$: $\zeta'(\rho_{x\eta})>0$ always; $\xi'(\rho_{x\eta})<0$ whenever $\rho_{x\eta}c<1$,
+which holds for \emph{every} $\rho_{x\eta}\in(0,1)$ if and only if $c\leq1$.
+
+\textbf{Step 4: exact, non-asymptotic proof of monotonicity for $c\leq1$.} Differentiating
+\eqref{eq:Prho_gaussian} directly (no one-sided or rare-event approximation),
+\[
+P'(\rho_{x\eta}) = -\sqrt L\,\varphi(\sqrt L\,\xi)\,\xi'(\rho_{x\eta}) - \sqrt L\,\varphi(\sqrt L\,
+\zeta)\,\zeta'(\rho_{x\eta}),
+\]
+where $\varphi$ is the standard normal density. For $c\leq1$, $-\xi'>0$ by Step 3, so $P'(\rho_{x\eta})
+\geq0$ holds if and only if
+\begin{equation}\label{eq:exact_monotone_condition}
+\varphi(\sqrt L\,\xi)\,(-\xi') \;\geq\; \varphi(\sqrt L\,\zeta)\,\zeta'.
+\end{equation}
+Using $\varphi(z)=(2\pi)^{-1/2}e^{-z^2/2}$, condition \eqref{eq:exact_monotone_condition} is equivalent to
+\[
+\exp\!\left(\frac{L}{2}\bigl(\zeta^2-\xi^2\bigr)\right) \;\geq\; \frac{\zeta'}{-\xi'}.
+\]
+Direct computation gives $\zeta^2-\xi^2=\dfrac{(c+\rho_{x\eta})^2-(c-\rho_{x\eta})^2}{1-\rho_{x\eta}^2}
+=\dfrac{4c\rho_{x\eta}}{1-\rho_{x\eta}^2}$, and from \eqref{eq:xi_zeta_prime},
+$\zeta'/(-\xi')=(1+\rho_{x\eta}c)/(1-\rho_{x\eta}c)$. Writing $u:=c\rho_{x\eta}\in(0,1)$ (using $c\leq1$,
+$\rho_{x\eta}\in(0,1)$) and $t:=u/(1-\rho_{x\eta}^2)=c\rho_{x\eta}/(1-\rho_{x\eta}^2)$, condition
+\eqref{eq:exact_monotone_condition} becomes
+\begin{equation}\label{eq:exact_condition_simplified}
+2Lt \;\geq\; \log\!\left(\frac{1+u}{1-u}\right) = 2\operatorname{artanh}(u).
+\end{equation}
+Since $t=u/(1-\rho_{x\eta}^2)\geq u$ is the wrong direction for a trivial bound (as $\operatorname{artanh}
+(u)>u$ for $u>0$), we verify \eqref{eq:exact_condition_simplified} directly: define $h(\rho_{x\eta}):=
+2Lt-2\operatorname{artanh}(u)$ for fixed $c\in(0,1]$. At $\rho_{x\eta}=0$, $h(0)=0$. Numerically
+evaluating $h$ and its sign across a fine grid of $(c,\rho_{x\eta},L)\in(0,1]\times(0,1)\times[1,\infty)$
+confirms $h\geq0$ throughout, with equality approached only as $\rho_{x\eta}\to0$, and the inequality is
+tightest (closest to binding) at $L=1$: since $t\geq0$, $2Lt$ is non-decreasing in $L$, so if
+\eqref{eq:exact_condition_simplified} holds at $L=1$ it holds for every $L\geq1$. We therefore state the
+monotonicity result for $L\geq1$ — satisfied by construction in any rolling-window benchmark, since a
+window of length $L\geq1$ is the minimal requirement for $\hat\beta_{2,L}$ to be defined — and note
+explicitly that we have verified \eqref{eq:exact_condition_simplified} numerically rather than via a
+closed-form analytic proof of the inequality $h\geq0$; we regard this as a fully specified, falsifiable
+mathematical claim (a single inequality in three real parameters restricted to compact-after-rescaling
+domains) rather than an asymptotic or rare-event approximation, but flag that we have not located a
+short closed-form proof of $h\geq0$ beyond the $L=1$, all-$(c,\rho_{x\eta})$ numerical verification.
+Granting \eqref{eq:exact_condition_simplified}, \eqref{eq:exact_monotone_condition} holds, hence
+$P'(\rho_{x\eta})\geq0$ for all $\rho_{x\eta}\in(0,1)$ when $c\leq1$, proving Proposition
+\ref{prop:corr_selection}.
+
+\textbf{Step 5: the case $c>1$ (Remark \ref{rem:c_greater_1}).} If $c>1$, $\xi'(\rho_{x\eta})$ changes
+sign at $\rho_{x\eta}^\dagger=1/c\in(0,1)$: $\xi'<0$ for $\rho_{x\eta}<1/c$ and $\xi'>0$ for
+$\rho_{x\eta}>1/c$, so $\xi$ is first decreasing then increasing, with minimum at $\rho_{x\eta}^\dagger$.
+Direct evaluation of the exact formula \eqref{eq:Prho_gaussian} confirms non-monotonicity: as
+$\rho_{x\eta}\to1^-$, $\xi(\rho_{x\eta})\to(c-1)/\sqrt{1-\rho_{x\eta}^2}\to+\infty$ (since $c>1$) and
+$\zeta(\rho_{x\eta})\to(c+1)/\sqrt{1-\rho_{x\eta}^2}\to+\infty$ as well, so both
+$1-\Phi(\sqrt L\,\xi)\to0$ and $\Phi(-\sqrt L\,\zeta)\to0$, giving $P(\rho_{x\eta})\to0$ as
+$\rho_{x\eta}\to1^-$ — independent of the one-sided approximation used in Step 4, this is a direct
+limiting property of the exact two-term formula \eqref{eq:Prho_gaussian}. Since $P(0)=0$ also (no
+selection at $\rho_{x\eta}=0$ requires $c>0$, trivially satisfied) and $P\geq0$ is not identically zero
+on $(0,1)$ whenever $c<\infty$, $P$ must rise above $0$ and return to $0$, i.e.\ it is non-monotonic on
+$(0,1)$ when $c>1$. $\blacksquare$
+
+%------------------------------------------------------

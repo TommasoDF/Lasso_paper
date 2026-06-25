@@ -1,0 +1,149 @@
+\section{Derivation of Recursive Learning Models}\label{sec:appendix_learning}
+\subsection{Recursive Least Squares}\label{app:RLS}
+
+The first updating mechanism we consider is Recursive Least Squares (RLS), which is a recursive implementation of the standard Ordinary Least Squares (OLS).
+In OLS, the agent estimates the coefficients of a linear regression model by minimizing the sum of squared residuals.
+Assuming agents use OLS to estimate the parameters in the PLM (\ref{eq:plm_univariate}), the OLS estimator $\beta_t$ can be derived from the minimization\footnote{
+We use the following timing:
+at time $t$ the agent forecasts $r^e_{t+1} = x_t \beta_{t}$ which then implies a realization for $r_t$. 
+Therefore, to avoid simultaneity issues, we assume that when computing the current estimate, the last available log-return observation is $r_{t-1}$.
+} problem as
+\begin{equation}
+     \beta_t = \left(\sum^{t-1}_{i=1}  x_{i-1}^2 \right)^{-1} \sum^{t-1}_{i=1}  x_{i-1} r_i.
+\end{equation}
+
+Estimating OLS on the whole available data set is sometimes referred to as off-line estimation. 
+Another approach is to estimate the model on-line, that is, as soon as a new data point arrives. 
+It turns out that the estimator formula allows for a recursive formulation.
+Define 
+\begin{equation}
+M_{t-1} = \frac{1}{t-1}  \left(\sum^{t-1}_{i=1}  x_{i-1}^2 \right), \quad \beta_t = \frac{1}{t-1} M^{-1}_{t-1} \sum^{t-1}_{i=1}  x_{i-1} r_i.
+\end{equation}
+
+First we establish a recursion for $M_t$. Start from 
+\begin{equation}
+\frac{t-1}{t} M_{t-1} = \frac{1}{t}  \left(\sum^{t-1}_{i=1}  x_{i-1}^2 \right) \implies \frac{t-1}{t} M_{t-1} + \frac{1}{t} x_{t-1}^2 = M_t,
+\end{equation}
+that is
+\begin{equation}
+    M_t = M_{t-1} + \frac{1}{t} \left(x_{t-1}^2 - M_{t-1} \right).
+\end{equation}
+
+For $\beta_t$ we have
+\begin{equation}\label{eq:b_t_evolution}
+    \begin{aligned}
+        \beta_t & = \beta_{t-1} + \left[(t-1) M_{t-1} \right]^{-1} \left\{ x_{t-2} r_{t-1} + \left[(t-2) M_{t-2} \right] \beta_{t-1} \right\} - \beta_{t-1} \\
+        & = \beta_{t-1} + \left[(t-1) M_{t-1} \right]^{-1} \left\{ x_{t-2} r_{t-1} - x_{t-2}^2 \beta_{t-1} \right\}.
+    \end{aligned}
+\end{equation}
+
+\subsection{Constant Gain Learning}\label{app:WLS}
+In Weighted Least Squares (WLS), the agent estimates the coefficients of a linear regression model by minimizing a weighted sum of squared residuals.
+The weights are typically chosen to reflect the relative importance or reliability of different observations. Assuming the linear model (\ref{eq:plm_univariate}),
+the WLS estimator can be derived from the minimization problem
+\begin{equation}
+    \min_{\beta} \sum^{t-1}_{i=1} {w_{t-1,i}} (r_i - \beta x_{i-1}) ^2,
+\end{equation}
+with solution
+\begin{equation}
+    {\beta} = \left(\sum^{t-1}_{i=1} {w_{t-1,i}} x_{i-1}^2 \right)^{-1} \sum^{t-1}_{i=1} {w_{t-1,i}} x_{i-1} r_i.
+\end{equation}
+
+In particular, we are interested in the case where the weights decline geometrically over time\footnote{
+    In empirical applications, instead of using geometrically declining weights, it is common to use a rolling window approach, where only the most recent observations within a fixed-size window are used for estimation. 
+    However, the latter is analytically intractable.
+    It is possible to determine a relationship between the window size and the geometric decay parameter $\gamma$ such that the two methods give similar weights \emph{overall} on the $\ell$ most recent observations:
+    $\ell \approx \log(1 - p) / \log(1 - \gamma)$, where $p$ is the proportion of total weight assigned to the $\ell$ most recent observations.
+}
+\begin{equation}
+    w_{t,i} = \gamma (1 - \gamma)^{t-i}, \quad \gamma \in (0,1).
+\end{equation}
+Similar to the OLS case, a recursive relationship can be derived.
+
+Define 
+\begin{equation}
+    M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1}^2, \quad \beta_{t} = \gamma M^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i.
+\end{equation}
+First we establish a recursion for $M_t$. Start from
+\begin{equation}
+M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1}^2,
+\end{equation}
+then
+\begin{equation}
+(1 - \gamma) M_{t-1} = \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-i}} x_{i-1}^2 = M_t - \gamma x_{t-1}^2.
+\end{equation}
+That is
+\begin{equation}
+    M_t = M_{t-1} + \gamma \left(x_{t-1}^2 - M_{t-1} \right).
+\end{equation}
+
+Similarly for $\beta_t$ we start from the lagged expression
+\begin{equation}
+    \beta_{t-1} = \gamma M^{-1}_{t-2} \sum^{t-2}_{i=1} {(1 - \gamma)^{t-2-i}} x_{i-1} r_i,
+\end{equation}
+then
+\begin{equation}
+    (1- \gamma) \beta_{t-1} = \gamma M^{-1}_{t-2} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i ,
+\end{equation}
+and
+\begin{equation}
+ \beta_{t-1} ( M_{t-1} - \gamma x_{t-2}^2) =  \gamma \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i \rightarrow \beta_{t-1} (1 - \gamma M^{-1}_{t-1} x_{t-2}^2) = \gamma M^{-1}_{t-1} \sum^{t-1}_{i=1} {(1 - \gamma)^{t-1-i}} x_{i-1} r_i,
+\end{equation}
+since \[M_{t-2} = \frac{1}{1 - \gamma} (M_{t-1} - \gamma x_{t-2}^2).\]
+Adding $\gamma M^{-1}_{t-1} x_{t-2} r_{t-1}$ to both sides we obtain
+\begin{equation}
+    \beta_{t-1} (1 - \gamma M^{-1}_{t-1} x_{t-2}^2) + \gamma M^{-1}_{t-1} x_{t-2} r_{t-1} = \beta_t,
+\end{equation}
+which can be rearranged as
+\begin{equation}
+    \beta_t = \beta_{t-1} + \gamma M^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta_{t-1}).
+\end{equation}
+
+\subsection{Lasso Learning}\label{app:lasso}
+The LASSO (Least Absolute Shrinkage and Selection Operator) estimator is defined as the solution to the optimization problem
+\[
+\hat{\beta}_{\text{LASSO}} = \arg\min_{\beta} \left\{\frac{1}{2}\left[(Y - X\beta)'(Y - X\beta)\right] + \lambda \sum_{j=1}^{k} |\beta_j|\right\},
+\]
+where $\lambda \geq 0$ is a tuning parameter that controls the amount of regularization. The LASSO estimator can be interpreted as a trade-off between fitting the data well (minimizing the sum of squared residuals) and keeping the model simple (minimizing the absolute values of the coefficients).
+
+In general there is no closed form solution for the LASSO estimator, since the absolute value function is not differentiable at zero. However, in the special case where $X$ is an orthonormal matrix, the LASSO estimator can be expressed in closed form.
+To do so we can rewrite the optimization problem as
+\[
+\hat{\beta}_{\text{LASSO}} 
+= \arg\min_{\beta} 
+\Big\{ \frac{1}{2}\left[Y'Y - 2\beta'\underbrace{X'Y}_{\beta_{\text{OLS}}} 
++ \beta'\underbrace{X'X}_{I}\beta\right]
++ \lambda \sum_{j=1}^{k} |\beta_j| \Big\},
+\]
+where the underbrackets follow from orthonormality and notice that the term $Y'Y$ does not depend on $\beta$, so it does not change the minimizer.
+Using $A'A = \sum_{j=1}^{k} a_j^2$, we can rewrite the problem as
+\[
+\hat{\beta}_{\text{LASSO}} = \arg\min_{\beta} \Big\{ \sum_{j=1}^{k} \left( -\beta_j \beta_{\text{OLS},j} + \frac{1}{2}\beta_j^2 + \lambda |\beta_j| \right) \Big\}.
+\]
+
+This problem is separable in the coefficients $\beta_j$, so we can solve for each coefficient independently. The optimization problem for each $j$ coefficient is
+\[\min_{\beta_j} \left\{\frac{1}{2} \beta_j^2 - \beta_j \beta_{\text{OLS},j} + \lambda |\beta_j| \right\}.\]
+To solve this problem, we consider two cases:
+\begin{enumerate}
+    \item $\beta_{\text{OLS},j} > 0$, then $\beta_j$ has to be positive, otherwise we could decrease the objective by setting $\beta_j = 0$. 
+    In this case, the problem becomes 
+    \[\min_{\beta_j \geq 0} \left\{ \frac{1}{2} \beta_j^2 - \beta_j \beta_{\text{OLS},j} + \lambda \beta_j \right\},\]
+    and differentiating and setting to zero gives
+    \[\beta_j - \beta_{\text{OLS},j} + \lambda = 0 \Rightarrow \beta_j = \beta_{\text{OLS},j} - \lambda.\]
+    Imposing non-negativity yields
+    \[\hat{\beta}_{\text{LASSO},j} = \max\left(0, \beta_{\text{OLS},j} - \lambda\right).\]
+    \item $\beta_{\text{OLS},j} < 0$, then $\beta_j$ has to be negative, otherwise we could decrease the objective by setting $\beta_j = 0$. In this case, the problem becomes
+    \[\min_{\beta_j < 0} \left\{ \frac{1}{2} \beta_j^2 - \beta_j \beta_{\text{OLS},j} + \lambda (-\beta_j) \right\},\]    
+    and
+    \[\beta_j - \beta_{\text{OLS},j} - \lambda = 0 \Rightarrow \beta_j = \beta_{\text{OLS},j} + \lambda.\]
+    Imposing negativity yields
+    \[\hat{\beta}_{\text{LASSO},j} = \min\left(0, \beta_{\text{OLS},j} + \lambda\right).\]
+\end{enumerate}
+
+Combing the two cases, we obtain 
+\begin{equation}
+\hat{\beta}_{\text{LASSO}} = S(\beta_{\text{OLS}}, \lambda) = \textrm{sign}(\beta_{\text{OLS}}) \cdot \max\left(0, |\beta_{\text{OLS}}| - \lambda\right),
+\end{equation}
+where $S(\cdot)$ is the soft-thresholding operator.
+
+

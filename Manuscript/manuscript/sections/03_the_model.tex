@@ -1,0 +1,135 @@
+\section{The model}\label{sec:model}
+% --------------------
+
+
+We study a standard \cite{Lucas1978} asset pricing model in the flavour of \cite{Adam2016}.
+We consider an economy populated by a continuum of agents of mass one who trade a single risky asset.
+The asset pays a stochastic dividend $D_t$ at each discrete time period $t = 0,1,2,\ldots$.
+The dividend and consumption processes are driven by multivariate normally distributed shocks
+\begin{equation}
+    \begin{pmatrix}
+    \eta^d_t \\
+    \eta^c_t
+    \end{pmatrix} 
+    =
+    \begin{pmatrix}
+    \log \varepsilon^d_t \\
+    \log \varepsilon^c_t
+    \end{pmatrix} \sim \mathcal{N}\left(\begin{pmatrix}
+    -\sigma^2_d/2 \\
+    -\sigma^2_c/2
+    \end{pmatrix}, \begin{pmatrix}
+    \sigma^2_d & \rho \sigma_d \sigma_c \\
+    \rho \sigma_d \sigma_c & \sigma^2_c
+    \end{pmatrix}\right),
+\end{equation}
+The dividend process follows 
+\begin{equation}
+    \frac{D_t}{D_{t-1}} = a \varepsilon^d_t,
+\end{equation}
+where $a \geq 1$ is a constant growth factor, which implies that
+\begin{equation}
+    \mathbb{E}_t\left[{D_{t+1}}\right] = a D_t.
+\end{equation}
+Similarly for the aggregate consumption process we postulate that
+\begin{equation}
+    \frac{C_t}{C_{t-1}} = a \varepsilon^c_t.
+\end{equation}
+The equilibrium price of the asset is determined by the standard no-arbitrage condition which requires that the price at time $t$ equals the discounted expected value of next period's price plus dividend, that is
+\begin{equation}\label{eq:equilibrium_price}
+    P_t = \delta \mathbb{E}_t \left[{ \left(\frac{C_{t+1}}{C_t}\right)^{- \ell} P_{t+1} + D_{t+1}}\right],
+\end{equation}
+where $\delta$ is the discount factor, $\ell$ is the risk aversion parameter\footnote{The consumption based asset pricing literature normally used $\gamma$, but we will use $\ell$ to avoid confusion with the learning gain parameter}, and $\mathbb{E}_t[\cdot]$ is the expectation operator conditional on information available at time $t$.
+Under full information rational expectations (FIRE), the equilibrium price can be solved as
+\begin{equation}
+    P_t =  \frac{\delta a^{(1 - \ell)} \rho_e}{1 - a^{(1 - \ell)} \rho_e} D_t,
+\end{equation}
+where 
+\begin{equation}
+    \rho_e = \mathbb{E}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \ell} \frac{D_{t+1}}{D_t} \right] = e ^ {\ell(1 + \ell) \sigma^2_c/2} e ^ {-\ell \rho \sigma_c \sigma_d} .
+\end{equation}
+This implies a constant price-dividend ratio and an ex-dividend gross return which is given by
+\begin{equation}
+    R_{t+1} = \frac{P_{t+1}}{P_t} = \frac{D_{t+1}}{D_t} = a \varepsilon^d_{t+1}.
+\end{equation}
+Taking logs we obtain log-returns
+\begin{equation}
+    r_{t+1} = \log(R_{t+1}) = \log(a) + \eta^d_{t+1} \sim \mathcal{N}(\log(a) - \sigma^2_d/2, \sigma^2_d).
+\end{equation}
+Without loss of generality in what follows we set $\log(a) = \sigma^2_d/2$. This implies that under FIRE log-returns have mean zero and there is no time-$t$ information that can help forecasting returns.
+
+Instead of assuming that agents know the true data generating process, we follow the adaptive learning literature and assume that agents are boundedly rational and form their expectations using econometric techniques \citep{GeorgeWEvans2001}.
+Equation (\ref{eq:equilibrium_price}) shows that agents have to forecast two quantities, the risk-adjusted gross return and gross dividend growth.
+We follow \cite{Adam2016} in making the next assumption.
+
+\begin{assumption}
+    Agents know the process for dividends and consumption and are boundedly rational only with respect to (gross) returns.
+\end{assumption}
+In this way we can isolate the effects of learning about returns on asset prices.
+
+% --------------------
+\subsection{Univariate PLM and ALM}
+% --------------------
+
+To fix ideas we start by considering the univariate case in which agents try to predict log-returns using a single predictor $x_t$.
+Specifically we assume that agents have a linear and stationary PLM for the asset return
+\begin{equation}\label{eq:plm_univariate}
+    r_{t+1} =  x_{t} \beta + u_{t+1},
+\end{equation}
+with $x_t \sim \mathcal{N}(0, \sigma^2_x)$ being a signal available for the agent at time $t$ which they suspect might have predictive power on log-returns.
+Then the agents' PLM about log-returns implies the following PLM for gross returns
+\begin{equation}
+    R_{t+1} = e ^ {x_{t} \beta + u_{t+1}}.
+\end{equation}
+This implies that gross expected\footnote{
+Throughout the paper we use $\tilde{\mathbb{E}}_t[\cdot]$ to denote expectations taken under the agents' PLM, while $\mathbb{E}_t[\cdot]$ denotes rational expectations.}
+ returns follow a log-normal distribution and their conditional forecast is
+\begin{equation}
+    \tilde{\mathbb{E}}_t(R_{t+1}) = \tilde{\mathbb{E}}_t\left(\frac{P_{t+1}}{P_t}\right) = e^{x_{t} \beta + \sigma^2_u / 2} = \phi e^{x_{t} \beta},   
+\end{equation}
+by letting $\phi = e^{\sigma^2_u / 2}$.
+
+\begin{assumption}\label{ass:consumtion_independence}
+    Within their perceived law of motion, agents believe that the return process and consumption growth are independent.
+\end{assumption}
+Assumption \ref{ass:consumtion_independence} allows us to derive risk-adjusted expected gross returns as
+\begin{equation}
+    \tilde{\mathbb{E}}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \ell} \frac{P_{t+1}}{P_t} \right] = \tilde{\mathbb{E}}_t \left[\left( \frac{C_{t+1}}{C_t}\right)^{- \ell} \right] \tilde{\mathbb{E}}_t\left(\frac{P_{t+1}}{P_t}\right) = a ^ {-\ell} \phi e^{x_t \beta}.
+\end{equation}
+Plugging this into (\ref{eq:equilibrium_price}) yields
+\begin{equation}
+    P_t = \frac{\delta a^{(1 - \ell)} \rho_e}{1 - \delta a^{- \ell} \phi e^{x_t \beta}} D_t.
+\end{equation} 
+Now divide by $P_{t-1}$ to obtain actual gross returns
+\begin{equation}
+    R_{t} = \frac{P_{t}}{P_{t-1}} = \frac{1 - \delta a^{- \ell} \phi e^{x_{t-1} \beta}}{1 - \delta a^{- \ell} \phi e^{x_{t} \beta}} \frac{D_t}{D_{t-1}},
+\end{equation}
+and taking logs and moving one step forward we obtain the ALM 
+\begin{equation}\label{eq:alm_univariate}
+    r_{t+1} = \eta_{t+1} + \log(1 - \kappa e^{x_{t} \beta}) - \log(1 - \kappa e^{x_{t+1} \beta}),
+\end{equation}
+where $\kappa := \delta a^{- \ell} \phi$ and $\eta_{t+1} = \log(a) + \eta^d_{t+1}$.
+
+Expression \eqref{eq:alm_univariate} is only well-defined when $1 - \kappa e^{x_t \beta} > 0$ and $1 - \kappa e^{x_{t+1} \beta} > 0$ hold with probability one, which imposes state-dependent restrictions on $(x_t,\beta)$. To avoid these domain issues and guarantee global existence of a stochastic equilibrium, we adopt a bounded specification for the conditional mean of returns. We modify the perceived conditional expectation of gross returns to
+\begin{equation}
+    \tilde{\mathbb{E}}_t(R_{t+1}) = \phi \exp\bigl( w \tanh(x_t \beta / w) \bigr),
+\end{equation}
+where $w = -\log(\kappa) - \varepsilon$ for some $\varepsilon > 0$. Since $\tanh(\cdot) \in (-1,1)$, we have $w \tanh(x_t \beta / w) \in (-w,w)$ which implies $e^{w \tanh(x_t \beta / w)} \in (e^{-w}, e^{w})$. By construction $w < -\log(\kappa)$, so $e^{w} < \kappa^{-1}$ and therefore $1 - \kappa e^{w \tanh(x_t \beta / w)} > 0$ for all $x_t$ and $\beta$.
+
+The corresponding risk-adjusted expectations and price-dividend ratio are defined as before, with $x_t \beta$ replaced by $w \tanh(x_t \beta / w)$. This yields the modified ALM
+\begin{equation}\label{eq:alm_univariate_bounded}
+    r_{t+1} = \eta_{t+1}
+    + \log\bigl(1 - \kappa e^{w \tanh(x_t \beta / w)}\bigr)
+    - \log\bigl(1 - \kappa e^{w \tanh(x_{t+1} \beta / w)}\bigr).
+\end{equation}
+For later use, we define the function
+\begin{equation}\label{eq:g_beta_def}
+    g_{\beta}(x) 
+    := \log\bigl(1 - \kappa\, e^{w \tanh(x \beta/w)}\bigr),
+\end{equation}
+which is globally well-defined and smooth in $x$ and $\beta$. Given that $X_t \beta_t$ represents expected returns, which in practice move within a limited range rather than taking arbitrarily large values, we argue that the original ALM is well defined with high probability.
+The bounded specification \eqref{eq:alm_univariate_bounded}, should therefore be interpreted as a globally valid extension that coincides with the baseline model in the empirically relevant region of the state space while eliminating corner cases where the logarithm is undefined.
+As noted above, agents do not know the value of $\beta$ in their PLM \eqref{eq:plm_univariate} and have to estimate it from observed data.
+We therefore consider different learning mechaisms that agents can use to update their beliefs about $\beta$ over time, sequentially building towards the LASSO learning mechanism that is the main focus of this paper.
+
+% =====================================================

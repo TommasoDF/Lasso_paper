@@ -1,0 +1,26 @@
+{
+  "config": {
+    "K_topics": 187,
+    "window_size": 252,
+    "n_lags": 1,
+    "lambda_true": 6.625227834717374e-05,
+    "kappa_true": 0.3
+  },
+  "beta_match": {
+    "exact_bitwise": true,
+    "allclose_tight": true,
+    "rmse": 0.0,
+    "max_abs_diff": 0.0
+  },
+  "stage1": {
+    "r2_oos": 0.0031727293613966756,
+    "selection_rate": 0.17476159742894024,
+    "n_windows": 1624
+  },
+  "stage2_infeasible_fixed_kappa": {
+    "intercept_hat": 1.9288774372731586e-05,
+    "r2_in": 0.024404979433362506,
+    "r2_oos": 0.02486726631188585
+  },
+  "plot": "/Users/tommasodifrancesco/Desktop/Lasso_paper/Results/Figures/oracle_infeasible_k187_nlags1_window252_beta_true_vs_est_first6_FIXED.png"
+}

@@ -1,0 +1,38 @@
+\section{Related Literature}\label{sec:literature}
+
+Learning is often introduced in asset pricing models to account for empirical features such as excess volatility or return predictability that are difficult to reconcile with fully informed agents.
+The central premise of this literature is that investors have incomplete knowledge of the data generating process governing market outcomes and therefore infer it from observed data.
+Our model relates to this large literature on asset pricing with learning. 
+
+Early contributions assume fully rational agents who estimate unknown parameters of a correctly specified model using least squares \citep{Marcet1989}. 
+In this setting, learning converges to the rational expectations equilibrium as agents accumulate information over time. 
+Even in such low-dimensional environments, learning can generate excess volatility and return predictability \citep{Timmermann1993,Timmermann1996}. 
+Convergence to the rational expectations equilibrium is no longer guaranteed when agents are boundedly rational, as finite-memory and finite-sample learning can lead beliefs to fail to converge \citep{Honkapohja2003}. 
+The implications of learning become richer when agents face model uncertainty in addition to parameter uncertainty. 
+\citet{barberis1998model} study investors who switch between competing forecasting rules, while \citet{hong2007simple} and \citet{Branch2010} analyze settings in which agents estimate univariate perceived laws of motion although the true data generating process is multivariate.
+
+More recently, \citet{adam2011internal} introduce the concept of \textit{internal rationality}, whereby agents choose actions optimally given their subjective beliefs, even when those beliefs are misspecified. 
+Building on this insight, \citet{Adam2016} embed internally rational agents into a standard asset-pricing framework in which investors learn the mapping from fundamentals to prices, generating belief--price feedback that helps rationalize key asset-pricing moments. 
+We adopt this framework and its central feedback mechanism, but replace their general learning rule with a microfounded LASSO-based learning rule. 
+This modification allows us to study how high-dimensional statistical learning and endogenous model selection shape equilibrium price dynamics.
+
+More broadly, our paper also relates to research on how the growth of data affects asset prices. 
+\citet{begenau2018big} show that greater data-processing capacity improves investor forecasts and alters equilibrium prices and the cost of capital, while \citet{farboodi2020long} study investors who optimally choose whether to acquire information about fundamentals or about the behavior of other market participants.
+
+On the empirical side, our work relates to the extensive literature on time-varying stock return predictability. 
+A wide range of variables, including consumption growth and valuation ratios, forecast returns in some periods but not in others \citep{AngBekaert2007RFS,GoyalWelch2003MS,LettauLudvigson2001JF}. 
+A complementary line of research emphasizes sparsity.
+Among the many predictors proposed in the literature, only a small and time-varying subset is informative at any given point in time \citep{kozak2020shrinking,freyberger2020dissecting}. 
+Consistent with this view, \citet{Mclean2016} document that many return anomalies attenuate following publication, suggesting that investors actively search for, learn about, and trade on such signals.
+We add to this empirical literature by providing a theoretical mechanism for the emergence and disappearance  of sparse return predictability.
+
+Finally, our paper contributes to the growing literature on the use of machine learning in finance. 
+This literature has largely focused on the empirical gains from machine-learning methods for return forecasting and portfolio choice \citep{Feng2020}. 
+\citet{Gu2020} show that machine-learning forecasts outperform traditional linear models by exploiting sparsity and nonlinear interactions among predictors. 
+Most closely related to our learning mechanism, \citet{Chinco2019} document that LASSO uncovers short-lived pockets of high-frequency predictability concentrated in a small and shifting set of predictors. 
+Our contribution is to shift the focus from forecasting performance to the equilibrium consequences of investors using machine learning techniques in their trading decisions.
+
+% Finally, our work connects to recent efforts to model market outcomes when agents engage in statistical learning.
+% \citet{Georges2021} study adaptive model selection and regularization in an agent based market simulation.
+% In contrast to this simulation based evidence, our contribution is to provide an analytical characterization of LASSO based learning in a general equilibrium framework and to derive sharp conditions under which sparse and episodic return predictability emerges endogenously.
+% --------------------

@@ -1,0 +1,31 @@
+\section{Robustness: Feature Selection Among Significant-$\hat{\kappa}$ Stocks}\label{app:robustness_sig_kappa}
+
+One might be concerned that the feature selection patterns documented in Section~\ref{sec:empirical} are driven by the large mass of low-volatility stocks for which the LASSO never selects any predictor.
+To address this, we repeat the analysis of Section~\ref{subsec:empirical_belief_anatomy} restricting to the 155 stocks with a statistically significant $\hat{\kappa}$ estimate at the 5\% level.
+
+The feature ranking is essentially unchanged.
+The correlation between per-feature mean selection rates in the full sample and in the significant-$\hat{\kappa}$ subsample is $0.89$, and 7 of the top 10 features are identical across the two groups.
+The top three features---\textit{Announce plan}, \textit{Financial reports}, and \textit{Germany}---are the same in both samples.
+The Gini coefficient rises modestly from $0.18$ to $0.20$, reflecting a slight increase in concentration, but the overall distribution remains dispersed.
+The macro-financial series show no systematic premium or discount relative to news topics in the restricted sample.
+
+\paragraph{Persistence.}
+We repeat the persistence analysis of Section~\ref{subsec:empirical_belief_anatomy} on the same 155 significant-$\hat{\kappa}$ stocks.
+The results are nearly identical to the full sample.
+Pooled across 69{,}760 selection episodes, the median run length is 4 windows and the 95th percentile is 78 windows, with a maximum of 481.
+The survival curve declines from 73\% after one window to 18\% after 20 windows.
+The first-order autocorrelation of the binary selection indicator, averaged across 9{,}708 active stock--feature pairs, is 0.89, decaying to 0.72 at lag 5 and 0.46 at lag 20.
+Figure~\ref{fig:persistence_sig_kappa} plots the run-length distribution and survival curve for this subsample.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{persistence_sig_kappa.png}
+    \caption{Persistence of Topic Selection Episodes: Significant-$\hat{\kappa}$ Stocks}
+    \label{fig:persistence_sig_kappa}
+    \begin{minipage}{\textwidth}
+    \footnotesize
+    \textit{Note:} Same as Figure~\ref{fig:topic_selection_persistence} but restricted to the 155 stocks with a statistically significant $\hat{\kappa}$ estimate at the 5\% level.
+    \textbf{Left panel}: run-length distribution truncated at 80 windows; dashed line marks the median ($=4$).
+    \textbf{Right panel}: survival curve $P(\text{selected at }t+k \mid \text{selected at }t)$.
+    \end{minipage}
+\end{figure}

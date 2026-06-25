@@ -1,0 +1,77 @@
+\section{Lasso Regression}\label{sec:lasso}
+% =====================================================
+
+We model belief formation under LASSO learning by endowing agents with a \emph{soft-thresholded least squares} learning rule. Concretely, agents first update a least squares estimate of the forecasting coefficient using recursive or constant-gain learning, and then apply a soft-thresholding operator before forming expectations. This mechanism preserves analytical tractability while capturing the key feature of penalized learning, namely the tendency to set coefficients exactly to zero when empirical signals are weak.
+
+Our empirical motivation is closely related to LASSO regression, which augments the least squares objective with an $\ell_1$ penalty and is widely used to promote sparsity in estimated models. 
+Rather than solving the LASSO problem directly within the learning dynamics, we adopt the soft-thresholding rule as a reduced-form representation of penalized estimation. 
+As shown in Appendix \ref{app:lasso}, this procedure is exactly equivalent to LASSO in the univariate case when regressors are orthonormal, in which case the LASSO estimator admits the closed-form representation
+\begin{equation}\label{eq:lasso_from_ols}
+\hat{\beta}_{\text{LASSO}}
+=
+S(\beta_{\text{OLS}},\lambda)
+=
+\mathrm{sign}(\beta_{\text{OLS}})
+\max\!\left\{0,|\beta_{\text{OLS}}|-\lambda\right\}.
+\end{equation}
+
+While exact orthonormality is unlikely to hold in practice, it is common to work with predictors that are uncorrelated and standardized. In such environments, soft-thresholding provides a close approximation to the LASSO solution and is routinely used in empirical applications. We therefore refer to this learning mechanism as \emph{LASSO learning}, with the understanding that it implements penalized least squares through an analytically tractable thresholding rule.
+
+Under this specification, learning dynamics can be studied using the same recursive framework developed for least squares learning. The unpenalized coefficient continues to satisfy the standard cross-moment consistency condition, while sparsity arises endogenously from the thresholding step. As we show below, this modification leaves the location of the cross-moment consistent equilibrium unchanged but alters the stochastic behavior of beliefs under constant-gain learning.
+Specifically, the estimate for $\beta_{\text{OLS}}$ will be distributed as a normal distribution centered around the fixed point, with variance proportional to the gain parameter $\gamma$. 
+This implies that for small $\lambda$ sometimes the estimates will be large enough that the LASSO estimate is non-zero. 
+Given the distribution of $\beta_{\text{OLS}}$, we have: 
+\begin{proposition}[Probability of Non-Zero LASSO Estimate]\label{prop:LASSO_estimate}
+     Under Weighted Least Squares learning with geometrically declining weights with parameter $\gamma$, and for $\kappa < 1$, for small values of $\gamma$ the probability that the LASSO estimate is different from zero is given by 
+     \begin{equation} \mathbb{P}(|{\beta}_{\text{OLS}}| > \lambda) = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS}}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS}}}\right)\right], \end{equation} where $\sigma_{\text{OLS}} = \left(\gamma s_{d}^2 \left(2 \sigma^2_x \left(1 + \frac{\kappa}{1 - \kappa} \right)\right)^{-1}\right)^{1/2}$.
+\end{proposition}
+
+Proof. In Appendix \ref{app:proof_LASSO}.
+
+\begin{remark}[Persistence of Selection Episodes]\label{rem:persistence}
+Proposition~\ref{prop:LASSO_estimate} characterizes the unconditional probability of selection, but the model also implies that selection episodes are persistent over time.
+Under constant-gain learning, the unpenalized belief $\beta_t$ evolves as an approximate AR(1) with autocorrelation $(1-\gamma)$ per period.
+Since selection depends on whether $|\beta_t|$ exceeds $\lambda$, and the underlying process is persistent, a predictor selected at $t$ is likely to remain selected at $t+1$.
+Two structural parameters govern this persistence.
+First, persistence is increasing in the memory length $1/\gamma$: agents with longer effective windows update beliefs more slowly, so selection spells last longer.
+Second, persistence is increasing in the ratio $\lambda/\sigma_{\text{OLS}}$: when the threshold is high relative to belief volatility, crossing it requires an unusually large fluctuation, and returning below it requires an equally large reversal, making selection episodes rare but long-lived.
+\end{remark}
+
+It is worth clarifying now the mechanism through which return predictability arises in our model.
+Under constant-gain learning, the evolution of beliefs can be written in on-line form as
+\begin{equation}
+\beta_t
+=
+\beta_{t-1}
++
+\gamma M_{t-1}^{-1} x_{t-2}
+\bigl(r_{t-1} - x_{t-2}\beta_{t-1}\bigr),
+\end{equation}
+where the term $r_{t-1} - x_{t-2}\beta_{t-1}$ is the one-step-ahead forecasting error.
+Large changes in $\beta_t$ therefore arise when the forecasting error is large, when the regressor realization $|x_{t-2}|$ is large, or when the local second-moment estimate $M_{t-1}$ is small.
+Given that returns evolve according to the ALM \eqref{eq:constant_gain_returns}, it is clear that 
+even when predictors $x$ and innovations $\eta$ are i.i.d.\ and independent, realizations in which $x_{t-2}$ and $\eta_{t-1}$ are accidentally aligned in sign and magnitude generate large forecast errors and hence large belief revisions.
+Economically, this implies that the probability of a regressor being selected as predictive, is larger when it seems to agents that innovations to the fundamental dividend process are correlated with movements in the predictor.
+
+\subsection{Extension to Multiple Uncorrelated Predictors}
+
+Our theoretical analysis focuses on the univariate case for analytical tractability, but all main results extend naturally to the multivariate setting when predictors are uncorrelated.
+Consider a PLM with $k$ predictors: $r_{t+1} = X_t^T \beta + u_{t+1}$, where $X_t \sim \mathcal{N}(0, \Sigma_X)$ and $\Sigma_X$ is diagonal.
+In this case, the second-moment matrix $M_t = \mathbb{E}[X_t X_t^T]$ is also diagonal, which implies that the learning dynamics decompose into $k$ independent univariate problems.
+Specifically, each coefficient $\beta_j$ evolves according to
+\begin{equation}
+\beta_{j,t} = \beta_{j,t-1} + \gamma M^{-1}_{j,t-1} x_{j,t-2} \left(r_{t-1} - X_{t-2}^T \beta_{t-1}\right),
+\end{equation}
+where $M_{j,t} = \mathbb{E}[x_{j,t}^2]$ is the $j$-th diagonal element.
+The cross-moment consistent equilibrium condition similarly decomposes: $\beta_j = T_j(\beta)$ for all $j$, where $T_j(\beta) = \operatorname{Cov}(r_{t-1}, x_{j,t-2})/\operatorname{Var}(x_{j,t-2})$.
+Under constant-gain learning with penalty parameter $\lambda$, each unpenalized coefficient is approximately normally distributed with mean zero and variance $\gamma \sigma_d^2/(2\sigma^2_{x_j}(1-\kappa))$.
+The soft-thresholding operator then applies component-wise, and the probability that predictor $j$ is selected becomes
+\begin{equation}
+\mathbb{P}(|\beta^{\text{OLS}}_j| > \lambda) = 1 - \left[\Phi\left(\frac{\lambda}{\sigma_{\text{OLS},j}}\right) - \Phi\left(\frac{-\lambda}{\sigma_{\text{OLS},j}}\right)\right],
+\end{equation}
+where $\sigma_{\text{OLS},j}^2 = \gamma \sigma_d^2/(2\sigma^2_{x_j}(1-\kappa))$.
+Since the $\beta_j$ are mutually independent when predictors are uncorrelated, the expected number of selected predictors is simply $\mathbb{E}[\text{\# selected}] = \sum_{j=1}^k \mathbb{P}(|\beta^{\text{OLS}}_j| > \lambda)$.
+This decomposition also extends to the stability analysis: the Jacobian of the mean dynamics becomes block-diagonal, with each block corresponding to a single predictor, and the SRA framework applies after vectorizing the parameter space as $\theta_t = (\beta_t, \text{vec}(M_t))$.
+In summary, uncorrelated predictors preserve the key insight that sparse predictability arises from finite-sample fluctuations in individual coefficients, with each predictor independently subject to selection when its estimated relationship happens to exceed the penalty threshold.
+
+

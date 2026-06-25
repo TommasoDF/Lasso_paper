@@ -1,0 +1,10 @@
+window_size: 252
+n_lags: 1
+lambda: 0.0009436435869161195
+tune_frac: 0.2
+n_tune_stocks: 324
+n_estim_stocks: 1296
+selection_objective: stage2_oos_r2
+n_lambda_grid: 20
+lambda_eps: 0.001
+n_eval_stocks_per_lambda: 30

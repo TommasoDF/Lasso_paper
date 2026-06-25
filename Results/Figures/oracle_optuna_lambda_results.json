@@ -1,0 +1,41 @@
+{
+  "config": {
+    "kappa_true": 0.3,
+    "lambda_true": 6.625227834717374e-05,
+    "lambda_base": 8.833637112956498e-05,
+    "sigma": 0.001,
+    "window_size": 252,
+    "n_lags": 1,
+    "n_topics": 187,
+    "n_trials": 150,
+    "lambda_low": 1e-05,
+    "lambda_high": 0.001
+  },
+  "infeasible_oracle": {
+    "kappa_hat": 0.3287,
+    "kappa_abs_err": 0.0287,
+    "kappa_tstat": 9.5626,
+    "s1_is_r2": 0.188,
+    "s1_oos_r2": 0.0032,
+    "s2_is_r2": 0.0248,
+    "s2_oos_r2": 0.0265,
+    "sel_rate": 0.1748,
+    "lambda": 6.625227834717374e-05
+  },
+  "optuna_oracle": {
+    "lambda_optuna": 7.556298218751817e-05,
+    "lambda_true": 6.625227834717374e-05,
+    "lambda_base": 8.833637112956498e-05,
+    "lambda_ratio": 1.140534092904016,
+    "optuna_score": 0.9752933239686881,
+    "kappa_true": 0.3,
+    "kappa_hat": 0.3718002992907244,
+    "kappa_abs_err": 0.0718002992907244,
+    "kappa_tstat": 10.32179300382123,
+    "s1_is_r2": 0.14928520451602506,
+    "s1_oos_r2": 0.011312126666292666,
+    "s2_is_r2": 0.02529634506393219,
+    "s2_oos_r2": 0.028610069163381824,
+    "sel_rate": NaN
+  }
+}

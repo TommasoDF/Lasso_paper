@@ -1,0 +1,60 @@
+{
+  "config": {
+    "K_topics": 187,
+    "window_size": 252,
+    "n_lags": 1,
+    "lambda_true": 6.625227834717374e-05,
+    "kappa_true": 0.3
+  },
+  "stage1": {
+    "r2_in": 0.21415595718031027,
+    "r2_oos": -0.06213221328725638,
+    "avg_selection_rate": 0.1860442935980162,
+    "n_common_windows_beta_compare": 1624
+  },
+  "stage2_infeasible_fixed_kappa": {
+    "kappa_fixed": 0.3,
+    "intercept_hat": 1.48923972988648e-06,
+    "r2_in": -0.012893197938236067,
+    "r2_oos": -0.04268713588137496
+  },
+  "beta_compare_first6": {
+    "Fed Funds Effective Rate": {
+      "rmse": 1.0274569923024288e-05,
+      "corr": -0.38715944395691393,
+      "true_std": 1.9786657193488836e-06,
+      "est_std": 9.048925717643663e-06
+    },
+    "VIX Volatility Index": {
+      "rmse": 1.758015114139272e-05,
+      "corr": 0.06204085178655471,
+      "true_std": 1.4076916192777627e-05,
+      "est_std": 9.566290153563065e-06
+    },
+    "Financial Stress Index": {
+      "rmse": 5.70243287174493e-06,
+      "corr": 0.029031424059278093,
+      "true_std": 1.9638599280406104e-06,
+      "est_std": 5.229917771486863e-06
+    },
+    "High Yield Option-Adjusted Spread": {
+      "rmse": 8.760480415593584e-06,
+      "corr": -0.06895792492849723,
+      "true_std": 3.571134326135685e-06,
+      "est_std": 7.577273216484242e-06
+    },
+    "Trade Weighted USD Index": {
+      "rmse": 3.167339639320544e-05,
+      "corr": -0.31986354547856793,
+      "true_std": 1.4155986067007036e-05,
+      "est_std": 2.332996702367164e-05
+    },
+    "WTI Crude Oil": {
+      "rmse": 9.036883798516738e-06,
+      "corr": -0.004740929338489519,
+      "true_std": 8.737456423225865e-06,
+      "est_std": 2.2654107915541144e-06
+    }
+  },
+  "plot": "/Users/tommasodifrancesco/Desktop/Lasso_paper/Results/Figures/oracle_infeasible_k187_nlags1_window252_beta_true_vs_est_first6.png"
+}

@@ -1,0 +1,25 @@
+\section{Conclusion}\label{sec:conclusion}
+
+This paper develops an asset-pricing model in which investors search for return predictability in a high-dimensional information environment using a LASSO-based learning rule.
+Agents estimate a penalized linear forecasting model, form expectations based on the selected predictors, and these beliefs feed back into prices through a nonlinear asset-pricing equation.
+Because perceived and actual laws of motion differ, learning does not converge to rational expectations; instead, the economy settles into a cross-moment consistent equilibrium (CMCE).
+The central implication is that the act of searching for predictability can itself generate sparse and short-lived windows of return predictability.
+In finite samples, agents occasionally select predictors by chance.
+When this occurs, trading on the perceived signal feeds back into prices, making the predictability temporarily self-fulfilling.
+As new data arrive and older observations drop out of the agents’ effective memory, coefficient estimates revert back to zero, and the induced predictability disappears.
+The theory yields tractable conditions linking the frequency of selection events to fundamentals and features of the information environment.
+Empirically, we implement the model on daily returns for 1{,}620 NYSE-listed stocks from 2010--2017 using 180 Wall Street Journal news-attention innovations as predictors.
+Consistent with the model, predictability is episodic and sparse, and selection occurs more frequently for higher-volatility stocks.
+
+
+We plan to extend our analysis along several dimensions.
+The current model features a representative agent; a natural next step is to introduce heterogeneity in learning behavior.
+On the empirical side, the model cannot explain heterogeneity in the probability that different features are selected, beyond what is implied by their statistical properties. 
+The data, however, exhibit systematic cross-feature variation in selection frequencies. 
+We therefore test whether this variation reflects an additional, non-statistical component of behavior. 
+Specifically, we hypothesize that, after estimating the statistical model, agents are more likely to act on its signals when the resulting predictions are consistent with their pre-existing narratives about how the stock market works and about plausible causal links between specific features and asset prices.
+
+
+
+% =====================================================
+

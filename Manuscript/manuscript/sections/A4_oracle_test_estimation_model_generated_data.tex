@@ -1,0 +1,74 @@
+\section{Oracle Test: Estimation on Model-Generated Data}\label{app:oracle}
+
+As anticipated, there is no groundtruth for the hyperparamter lambda that governs how much investors use as penalty paramter.
+To come up with a procedure to select lambda and to evaluate the performance of our two-stage estimation procedure, we conduct an oracle test using data generated from the ALM with known parameters.
+
+We do this in two distinct flavours: first by assuming knowledge of the Stage-1 penalty $\lambda$, and then by tuning $\lambda$ via the same procedure we document below and that we use also in the empirical application.
+
+We use the actual predictor matrix of empirical predictor innovations ($K=190$: 180 news-topic series and 10 macro-financial series) and simulate returns recursively from the ALM with
+$\kappa_{\text{true}}=0.3$, $\lambda_{\text{true}}=6.625\times 10^{-5}$,
+fixed window size $s=252$, and innovation volatility $\sigma=0.001$, over the full sample length of  $T=1{,}878$ daily periods accordingly to:
+\[
+r_{t+1}
+= \log\!\bigl(1-\kappa e^{x_t^\top\hat\beta_t}\bigr)
+- \log\!\bigl(1-\kappa e^{x_{t+1}^\top\hat\beta_{t+1}}\bigr)
++ \varepsilon_{t+1},
+\qquad
+\varepsilon_{t+1}\sim \mathcal{N}(0,\sigma^2).
+\]
+
+
+
+For the infeasible benchmark, Stage 1 is run with known true $\lambda$ and Stage 2 still
+estimates $\kappa$ from simulated data.
+As shown in the Infeasible column of Table~\ref{tab:oracle_optuna}, the infeasible oracle recovers $\kappa$ with a small error, and achieves a positive but modest Stage-2 fit both in-sample and out-of-sample.
+The low $R^2$ values are expected and show that even when the representative investor's forecasting rule and penalty are correctly specified, returns remain close to an environment where predictability is weak and most variation is driven by the innovation term $\varepsilon_{t+1}$.
+
+These results motivate a procedure to retrieve $\lambda$ from data alone. We search over a grid of values $\lambda \in [10^{-5},\,10^{-3}]$, 
+to maximize the composite objective
+\begin{equation}\label{eq:oracle_optuna_obj}
+\text{Score}(\lambda)
+= \frac{1}{3}\,\sigma\!\left(\hat\kappa_{t\text{-stat}} - 1.96\right)
++ \frac{1}{3}\,\exp\!\left(-\!\left(\frac{R^2_{\text{IS},1} - \bar R^2}{\delta}\right)^{\!2}\right)
++ \frac{1}{3}\,\sigma\!\left(\frac{R^2_{\text{IS},2}}{\eta}\right),
+\end{equation}
+
+where $\sigma(\cdot)$ is the logistic function, $R^2_{\text{IS},1}$ and $R^2_{\text{IS},2}$ are the Stage-1 and Stage-2 in-sample $R^2$, respectively. The three terms reward, in equal weight, $\kappa$ significance, a Stage-1 fit that is positive but not too large (bell centred at $\bar R^2 = 0.15$ with width $\delta = 0.08$), and positive Stage-2 in-sample fit (scale $\eta = 0.01$). We use in-sample $R^2$ for Stage 2 because the DGP is known, so overfitting is not a concern.
+The maximization is done by using Tree-structured Parzen Estimation (TPE)\footnote{ TPE is a sequential model-based algorithm that at each iteration, partitiones past evaluations into a high-scoring set and a low-scoring set, fitting a separate density model to each. New candidates are proposed by sampling from the high-scoring density while down-weighting regions favoured by the low-scoring one, so the search progressively concentrates on values of $\lambda$ that yield higher composite scores. We use the implementation provided by the Optuna library for Python \citep{optuna_2019}. The number of trials is set to 150, which is sufficient for TPE to converge in a scalar search over $\lambda$: empirically, the objective stabilises well before 100 evaluations, and results are robust to varying the budget between 100 and 200 trials.} .
+
+We report the comparison against the infeasible benchmark in Table~\ref{tab:oracle_optuna}.
+The procedure selects $\hat\lambda = 7.56\times10^{-5}$, which is $1.14\times$ the true DGP value.
+Despite this over-penalisation, $\kappa$ identification remains strong: $\hat\kappa = 0.372$ (absolute error $0.072$) with a $t$-statistic of $10.3$, compared to $\hat\kappa = 0.329$ (error $0.029$, $t = 9.6$) for the infeasible benchmark. 
+The Stage-2 fit statistics are virtually identical across the two procedures ($R^2_{\text{IS},2} = 0.025$ in both cases; $R^2_{\text{OOS},2} = 0.029$ vs.\ $0.027$), 
+We interpret these results as validating the composite tuning objective as a feasible procedure for $\lambda$ selection, since it
+recovers a penalty which delivers a $\kappa$ estimate close to the infeasible benchmark.
+
+\begin{table}[H]
+\centering
+\caption{Oracle Lambda Tuning: Infeasible vs.\ Composite Objective}
+\label{tab:oracle_optuna}
+\begin{tabularx}{0.8\textwidth}{@{}>{\small}l>{\small\centering\arraybackslash}X>{\small\centering\arraybackslash}X@{}}
+\toprule
+Metric & Infeasible & Composite Obj. \\
+\midrule
+$\lambda$ selected                & $6.63\times10^{-5}$ (known) & $7.56\times10^{-5}$ \\
+$\lambda / \lambda_{\text{true}}$ & 1.000                       & 1.141 \\
+$\hat\kappa$                      & 0.329                       & 0.372 \\
+$|\hat\kappa - \kappa_{\text{true}}|$ & 0.029                  & 0.072 \\
+$t$-stat($\hat\kappa$)            & 9.563                       & 10.322 \\
+Stage-1 IS $R^2$                  & 0.188                       & 0.149 \\
+Stage-1 OOS $R^2$                 & 0.003                       & 0.011 \\
+Stage-2 IS $R^2$                  & 0.025                       & 0.025 \\
+Stage-2 OOS $R^2$                 & 0.027                       & 0.029 \\
+\bottomrule
+\end{tabularx}
+\medskip
+\begin{minipage}{\textwidth}
+\footnotesize
+\textit{Note:} $K=190$ predictors (180 topics + 10 macro), $s=252$, $n_{\text{lags}}=1$, $\kappa_{\text{true}}=0.30$,
+$\lambda_{\text{true}}=6.63\times10^{-5}$, $\sigma=0.001$.
+The objective in equation~\eqref{eq:oracle_optuna_obj} is maximised over 150 TPE trials.
+Stage-2 in-sample $R^2$ is used inside the objective because the DGP is known.
+All estimation uses the same rolling-window LASSO plus NLS pipeline as the infeasible benchmark.
+\end{minipage}
+\end{table}

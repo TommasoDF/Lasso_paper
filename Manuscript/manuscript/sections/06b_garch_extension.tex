@@ -1,0 +1,71 @@
+\section{Extension: Conditionally Heteroskedastic Dividend Volatility}\label{sec:garch_extension}
+
+The baseline model assumes a constant dividend-shock variance $\sigma_d^2$. We now ask whether
+Proposition \ref{prop:RLS} (convergence to the CMCE $\beta^*=0$) and Proposition
+\ref{prop:LASSO_estimate} (the LASSO selection probability) survive when dividend volatility is
+allowed to vary over time according to a GARCH(1,1) process, the workhorse specification for
+conditional heteroskedasticity in returns.
+
+\begin{assumption}[GARCH(1,1) Dividend Volatility]\label{ass:garch}
+Let $\varepsilon_t \stackrel{iid}{\sim} \mathcal N(0,1)$ be a standardized shock, independent of
+$\{x_s\}_{s=-\infty}^{\infty}$ at all leads and lags, and let the conditional dividend variance
+$v_t \equiv \sigma_{d,t}^2$ follow
+\begin{equation}\label{eq:garch11}
+v_t = \omega + \alpha\, v_{t-1}\varepsilon_{t-1}^2 + \delta\, v_{t-1}, \qquad
+\omega>0,\ \alpha,\delta\ge 0,\ \alpha+\delta<1.
+\end{equation}
+The dividend innovation is $\eta^d_t \mid v_t \sim \mathcal N(-v_t/2, v_t)$, and we set
+$\log(a) = \bar\sigma_d^2/2$ where $\bar\sigma_d^2 \equiv \mathbb E[v_t] = \omega/(1-\alpha-\delta)$
+is the unconditional (stationary) variance, generalizing the baseline normalization
+$\log(a)=\sigma_d^2/2$. Equivalently,
+\begin{equation}\label{eq:eta_garch}
+\eta_t = \frac{\bar\sigma_d^2 - v_t}{2} + \sqrt{v_t}\,\varepsilon_t .
+\end{equation}
+The baseline constant-volatility model is nested as the special case $\alpha=\delta=0$, $\omega=\sigma_d^2$,
+for which $v_t\equiv \sigma_d^2$ and \eqref{eq:eta_garch} collapses to $\eta_t=\sigma_d \varepsilon_t \sim \mathcal N(0,\sigma_d^2)$.
+\end{assumption}
+
+By construction $\mathbb E[\eta_t]=0$ unconditionally and $\eta_t \perp x_s$ for all $s$, so Assumption
+\ref{ass:garch} preserves the independence structure used throughout Sections \ref{sec:rec_ls}--\ref{sec:lasso}
+while allowing $\eta_t$'s second moment to fluctuate with the realized volatility state $v_{t-1}$.
+We further assume $3\alpha^2+2\alpha\delta+\delta^2<1$, which guarantees $\mathbb E[v_t^2]<\infty$
+\citep{Bollerslev1986}, and that $\{v_t\}$ is strictly stationary and ergodic
+\citep{BougerolPicard1992,Nelson1990}, with mixing properties sufficient to satisfy the regularity
+conditions of stochastic-approximation theory \citep{CarrascoChen2002}.
+
+\begin{proposition}[RLS Convergence under GARCH Dividend Volatility]\label{prop:RLS_garch}
+Under Assumption \ref{ass:garch}, the CMCE of Definition \ref{def:cmce} continues to be uniquely given
+by $\beta^*=0$, and it remains locally stable under RLS learning for all $\kappa\in(0,1)$, exactly as
+in Proposition \ref{prop:RLS}.
+\end{proposition}
+\textit{Proof.} In Appendix \ref{app:proof_RLS_garch}.
+
+\begin{proposition}[Local Selection Probability under GARCH Dividend Volatility]\label{prop:LASSO_estimate_garch}
+Under Assumption \ref{ass:garch} and constant-gain LASSO learning with gain $\gamma$, suppose in
+addition that volatility is persistent relative to the learning gain, $1-\alpha-\delta \ll \gamma$
+(formally, $(1-\alpha-\delta)/\gamma \to 0$). Then, to leading order in this scale separation and in
+$\gamma$, the unpenalized belief admits the local (volatility-state-conditional) Gaussian approximation
+\begin{equation}\label{eq:local_gaussian_garch}
+\beta_t^{\mathrm{OLS}} \mid v_{t-1} \ \dot\sim\ \mathcal N\!\left(0,\ \frac{\gamma\, v_{t-1}}{2\sigma_x^2}\Bigl(1+\tfrac{\kappa}{1-\kappa}\Bigr)^{-1}\right),
+\end{equation}
+and the conditional probability that predictor $x$ is selected by the LASSO learning rule is
+\begin{equation}\label{eq:conditional_selection_prob}
+\mathbb P_t\bigl(|\beta_t^{\mathrm{OLS}}|>\lambda \,\big|\, v_{t-1}\bigr)
+= 1-\left[\Phi\!\left(\frac{\lambda}{\sigma_{\mathrm{OLS},t}}\right)-\Phi\!\left(\frac{-\lambda}{\sigma_{\mathrm{OLS},t}}\right)\right],
+\qquad
+\sigma_{\mathrm{OLS},t}^2 = \frac{\gamma\, v_{t-1}}{2\sigma_x^2\bigl(1+\frac{\kappa}{1-\kappa}\bigr)}.
+\end{equation}
+This probability is strictly increasing in $v_{t-1}=\sigma_{d,t-1}^2$, and unconditioning on the
+stationary law of $v_{t-1}$ recovers, to leading order in $\mathrm{Var}(v_t)/\bar\sigma_d^2$,
+Proposition \ref{prop:LASSO_estimate}'s unconditional formula with $\sigma_d^2$ replaced by $\bar\sigma_d^2$.
+\end{proposition}
+\textit{Proof.} In Appendix \ref{app:proof_LASSO_garch}.
+
+Proposition \ref{prop:LASSO_estimate_garch} formalizes, under an explicit time-scale-separation
+assumption, the intuition that periods of elevated conditional dividend-return volatility mechanically
+raise the probability that a given predictor is selected by LASSO learning, providing one possible
+theoretical link to the paper's empirical finding that selection rates co-move with VIX. We emphasize
+that, unlike Proposition \ref{prop:RLS_garch}, this result is a \emph{local/adiabatic approximation}
+rather than an exact consequence of the global Gaussian approximation theorem used in Appendix
+\ref{app:proofs_WLS}; see the proof for a precise statement of what is and is not justified by existing
+stochastic-approximation theory.

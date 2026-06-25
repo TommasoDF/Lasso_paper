@@ -1,0 +1,26 @@
+{
+  "config": {
+    "window_size": 252,
+    "n_lags": 1,
+    "lambda_true_known_stage1": 6.625227834717374e-05,
+    "kappa_true_data_generating": 0.3
+  },
+  "beta_match_stage1": {
+    "rmse": 0.0,
+    "max_abs_diff": 0.0
+  },
+  "stage1": {
+    "r2_oos": 0.0031727293613966756,
+    "selection_rate": 0.17476159742894024,
+    "n_windows": 1624
+  },
+  "stage2_estimated_kappa": {
+    "kappa_hat": 0.3286972952259154,
+    "kappa_tstat": 9.562588464950075,
+    "intercept_hat": 1.9276733999909023e-05,
+    "intercept_tstat": 0.7641679340301653,
+    "r2_in": 0.024790505496967152,
+    "r2_oos": 0.026478294801994706,
+    "kappa_abs_error_vs_true": 0.02869729522591541
+  }
+}

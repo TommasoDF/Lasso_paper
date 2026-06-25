@@ -1,0 +1,11 @@
+window_size: 252
+n_lags: 1
+lambda: 0.001385462609185094
+tune_frac: 0.2
+n_tune_stocks: 324
+n_estim_stocks: 1296
+selection_objective: r2_oos_stage2+kappa_tstat
+optuna_score: 0.943959
+n_trials: 150
+w_r2: 0.6
+w_tstat: 0.4

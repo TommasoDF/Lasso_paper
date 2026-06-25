@@ -1,0 +1,31 @@
+{
+  "config": {
+    "window_size": 252,
+    "n_lags": 1,
+    "lambda_true": 6.625227834717374e-05,
+    "lambda_est": 8.833637112956498e-05,
+    "lambda_est_over_true": 1.3333333333333333,
+    "kappa_true": 0.3,
+    "n_topics": 187,
+    "n_windows": 1628
+  },
+  "beta_difference_est_vs_true_lambda": {
+    "rmse": 8.217732952310584e-06,
+    "mae": 2.939425765929877e-06,
+    "max_abs_diff": 6.25446936269697e-05,
+    "relative_rmse_vs_true_lambda_beta_scale": 0.4577949727957524,
+    "cellwise_correlation": 0.9324347552806868,
+    "selection_rate_true_lambda": 0.1748840478787003,
+    "selection_rate_est_lambda": 0.09280111419148852,
+    "selection_rate_diff_percentage_points": -8.208293368721177,
+    "active_set_jaccard": 0.529695536284116,
+    "avg_time_std_true_lambda": 1.4193592280951351e-05,
+    "avg_time_std_est_lambda": 8.210959323553226e-06,
+    "time_std_ratio_est_over_true": 0.5784976178703417
+  },
+  "distance_to_dgp": {
+    "rmse_true_lambda_vs_dgp": 4.746672315728958e-06,
+    "rmse_est_lambda_vs_dgp": 8.889825298506068e-06,
+    "rmse_increase_pct_from_true_to_est": 87.2854224431719
+  }
+}

@@ -1,0 +1,46 @@
+\section{Weighted Least Squares and Constant Gain Learning}\label{sec:w_ls}
+% =====================================================
+
+We saw that memory, in the sense of the weight assigned to past observations, plays a key role in determining the learning outcome.
+Under RLS learning with decreasing gain, agents eventually learn that returns are unpredictable.
+However, in practice agents may assign more weight to recent observations, either because they believe that the data-generating process is time-varying, or because they have limited memory capacity.
+To capture this, the second learning mechanism we consider is constant gain learning.
+This obtains by replacing the decreasing gain $1/t$ in RLS with a constant gain $g \in (0,1)$, and as we show in Appendix \ref{app:WLS} constant gain corresponds to an on-line estimation of WLS (Weighted Least Squares) with geometrically declining weights.
+
+\begin{equation}
+    \beta_t = \beta_{t-1} + \gamma M^{-1}_{t-1} x_{t-2} (r_{t-1} - x_{t-2} \beta_{t-1}).
+\end{equation}
+
+\begin{equation}
+    M_t = M_{t-1} + \gamma \left(x_{t-1}^2 - M_{t-1} \right).
+\end{equation}
+
+\begin{equation}\label{eq:constant_gain_returns}
+    r_{t-1} = \eta_{t-1}
+    + \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-2} \beta_{t-2} / w)}\Bigr)
+    - \log\!\Bigl(1 - \kappa e^{w \tanh(x_{t-1} \beta_{t-1} / w)}\Bigr).
+\end{equation} 
+
+
+
+Given that the gain is not decreasing and that the updating depends on the stochastic term $\eta_{t-1}$, differently to RLS, the learning mechanism cannot converge to a fixed point.
+However, under suitable conditions and for small values of $\gamma$, and under the same stability condition $\kappa \in (0, 1)$, it can be shown that the learning dynamics will fluctuate around the CMCE.
+We formalize this in the following proposition.
+\begin{proposition}[Distribution under Constant Gain Learning] \label{prop:WLS_distribution}
+    Under Constant gain learning with parameter $\gamma$, and for $\kappa < 1$, for small values of $\gamma$ the estimated parameter $\beta$ approximately follows a normal distribution
+\begin{equation}
+    \beta_t \sim \mathcal{N} \left(\beta^*, \gamma \frac{\sigma_d^2 (1 - \kappa)}{2 \sigma^2_x}\right),
+\end{equation}
+where $\beta^* = 0$ is the cross-moment consistent equilibrium.
+\end{proposition}
+Proof. In Appendix \ref{app:proofs_WLS}.
+
+Proposition \ref{prop:WLS_distribution} characterizes the stochastic fluctuations in beliefs under finite memory. 
+The variance of the estimated coefficient, $\gamma \sigma_d^2 (2\sigma^2_x(1-\kappa))^{-1}$, is driven by three fundamental parameters.
+
+First, the gain parameter $\gamma$ controls memory length and directly amplifies variance. Higher $\gamma$ means agents discount past data more aggressively, giving recent observations disproportionate influence. This amplifies the impact of sampling noise: a few unusual return realizations can substantially shift beliefs when historical evidence receives little weight. 
+
+Second, dividend volatility $\sigma_d^2$ determines the fundamental uncertainty in returns. Greater return volatility generates larger forecast errors, which translate into more volatile coefficient estimates as agents attempt to fit a predictive relationship to noisy data.
+
+Third, predictor variance $\sigma^2_x$ acts as a stabilizing force. When the predictor varies widely, each observation provides more information about the forecasting relationship, reducing estimation uncertainty. 
+% =====================================================

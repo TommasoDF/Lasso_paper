@@ -1,0 +1,9 @@
+window_size: 252
+n_lags: 1
+lambda: 0.0032235683598709998
+tune_frac: 0.2
+n_tune_stocks: 324
+n_estim_stocks: 1296
+optuna_score: 0.853484
+objective: composite_kappa_tstat+sparsity+kappa_interior
+n_trials: 200
