@@ -29,3 +29,43 @@ Figure~\ref{fig:persistence_sig_kappa} plots the run-length distribution and sur
     \textbf{Right panel}: survival curve $P(\text{selected at }t+k \mid \text{selected at }t)$.
     \end{minipage}
 \end{figure}
+
+\subsection{Multiple-Testing Adjustments for Second-Stage Significance}\label{app:multiple_testing}
+
+Because the second-stage ALM is estimated stock by stock, a natural concern is that some statistically significant $\hat{\kappa}_i$ estimates may arise from multiple testing rather than from systematic evidence in favour of the model.
+To address this, we re-evaluate second-stage significance using the full set of 1{,}117 stocks for which a finite $\hat{\kappa}_i$ $t$-statistic is available in the baseline estimation output.
+This is the broadest feasible comparison set for standard multiplicity corrections, because it includes every stock for which the nonlinear second-stage estimator returns a usable test statistic.
+
+\begin{table}[H]
+\centering
+\caption{Multiple-Testing Corrections for Second-Stage $\hat{\kappa}_i$ Significance}
+\label{tab:multiple_testing}
+\begin{tabular}{lcc}
+\toprule
+Correction method & Rejections & Share of 1,117 tests \\
+\midrule
+Unadjusted 5\% level & 111 & 9.9\% \\
+Benjamini--Hochberg FDR 10\% & 69 & 6.2\% \\
+Benjamini--Hochberg FDR 5\% & 55 & 4.9\% \\
+Holm--Bonferroni 5\% & 38 & 3.4\% \\
+\bottomrule
+\end{tabular}
+\medskip
+\begin{minipage}{0.92\textwidth}
+\footnotesize
+\textit{Note:} The table reports the number of second-stage ALM estimates for which the null $\kappa_i = 0$ is rejected after applying alternative multiple-testing adjustments to the 1{,}117 stocks with a finite $\hat{\kappa}_i$ $t$-statistic in the baseline estimation output. The Benjamini--Hochberg procedure controls the false discovery rate, while Holm--Bonferroni controls the family-wise error rate.
+\end{minipage}
+\end{table}
+
+Table~\ref{tab:multiple_testing} shows that the number of significant second-stage estimates falls materially once multiplicity is taken into account, but a non-trivial subset of stocks remains significant even under conservative adjustments.
+
+We also conduct a global excess-significance test.
+Under the joint null that each stock-level test rejects with probability 5\%, the expected number of rejections among 1{,}117 tests is 55.9.
+The observed count of 111 is almost exactly double that benchmark.
+An exact binomial test for excess significance rejects strongly, with $p = 1.21 \times 10^{-11}$.
+This result indicates that the aggregate number of significant second-stage estimates is too large to be explained by independent 5\% false positives alone.
+
+The interpretation of these corrections is therefore nuanced.
+They do not support reading every stock-level rejection as equally strong evidence for the model, and they imply that the raw count of unadjusted significant $\hat{\kappa}_i$ estimates overstates the amount of stock-by-stock evidence.
+At the same time, the corrected results do not collapse to zero: depending on the criterion, between 38 and 69 stock-level rejections survive, and the global excess-significance test rejects decisively.
+Taken together, these robustness checks suggest that the empirical support for the CMCE mechanism is concentrated in a smaller subset of stocks than the unadjusted 5\% count implies, but that the overall evidence is not well described as a pure multiple-testing artefact.

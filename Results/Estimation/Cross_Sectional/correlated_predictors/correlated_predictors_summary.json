@@ -1,0 +1,22 @@
+{
+  "window_trading_days": 5,
+  "min_events_per_firm": 20,
+  "selection_rows": 246240,
+  "fundamental_news_rows": 223463,
+  "event_exposure_rows": 208947,
+  "fundrel_rows": 175370,
+  "final_rows": 175370,
+  "final_firms": 923,
+  "final_predictors": 190,
+  "main_beta": 0.0001696720655571013,
+  "main_se_cluster_firm": 0.00011817984811948314,
+  "main_t": 1.4357106415093552,
+  "main_p": 0.15108469590159215,
+  "predictor_level_beta": 0.001344565521357389,
+  "predictor_level_se_hc1": 0.001557447801039247,
+  "predictor_level_t": 0.8633133774757606,
+  "predictor_level_p": 0.3879651910298221,
+  "final_panel_path": "C:\\Users\\jonat\\Lasso_paper\\Data\\clean_data\\correlated_predictors_firm_predictor_panel.csv",
+  "fundamental_news_path": "C:\\Users\\jonat\\Lasso_paper\\Data\\clean_data\\ibes_quarterly_fundamental_news_price_scaled.csv",
+  "fundrel_path": "C:\\Users\\jonat\\Lasso_paper\\Data\\clean_data\\firm_predictor_fundrel_event_window_h5.csv"
+}

@@ -1,0 +1,7 @@
+{
+  "mean_selection_rate": 0.019498088915711125,
+  "robustness_table": "C:\\Users\\jonat\\Lasso_paper\\Results\\Estimation\\Cross_Sectional\\correlated_predictors\\correlated_predictors_robustness_table.csv",
+  "margin_table": "C:\\Users\\jonat\\Lasso_paper\\Results\\Estimation\\Cross_Sectional\\correlated_predictors\\correlated_predictors_margin_tests.csv",
+  "sector_table": "C:\\Users\\jonat\\Lasso_paper\\Results\\Estimation\\Cross_Sectional\\correlated_predictors\\correlated_predictors_ff12_sector_table.csv",
+  "n_robust_specs": 14
+}
