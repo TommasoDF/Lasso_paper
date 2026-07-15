@@ -69,3 +69,79 @@ The interpretation of these corrections is therefore nuanced.
 They do not support reading every stock-level rejection as equally strong evidence for the model, and they imply that the raw count of unadjusted significant $\hat{\kappa}_i$ estimates overstates the amount of stock-by-stock evidence.
 At the same time, the corrected results do not collapse to zero: depending on the criterion, between 38 and 69 stock-level rejections survive, and the global excess-significance test rejects decisively.
 Taken together, these robustness checks suggest that the empirical support for the CMCE mechanism is concentrated in a smaller subset of stocks than the unadjusted 5\% count implies, but that the overall evidence is not well described as a pure multiple-testing artefact.
+
+\subsection{Placebo Tests for Second-Stage Identification}\label{app:placebo_stage2}
+
+The multiple-testing corrections in Appendix~\ref{app:multiple_testing} treat the stock-level $t$-statistics as asymptotically calibrated tests.
+As an additional diagnostic, we construct placebo distributions that preserve important features of the estimated belief and return panels while breaking different parts of the model-implied link between beliefs and returns.
+In all cases, we keep the first-stage belief sequences fixed as estimated in the baseline specification and re-estimate the second-stage NLS equation stock by stock.
+We use 100 placebo repetitions.
+For each repetition, we count the number of stocks with $\hat\kappa_i$ $t$-statistic greater than 1.96.
+Randomization $p$-values are computed as $(1+\#\{\text{placebo count}\geq \text{actual count}\})/(1+B)$, with $B=100$.
+
+\begin{table}[H]
+\centering
+\caption{Aggregate Placebo Tests for Second-Stage $\hat{\kappa}_i$ Significance}
+\label{tab:placebo_stage2}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+Test & Actual rejections & Placebo mean & Placebo median & Placebo 95th pct. & Rand. $p$-value \\
+\midrule
+Firm permutation & 111 & 100.9 & 101.0 & 114.1 & 0.149 \\
+Within-date firm shuffle & 111 & 69.5 & 68.5 & 84.0 & 0.010 \\
+Circular block shift & 111 & 111.4 & 112.0 & 126.0 & 0.564 \\
+\bottomrule
+\end{tabular}
+}
+\medskip
+\begin{minipage}{0.96\textwidth}
+\footnotesize
+\textit{Note:} The actual baseline count is 111 significant $\hat\kappa_i$ estimates among 1{,}117 stocks with finite second-stage $t$-statistics.
+The firm permutation keeps each stock's return series intact and each estimated belief series intact, but randomly assigns belief series to different stocks.
+The within-date firm shuffle randomly permutes beliefs across stocks separately on each date, preserving the date-level cross-sectional distribution of beliefs while breaking stock identity.
+The circular block shift keeps each stock's return series and belief series but circularly shifts the belief series by a random offset of at least 60 trading days.
+\end{minipage}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Firm-Level Placebo-Adjusted $p$-Values}
+\label{tab:placebo_stage2_firm_pvalues}
+\begin{tabular}{lccccc}
+\toprule
+Placebo distribution & Firms & $p_i \leq 0.10$ & $p_i \leq 0.05$ & Median $p_i$ & 90th pct. $p_i$ \\
+\midrule
+Firm permutation & 1{,}117 & 112 & 60 & 0.484 & 0.910 \\
+Within-date firm shuffle & 1{,}117 & 114 & 101 & 0.584 & 0.950 \\
+Circular block shift & 1{,}117 & 113 & 76 & 0.554 & 0.950 \\
+\bottomrule
+\end{tabular}
+\medskip
+\begin{minipage}{0.92\textwidth}
+\footnotesize
+\textit{Note:} For each stock, $p_i$ is the fraction of placebo repetitions in which that stock's placebo $\hat\kappa_i$ $t$-statistic is at least as large as its actual $t$-statistic, using the same 100 repetitions as in Table~\ref{tab:placebo_stage2}.
+The table reports how many stocks remain significant after replacing the asymptotic $t$-test with this stock-specific randomization benchmark.
+\end{minipage}
+\end{table}
+
+The three placebo designs answer different questions.
+The firm permutation is the cleanest test of whether the same stock's belief path is needed for the second-stage rejection count, because it preserves both belief persistence and return persistence but breaks the firm-level pairing.
+Under this null, the actual count of 111 rejections is above the placebo mean of 100.9 but below the 95th percentile of 114.1, yielding a randomization $p$-value of 0.149.
+Thus, the raw excess of significant $\hat\kappa_i$ estimates is not strong relative to a null that preserves the full time-series structure of beliefs and returns but reassigns beliefs across firms.
+
+The within-date firm shuffle is more stringent about common time effects.
+It preserves the cross-sectional distribution of beliefs on each trading day but destroys both firm identity and belief persistence within a stock.
+This placebo produces a much lower rejection count, with a mean of 69.5 and a 95th percentile of 84.0.
+The actual count is far in the upper tail of this distribution, with a randomization $p$-value of 0.010.
+This result indicates that the second-stage relation is not explained solely by date-level common shocks and the unconditional cross-sectional dispersion of beliefs.
+
+The circular block shift is the most demanding placebo with respect to within-firm persistence.
+It preserves each firm's own belief process and return process but breaks their local timing by shifting beliefs by at least 60 trading days.
+This placebo generates nearly the same rejection count as the actual data: the mean is 111.4 and the randomization $p$-value is 0.564.
+The result suggests that low-frequency or persistent within-firm components of the belief and return series contribute materially to the second-stage significance.
+Consistent with this interpretation, Table~\ref{tab:placebo_stage2_firm_pvalues} shows that 60 stocks are significant relative to their own firm-permutation placebo distribution, 101 relative to the within-date shuffle, and 76 relative to the circular-shift placebo.
+
+Overall, these placebos qualify the interpretation of the second-stage $\hat\kappa_i$ tests.
+The evidence is stronger than a pure date-level artifact, but it is weaker than the unadjusted asymptotic count suggests once we compare the estimates to placebo designs that preserve firm-level persistence.
+We therefore interpret significant $\hat\kappa_i$ estimates as evidence of a belief-return relation concentrated in a subset of stocks, rather than as a uniformly calibrated stock-by-stock structural test.

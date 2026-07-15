@@ -36,13 +36,13 @@ We then estimate a firm-specific time-series regression separately for each firm
 FundNews_{i,t}
 =a_i+\theta_{i,j}^{W}X^W_{j,t}+\varepsilon_{i,j,t},
 \]
-using only the revision-event dates of firm $i$. We require at least 20 revision-event observations for a firm to enter the first stage. Fundamental relevance is defined as the absolute first-stage $t$-statistic,
+using only the revision-event dates of firm $i$. We require at least 50 revision-event observations for a firm to enter the baseline first stage. This threshold balances precision in the generated firm-specific relevance measure against cross-sectional coverage; below we report robustness to alternative thresholds. Fundamental relevance is defined as the absolute first-stage $t$-statistic,
 \[
 FundRel^W_{i,j}=|t(\hat\theta^W_{i,j})|,
 \]
 winsorized at the 1st and 99th percentiles within each specification.
 
-For the baseline window $[-5,-1]$, the first stage produces 175{,}560 firm--predictor relevance estimates, covering 924 firms and 190 predictors. The median firm contributes 171.5 revision-event days, with an interquartile range from 95 to 288. The mean winsorized fundamental relevance is 0.97, the median is 0.80, and the 99th-percentile winsorization cap is 3.42.
+For the baseline window $[-5,-1]$, the 50-event cutoff produces 160{,}740 firm--predictor relevance estimates, covering 846 firms and 190 predictors. In the broader event sample, the median firm contributes 165 usable revision-event days, with an interquartile range from 84 to 282.5. The cutoff therefore excludes firms with very sparse analyst-revision histories while retaining most firms with regular analyst coverage.
 
 \paragraph{Second stage: selection rates and fundamental relevance.}
 
@@ -71,24 +71,24 @@ Table~\ref{tab:fundamental_relevance_selection} reports the firm-specific result
 Window & $[-5,-1]$ & $[-10,-1]$ & $[-5,0]$ & $[-10,0]$ \\
 \midrule
 $FundRel^W_{i,j}$
-    & 0.000310** & 0.000249** & 0.000346*** & 0.000272** \\
-    & (0.000137) & (0.000116) & (0.000124) & (0.000115) \\
+    & 0.000353** & 0.000333*** & 0.000395*** & 0.000343*** \\
+    & (0.000144) & (0.000120) & (0.000132) & (0.000120) \\
 \midrule
 $t$-statistic
-    & 2.27 & 2.15 & 2.79 & 2.38 \\
+    & 2.45 & 2.77 & 2.99 & 2.86 \\
 Standardized effect
-    & 0.0048 & 0.0044 & 0.0055 & 0.0049 \\
+    & 0.0056 & 0.0060 & 0.0064 & 0.0063 \\
 Effect relative to mean selection
-    & 1.31\% & 1.05\% & 1.47\% & 1.15\% \\
+    & 1.52\% & 1.43\% & 1.70\% & 1.47\% \\
 \midrule
 Firm FE
     & Yes & Yes & Yes & Yes \\
 Predictor FE
     & Yes & Yes & Yes & Yes \\
 Observations
-    & 175{,}560 & 175{,}560 & 175{,}560 & 175{,}560 \\
+    & 160{,}740 & 160{,}740 & 160{,}740 & 160{,}740 \\
 Firms
-    & 924 & 924 & 924 & 924 \\
+    & 846 & 846 & 846 & 846 \\
 Predictors
     & 190 & 190 & 190 & 190 \\
 \bottomrule
@@ -97,7 +97,41 @@ Predictors
 \vspace{0.15cm}
 \begin{minipage}{0.95\textwidth}
 \footnotesize
-\textit{Note:} The table reports firm-specific event-window estimates. The first stage regresses signed firm-day EPS forecast revision news, scaled by lagged price, on cumulative predictor innovations over the indicated window, separately for each firm and predictor. $FundRel^W_{i,j}$ is the absolute first-stage $t$-statistic, winsorized at the 1st and 99th percentiles. The second stage regresses the firm--predictor LASSO selection rate on $FundRel^W_{i,j}$ with firm and predictor fixed effects. Standard errors, in parentheses, are clustered two ways by firm and predictor. The standardized effect is $\hat\beta\,sd(FundRel^W)/sd(SelectionRate)$. The effect relative to mean selection is $\hat\beta/\overline{SelectionRate}$. $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.
+\textit{Note:} The table reports firm-specific event-window estimates requiring at least 50 usable revision-event observations per firm. The first stage regresses signed firm-day EPS forecast revision news, scaled by lagged price, on cumulative predictor innovations over the indicated window, separately for each firm and predictor. $FundRel^W_{i,j}$ is the absolute first-stage $t$-statistic, winsorized at the 1st and 99th percentiles. The second stage regresses the firm--predictor LASSO selection rate on $FundRel^W_{i,j}$ with firm and predictor fixed effects. Standard errors, in parentheses, are clustered two ways by firm and predictor. The standardized effect is $\hat\beta\,sd(FundRel^W)/sd(SelectionRate)$. The effect relative to mean selection is $\hat\beta/\overline{SelectionRate}$. $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.
+\end{minipage}
+\end{table}
+
+\paragraph{Robustness to the first-stage event-count cutoff.}
+
+The baseline threshold of 50 revision-event days is meant to limit noise in the generated firm-specific relevance measure without restricting attention only to the most heavily covered firms. Table~\ref{tab:fundamental_relevance_cutoffs} reports the baseline $[-5,-1]$ specification under alternative minimum-event thresholds. The coefficient remains positive for every cutoff. Precision improves when moving from 20 to 50 or 100 events, but deteriorates once the cutoff becomes very high because the sample becomes much smaller and increasingly concentrated among large, heavily followed firms. We therefore use 50 events as the baseline and treat the other thresholds as robustness checks.
+
+\begin{table}[H]
+\centering
+\caption{Robustness to Minimum Revision-Event Cutoff}
+\label{tab:fundamental_relevance_cutoffs}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccccc}
+\toprule
+Minimum events & 20 & 50 & 100 & 200 & 300 & 400 & 500 \\
+\midrule
+$FundRel^{[-5,-1]}_{i,j}$
+    & 0.000310** & 0.000353** & 0.000394** & 0.000301 & 0.000544** & 0.000383 & 0.000223 \\
+    & (0.000137) & (0.000144) & (0.000153) & (0.000186) & (0.000245) & (0.000338) & (0.000323) \\
+$t$-statistic
+    & 2.27 & 2.45 & 2.57 & 1.62 & 2.22 & 1.14 & 0.69 \\
+\midrule
+Firms
+    & 924 & 846 & 676 & 391 & 208 & 118 & 78 \\
+Observations
+    & 175{,}560 & 160{,}740 & 128{,}440 & 74{,}290 & 39{,}520 & 22{,}420 & 14{,}820 \\
+\bottomrule
+\end{tabular}
+}
+
+\vspace{0.15cm}
+\begin{minipage}{0.95\textwidth}
+\footnotesize
+\textit{Note:} The table repeats the baseline $[-5,-1]$ firm-specific specification while varying the minimum number of usable revision-event observations required for a firm to enter the first stage. Standard errors, in parentheses, are clustered two ways by firm and predictor. $^{*}p<0.10$, $^{**}p<0.05$, $^{***}p<0.01$.
 \end{minipage}
 \end{table}
 
@@ -116,22 +150,22 @@ Our baseline measure uses the absolute first-stage $t$-statistic because it capt
 Window & $[-5,-1]$ & $[-10,-1]$ & $[-5,0]$ & $[-10,0]$ \\
 \midrule
 $|\hat\theta^W_{i,j}|$
-    & 0.2936* & -0.2152 & 0.0656 & -0.0390 \\
-    & (0.1545) & (0.1785) & (0.1272) & (0.1606) \\
+    & 0.4136* & -0.1069 & 0.0909 & 0.1298 \\
+    & (0.2121) & (0.2567) & (0.1809) & (0.2333) \\
 \midrule
 $t$-statistic
-    & 1.90 & -1.21 & 0.52 & -0.24 \\
+    & 1.95 & -0.42 & 0.50 & 0.56 \\
 Standardized effect
-    & 0.0209 & -0.0114 & 0.0043 & -0.0020 \\
+    & 0.0210 & -0.0039 & 0.0041 & 0.0046 \\
 \midrule
 Firm FE
     & Yes & Yes & Yes & Yes \\
 Predictor FE
     & Yes & Yes & Yes & Yes \\
 Observations
-    & 175{,}560 & 175{,}560 & 175{,}560 & 175{,}560 \\
+    & 160{,}740 & 160{,}740 & 160{,}740 & 160{,}740 \\
 Firms
-    & 924 & 924 & 924 & 924 \\
+    & 846 & 846 & 846 & 846 \\
 Predictors
     & 190 & 190 & 190 & 190 \\
 \bottomrule
@@ -146,8 +180,8 @@ Predictors
 
 \paragraph{Discussion.}
 
-The estimates are positive across all four windows. This is consistent with the mechanism in Section~\ref{sec:correlated_extension}: predictors that are more closely related to innovations in firm fundamentals are selected more frequently by the rolling LASSO. The baseline pre-event window $[-5,-1]$ yields a coefficient of 0.00031 with a two-way clustered $t$-statistic of 2.27. Extending the pre-event window to $[-10,-1]$ gives a similar but slightly smaller estimate. Including the event day strengthens the coefficient for the five-day window: the estimate rises to 0.00035 for $[-5,0]$ and the $t$-statistic increases to 2.79. The corresponding ten-day window $[-10,0]$ remains positive and statistically significant.
+The estimates are positive across all four windows. This is consistent with the mechanism in Section~\ref{sec:correlated_extension}: predictors that are more closely related to innovations in firm fundamentals are selected more frequently by the rolling LASSO. The baseline pre-event window $[-5,-1]$ yields a coefficient of 0.00035 with a two-way clustered $t$-statistic of 2.45. Extending the pre-event window to $[-10,-1]$ gives a similar estimate, 0.00033, with a $t$-statistic of 2.77. Including the event day strengthens the coefficient for the five-day window: the estimate rises to 0.00040 for $[-5,0]$ and the $t$-statistic increases to 2.99. The corresponding ten-day window $[-10,0]$ remains positive and statistically significant.
 
-The economic magnitudes are small in levels, which is expected because unconditional LASSO selection rates are low. A one-unit increase in fundamental relevance raises the selection rate by roughly 1.1--1.5 percent of the mean selection rate, depending on the window. Standardized effects are also modest, around 0.4--0.6 percent of a standard deviation in selection rates. The results should therefore not be read as implying that analyst-revision fundamentals are the dominant determinant of selection. Rather, they show that the identity of selected predictors is not purely arbitrary: within firm and within predictor, the pairs with stronger links to measured fundamental-news revisions are selected more often.
+The economic magnitudes are small in levels, which is expected because unconditional LASSO selection rates are low. A one-unit increase in fundamental relevance raises the selection rate by roughly 1.4--1.7 percent of the mean selection rate, depending on the window. Standardized effects are also modest, around 0.6 percent of a standard deviation in selection rates. The results should therefore not be read as implying that analyst-revision fundamentals are the dominant determinant of selection. Rather, they show that the identity of selected predictors is not purely arbitrary: within firm and within predictor, the pairs with stronger links to measured fundamental-news revisions are selected more often.
 
-The timing pattern is informative. The effect is present using only pre-event predictor innovations, which mitigates the concern that the relation is entirely contemporaneous. At the same time, the stronger $[-5,0]$ estimate suggests that part of the relevant information arrives on the revision day itself, consistent with analysts updating forecasts in response to same-day public news. The coefficient-based robustness check in Table~\ref{tab:fundamental_relevance_selection_theta} is weaker: the baseline $[-5,-1]$ estimate remains positive and marginally significant, but the longer-window coefficient specifications are not stable. This pattern is consistent with the interpretation that raw coefficient magnitudes are contaminated by cross-firm differences in the volatility of EPS revisions, whereas the $t$-statistic better captures the reliability of the predictor--fundamental-news relation. Overall, the evidence supports the paper's interpretation that finite-sample LASSO selection is amplified when candidate predictors are genuinely correlated with the firm's fundamental information process, while also suggesting that the signal is measured with substantial noise.
+The timing pattern is informative. The effect is present using only pre-event predictor innovations, which mitigates the concern that the relation is entirely contemporaneous. At the same time, the stronger $[-5,0]$ estimate suggests that part of the relevant information arrives on the revision day itself, consistent with analysts updating forecasts in response to same-day public news. Table~\ref{tab:fundamental_relevance_cutoffs} shows that the baseline result is not driven by the 50-event threshold: the coefficient remains positive for cutoffs from 20 to 500 events, although precision falls at very high cutoffs as the sample shrinks. The coefficient-based robustness check in Table~\ref{tab:fundamental_relevance_selection_theta} is weaker: the baseline $[-5,-1]$ estimate remains positive and marginally significant, but the longer-window coefficient specifications are not stable. This pattern is consistent with the interpretation that raw coefficient magnitudes are contaminated by cross-firm differences in the volatility of EPS revisions, whereas the $t$-statistic better captures the reliability of the predictor--fundamental-news relation. Overall, the evidence supports the paper's interpretation that finite-sample LASSO selection is amplified when candidate predictors are genuinely correlated with the firm's fundamental information process, while also suggesting that the signal is measured with substantial noise.
